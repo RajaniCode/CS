@@ -1,0 +1,325 @@
+// Create and run a task.
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class DemoTask
+{
+    // A method to be run as a task.
+    static void MyTask() {
+    Console.WriteLine("MyTask() starting");
+    for(int count = 0; count < 10; count++) {
+        Thread.Sleep(500);
+        Console.WriteLine("In MyTask(), count is " + count);
+    }
+    Console.WriteLine("MyTask terminating");
+}
+
+static void Main()
+{
+    Console.WriteLine("Main thread starting.");
+    // Construct a task.
+    Task tsk = new Task(MyTask);
+    // Run the task.
+    tsk.Start();
+    // Keep Main() alive until MyTask() finishes.
+    for(int i = 0; i < 60; i++)
+    {
+        Console.Write(".");
+        Thread.Sleep(100);
+    }
+    Console.WriteLine("Main thread ending.");
+    }
+}
+
+// Use an instance method as a task.
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class MyClass
+{
+    // A method to be run as a task.
+    public void MyTask()
+    {
+        Console.WriteLine("MyTask() starting");
+        for(int count = 0; count < 10; count++)
+        {
+            Thread.Sleep(500);
+            Console.WriteLine("In MyTask(), count is " + count);
+        }
+        Console.WriteLine("MyTask terminating");
+     }
+}
+class DemoTask
+{
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+        // Construct a MyClass object.
+        MyClass mc = new MyClass();
+        // Construct a task on mc.MyTask().
+        Task tsk = new Task(mc.MyTask);
+        // Run the task.
+        tsk.Start();
+         // Keep Main() alive until MyTask() finishes.
+         for(int i = 0; i < 60; i++)
+         {
+             Console.Write(".");
+             Thread.Sleep(100);
+         }
+        Console.WriteLine("Main thread ending.");
+    }
+}
+
+// Demonstrate the Id and CurrentId properties.
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class DemoTask
+{
+    // A method to be run as a task.
+    static void MyTask()
+    {
+        Console.WriteLine("MyTask() #" + Task.CurrentId + " starting");
+        for(int count = 0; count < 10; count++)
+        {
+            Thread.Sleep(500);
+            Console.WriteLine("In MyTask() #" + Task.CurrentId +", count is " + count );
+        }
+        Console.WriteLine("MyTask #" + Task.CurrentId + " terminating");
+     }
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+         // Construct two tasks.
+        Task tsk = new Task(MyTask);
+        Task tsk2 = new Task(MyTask);
+         // Run the tasks.
+        tsk.Start();
+        tsk2.Start();
+       Console.WriteLine("Task ID for tsk is " + tsk.Id);
+       Console.WriteLine("Task ID for tsk2 is " + tsk2.Id);
+       // Keep Main() alive until the other tasks finish.
+        for(int i = 0; i < 60; i++)
+        {
+            Console.Write(".");
+            Thread.Sleep(100);
+        }
+        Console.WriteLine("Main thread ending.");
+    }
+}
+
+// Use Wait().
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class DemoTask
+{
+    // A method to be run as a task.
+    static void MyTask()
+    {
+        Console.WriteLine("MyTask() #" + Task.CurrentId + " starting");
+        for(int count = 0; count < 10; count++)
+        {
+            Thread.Sleep(500);
+            Console.WriteLine("In MyTask() #" + Task.CurrentId +", count is " + count );
+        }
+        Console.WriteLine("MyTask #" + Task.CurrentId + " terminating");
+    }
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+        // Construct two tasks.
+        Task tsk = new Task(MyTask);
+        Task tsk2 = new Task(MyTask);
+        // Run the tasks.
+        tsk.Start();
+        tsk2.Start();
+        Console.WriteLine("Task ID for tsk is " + tsk.Id);
+        Console.WriteLine("Task ID for tsk2 is " + tsk2.Id);
+        // Suspend Main() until both tsk and tsk2 finish.
+        tsk.Wait();
+        tsk2.Wait();
+        Console.WriteLine("Main thread ending.");
+    }
+}
+
+// Use a lambda expression as a task.
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class DemoLambdaTask
+{
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+        // The following uses a lambda expression to define a task.
+        Task tsk = Task.Factory.StartNew( () => {
+        Console.WriteLine("Task starting");
+        for(int count = 0; count < 10; count++)
+        {
+            Thread.Sleep(500);
+            Console.WriteLine("Task count is " + count );
+        }
+        Console.WriteLine("Task terminating");
+        } );
+        // Wait until tsk finishes.
+        tsk.Wait();
+        // Dispose of tsk.
+        tsk.Dispose();
+        Console.WriteLine("Main thread ending.");
+    }
+}
+
+// Demonstrate a continuation.
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class ContinuationDemo
+{
+    // A method to be run as a task.
+    static void MyTask()
+    {
+        Console.WriteLine("MyTask() starting");
+        for(int count = 0; count < 5; count++)
+        {
+            Thread.Sleep(500);
+            Console.WriteLine("In MyTask() count is " + count );
+        }
+        Console.WriteLine("MyTask terminating");
+    }
+
+    // A method to be run as a continuation.
+    static void ContTask(Task t)
+    {
+        Console.WriteLine("Continuation starting"),
+        for(int count = 0; count < 5; count++)
+        {
+            Thread.Sleep(500);
+            Console.WriteLine("Continuation count is " + count );
+        }
+        Console.WriteLine("Continuation terminating");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+        // Construct the first task.
+        Task tsk = new Task(MyTask);
+        // Now, create the continuation.
+        Task taskCont = tsk.ContinueWith(ContTask);
+        // Begin the task sequence.
+        tsk.Start();
+        // Just wait on the continuation.
+        taskCont.Wait();
+        tsk.Dispose();
+        taskCont.Dispose();
+        Console.WriteLine("Main thread ending.");
+    }
+}
+
+// Return a value from a task.
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class DemoTask
+{
+    // A trivial method that returns a result and takes no arguments.
+    static bool MyTask()
+    {
+        return true;
+    }
+    // This method returns the summation of a positive integer
+    // which is passed to it.
+    static int SumIt(object v)
+    {
+        int x = (int) v;
+        int sum = 0;
+        for(; x > 0; x--)
+        {
+            sum += x;
+        }
+    return sum;
+}
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+        // Construct the first task.
+        Task<bool> tsk = Task<bool>.Factory.StartNew(MyTask);
+        Console.WriteLine("After running MyTask. The result is " +tsk.Result);
+        // Construct the second task.
+        Task<int> tsk2 = Task<int>.Factory.StartNew(SumIt, 3);
+        Console.WriteLine("After running SumIt. The result is " + tsk2.Result);
+        tsk.Dispose();
+        tsk2.Dispose();
+        Console.WriteLine("Main thread ending.");
+    }
+}
+
+// A simple example of cancellation that uses polling.
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class DemoCancelTask
+{
+    // A method to be run as a task.
+    static void MyTask(Object ct)
+    {
+        CancellationToken cancelTok = (CancellationToken) ct;
+        // Check if cancelled prior to starting.
+        cancelTok.ThrowIfCancellationRequested();
+        Console.WriteLine("MyTask() starting");
+        for(int count = 0; count < 10; count++)
+        {
+             // This example uses polling to watch for cancellation.
+            if(cancelTok.IsCancellationRequested)
+            {
+                Console.WriteLine("Cancellation request received.");
+                cancelTok.ThrowIfCancellationRequested();
+            }
+            Thread.Sleep(500);
+            Console.WriteLine("In MyTask(), count is " + count );
+        }
+        Console.WriteLine("MyTask terminating");
+    }
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+        // Create a cancellation token source.
+        CancellationTokenSource cancelTokSrc = new CancellationTokenSource();
+        // Start a task, passing the cancellation token to both
+        // the delegate and the task.
+        Task tsk = Task.Factory.StartNew(MyTask, cancelTokSrc.Token,cancelTokSrc.Token);
+         // Let tsk run until cancelled.
+        Thread.Sleep(2000);
+        try
+        {
+            // Cancel the task.
+            cancelTokSrc.Cancel();
+            // Suspend Main() until tsk terminates.
+            tsk.Wait();
+        }
+        catch (AggregateException exc)
+        {
+            if(tsk.IsCanceled)
+            {
+                Console.WriteLine("\ntsk Cancelled\n");
+            }
+            // To see the exception, un-comment this line:
+            // Console.WriteLine(exc);
+        } 
+        finally
+        {
+            tsk.Dispose();
+            cancelTokSrc.Dispose();
+        }
+        Console.WriteLine("Main thread ending.");
+    }
+}

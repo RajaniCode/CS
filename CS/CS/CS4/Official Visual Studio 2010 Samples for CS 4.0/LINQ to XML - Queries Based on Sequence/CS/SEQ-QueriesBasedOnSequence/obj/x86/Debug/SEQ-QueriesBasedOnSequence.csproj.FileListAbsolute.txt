@@ -1,0 +1,6 @@
+C:\Users\v-damdec\Desktop\CSharpSamples\Grouped LINQ Samples\XQuery\SEQ-QueriesBasedOnSequence\SEQ-QueriesBasedOnSequence\bin\Debug\report1.xml
+C:\Users\v-damdec\Desktop\CSharpSamples\Grouped LINQ Samples\XQuery\SEQ-QueriesBasedOnSequence\SEQ-QueriesBasedOnSequence\bin\Debug\SEQ-QueriesBasedOnSequence.exe
+C:\Users\v-damdec\Desktop\CSharpSamples\Grouped LINQ Samples\XQuery\SEQ-QueriesBasedOnSequence\SEQ-QueriesBasedOnSequence\bin\Debug\SEQ-QueriesBasedOnSequence.pdb
+C:\Users\v-damdec\Desktop\CSharpSamples\Grouped LINQ Samples\XQuery\SEQ-QueriesBasedOnSequence\SEQ-QueriesBasedOnSequence\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Desktop\CSharpSamples\Grouped LINQ Samples\XQuery\SEQ-QueriesBasedOnSequence\SEQ-QueriesBasedOnSequence\obj\x86\Debug\SEQ-QueriesBasedOnSequence.exe
+C:\Users\v-damdec\Desktop\CSharpSamples\Grouped LINQ Samples\XQuery\SEQ-QueriesBasedOnSequence\SEQ-QueriesBasedOnSequence\obj\x86\Debug\SEQ-QueriesBasedOnSequence.pdb

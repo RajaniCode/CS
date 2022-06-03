@@ -1,0 +1,63 @@
+/* ===========================================================
+
+	$ARTICLES
+
+=========================================================== */
+
+/* ---- ARTICLE FEED ---- */
+.article-feed				                        {}
+
+.article-item				                        {}
+.article-item H1			                        {@include heading-font-size($delta); height:$baseLineHeight * 3;}
+
+.article-item__viewport		                        {position:relative; border-radius:$borderRadius-small; margin-bottom:$baseLineHeight / 1.5; overflow:hidden;}
+.article-item__image		                        {display:block; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%); min-width:100%; border-radius:0;}
+
+.article-item__times		                        {font-size:$zeta;}
+.article-item__publish-time	                        {display:block;}
+.article-item__update-time	                        {display:block;}
+.article-item__author		                        {display:block; margin-bottom:$baseLineHeight / 3;}
+
+
+/* ---- SINGLE ARTICLE ---- */
+
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- MOBILE ---- */
+@media screen and (max-width: $breakpoint-small) {
+
+	.article-item				{@include column(12); height:auto; padding-right:0; margin-bottom:$baseLineHeight;}
+	.article-item__viewport		{width:100%; height:400px;}
+	.article-item__image		{max-width:600px;}
+	
+}
+
+/* ---- SMALL TABLET ---- */
+@media screen and (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+
+    .article-item				{@include column(12); height:auto; padding-right:0; margin-bottom:$baseLineHeight;}
+	.article-item__viewport		{float:left; width:50%; height:200px;}
+	.article-item P				{padding-left:20px; overflow:hidden;}
+	.article-item__image		{max-width:365px;}
+
+}
+
+/* ---- TABLET ---- */
+@media only screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
+
+	.article-item				{@include column(6); height:560px; padding-right:15px;}
+	.article-item__viewport		{width:100%; height:260px;}
+	.article-item__image		{max-width:430px;}
+
+}
+
+/* ---- DESKTOP ---- */
+@media only screen and (min-width: $breakpoint-large) {
+
+	.article-item				{@include column(4); height:500px; padding-right:15px;}
+	.article-item__viewport		{width:100%; height:200px;}
+	.article-item__image		{max-width:350px;}
+
+}

@@ -1,0 +1,22 @@
+>
+cd /d "D:\Newscraft\Bitbucket\authenticationservice\AuthAPI"
+SET ASPNETCORE_ENVIRONMENT=Development
+SET LAUNCHER_PATH=bin\Debug\net5.0\AuthAPI.exe
+"C:\Program Files\IIS Express\iisexpress.exe" /site:AuthAPI /siteid:2 /config:"D:\Newscraft\Bitbucket\authenticationservice\.vs\AuthAPI\config\applicationhost.config" /apppool:"AuthAPI AppPool"
+
+cd /d "D:\Newscraft\Bitbucket\authenticationservice\AuthAPI"
+SET ASPNETCORE_ENVIRONMENT=Development
+SET LAUNCHER_PATH=bin\Debug\net5.0\AuthAPI.exe
+"C:\Program Files\IIS Express\iisexpress.exe" /site:AuthAPI /siteid:2 /config:"D:\Newscraft\Bitbucket\authenticationservice\AuthAPI\Properties\applicationhost.config" /apppool:"AuthAPI AppPool"
+
+
+$
+cd "D:\Newscraft\Bitbucket\authenticationservice\AuthAPI"
+export ASPNETCORE_ENVIRONMENT=Development
+export LAUNCHER_PATH="bin\Debug\net5.0\AuthAPI.exe"
+"C:\Program Files\IIS Express\iisexpress.exe" -site:AuthAPI -siteid:2 -config:"D:\Newscraft\Bitbucket\authenticationservice\.vs\AuthAPI\config\applicationhost.config" -apppool:"AuthAPI AppPool"
+
+cd "D:\Newscraft\Bitbucket\authenticationservice\AuthAPI"
+export ASPNETCORE_ENVIRONMENT=Development
+export LAUNCHER_PATH="bin\Debug\net5.0\AuthAPI.exe"
+"C:\Program Files\IIS Express\iisexpress.exe" -site:AuthAPI -siteid:2 -config:"D:\Newscraft\Bitbucket\authenticationservice\AuthAPI\Properties\applicationhost.config" -apppool:"AuthAPI AppPool"

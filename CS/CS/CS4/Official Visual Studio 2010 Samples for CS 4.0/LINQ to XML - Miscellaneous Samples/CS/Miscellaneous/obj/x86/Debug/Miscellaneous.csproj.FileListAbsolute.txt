@@ -1,0 +1,8 @@
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\Miscellaneous\Miscellaneous\bin\Debug\nw_customers.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\Miscellaneous\Miscellaneous\bin\Debug\nw_orders.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\Miscellaneous\Miscellaneous\bin\Debug\Miscellaneous.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\Miscellaneous\Miscellaneous\bin\Debug\Miscellaneous.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\Miscellaneous\Miscellaneous\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\Miscellaneous\Miscellaneous\obj\x86\Debug\Miscellaneous.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\Miscellaneous\Miscellaneous\obj\x86\Debug\Miscellaneous.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\Miscellaneous\Miscellaneous\bin\Debug\config.xml

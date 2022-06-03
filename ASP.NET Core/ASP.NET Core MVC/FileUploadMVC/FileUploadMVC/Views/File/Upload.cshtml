@@ -1,0 +1,62 @@
+﻿@model FileModel
+@{
+    ViewData["Title"] = "Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>File Upload</h1>
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<style type="text/css">
+    .field-validation-error {
+        color: red;
+        display: block
+    }
+
+    .result {
+        color: red
+    }
+</style>
+
+<div id="info" class="alert alert-info alert-dismissible" hidden>
+    Choose File.
+    <button class="close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<form enctype="multipart/form-data" method="post">
+    <dl>
+        <dt>
+            <label asp-for="FormFile"></label>
+        </dt>
+        <dd>
+            <input asp-for="FormFile" type="file" style="color:#0000ff" />
+            <span asp-validation-for="FormFile"></span>
+        </dd>
+    </dl>
+    <input asp-page-handler="Upload" type="submit" value="Upload" class="btn btn-primary" />
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
+
+<script>
+    $("form").submit(function (event) {
+        if (!$("form").valid()) {
+            $("#info").attr("hidden", false);
+            $("#info").fadeTo(2500, 500).slideUp(500, function () {
+                $("#info").slideUp(500);
+            });
+            event.preventDefault();
+        }
+    });
+    $(".close").click(function () {
+        $(this).parent().attr("hidden", true);
+    });
+</script>
+
+@section Scripts 
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,794 @@
+
+Rajani@RajaniSamsungPC MINGW64 /
+$ dotnet --version
+1.1.10
+
+Rajani@RajaniSamsungPC MINGW64 /
+$ dotnet --info
+.NET Command Line Tools (1.1.10)
+
+Product Information:
+ Version:            1.1.10
+ Commit SHA-1 hash:  e077848650
+
+Runtime Environment:
+ OS Name:     Windows
+ OS Version:  6.2.9200
+ OS Platform: Windows
+ RID:         win8-x64
+ Base Path:   C:\Program Files\dotnet\sdk\1.1.10
+
+Rajani@RajaniSamsungPC MINGW64 /
+$ nuget
+NuGet Version: 4.5.1.4879
+usage: NuGet <command> [args] [options]
+Type 'NuGet help <command>' for help on a specific command.
+
+Available commands:
+
+ add                      Adds the given package to a hierarchical source. http sources are not supported. For more info, goto https://docs.nuget.org/consume/command-line-reference#add-command.
+
+ config                   Gets or sets NuGet config values.
+
+ delete                   Deletes a package from the server.
+
+ help (?)                 Displays general help information and help information about other commands.
+
+ init                     Adds all the packages from the <srcPackageSourcePath> to the hierarchical <destPackageSourcePath>. http feeds are not supported. For more info, goto https://docs.nuget.org/consume/command-line-reference#init-command.
+
+ install                  Installs a package using the specified sources. If no sources are specified, all sources defined in the NuGet configuration file are used. If the configuration file specifies no sources, uses the default NuGet feed.
+
+ list                     Displays a list of packages from a given source. If no sources are specified, all sources defined in %AppData%\NuGet\NuGet.config are used. If NuGet.config specifies no sources, uses the default NuGet feed.
+
+ locals                   Clears or lists local NuGet resources such as http requests cache, temp cache or machine-wide global packages folder.
+
+ pack                     Creates a NuGet package based on the specified nuspec or project file.
+
+ push                     Pushes a package to the server and publishes it.
+             NuGet's default configuration is obtained by loading %AppData%\NuGet\NuGet.config, then loading any nuget.config or .nuget\nuget.config starting from root of drive and ending in current directory.
+
+ restore                  Restores NuGet packages.
+
+ setApiKey                Saves an API key for a given server URL. When no URL is provided API key is saved for the NuGet gallery.
+
+ sources                  Provides the ability to manage list of sources located in %AppData%\NuGet\NuGet.config
+
+ spec                     Generates a nuspec for a new package. If this command is run in the same folder as a project file (.csproj, .vbproj, .fsproj), it will create a tokenized nuspec file.
+
+ update                   Update packages to latest available versions. This command also updates NuGet.exe itself.
+
+For more information, visit http://docs.nuget.org/docs/reference/command-line-reference
+
+Rajani@RajaniSamsungPC MINGW64 /
+$ cd "C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC"
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC
+$ mkdir -p MvcMovie
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC
+$ cd MvcMovie
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet new mvc
+The template "ASP.NET Core Web App (Model-View-Controller)" was created successfully.
+This template contains technologies from parties other than Microsoft, see https://aka.ms/template-3pn for details.
+
+Processing post-creation actions...
+Running 'dotnet restore' on C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj...
+  Restoring packages for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj...
+  Restore completed in 96.58 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Generating MSBuild file C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\obj\MvcMovie.csproj.nuget.g.props.
+  Generating MSBuild file C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\obj\MvcMovie.csproj.nuget.g.targets.
+  Restore completed in 2.29 sec for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+
+Restore succeeded.
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ touch "Controllers\HelloWorldController.cs"
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ cat "Controllers\HelloWorldController.cs"
+using Microsoft.AspNetCore.Mvc;
+using System.Text.Encodings.Web;
+
+namespace MvcMovie.Controllers
+{
+    public class HelloWorldController : Controller
+    {
+        //
+        // GET: /HelloWorld/
+
+        public string Index()
+        {
+            return "This is my default action...";
+        }
+
+        //
+        // GET: /HelloWorld/Welcome/
+
+        public string Welcome()
+        {
+            return "This is the Welcome action method...";
+        }
+    }
+}
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet restore
+  Restore completed in 109.75 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 91.79 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet clean
+Microsoft (R) Build Engine version 15.3.409.57025 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet restore
+  Restore completed in 113.29 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 89.71 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Rajani@RajaniSamsungPC MINGW64 /
+$ cd "C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie"
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet restore
+  Restore completed in 102.06 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 186.65 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ touch Views/HelloWorld/Welcome.cshtml
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ mkdir -p Models
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ touch Models/Movie.cs
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ touch Models/MvcMovieContext.cs
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet restore
+  Restoring packages for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj...
+  Restoring packages for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj...
+  Restore completed in 125.75 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Installing Microsoft.EntityFrameworkCore.Tools.DotNet 1.0.0.
+  Restore completed in 8.24 sec for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Installing System.Text.Encodings.Web 4.0.0.
+  Installing Microsoft.AspNetCore.WebUtilities 1.0.2.
+  Installing Microsoft.Net.Http.Headers 1.0.2.
+  Installing Microsoft.AspNetCore.Http.Features 1.0.2.
+  Installing Microsoft.AspNetCore.Http.Abstractions 1.0.2.
+  Installing Microsoft.AspNetCore.Http 1.0.2.
+  Installing Microsoft.AspNetCore.Http.Extensions 1.0.2.
+  Installing Microsoft.AspNetCore.Hosting.Server.Abstractions 1.0.2.
+  Installing Microsoft.AspNetCore.Hosting.Abstractions 1.0.2.
+  Installing Microsoft.EntityFrameworkCore.Relational.Design 1.0.3.
+  Installing Microsoft.EntityFrameworkCore.Relational 1.0.3.
+  Installing Microsoft.AspNetCore.Hosting 1.0.2.
+  Installing Microsoft.EntityFrameworkCore.Design 1.0.3.
+  Installing Microsoft.EntityFrameworkCore 1.0.3.
+  Installing Microsoft.EntityFrameworkCore.SqlServer 1.0.3.
+  Installing Microsoft.AspNetCore.Server.Kestrel 1.0.3.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.Design 1.0.0.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.Core 1.0.0.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration 1.0.0.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.Utils 1.0.0.
+  Installing Microsoft.VisualStudio.Web.CodeGenerators.Mvc 1.0.0.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.Templating 1.0.0.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore 1.0.0.
+  Installing Microsoft.AspNetCore.Razor 1.0.2.
+  Restore completed in 24.75 sec for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Startup.cs(35,64): error CS1061: 'DbContextOptionsBuilder' does not contain a definition for 'UseSqlite' and no extension method 'UseSqlite' accepting a first argument of type 'DbContextOptionsBuilder' could be found (are you missing a using directive or an assembly reference?) [C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj]
+
+The build failed. Please fix the build errors and run again.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet restore
+
+Welcome to .NET Core!
+---------------------
+Learn more about .NET Core @ https://aka.ms/dotnet-docs. Use dotnet --help to see available commands or go to https://aka.ms/dotnet-cli-docs.
+
+Telemetry
+--------------
+The .NET Core tools collect usage data in order to improve your experience. The data is anonymous and does not include command-line arguments. The data is collected by Microsoft and shared with the community.
+You can opt out of telemetry by setting a DOTNET_CLI_TELEMETRY_OPTOUT environment variable to 1 using your favorite shell.
+You can read more about .NET Core tools telemetry @ https://aka.ms/dotnet-cli-telemetry.
+
+Configuring...
+-------------------
+A command is running to initially populate your local package cache, to improve restore speed and enable offline access. This command will take up to a minute to complete and will only happen once.
+Decompressing 100% 10802 ms
+Expanding 100% 44537 ms
+  Restoring packages for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj...
+  Restoring packages for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj...
+  Restoring packages for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj...
+  Installing System.Text.Encodings.Web 4.0.0.
+  Installing Microsoft.Net.Http.Headers 1.0.2.
+  Installing Microsoft.AspNetCore.WebUtilities 1.0.2.
+  Installing Microsoft.AspNetCore.Http.Features 1.0.2.
+  Installing Microsoft.AspNetCore.Http.Abstractions 1.0.2.
+  Installing Libuv 1.9.0.
+  Installing Microsoft.EntityFrameworkCore.Relational 1.0.3.
+  Installing Microsoft.EntityFrameworkCore.Relational.Design 1.0.3.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.Design 1.0.0.
+  Installing Microsoft.AspNetCore.Http.Extensions 1.0.2.
+  Installing Microsoft.AspNetCore.Http 1.0.2.
+  Installing Microsoft.AspNetCore.Hosting.Server.Abstractions 1.0.2.
+  Installing Microsoft.AspNetCore.Hosting.Abstractions 1.0.2.
+  Installing Microsoft.VisualStudio.Web.CodeGenerators.Mvc 1.0.0.
+  Installing Microsoft.AspNetCore.Server.Kestrel 1.0.3.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration 1.0.0.
+  Installing Microsoft.EntityFrameworkCore.SqlServer 1.0.3.
+  Installing Microsoft.EntityFrameworkCore.Design 1.0.3.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.Core 1.0.0.
+  Installing Microsoft.EntityFrameworkCore 1.0.3.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.Templating 1.0.0.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.Utils 1.0.0.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore 1.0.0.
+  Installing Microsoft.AspNetCore.Razor 1.0.2.
+  Installing Microsoft.AspNetCore.Hosting 1.0.2.
+  Installing Microsoft.NETCore.Jit 1.0.2.
+  Installing Microsoft.NETCore.Runtime.CoreCLR 1.0.2.
+  Installing Microsoft.NETCore.DotNetHostPolicy 1.0.1.
+  Installing Microsoft.NETCore.App 1.0.0.
+  Installing Microsoft.EntityFrameworkCore.Tools.DotNet 1.0.0.
+  Restore completed in 11 sec for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Generating MSBuild file C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\obj\MvcMovie.csproj.nuget.g.props.
+  Generating MSBuild file C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\obj\MvcMovie.csproj.nuget.g.targets.
+  Restore completed in 12.55 sec for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Installing System.Xml.XmlSerializer 4.0.11.
+  Installing System.Private.DataContractSerialization 4.1.1.
+  Installing System.Runtime.Serialization.Xml 4.1.1.
+  Installing System.Resources.Writer 4.0.0.
+  Installing System.Xml.XPath.XmlDocument 4.0.1.
+  Installing System.Diagnostics.TraceSource 4.0.0.
+  Installing Microsoft.Build.Utilities.Core 15.1.548.
+  Installing Microsoft.Build.Tasks.Core 15.1.548.
+  Installing Microsoft.Build 15.1.548.
+  Installing Microsoft.Build.Framework 15.1.548.
+  Installing Microsoft.Build.Runtime 15.1.548.
+  Installing Microsoft.VisualStudio.Web.CodeGeneration.Tools 1.0.3.
+  Restore completed in 25.67 sec for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Startup.cs(35,64): error CS1061: 'DbContextOptionsBuilder' does not contain a definition for 'UseSqlite' and no extension method 'UseSqlite' accepting a first argument of type 'DbContextOptionsBuilder' could be found (are you missing a using directive or an assembly reference?) [C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj]
+
+The build failed. Please fix the build errors and run again.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet clean
+Microsoft (R) Build Engine version 15.3.409.57025 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet restore
+  Restoring packages for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj...
+  Restore completed in 161.63 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 166.7 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Installing Microsoft.Extensions.Primitives 1.0.0.
+  Installing Microsoft.Extensions.Options 1.0.0.
+  Installing Microsoft.Extensions.Caching.Abstractions 1.0.0.
+  Installing Microsoft.Extensions.Logging.Abstractions 1.0.0.
+  Installing Microsoft.Extensions.DependencyInjection.Abstractions 1.0.0.
+  Installing Microsoft.Extensions.Caching.Memory 1.0.0.
+  Installing Microsoft.Extensions.Logging 1.0.0.
+  Installing Microsoft.Extensions.DependencyInjection 1.0.0.
+  Installing Microsoft.EntityFrameworkCore.Sqlite 1.0.0.
+  Installing SQLite.Native 3.12.2.
+  Installing Microsoft.EntityFrameworkCore 1.0.0.
+  Installing SQLite 3.12.2.
+  Installing Microsoft.EntityFrameworkCore.Relational 1.0.0.
+  Installing Microsoft.Data.Sqlite 1.0.0.
+  Generating MSBuild file C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\obj\MvcMovie.csproj.nuget.g.props.
+  Restore completed in 20.78 sec for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet restore
+  Restore completed in 141.44 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 147.62 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 107.79 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+Command Line: controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+Microsoft (R) Build Engine version 15.3.409.57025 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Building project ...
+Microsoft (R) Build Engine version 15.3.409.57025 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  MvcMovie -> C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\bin\Debug\netcoreapp1.1\MvcMovie.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.12
+Command Line: --no-dispatch --port-number 50345 controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries --dispatcher-version 1.0.3-rtm
+Finding the generator 'controller'...
+Running the generator 'controller'...
+Attempting to compile the application in memory
+Attempting to figure out the EntityFramework metadata for the model and DbContext: Movie
+Added Controller : \Controllers\MoviesController.cs
+Added View : \Views\Movies\Create.cshtml
+Added View : \Views\Movies\Edit.cshtml
+Added View : \Views\Movies\Details.cshtml
+Added View : \Views\Movies\Delete.cshtml
+Added View : \Views\Movies\Index.cshtml
+RunTime 00:00:11.42
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet ef migrations add InitialCreate
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.30
+Done. To undo this action, use 'ef migrations remove'
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet ef database update
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.28
+Done.
+
+$ sqlite3 -version
+3.25.1 2018-09-18 20:20:44 2ac9003de44da7dafa3fbb1915ac5725a9275c86bf2f3b7aa19321bf1460b386
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ cmd
+Microsoft Windows [Version 6.2.9200]
+(c) 2012 Microsoft Corporation. All rights reserved.
+
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie>sqlite3 bin\Debug\netcoreapp1.1\MvcMovie.db
+sqlite3 bin\Debug\netcoreapp1.1\MvcMovie.db
+.tables
+Movie                  __EFMigrationsHistory
+SELECT * FROM Movie;
+2|Thriller|0.99|2001-06-08 00:00:00|Swordfish
+3|Thriller |0.88|1995-07-28 00:00:00|The Net
+.exit
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ touch Models/SeedData.cs
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet restore
+  Restore completed in 123.45 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 129.93 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 94.89 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Program.cs(54,37): error CS1503: Argument 2: cannot convert from 'System.Exception' to 'Microsoft.Extensions.Logging.EventId' [C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj]
+Program.cs(62,13): error CS0103: The name 'WebHost' does not exist in the current context [C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj]
+
+The build failed. Please fix the build errors and run again.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ sqlite3 --version
+3.25.1 2018-09-18 20:20:44 2ac9003de44da7dafa3fbb1915ac5725a9275c86bf2f3b7aa19321bf1460b386
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ sqlite3 bin/Debug/netcoreapp1.1/MvcMovie.db
+.tables
+Movie                  __EFMigrationsHistory
+SELECT * FROM Movie;
+2|Thriller|0.99|2001-06-08 00:00:00|Swordfish
+3|Thriller |0.88|1995-07-28 00:00:00|The Net
+DELETE FROM Movie;
+SELECT * FROM Movie;
+.exit
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet restore
+  Restore completed in 112.9 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 117.29 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+  Restore completed in 97.33 ms for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\MvcMovie.csproj.
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ touch Models/MovieGenreViewModel.cs
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Rajani@RajaniSamsungPC MINGW64 /
+$ cd "C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie"
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+fail: Microsoft.EntityFrameworkCore.Query.RelationalQueryCompilationContextFactory[1]
+      An exception occurred in the database while iterating the results of a query.
+      Microsoft.Data.Sqlite.SqliteException: SQLite Error 1: 'no such column: m.Rating'.
+         at Microsoft.Data.Sqlite.Interop.MarshalEx.ThrowExceptionForRC(Int32 rc, Sqlite3Handle db)
+         at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+         at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+         at Microsoft.Data.Sqlite.SqliteCommand.<ExecuteDbDataReaderAsync>d__53.MoveNext()
+      --- End of stack trace from previous location where exception was thrown ---
+         at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+         at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+         at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.<ExecuteAsync>d__20.MoveNext()
+      --- End of stack trace from previous location where exception was thrown ---
+         at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+         at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+         at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable.AsyncEnumerator.<MoveNext>d__8.MoveNext()
+      --- End of stack trace from previous location where exception was thrown ---
+         at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+         at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+         at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.SelectAsyncEnumerable`2.SelectAsyncEnumerator.<MoveNext>d__4.MoveNext()
+      --- End of stack trace from previous location where exception was thrown ---
+         at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+         at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+         at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.SelectAsyncEnumerable`2.SelectAsyncEnumerator.<MoveNext>d__4.MoveNext()
+      --- End of stack trace from previous location where exception was thrown ---
+         at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+         at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+         at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.<MoveNext>d__5.MoveNext()
+Microsoft.Data.Sqlite.SqliteException: SQLite Error 1: 'no such column: m.Rating'.
+   at Microsoft.Data.Sqlite.Interop.MarshalEx.ThrowExceptionForRC(Int32 rc, Sqlite3Handle db)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.<ExecuteDbDataReaderAsync>d__53.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.<ExecuteAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable.AsyncEnumerator.<MoveNext>d__8.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.SelectAsyncEnumerable`2.SelectAsyncEnumerator.<MoveNext>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.SelectAsyncEnumerable`2.SelectAsyncEnumerator.<MoveNext>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.<MoveNext>d__5.MoveNext()
+fail: Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware[0]
+      An unhandled exception has occurred: SQLite Error 1: 'no such column: m.Rating'.
+Microsoft.Data.Sqlite.SqliteException: SQLite Error 1: 'no such column: m.Rating'.
+   at Microsoft.Data.Sqlite.Interop.MarshalEx.ThrowExceptionForRC(Int32 rc, Sqlite3Handle db)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.<ExecuteDbDataReaderAsync>d__53.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.<ExecuteAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable.AsyncEnumerator.<MoveNext>d__8.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.SelectAsyncEnumerable`2.SelectAsyncEnumerator.<MoveNext>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.SelectAsyncEnumerable`2.SelectAsyncEnumerator.<MoveNext>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.<MoveNext>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.<ToListAsync>d__129`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at MvcMovie.Controllers.MoviesController.<Index>d__2.MoveNext() in C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\Controllers\MoviesController.cs:line 77
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>d__6.MoveNext()
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet ef database drop
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.78
+Are you sure you want to drop the database 'main' on server 'MvcMovie.db'? (y/N)
+y
+Dropping database 'main'.
+Successfully dropped database 'main'.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+fail: Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler[1]
+      An exception occurred in the database while iterating the results of a query.
+      Microsoft.Data.Sqlite.SqliteException: SQLite Error 1: 'no such table: Movie'.
+         at Microsoft.Data.Sqlite.Interop.MarshalEx.ThrowExceptionForRC(Int32 rc, Sqlite3Handle db)
+         at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+         at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, String executeMethod, IReadOnlyDictionary`2 parameterValues, Boolean openConnection, Boolean closeConnection)
+         at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues, Boolean manageConnection)
+         at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable.Enumerator.MoveNext()
+         at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers)
+         at lambda_method(Closure , QueryContext )
+         at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass20_0`1.<CompileQueryCore>b__0(QueryContext qc)
+Microsoft.Data.Sqlite.SqliteException: SQLite Error 1: 'no such table: Movie'.
+   at Microsoft.Data.Sqlite.Interop.MarshalEx.ThrowExceptionForRC(Int32 rc, Sqlite3Handle db)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, String executeMethod, IReadOnlyDictionary`2 parameterValues, Boolean openConnection, Boolean closeConnection)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues, Boolean manageConnection)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers)
+   at lambda_method(Closure , QueryContext )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass20_0`1.<CompileQueryCore>b__0(QueryContext qc)
+fail: MvcMovie.Program[0]
+         at Microsoft.Data.Sqlite.Interop.MarshalEx.ThrowExceptionForRC(Int32 rc, Sqlite3Handle db)
+         at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+         at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, String executeMethod, IReadOnlyDictionary`2 parameterValues, Boolean openConnection, Boolean closeConnection)
+         at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues, Boolean manageConnection)
+         at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable.Enumerator.MoveNext()
+         at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers)
+         at lambda_method(Closure , QueryContext )
+         at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass20_0`1.<CompileQueryCore>b__0(QueryContext qc)
+         at System.Linq.Queryable.Any[TSource](IQueryable`1 source)
+         at MvcMovie.Models.SeedData.Initialize(IServiceProvider serviceProvider) in C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\Models\SeedData.cs:line 16
+         at MvcMovie.Program.Main(String[] args) in C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\Program.cs:line 28
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+fail: Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler[1]
+      An exception occurred in the database while iterating the results of a query.
+      Microsoft.Data.Sqlite.SqliteException: SQLite Error 1: 'no such table: Movie'.
+         at Microsoft.Data.Sqlite.Interop.MarshalEx.ThrowExceptionForRC(Int32 rc, Sqlite3Handle db)
+         at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+         at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, String executeMethod, IReadOnlyDictionary`2 parameterValues, Boolean openConnection, Boolean closeConnection)
+         at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues, Boolean manageConnection)
+         at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable.Enumerator.MoveNext()
+         at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers)
+         at lambda_method(Closure , QueryContext )
+         at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass20_0`1.<CompileQueryCore>b__0(QueryContext qc)
+Microsoft.Data.Sqlite.SqliteException: SQLite Error 1: 'no such table: Movie'.
+   at Microsoft.Data.Sqlite.Interop.MarshalEx.ThrowExceptionForRC(Int32 rc, Sqlite3Handle db)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, String executeMethod, IReadOnlyDictionary`2 parameterValues, Boolean openConnection, Boolean closeConnection)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues, Boolean manageConnection)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers)
+   at lambda_method(Closure , QueryContext )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass20_0`1.<CompileQueryCore>b__0(QueryContext qc)
+fail: MvcMovie.Program[0]
+         at Microsoft.Data.Sqlite.Interop.MarshalEx.ThrowExceptionForRC(Int32 rc, Sqlite3Handle db)
+         at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+         at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, String executeMethod, IReadOnlyDictionary`2 parameterValues, Boolean openConnection, Boolean closeConnection)
+         at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues, Boolean manageConnection)
+         at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable.Enumerator.MoveNext()
+         at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers)
+         at lambda_method(Closure , QueryContext )
+         at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass20_0`1.<CompileQueryCore>b__0(QueryContext qc)
+         at System.Linq.Queryable.Any[TSource](IQueryable`1 source)
+         at MvcMovie.Models.SeedData.Initialize(IServiceProvider serviceProvider) in C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\Models\SeedData.cs:line 16
+         at MvcMovie.Program.Main(String[] args) in C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\Program.cs:line 28
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet ef migrations add InitialCreate
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.79
+The name 'InitialCreate' is used by an existing migration.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet ef migrations remove
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.78
+Removing migration '20180922033940_InitialCreate'.
+Removing model snapshot.
+Done.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet ef migrations add InitialCreate
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.28
+Done. To undo this action, use 'ef migrations remove'
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ sqlite3 bin/Debug/netcoreapp1.1/MvcMovie.db
+.tables
+Movie                  __EFMigrationsHistory
+SELECT * FROM Movie;
+.exit
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet ef database update
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.24
+Done.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ sqlite3 bin/Debug/netcoreapp1.1/MvcMovie.db
+.tables
+Movie                  __EFMigrationsHistory
+SELECT * FROM Movie;
+1|Romantic Comedy|7.99|R|1989-01-11 00:00:00|When Harry Met Sally
+2|Comedy|8.99|PG|1984-03-13 00:00:00|Ghostbusters
+3|Comedy|9.99|PG|1986-02-23 00:00:00|Ghostbusters 2
+4|Western|3.99|G|1959-04-15 00:00:00|Rio Bravo
+.exit
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+warn: Microsoft.EntityFrameworkCore.Query.RelationalQueryCompilationContextFactory[8]
+      The LINQ expression 'SingleOrDefault()' could not be translated and will be evaluated locally. To configure this warning use the DbContextOptionsBuilder.ConfigureWarnings API (event id 'RelationalEventId.QueryClientEvaluationWarning'). ConfigureWarnings can be used when overriding the DbContext.OnConfiguring method or using AddDbContext on the application service provider.
+warn: Microsoft.EntityFrameworkCore.Query.RelationalQueryCompilationContextFactory[8]
+      The LINQ expression 'SingleOrDefault()' could not be translated and will be evaluated locally. To configure this warning use the DbContextOptionsBuilder.ConfigureWarnings API (event id 'RelationalEventId.QueryClientEvaluationWarning'). ConfigureWarnings can be used when overriding the DbContext.OnConfiguring method or using AddDbContext on the application service provider.
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+warn: Microsoft.EntityFrameworkCore.Query.RelationalQueryCompilationContextFactory[8]
+      The LINQ expression 'SingleOrDefault()' could not be translated and will be evaluated locally. To configure this warning use the DbContextOptionsBuilder.ConfigureWarnings API (event id 'RelationalEventId.QueryClientEvaluationWarning'). ConfigureWarnings can be used when overriding the DbContext.OnConfiguring method or using AddDbContext on the application service provider.
+warn: Microsoft.EntityFrameworkCore.Query.RelationalQueryCompilationContextFactory[8]
+      The LINQ expression 'SingleOrDefault()' could not be translated and will be evaluated locally. To configure this warning use the DbContextOptionsBuilder.ConfigureWarnings API (event id 'RelationalEventId.QueryClientEvaluationWarning'). ConfigureWarnings can be used when overriding the DbContext.OnConfiguring method or using AddDbContext on the application service provider.
+
+
+Rajani@RajaniSamsungPC MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/MvcMovie
+$

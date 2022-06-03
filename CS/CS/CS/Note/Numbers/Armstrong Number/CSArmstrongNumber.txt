@@ -1,0 +1,117 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class ArmstrongSeries
+{
+    public void Range(int start, int count)
+    {
+        Func<int, IEnumerable<int>> numbers = counter =>
+            from i in Enumerable.Range(start, counter)
+            where Enumerable.Range(1, 1).All(
+j => i > -100)
+            select i;
+
+        numbers(count).ToList().ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+    }
+
+    public void RangeStartStop(int start, int stop)
+    {
+        Func<int, IEnumerable<int>> numbers = end =>
+            from i in Enumerable.Range(start, (end - start + 1))
+            where Enumerable.Range(1, 1).All(
+j => i > -100)
+            select i;
+
+        numbers(stop).ToList().ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+    }
+
+    public List<int> Armstrong(int start, int stop, double power)
+    {
+        Func<int, IEnumerable<int>> armstrongNumbers = end =>
+            from i in Enumerable.Range(start, (end - start + 1))
+            where Enumerable.Range(1, 1).All(
+j => i == Convert.ToString(i).Select(
+x => Math.Pow(Convert.ToDouble(x.ToString()), power)
+).Sum())
+            select i;
+
+        return armstrongNumbers(stop).ToList();
+    }
+    
+    public void Print()
+    {
+       // Range(-10, 20);
+       // RangeStartStop(-10, 20);
+
+        Console.WriteLine("3 Digit Armstrong Numbers");
+        List<int> armstrongNumbers = Armstrong(100, 999, 3D);
+        armstrongNumbers.ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+
+        Console.WriteLine("4 Digit Armstrong Numbers");
+        armstrongNumbers = Armstrong(1000, 9999, 4D);
+        armstrongNumbers.ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+
+        Console.WriteLine("5 Digit Armstrong Numbers");
+        armstrongNumbers = Armstrong(10000, 99999, 5D);
+        armstrongNumbers.ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        ArmstrongSeries armstrong = new ArmstrongSeries();
+        armstrong.Print();
+    }
+}
+
+/*
+// int[] armstrong = { 1, 153, 370, 371, 407, 1634, 8208, 9474, 54748, 92727, 93084 };
+3 Digit Armstrong Numbers
+153
+370
+371
+407
+4 Digit Armstrong Numbers
+1634
+8208
+9474
+5 Digit Armstrong Numbers
+54748
+92727
+93084
+
+
+// 3 Digit Armstrong Numbers
+
+1 + 125 + 27 = 153
+
+27 + 343 + 0 = 370
+
+27 + 343 + 1 = 371
+
+64 + 0 + 343 = 407
+
+// 4 Digit Armstrong Numbers
+
+1 + 1296 + 81 + 256 = 1634
+
+4096 + 16 + 0 + 4096 = 8208
+
+6561 + 256 + 2401 + 256 = 9474
+
+// 5 Digit Armstrong Numbers
+
+3125 + 1024 + 16807 + 1024 + 32768 = 54748
+
+59049 + 32 + 16807 + 32 + 16807 = 92727
+
+59049 + 243 + 0 + 32768 + 1024 = 93084
+*/

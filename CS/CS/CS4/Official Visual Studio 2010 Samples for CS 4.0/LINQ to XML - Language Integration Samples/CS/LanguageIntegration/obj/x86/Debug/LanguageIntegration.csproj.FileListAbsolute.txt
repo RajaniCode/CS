@@ -1,0 +1,9 @@
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\LanguageIntegration\LanguageIntegration\bin\Debug\config.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\LanguageIntegration\LanguageIntegration\bin\Debug\inventory.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\LanguageIntegration\LanguageIntegration\bin\Debug\nw_customers.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\LanguageIntegration\LanguageIntegration\bin\Debug\nw_orders.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\LanguageIntegration\LanguageIntegration\bin\Debug\LanguageIntegration.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\LanguageIntegration\LanguageIntegration\bin\Debug\LanguageIntegration.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\LanguageIntegration\LanguageIntegration\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\LanguageIntegration\LanguageIntegration\obj\x86\Debug\LanguageIntegration.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML\LanguageIntegration\LanguageIntegration\obj\x86\Debug\LanguageIntegration.pdb

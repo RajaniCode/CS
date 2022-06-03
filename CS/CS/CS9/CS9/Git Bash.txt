@@ -1,0 +1,138 @@
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ export PATH="/C/Users/rajanis/Downloads/.NET/dotnet-sdk-5.0.100-rc.2.20479.15-win-x64":$PATH
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ dotnet --version
+5.0.100-rc.2.20479.15
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CS9"
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CS9
+$ dotnet run
+
+Welcome to .NET 5.0!
+---------------------
+SDK Version: 5.0.100-rc.2.20479.15
+
+Telemetry
+---------
+The .NET tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_CLI_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
+
+Read more about .NET CLI Tools telemetry: https://aka.ms/dotnet-cli-telemetry
+
+----------------
+Installed an ASP.NET Core HTTPS development certificate.
+To trust the certificate run 'dotnet dev-certs https --trust' (Windows and macOS only).
+Learn about HTTPS: https://aka.ms/dotnet-https
+----------------
+Write your first app: https://aka.ms/dotnet-hello-world
+Find out what's new: https://aka.ms/dotnet-whats-new
+Explore documentation: https://aka.ms/dotnet-docs
+Report issues and find source on GitHub: https://github.com/dotnet/core
+Use 'dotnet --help' to see available commands or visit: https://aka.ms/dotnet-cli
+--------------------------------------------------------------------------------------
+D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CS9\Program.cs(526,53): warning CS8625: Cannot convert null literal to non-nullable reference type. [D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CS9\CS9.csproj]
+D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CS9\Program.cs(547,81): warning CS8603: Possible null reference return. [D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CS9\CS9.csproj]
+15. Module initializers
+ModuleInitializerAttribute, static, parameterless, and void
+
+1. Records
+record IsValueType: False
+record new() IsValueType: False
+record IsClass: True
+
+Class Before a = b: a.x = 1, b.x = 2
+
+Class After a = b and a.x = 3: a.x = 3, b.x = 3
+
+Structure Before a = b: a.x = 1, b.x = 2
+
+Structure After a = b and a.x = 3: a.x = 3, b.x = 2
+
+Record Before a = b: a.x = 1, b.x = 2
+
+Record After a = b and a.x = 3: a.x = 3, b.x = 3
+
+Equality is value-based
+False
+False
+True
+Aircraft { RealName = Boeing, Nickname = Dreamliner, AircraftClassificationNumber = 787 }
+Deconstruct method for positional records
+Boeing
+Dreamliner
+787
+Record with-expressions
+Vehicle { RealName = Airbus, Nickname = Dreamliner }
+Vehicle { RealName = Boeing, Nickname = Superjumbo }
+Vehicle { RealName = Airbus, Nickname = Superjumbo }
+Aircraft { RealName = Airbus, Nickname = Superjumbo, AircraftClassificationNumber = 380 }
+Games { Name = Tokyo 2020 }
+Olympics { Name = Tokyo 2020 }
+
+2. Init only setters
+Browser = Chromium, Sessions = 3000, with 3.5 pages/session.
+
+4. Pattern matching enhancements
+True
+False
+True
+True
+False
+is not null
+
+5. Native sized integers
+nint.MinValue = -9223372036854775808
+nuint.MaxValue = 18446744073709551615
+
+6. Function pointers
+Marshal: unsafe delegate can refer non-static method
+Function pointer to static method
+Function pointer to static method: Hello, World!
+Function pointer to static method: 1
+Function pointer: delegate managed
+Function pointer: Marshal: delegate unmanaged
+Function pointer: delegate equivalent
+delegate equivalent return: 0
+Function pointer: delegate equivalent managed round trip
+delegate equivalent managed round trip return: 0
+Function pointer: delegate managed equi
+delegate managed equi return: 0
+Function pointer: delegate equi managed round trip
+delegate equi managed round trip return: 0
+
+7. Suppress emitting localsinit flag
+SkipLocalsInitAttribute for stackalloc: 0 1 2
+
+8. Target-typed new expressions
+Scientia
+
+9. static anonymous functions
+static action: 25
+
+10. Target-typed conditional expressions
+False
+
+11. Covariant return types
+
+12. Extension GetEnumerator support for foreach loops
+0 1 2 3 4 5 6 7 8 9
+0 1
+2 3
+4 5
+
+13. Lambda discard parameters (9. static lambda)
+
+14. Attributes on local functions
+AllowNull
+
+DisallowNull: warning CS8625, warning CS8603
+
+16. New features for partial methods
+partial method out parameter:1
+
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CS9
+$

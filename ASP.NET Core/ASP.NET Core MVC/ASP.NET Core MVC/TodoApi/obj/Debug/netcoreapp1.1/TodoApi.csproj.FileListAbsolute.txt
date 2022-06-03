@@ -1,0 +1,8 @@
+E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\bin\Debug\netcoreapp1.1\TodoApi.deps.json
+E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\bin\Debug\netcoreapp1.1\TodoApi.runtimeconfig.json
+E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\bin\Debug\netcoreapp1.1\TodoApi.runtimeconfig.dev.json
+E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\Debug\netcoreapp1.1\TodoApi.AssemblyInfo.cs
+E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\bin\Debug\netcoreapp1.1\TodoApi.dll
+E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\bin\Debug\netcoreapp1.1\TodoApi.pdb
+E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\Debug\netcoreapp1.1\TodoApi.dll
+E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\Debug\netcoreapp1.1\TodoApi.pdb

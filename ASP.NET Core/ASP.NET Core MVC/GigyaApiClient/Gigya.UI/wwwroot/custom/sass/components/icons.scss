@@ -1,0 +1,88 @@
+/* ===========================================================
+
+	$ICONS
+
+=========================================================== */
+
+
+
+.icon                                                   {background-repeat:no-repeat; &:hover{background-repeat:no-repeat;}}
+
+I.icon                                                  {display:block;}
+I.icon--20,
+I.icon--16                                              {width:16px; height:16px;}
+I.icon--20,
+I.icon--24                                              {width:24px; height:24px;}
+I.icon--32                                              {width:32px; height:32px;}
+
+
+/* ---- ICONS  BUTTONS ---- */
+.button--icon .icon                                     {position:absolute; top:0; bottom:0; left:10px; margin:auto;}
+.button--icon .button--no-text .icon                    {position:absolute; top:0; bottom:0; left:0; right:0; margin:auto; color:transparent;}
+
+/* ---- ICONS WITHIN GRID BUTTONS  ---- */
+.grid-button.grid-button--icon .icon		            {position:absolute; top:0; bottom:0; left:8px; margin:auto;}
+
+/* ---- ICONS WITHIN ICON-ONLY BUTTONS ---- */
+.grid-button.grid-button--icon-only 	                {background-repeat:no-repeat; &:hover{background-repeat:no-repeat;}}
+.icon-button.no-text .icon                              {position:absolute; top:0; bottom:0; left:0; right:0; margin:auto; color:transparent;}
+
+/* ---- SINGLE ICONS ---- */
+.icon--blue-padlock-18                                  {background-image:url(../Assets/icons/lock.png);}
+.icon--blue-tick-40                                     {background-image:url(../Assets/icons/tick.png);}
+.icon--grey-chevron-25                                  {background-image:url(../Assets/icons/nav-arrow.png);}
+.icon--grey-select-24                                   {background-image:url(../Assets/icons/select-bg.png);}
+
+
+/* ======== SPRITE POSITION VARIABLES ======== */
+/* ---- CONSTANTS ---- */
+$xPos12:0;
+$xPos12-offset1:7px;
+$yPos12-offset1:4px;
+
+$xPos16:0;
+$xPos16-offset1:5px;
+$yPos16-offset1:20px;
+
+$xPos20:0;
+$xPos20-offset1:8px;
+$yPos20-offset1:4px;
+
+$xPos24:0;
+$xPos24-offset1:0;
+$yPos24-offset1:0;
+
+$xPos32:0;
+$xPos32-offset1:5px;
+$yPos32-offset1:5px;
+
+
+/* ---- ICON SPRITE MIXINS ---- */
+@mixin sprite-icon($iconPosition,$iconName)		                {background-position: $iconPosition $iconName;}
+@mixin button-sprite-icon($iconOffset-x,$iconOffset-y,$iconName){background-position: $iconOffset-x ($iconName + $iconOffset-y);}
+
+
+/* ======== SPRITE ICON POSITIONS ======== */
+
+/* ---- 12px x 12px (Actually 16px x 16px with 2px padding) ---- */
+@import "spritePositions/icons12.scss";
+
+/* ---- 16px x 16px ---- */
+@import "spritePositions/icons16.scss";
+
+/* ---- 20px x 20px (Actually 24px x 24px with 2px padding) ---- */
+@import "spritePositions/icons20.scss";
+
+/* ---- 24px x 24px ---- */
+@import "spritePositions/icons24.scss";
+
+/* ---- 32px x 32px ---- */
+@import "spritePositions/icons32.scss";
+
+/* ---- Enrolments ---- */
+@import "spritePositions/icons-enrolment.scss";
+
+
+
+
+

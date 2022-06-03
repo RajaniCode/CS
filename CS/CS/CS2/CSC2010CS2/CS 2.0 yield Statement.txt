@@ -1,0 +1,3 @@
+yield Statement
+
+C# 2.0 adds the yield statement for creating enumerators easily. yield return returns one element of a collection and moves the position to the next element, and yield break stops the iteration.

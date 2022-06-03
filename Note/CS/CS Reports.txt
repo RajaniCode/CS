@@ -1,0 +1,9 @@
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+
+using CsvHelper
+
+using Telerik.Reporting;
+
+<PackageReference Include="EPPlus.Core" Version="1.5.4" />
+<PackageReference Include="Telerik.Reporting" Version="12.0.18.227" />

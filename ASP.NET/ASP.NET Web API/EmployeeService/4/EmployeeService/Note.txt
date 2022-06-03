@@ -1,0 +1,7 @@
+ASP.NET Web Application - Web API - Authentication - Individual User Accounts
+
+test1@gmail.com
+Dollar$123
+
+test2@gmail.com
+Dollar@123

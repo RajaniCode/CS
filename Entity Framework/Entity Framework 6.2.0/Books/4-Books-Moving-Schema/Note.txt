@@ -1,0 +1,66 @@
+Blank Solution [Books] + ASP.NET MVC (.NET Framework 4.7.2) Individual User Accounts [Books.Web] (Entity Framework 6.2.0) + Class Library (.NET Framework 4.7.2) [Books.Entities]
+
+
+[
+https://localhost:44368/Account/Register
+https://localhost:44389/Account/Login
+email@example.com
+Hola!123
+]
+
+
+// 1
+// DataContexts\IdentityDb.cs
+// PM> Enable-Migrations -ContextTypeName IdentityDb -MigrationsDirectory DataContexts\IdentityMigrations
+
+// 2
+// DataContexts\IdentityMigrations\Configuration.cs
+// PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration "InitialCreate"
+
+// 3
+// DataContexts\IdentityMigrations\202002081635125_InitialCreate.cs
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration
+// OR
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration -Verbose
+
+// 4
+// DataContexts\BooksDb.cs
+// PM> Enable-Migrations -ContextTypeName BooksDb -MigrationsDirectory DataContexts\BooksMigrations
+
+// 5
+// DataContexts\BooksMigrations\Configuration.cs
+// PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration "InitialCreate"
+
+// 6
+// DataContexts\BooksMigrations\202002081635451_InitialCreate.cs
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration
+// OR
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration -Verbose
+
+// 7
+// DataContexts\IdentityDb.cs
+// PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration "DefaultSchema"
+// [
+// To re-scaffold the entire migration, use the -Force parameter.
+// PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration "DefaultSchema" -Force
+// ]
+
+// 8
+// DataContexts\IdentityMigrations\202002081858125_DefaultSchema.cs
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration
+// OR
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration -Verbose
+
+// 9
+// DataContexts\BooksDb.cs
+// PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration "DefaultSchema"
+// [
+// To re-scaffold the entire migration, use the -Force parameter.
+// PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration "DefaultSchema" -Force
+// ] 
+
+// 10
+// DataContexts\BooksMigrations\202002081859456_DefaultSchema.cs
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration
+// OR
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration -Verbose

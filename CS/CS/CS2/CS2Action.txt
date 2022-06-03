@@ -1,0 +1,69 @@
+// CS 2
+/*
+Action
+*/
+
+using System;
+
+class ActionAnonymous
+{
+    public void Print()
+    {   
+        string message = "Hello, World!";
+        Action act = delegate() { Console.WriteLine(message); } ;
+        act();
+   }
+}
+
+class ConsoleWriter
+{
+    public string message = string.Empty;
+
+    public void Writer()
+    {
+        Console.WriteLine(message);
+    }
+}
+
+
+class ActionDelegate
+{
+    public void Print()
+    {   
+        ConsoleWriter con = new ConsoleWriter();
+        con.message = "Hello, World!";
+        // Delegate `System.Action' does not take arguments
+        Action act = con.Writer; 
+        act();
+   }
+}
+
+// > CS 2
+/*
+class ActionLambda
+{
+    public void Print()
+    {   
+        ConsoleWriter con = new ConsoleWriter();
+        con.message = "Hello, World!";
+        // Delegate `System.Action' does not take arguments
+        Action act = () => con.Writer();
+        act();
+   }
+}
+*/
+
+class Program
+{
+    public static void Main()
+    {
+        ActionAnonymous anonymous = new ActionAnonymous();
+        anonymous.Print();
+        
+        ActionDelegate del = new ActionDelegate();
+        del.Print();
+
+        // ActionLambda lambda = new ActionLambda();
+        // lambda.Print();
+   }
+}

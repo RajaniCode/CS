@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+
+delegate Func<A,R> Recursive<A,R>(Recursive<A,R> r);
+
+class FibonacciFactorial
+{
+    Func<A, R> Y<A, R>(Func<Func<A, R>, Func<A, R>> f)
+    {
+        Recursive<A, R> rec = r => a => f(r(r))(a);
+        return rec(rec);
+    }
+
+    public void Print()
+    {
+        Func<int,int> fib = Y<int,int>(f => n => n > 1 ? f(n - 1) + f(n - 2) : n);
+
+        Func<int, int> fact = Y<int, int>(f => n => n > 1 ? n * f(n - 1) : 1);
+
+        // displays 8
+        Console.WriteLine(fib(6)); 
+        
+        // displays 720
+        Console.WriteLine(fact(6));
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        FibonacciFactorial fibFact = new FibonacciFactorial();
+        fibFact.Print();
+    }
+}

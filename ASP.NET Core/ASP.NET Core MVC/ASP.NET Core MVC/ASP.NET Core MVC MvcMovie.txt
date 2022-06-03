@@ -1,0 +1,2311 @@
+# dotnet
+/*
+$ dotnet new mvc
+$ dotnet restore
+$ dotnet run
+$ dotnet clean
+$ dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+$ dotnet ef migrations add InitialCreate
+$ dotnet ef database update
+$ dotnet ef database drop
+$ dotnet ef migrations remove
+*/
+
+## Introduction to ASP.NET Core MVC on macOS, Linux, or Windows
+$ cd "C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC"
+$ mkdir -p MvcMovie
+
+$ cd MvcMovie
+
+$ dotnet new mvc
+
+## Add a controller to an ASP.NET Core app
+
+$ touch "Controllers\HelloWorldController.cs"
+
+# Controllers/HelloWorldController.cs # Add
+using Microsoft.AspNetCore.Mvc;
+using System.Text.Encodings.Web;
+
+namespace MvcMovie.Controllers
+{
+    public class HelloWorldController : Controller
+    {
+        // 
+        // GET: /HelloWorld/
+
+        public string Index()
+        {
+            return "This is my default action...";
+        }
+
+        // 
+        // GET: /HelloWorld/Welcome/ 
+
+        public string Welcome()
+        {
+            return "This is the Welcome action method...";
+        }
+    }
+}
+
+$ dotnet run
+
+# http://localhost:5000/HelloWorld
+This is my default action...
+
+# Set the format for routing in the Configure method in Startup.cs
+# Startup.cs # Note
+app.UseMvc(routes =>
+{
+    routes.MapRoute(
+        name: "default",
+        template: "{controller=Home}/{action=Index}/{id?}");
+});
+
+# http://localhost:5000/HelloWorld/Welcome
+This is the Welcome action method...
+
+# Controllers/HelloWorldController.cs # Edit
+/*
+// GET: /HelloWorld/Welcome/ 
+public string Welcome()
+{
+    return "This is the Welcome action method...";
+}
+*/
+// GET: /HelloWorld/Welcome/ 
+// Requires using System.Text.Encodings.Web;
+public string Welcome(string name, int numTimes = 1)
+{
+    return HtmlEncoder.Default.Encode($"Hello {name}, NumTimes is: {numTimes}");
+}
+
+# http://localhost:5000/HelloWorld/Welcome
+Hello , NumTimes is: 1
+
+http://localhost:5000/HelloWorld/Welcome?name=Rick&numtimes=4
+Hello Rick, NumTimes is: 4
+
+# Controllers/HelloWorldController.cs # Edit
+// GET: /HelloWorld/Welcome/ 
+// Requires using System.Text.Encodings.Web;
+/*
+public string Welcome(string name, int numTimes = 1)
+{
+    return HtmlEncoder.Default.Encode($"Hello {name}, NumTimes is: {numTimes}");
+}
+*/
+public string Welcome(string name, int ID = 1)
+{
+    return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");
+}
+
+# http://localhost:5000/HelloWorld/Welcome/3?name=Rick
+Hello Rick, ID: 3
+
+# Startup.cs # Note
+app.UseMvc(routes =>
+{
+    routes.MapRoute(
+        name: "default",
+        template: "{controller=Home}/{action=Index}/{id?}");
+});
+
+## Add a view to an ASP.NET Core MVC app
+# Controllers/HelloWorldController.cs # Edit
+/*
+public string Index()
+{
+    return "This is my default action...";
+}
+*/
+public IActionResult Index()
+{
+    return View();
+}
+
+# Views/HelloWorld
+mkdir -p Views/HelloWorld
+
+$ touch Views/HelloWorld/Index.cshtml
+
+# Views/HelloWorld/Index.cshtml # Note
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>Hello from our View Template!</p>
+
+# http://localhost:5000/HelloWorld
+Hello from our View Template!
+ 
+# Note # Restore Down the browser to see navigation button
+[If your browser window is small (for example on a mobile device), you might need to toggle (tap) the Bootstrap navigation button in the upper right to see the Home, About, and Contact links.]
+# http://localhost:5000/HelloWorld
+Index
+Hello from our View Template!
+
+# Changing views and layout pages
+# Change the title and menu link in the layout file
+# Views/Shared/_Layout.cshtml # Edit
+# Edit
+...
+<!-- <title>@ViewData["Title"] - MvcMovie</title> -->
+<title>@ViewData["Title"] - Movie App</title>
+...
+<!-- <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">MvcMovie</a> -->
+<a asp-area="" asp-controller="Movies" asp-action="Index" class="navbar-brand">Movie App</a>
+...
+
+# http://localhost:5000/Movies
+# We haven't implemented the Movies controller yet, so if you click on that link, you'll get a 404 (Not found) error.
+
+# http://localhost:5000/Home/About
+Notice how the title on the browser tab now displays About - Movie App instead of About - Mvc Movie
+# Views/_ViewStart.cshtml # Note
+@{
+    Layout = "_Layout";
+}
+# Views/_ViewStart.cshtml file brings in the Views/Shared/_Layout.cshtml file to each view. You can use the Layout property to set a different layout view, or set it to null so no layout file will be used.
+
+# Change the title of the Index view.
+# Open Views/HelloWorld/Index.cshtml. There are two places to make a change:
+# The text that appears in the title of the browser.
+# The secondary header (<h2> element).
+# You'll make them slightly different so you can see which bit of code changes which part of the app.
+# Views/HelloWorld/Index.cshtml # Edit
+@{
+    ViewData["Title"] = "Movie List";
+}
+
+<h2>My Movie List</h2>
+
+<p>Hello from our View Template!</p>
+
+# ViewData["Title"] = "Movie List"; in the code above sets the Title property of the ViewData dictionary to "Movie List". 
+# The Title property is used in the <title> HTML element in the layout page: <title>@ViewData["Title"] - Movie App</title>
+
+
+# http://localhost:5000/HelloWorld
+# Notice that the browser title, the primary heading, and the secondary headings have changed. (If you don't see changes in the browser, you might be viewing cached content. Press Ctrl+F5 in your browser to force the response from the server to be loaded.) The browser title is created with ViewData["Title"] we set in the Index.cshtml view template and the additional "- Movie App" added in the layout file.
+# Also notice how the content in the Index.cshtml view template was merged with the Views/Shared/_Layout.cshtml view template and a single HTML response was sent to the browser. Layout templates make it really easy to make changes that apply across all of the pages in your application.
+# Our little bit of "data" (in this case the "Hello from our View Template!" message) is hard-coded, though. The MVC application has a "V" (view) and you've got a "C" (controller), but no "M" (model) yet.
+# Passing Data from the Controller to the View
+
+# HelloWorldController.cs file and change the Welcome method to add a Message and NumTimes value to the ViewData dictionary. 
+# The ViewData dictionary is a dynamic object, which means you can put whatever you want in to it; the ViewData object has no defined properties until you put something inside it. 
+# The MVC model binding system automatically maps the named parameters (name and numTimes) from the query string in the address bar to parameters in your method. The complete HelloWorldController.cs file looks like this:
+# Controllers/HelloWorldController.cs 
+# Edit
+/*
+public string Welcome(string name, int ID = 1)
+{
+    return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");
+}
+*/
+# Controllers/HelloWorldController.cs 
+using Microsoft.AspNetCore.Mvc;
+using System.Text.Encodings.Web;
+
+namespace MvcMovie.Controllers
+{
+    public class HelloWorldController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Welcome(string name, int numTimes = 1)
+        {
+            ViewData["Message"] = "Hello " + name;
+            ViewData["NumTimes"] = numTimes;
+
+            return View();
+        }
+    }
+}
+# The ViewData dictionary object contains data that will be passed to the view.
+
+# Create a Welcome view template named Views/HelloWorld/Welcome.cshtml.
+# You'll create a loop in the Welcome.cshtml view template that displays "Hello" NumTimes. 
+# Replace the contents of Views/HelloWorld/Welcome.cshtml with the following:
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h2>Welcome</h2>
+
+<ul>
+    @for (int i = 0; i < (int)ViewData["NumTimes"]; i++)
+    {
+        <li>@ViewData["Message"]</li>
+    }
+</ul>
+# Views/HelloWorld/Welcome.cshtml # Add
+$ touch Views/HelloWorld/Welcome.cshtml
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h2>Welcome</h2>
+
+<ul>
+    @for (int i = 0; i < (int)ViewData["NumTimes"]; i++)
+    {
+        <li>@ViewData["Message"]</li>
+    }
+</ul>
+# http://localhost:5000/HelloWorld/Welcome?name=Rick&numtimes=4
+Welcome
+• Hello Rick
+• Hello Rick
+• Hello Rick
+• Hello Rick
+
+## Add a model to an ASP.NET Core MVC app
+$ mkdir -p Models
+$ touch Models/Movie.cs
+# touch Models/Movie.cs
+using System;
+
+namespace MvcMovie.Models
+{
+    public class Movie
+    {
+        public int ID { get; set; }
+        public string Title { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public string Genre { get; set; }
+        public decimal Price { get; set; }
+    }
+}
+# The ID field is required by the database for the primary key.
+# Build the project to verify you don't have any errors. You now have a Model in your MVC app.
+
+# Prepare the project for scaffolding
+# Add the following NuGet packages to the MvcMovie.csproj file:
+...
+[
+<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+]
+<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.0.0" />
+...
+[
+<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+]
+<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
+...
+# MvcMovie.csproj
+[
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+</Project>
+]
+# Note 'DbContextOptionsBuilder' does not contain a definition for 'UseSqlite' and no extension method 'UseSqlite' accepting a first argument of type 'DbContextOptionsBuilder' could be found (are you missing a using directive or an assembly reference?)
+# Hence add "Microsoft.EntityFrameworkCore.Sqlite" to MvcMovie.csproj
+...
+<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="1.0.0"/>'
+...
+#  MvcMovie.csproj
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="1.0.0"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.3" />
+  </ItemGroup>
+
+</Project>
+
+$ touch Models/MvcMovieContext.cs
+# Models/MvcMovieContext.cs
+using Microsoft.EntityFrameworkCore;
+
+namespace MvcMovie.Models
+{
+    public class MvcMovieContext : DbContext
+    {
+        public MvcMovieContext (DbContextOptions<MvcMovieContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<MvcMovie.Models.Movie> Movie { get; set; }
+    }
+}
+
+# Add the database context to the Startup.cs file:
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add framework services.
+    services.AddMvc();
+
+    services.AddDbContext<MvcMovieContext>(options => options.UseSqlite("Data Source=MvcMovie.db"));
+}
+# Startup.cs file and add two usings:
+using Microsoft.EntityFrameworkCore;
+using MvcMovie.Models;
+# Startup.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+using Microsoft.EntityFrameworkCore;
+using MvcMovie.Models;
+
+namespace MvcMovie
+{
+    public class Startup
+    {
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+        public IConfigurationRoot Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // Add framework services.
+            services.AddMvc();
+	    services.AddDbContext<MvcMovieContext>(options => options.UseSqlite("Data Source=MvcMovie.db"));
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+
+            app.UseStaticFiles();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+        }
+    }
+}
+# This tells Entity Framework which model classes are included in the data model. You're defining one entity set of Movie objects, which will be represented in the database as a Movie table.
+# Build the project to verify there are no errors.
+
+# Scaffold the MovieController
+# Run the following commands:
+$ dotnet restore
+$ dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries 
+
+# The scaffolding engine creates the following:
+• A movies controller (Controllers/MoviesController.cs)
+• Razor view files for Create, Delete, Details, Edit and Index pages (Views/Movies/*.cshtml)
+# The automatic creation of CRUD (create, read, update, and delete) action methods and views is known as scaffolding. You'll soon have a fully functional web application that lets you manage a movie database.
+
+# Perform initial migration
+# Run the following .NET Core CLI commands:
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+# The dotnet ef migrations add InitialCreate command generates code to create the initial database schema. The schema is based on the model specified in the DbContext (In the Models/MvcMovieContext.cs file). The Initial argument is used to name the migrations. You can use any name, but by convention you choose a name that describes the migration. See Introduction to migrations for more information.
+# The dotnet ef database update command runs the Up method in the Migrations/<time-stamp>_InitialCreate.cs file, which creates the database.
+
+
+
+# Test the app
+# http://localhost:5000
+
+# Run the app and tap the Mvc Movie link.
+# http://localhost:5000/Movies
+# Tap the Create New link and create a movie.
+
+[
+• You may not be able to enter decimal points or commas in the Price field. To support jQuery validation for non-English locales that use a comma (",") for a decimal point, and non US-English date formats, you must take steps to globalize your app. See https://github.com/aspnet/Docs/issues/4076 and Additional resources for more information. For now, just enter whole numbers like 10.
+• In some locales you need to specify the date format. See the "[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]" code below.
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace MvcMovie.Models
+{
+    public class Movie
+    {
+        public int ID { get; set; }
+        public string Title { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime ReleaseDate { get; set; }
+        public string Genre { get; set; }
+        public decimal Price { get; set; }
+    }
+}
+]
+
+# Tapping Create causes the form to be posted to the server, where the movie information is saved in a database. The app redirects to the /Movies URL, where the newly created movie information is displayed.
+Index
+Create New
+
+Title	ReleaseDate	Genre	Price	
+Conam	2017-03-03	Comedy	1.99	Edit | Details | Delete
+# Models/Movie.cs
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace MvcMovie.Models
+{
+    public class Movie
+    {
+        public int ID { get; set; }
+        public string Title { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime ReleaseDate { get; set; }
+        public string Genre { get; set; }
+        public decimal Price { get; set; }
+    }
+}
+# Tapping Create causes the form to be posted to the server, where the movie information is saved in a database. The app redirects to the /Movies URL, where the newly created movie information is displayed.
+# Add
+Title		ReleaseDate	Genre		Price	
+Conam		2017-03-03	Comedy		1.99	Edit | Details | Delete
+Swordfish	2001-06-08	Thriller	0.99	Edit | Details | Delete
+
+# Create a couple more movie entries. Try the Edit, Details, and Delete links, which are all functional.
+# You now have a database and pages to display, edit, update and delete data. In the next tutorial, we'll work with the database.
+# Edit
+Title		ReleaseDate	Genre		Price	
+Conam		2017-03-03	Comedy		0.09	Edit | Details | Delete
+Swordfish	2001-06-08	Thriller	0.99	Edit | Details | Delete
+The Net		1995-07-28	Thriller	0.88	Edit | Details | Delete
+# Details
+Title
+Swordfish
+ReleaseDate
+2001-06-08
+Genre
+Thriller
+Price
+0.99
+# Delete
+Title		ReleaseDate	Genre		Price	
+Swordfish	2001-06-08	Thriller	0.99	Edit | Details | Delete
+The Net		1995-07-28	Thriller	0.88	Edit | Details | Delete
+
+## Work with SQLite in an ASP.NET Core MVC app # Download SQLite
+$ sqlite3 -version
+3.25.1 2018-09-18 20:20:44 2ac9003de44da7dafa3fbb1915ac5725a9275c86bf2f3b7aa19321bf1460b386
+
+$ cmd
+Microsoft Windows [Version 6.2.9200]
+(c) 2012 Microsoft Corporation. All rights reserved.
+
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie>sqlite3 bin\Debug\netcoreapp1.1\MvcMovie.db
+sqlite3 bin\Debug\netcoreapp1.1\MvcMovie.db
+.tables
+Movie                  __EFMigrationsHistory
+SELECT * FROM Movie;
+2|Thriller|0.99|2001-06-08 00:00:00|Swordfish
+3|Thriller |0.88|1995-07-28 00:00:00|The Net
+.exit
+
+# Seed the database
+# Create a new class named SeedData in the Models folder. Replace the generated code with the following:
+$ touch Models/SeedData.cs # Add
+# Models/SeedData.cs
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
+
+namespace MvcMovie.Models
+{
+    public static class SeedData
+    {
+        public static void Initialize(IServiceProvider serviceProvider)
+        {
+            using (var context = new MvcMovieContext(
+                serviceProvider.GetRequiredService<DbContextOptions<MvcMovieContext>>()))
+            {
+                // Look for any movies.
+                if (context.Movie.Any())
+                {
+                    return;   // DB has been seeded
+                }
+
+                context.Movie.AddRange(
+                     new Movie
+                     {
+                         Title = "When Harry Met Sally",
+                         ReleaseDate = DateTime.Parse("1989-1-11"),
+                         Genre = "Romantic Comedy",
+                         Price = 7.99M
+                     },
+
+                     new Movie
+                     {
+                         Title = "Ghostbusters ",
+                         ReleaseDate = DateTime.Parse("1984-3-13"),
+                         Genre = "Comedy",
+                         Price = 8.99M
+                     },
+
+                     new Movie
+                     {
+                         Title = "Ghostbusters 2",
+                         ReleaseDate = DateTime.Parse("1986-2-23"),
+                         Genre = "Comedy",
+                         Price = 9.99M
+                     },
+
+                   new Movie
+                   {
+                       Title = "Rio Bravo",
+                       ReleaseDate = DateTime.Parse("1959-4-15"),
+                       Genre = "Western",
+                       Price = 3.99M
+                   }
+                );
+                context.SaveChanges();
+            }
+        }
+    }
+}
+
+# If there are any movies in the DB, the seed initializer returns.
+if (context.Movie.Any())
+{
+    return;   // DB has been seeded.
+}
+
+# Add the seed initializer
+# Add the seed initializer to the Main method in the Program.cs file # Edit
+//Original
+/*
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+
+namespace MvcMovie
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
+        }
+    }
+}
+
+*/
+// Documentation
+/*
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using MvcMovie.Models;
+using System;
+
+namespace MvcMovie
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var host = BuildWebHost(args);
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                try
+                {
+                    // Requires using MvcMovie.Models;
+                    SeedData.Initialize(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred seeding the DB.");
+                }
+            }
+
+            host.Run();
+        }
+
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .Build();
+    }
+}
+*/
+# Program.cs
+using System;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using MvcMovie.Models;
+
+namespace MvcMovie
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                try
+                {
+                    // Requires using MvcMovie.Models;
+                    SeedData.Initialize(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    // logger.LogError(ex, "An error occurred seeding the DB.");
+                    logger.LogError(ex.StackTrace, "An error occurred seeding the DB.");
+                }
+            }
+
+            host.Run();
+        }
+    }
+}
+
+# Test the app
+# Delete all the records in the DB (So the seed method will run). Stop and start the app to seed the database.
+# The app shows the seeded data.
+
+$ sqlite3 bin/Debug/netcoreapp1.1/MvcMovie.db
+.tables
+Movie                  __EFMigrationsHistory
+SELECT * FROM Movie;
+2|Thriller|0.99|2001-06-08 00:00:00|Swordfish
+3|Thriller |0.88|1995-07-28 00:00:00|The Net
+DELETE FROM Movie;
+SELECT * FROM Movie;
+.exit
+
+# http://localhost:5000/Movies
+Title			ReleaseDate	Genre			Price	
+When Harry Met Sally	1989-01-11	Romantic Comedy		7.99	Edit | Details | Delete
+Ghostbusters		1984-03-13	Comedy			8.99	Edit | Details | Delete
+Ghostbusters 2		1986-02-23	Comedy			9.99	Edit | Details | Delete
+Rio Bravo		1959-04-15	Western			3.99	Edit | Details | Delete
+
+## Controller methods and views in ASP.NET Core
+# We have a good start to the movie app, but the presentation isn't ideal. 
+# We don't want to see the time (12:00:00 AM in the image below) and ReleaseDate should be two words.
+# Open the Models/Movie.cs file and add the highlighted lines shown below:
+...
+using System.ComponentModel.DataAnnotations;
+...
+ [Display(Name = "Release Date")]
+ [DataType(DataType.Date)]
+...
+# Models/Movie.cs
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace MvcMovie.Models
+{
+    public class Movie
+    {
+        public int ID { get; set; }
+        public string Title { get; set; }
+        [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime ReleaseDate { get; set; }
+        public string Genre { get; set; }
+        public decimal Price { get; set; }
+    }
+}
+# Build and run the app.
+# We cover DataAnnotations in the next tutorial. 
+
+# The Display attribute specifies what to display for the name of a field (in this case "Release Date" instead of "ReleaseDate"). 
+# The DataType attribute specifies the type of the data (Date), so the time information stored in the field isn't displayed.
+# The [Column(TypeName = "decimal(18, 2)")] data annotation is required so Entity Framework Core can correctly map Price to currency in the database. For more information, see Data Types.
+# Browse to the Movies controller and hold the mouse pointer over an Edit link to see the target URL.
+
+# http://localhost:5000/Movies
+# The Edit, Details, and Delete links are generated by the Core MVC Anchor Tag Helper in the Views/Movies/Index.cshtml file.
+# Views/Movies/Index.cshtml # Note
+<a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+<a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+<a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+
+# Tag Helpers enable server-side code to participate in creating and rendering HTML elements in Razor files. 
+# In the code above, the AnchorTagHelper dynamically generates the HTML href attribute value from the controller action method and route id. 
+# You use View Source from your favorite browser or use the developer tools to examine the generated markup. 
+# A portion of the generated HTML is shown below:
+<td>
+    <a href="/Movies/Edit/4"> Edit </a> |
+    <a href="/Movies/Details/4"> Details </a> |
+    <a href="/Movies/Delete/4"> Delete </a>
+</td>
+# Recall the format for routing set in the Startup.cs file:
+app.UseMvc(routes =>
+{
+    routes.MapRoute(
+        name: "default",
+        template: "{controller=Home}/{action=Index}/{id?}");
+});
+
+# ASP.NET Core translates http://localhost:5000/Movies/Edit/4 into a request to the Edit action method of the Movies controller with the parameter Id of 4. (Controller methods are also known as action methods.)
+
+# Tag Helpers are one of the most popular new features in ASP.NET Core. See Additional resources for more information.
+
+# Open the Movies controller and examine the two Edit action methods. The following code shows the HTTP GET Edit method, which fetches the movie and populates the edit form generated by the Edit.cshtml Razor file.
+// GET: Movies/Edit/5
+public async Task<IActionResult> Edit(int? id)
+{
+    if (id == null)
+    {
+        return NotFound();
+    }
+
+    var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
+    if (movie == null)
+    {
+        return NotFound();
+    }
+    return View(movie);
+}
+
+# The following code shows the HTTP POST Edit method, which processes the posted movie values:
+// POST: Movies/Edit/5
+// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+{
+    if (id != movie.ID)
+    {
+        return NotFound();
+    }
+
+    if (ModelState.IsValid)
+    {
+        try
+        {
+            _context.Update(movie);
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!MovieExists(movie.ID))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+        return RedirectToAction("Index");
+    }
+    return View(movie);
+}
+
+# The [Bind] attribute is one way to protect against over-posting. You should only include properties in the [Bind] attribute that you want to change. See Protect your controller from over-posting for more information. ViewModels provide an alternative approach to prevent over-posting.
+
+# Notice the second Edit action method is preceded by the [HttpPost] attribute.
+// POST: Movies/Edit/5
+// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+{
+    if (id != movie.ID)
+    {
+        return NotFound();
+    }
+
+    if (ModelState.IsValid)
+    {
+        try
+        {
+            _context.Update(movie);
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!MovieExists(movie.ID))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+        return RedirectToAction("Index");
+    }
+    return View(movie);
+}
+# The HttpPost attribute specifies that this Edit method can be invoked only for POST requests. You could apply the [HttpGet] attribute to the first edit method, but that's not necessary because [HttpGet] is the default.
+
+# The ValidateAntiForgeryToken attribute is used to prevent forgery of a request and is paired up with an anti-forgery token generated in the edit view file (Views/Movies/Edit.cshtml). The edit view file generates the anti-forgery token with the Form Tag Helper.
+<form asp-action="Edit">
+
+# The Form Tag Helper generates a hidden anti-forgery token that must match the [ValidateAntiForgeryToken] generated anti-forgery token in the Edit method of the Movies controller. For more information, see Anti-Request Forgery.
+
+# The HttpGet Edit method takes the movie ID parameter, looks up the movie using the Entity Framework SingleOrDefaultAsync method, and returns the selected movie to the Edit view. If a movie cannot be found, NotFound (HTTP 404) is returned.
+// GET: Movies/Edit/5
+public async Task<IActionResult> Edit(int? id)
+{
+    if (id == null)
+    {
+        return NotFound();
+    }
+
+    var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
+    if (movie == null)
+    {
+        return NotFound();
+    }
+    return View(movie);
+}
+
+# When the scaffolding system created the Edit view, it examined the Movie class and created code to render <label> and <input> elements for each property of the class. 
+The following example shows the Edit view that was generated by the scaffolding system:
+@model MvcMovie.Models.Movie
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Movie</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="ID" />
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ReleaseDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ReleaseDate" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Genre" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+# Notice how the view template has a @model MvcMovie.Models.Movie statement at the top of the file. @model MvcMovie.Models.Movie specifies that the view expects the model for the view template to be of type Movie.
+
+# The scaffolded code uses several Tag Helper methods to streamline the HTML markup. The - Label Tag Helper displays the name of the field ("Title", "ReleaseDate", "Genre", or "Price"). The Input Tag Helper renders an HTML <input> element. The Validation Tag Helper displays any validation messages associated with that property.
+
+# Run the application and navigate to the /Movies URL. Click an Edit link. In the browser, view the source for the page. The generated HTML for the <form> element is shown below.
+
+<form action="/Movies/Edit/7" method="post">
+    <div class="form-horizontal">
+        <h4>Movie</h4>
+        <hr />
+        <div class="text-danger" />
+        <input type="hidden" data-val="true" data-val-required="The ID field is required." id="ID" name="ID" value="7" />
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Genre" />
+            <div class="col-md-10">
+                <input class="form-control" type="text" id="Genre" name="Genre" value="Western" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Genre" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Price" />
+            <div class="col-md-10">
+                <input class="form-control" type="text" data-val="true" data-val-number="The field Price must be a number." data-val-required="The Price field is required." id="Price" name="Price" value="3.99" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <!-- Markup removed for brevity -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Inyxgp63fRFqUePGvuI5jGZsloJu1L7X9le1gy7NCIlSduCRx9jDQClrV9pOTTmqUyXnJBXhmrjcUVDJyDUMm7-MF_9rK8aAZdRdlOri7FmKVkRe_2v5LIHGKFcTjPrWPYnc9AdSbomkiOSaTEg7RU" />
+</form>
+
+# The <input> elements are in an HTML <form> element whose action attribute is set to post to the /Movies/Edit/id URL. The form data will be posted to the server when the Save button is clicked. The last line before the closing </form> element shows the hidden XSRF token generated by the Form Tag Helper.
+
+# Processing the POST Request
+# The following listing shows the [HttpPost] version of the Edit action method.
+// POST: Movies/Edit/5
+// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+{
+    if (id != movie.ID)
+    {
+        return NotFound();
+    }
+
+    if (ModelState.IsValid)
+    {
+        try
+        {
+            _context.Update(movie);
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!MovieExists(movie.ID))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+        return RedirectToAction("Index");
+    }
+    return View(movie);
+}
+
+# The [ValidateAntiForgeryToken] attribute validates the hidden XSRF token generated by the anti-forgery token generator in the Form Tag Helper
+
+# The model binding system takes the posted form values and creates a Movie object that's passed as the movie parameter. The ModelState.IsValid method verifies that the data submitted in the form can be used to modify (edit or update) a Movie object. If the data is valid it's saved. The updated (edited) movie data is saved to the database by calling the SaveChangesAsync method of database context. After saving the data, the code redirects the user to the Index action method of the MoviesController class, which displays the movie collection, including the changes just made.
+
+# Before the form is posted to the server, client side validation checks any validation rules on the fields. If there are any validation errors, an error message is displayed and the form isn't posted. If JavaScript is disabled, you won't have client side validation but the server will detect the posted values that are not valid, and the form values will be redisplayed with error messages. Later in the tutorial we examine Model Validation in more detail. The Validation Tag Helper in the Views/Movies/Edit.cshtml view template takes care of displaying appropriate error messages.
+
+# All the HttpGet methods in the movie controller follow a similar pattern. They get a movie object (or list of objects, in the case of Index), and pass the object (model) to the view. The Create method passes an empty movie object to the Create view. All the methods that create, edit, delete, or otherwise modify data do so in the [HttpPost] overload of the method. Modifying data in an HTTP GET method is a security risk. Modifying data in an HTTP GET method also violates HTTP best practices and the architectural REST pattern, which specifies that GET requests shouldn't change the state of your application. In other words, performing a GET operation should be a safe operation that has no side effects and doesn't modify your persisted data.
+
+## Add search to an ASP.NET Core MVC app
+# In this section you add search capability to the Index action method that lets you search movies by genre or name.
+
+# Update the Index method in Controllers/MoviesController.cs with the following code:
+public async Task<IActionResult> Index(string searchString)
+{
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        movies = movies.Where(s => s.Title.Contains(searchString));
+    }
+
+    return View(await movies.ToListAsync());
+}
+# Controllers/MoviesController.cs # Edit
+// GET: Movies
+/*
+public async Task<IActionResult> Index()
+{
+    return View(await _context.Movie.ToListAsync());
+}
+*/
+public async Task<IActionResult> Index(string searchString)
+{
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        movies = movies.Where(s => s.Title.Contains(searchString));
+    }
+    return View(await movies.ToListAsync());
+}
+
+# The first line of the Index action method creates a LINQ query to select the movies:
+var movies = from m in _context.Movie
+             select m;
+# The query is only defined at this point, it has not been run against the database.
+
+# If the searchString parameter contains a string, the movies query is modified to filter on the value of the search string:
+if (!String.IsNullOrEmpty(searchString))
+{
+    movies = movies.Where(s => s.Title.Contains(searchString));
+}
+# The s => s.Title.Contains() code above is a Lambda Expression. Lambdas are used in method-based LINQ queries as arguments to standard query operator methods such as the Where method or Contains (used in the code above). LINQ queries are not executed when they're defined or when they're modified by calling a method such as Where, Contains or OrderBy. Rather, query execution is deferred. That means that the evaluation of an expression is delayed until its realized value is actually iterated over or the ToListAsync method is called. For more information about deferred query execution, see Query Execution.
+
+# Note: The Contains method is run on the database, not in the c# code shown above. The case sensitivity on the query depends on the database and the collation. On SQL Server, Contains maps to SQL LIKE, which is case insensitive. In SQLlite, with the default collation, it's case sensitive.
+
+# Navigate to /Movies/Index. Append a query string such as ?searchString=Ghost to the URL. The filtered movies are displayed.
+
+# http://localhost:5000/Movies?searchString=Ghost
+Title		Release Date	Genre	Price	
+Ghostbusters	1984-03-13	Comedy	8.99	Edit | Details | Delete
+Ghostbusters 2	1986-02-23	Comedy	9.99	Edit | Details | Delete
+
+# If you change the signature of the Index method to have a parameter named id, the id parameter will match the optional {id} placeholder for the default routes set in Startup.cs.
+app.UseMvc(routes =>
+{
+    routes.MapRoute(
+        name: "default",
+        template: "{controller=Home}/{action=Index}/{id?}");
+});
+# Note: SQLlite is case sensitive, so you'll need to search for "Ghost" and not "ghost".
+
+# The previous Index method in Controllers/MoviesController.cs:
+public async Task<IActionResult> Index(string searchString)
+{
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        movies = movies.Where(s => s.Title.Contains(searchString));
+    }
+
+    return View(await movies.ToListAsync());
+}
+# The updated Index method with id parameter:
+# Controllers/MoviesController.cs # Edit
+public async Task<IActionResult> Index(string id)
+{
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(id))
+    {
+        movies = movies.Where(s => s.Title.Contains(id));
+    }
+
+    return View(await movies.ToListAsync());
+}
+# You can now pass the search title as route data (a URL segment) instead of as a query string value.
+# http://localhost:5000/Movies/Index/ghost
+However, you can't expect users to modify the URL every time they want to search for a movie. So now you'll add UI elements to help them filter movies. If you changed the signature of the Index method to test how to pass the route-bound ID parameter, change it back so that it takes a parameter named searchString:
+# Controllers/MoviesController.cs # Edit
+/*
+public async Task<IActionResult> Index(string id)
+{
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(id))
+    {
+        movies = movies.Where(s => s.Title.Contains(id));
+    }
+    return View(await movies.ToListAsync());
+}
+*/
+public async Task<IActionResult> Index(string searchString)
+{
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        movies = movies.Where(s => s.Title.Contains(searchString));
+    }
+    return View(await movies.ToListAsync());
+}
+# http://localhost:5000/Movies/Index/ghost # Will not work
+# http://localhost:5000/Movies?searchString=Ghost
+
+# Open the Views/Movies/Index.cshtml file, and add the <form> markup highlighted below:
+...
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Movies" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+...
+
+# The HTML <form> tag uses the Form Tag Helper, so when you submit the form, the filter string is posted to the Index action of the movies controller. 
+# Save your changes and then test the filter.
+# http://localhost:5000/Movies
+
+# There's no [HttpPost] overload of the Index method as you might expect. You don't need it, because the method isn't changing the state of the app, just filtering data.
+
+# You could add the following [HttpPost] Index method.
+[HttpPost]
+public string Index(string searchString, bool notUsed)
+{
+    return "From [HttpPost]Index: filter on " + searchString;
+}
+# The notUsed parameter is used to create an overload for the Index method. We'll talk about that later in the tutorial.
+
+# If you add this method, the action invoker would match the [HttpPost] Index method, and the [HttpPost] Index method would run as shown in the image below.
+# Controllers/MoviesController.cs # Edit
+[HttpPost]
+public string Index(string searchString, bool notUsed)
+{
+    return "From [HttpPost]Index: filter on " + searchString;
+}
+# http://localhost:5000/Movies
+# On Filter Submit
+From [HttpPost]Index: filter on Ghost
+
+# However, even if you add this [HttpPost] version of the Index method, there's a limitation in how this has all been implemented. 
+# Imagine that you want to bookmark a particular search or you want to send a link to friends that they can click in order to see the same filtered list of movies. 
+# Notice that the URL for the HTTP POST request is the same as the URL for the GET request (localhost:xxxxx/Movies/Index) -- there's no search information in the URL. 
+# The search string information is sent to the server as a form field value. You can verify that with the browser Developer tools or the excellent Fiddler tool. 
+[
+# Check the Chrome browser Developer tools
+]
+
+# You can see the search parameter and XSRF token in the request body. Note, as mentioned in the previous tutorial, the Form Tag Helper generates an XSRF anti-forgery token. We're not modifying data, so we don't need to validate the token in the controller method.
+
+# Because the search parameter is in the request body and not the URL, you can't capture that search information to bookmark or share with others. We'll fix this by specifying the request should be HTTP GET.
+
+# Change the <form> tag in the Views\movie\Index.cshtml Razor view to specify method="get":
+<form asp-controller="Movies" asp-action="Index" method="get">
+# Views\movie\Index.cshtml # Edit
+<!-- <form asp-controller="Movies" asp-action="Index"> -->
+<form asp-controller="Movies" asp-action="Index" method="get">
+
+# Now when you submit a search, the URL contains the search query string. 
+# Searching will also go to the HttpGet Index action method, even if you have a HttpPost Index method.
+# http://localhost:5000/Movies
+# On Filter Submit
+# http://localhost:5000/Movies?SearchString=Ghost
+
+# The following markup shows the change to the form tag:
+<form asp-controller="Movies" asp-action="Index" method="get">
+
+# Adding Search by genre
+# Add the following MovieGenreViewModel class to the Models folder:
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+
+namespace MvcMovie.Models
+{
+    public class MovieGenreViewModel
+    {
+        public List<Movie> movies;
+        public SelectList genres;
+        public string movieGenre { get; set; }
+    }
+}
+# touch Models/MovieGenreViewModel.cs # Add
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+
+namespace MvcMovie.Models
+{
+    public class MovieGenreViewModel
+    {
+        public List<Movie> movies;
+        public SelectList genres;
+        public string movieGenre { get; set; }
+    }
+}
+# The movie-genre view model will contain:
+• A list of movies.
+• A SelectList containing the list of genres. This will allow the user to select a genre from the list.
+• movieGenre, which contains the selected genre.
+
+# Replace the Index method in MoviesController.cs with the following code:
+
+#  Controllers/MoviesController.cs
+// Requires using Microsoft.AspNetCore.Mvc.Rendering;
+public async Task<IActionResult> Index(string movieGenre, string searchString)
+{
+    // Use LINQ to get list of genres.
+    IQueryable<string> genreQuery = from m in _context.Movie
+                                    orderby m.Genre
+                                    select m.Genre;
+
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        movies = movies.Where(s => s.Title.Contains(searchString));
+    }
+
+    if (!String.IsNullOrEmpty(movieGenre))
+    {
+        movies = movies.Where(x => x.Genre == movieGenre);
+    }
+
+    var movieGenreVM = new MovieGenreViewModel();
+    movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync());
+    movieGenreVM.movies = await movies.ToListAsync();
+
+    return View(movieGenreVM);
+}
+#  Controllers/MoviesController.cs # Edit
+/*
+public async Task<IActionResult> Index(string searchString)
+{
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        movies = movies.Where(s => s.Title.Contains(searchString));
+    }
+    return View(await movies.ToListAsync());
+}
+*/
+public async Task<IActionResult> Index(string movieGenre, string searchString)
+{
+    // Use LINQ to get list of genres.
+    IQueryable<string> genreQuery = from m in _context.Movie
+                                    orderby m.Genre
+                                    select m.Genre;
+
+    var movies = from m in _context.Movie
+                 select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        movies = movies.Where(s => s.Title.Contains(searchString));
+    }
+
+    if (!String.IsNullOrEmpty(movieGenre))
+    {
+        movies = movies.Where(x => x.Genre == movieGenre);
+    }
+
+    var movieGenreVM = new MovieGenreViewModel();
+    movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync());
+    movieGenreVM.movies = await movies.ToListAsync();
+
+    return View(movieGenreVM);
+}
+# The following code is a LINQ query that retrieves all the genres from the database.
+// Use LINQ to get list of genres.
+IQueryable<string> genreQuery = from m in _context.Movie
+                                orderby m.Genre
+                                select m.Genre;
+# The SelectList of genres is created by projecting the distinct genres (we don't want our select list to have duplicate genres).
+movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
+
+# Adding search by genre to the Index view
+# Views/Movies/Index.cshtml # Original
+/*
+@model IEnumerable<MvcMovie.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReleaseDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Genre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*/
+# Update Index.cshtml as follows:
+# Views/Movies/Index.cshtml # Edit
+@model MvcMovie.Models.MovieGenreViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Movies" asp-action="Index" method="get">
+    <p>
+        <select asp-for="movieGenre" asp-items="Model.genres">
+            <option value="">All</option>
+        </select>
+
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.movies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+# Examine the lambda expression used in the following HTML Helper:
+
+@Html.DisplayNameFor(model => model.movies[0].Title)
+
+# In the preceding code, the DisplayNameFor HTML Helper inspects the Title property referenced in the lambda expression to determine the display name. Since the lambda expression is inspected rather than evaluated, you don't receive an access violation when model, model.movies, or model.movies[0] are null or empty. When the lambda expression is evaluated (for example, @Html.DisplayFor(modelItem => item.Title)), the model's property values are evaluated.
+
+# Test the app by searching by genre, by movie title, and by both.
+
+## Add a new field to an ASP.NET Core MVC app
+# This tutorial will add a new field to the Movies table. We'll drop the database and create a new one when we change the schema (add a new field). This workflow works well early in development when we don't have any production data to perserve.
+# Once your app is deployed and you have data that you need to perserve, you can't drop your DB when you need to change the schema. Entity Framework Code First Migrations allows you to update your schema and migrate the database without losing data. Migrations is a popular feature when using SQL Server, but SQLlite doesn't support many migration schema operations, so only very simply migrations are possible. See SQLite Limitations for more information.
+
+# Adding a Rating Property to the Movie Model
+# Open the Models/Movie.cs file and add a Rating property:
+public class Movie
+{
+    public int ID { get; set; }
+    public string Title { get; set; }
+
+    [Display(Name = "Release Date")]
+    [DataType(DataType.Date)]
+    public DateTime ReleaseDate { get; set; }
+    public string Genre { get; set; }
+    public decimal Price { get; set; }
+    public string Rating { get; set; }
+}
+Models/Movie.cs # Edit
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace MvcMovie.Models
+{
+    public class Movie
+    {
+        public int ID { get; set; }
+        public string Title { get; set; }
+        [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime ReleaseDate { get; set; }
+        public string Genre { get; set; }
+        public decimal Price { get; set; }
+        public string Rating { get; set; }
+    }
+}
+# Because you've added a new field to the Movie class, you also need to update the binding whitelist so this new property will be included. 
+# In MoviesController.cs, update the [Bind] attribute for both the Create and Edit action methods to include the Rating property:
+# Controllers/MoviesController.cs
+...
+// public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
+...
+// public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
+...
+# You also need to update the view templates in order to display, create, and edit the new Rating property in the browser view.
+# Edit the /Views/Movies/Index.cshtml file and add a Rating field:
+# Views/Movies/Index.cshtml # Original
+@model MvcMovie.Models.MovieGenreViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Movies" asp-action="Index" method="get">
+    <p>
+        <select asp-for="movieGenre" asp-items="Model.genres">
+            <option value="">All</option>
+        </select>
+
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.movies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+# Views/Movies/Index.cshtml # Edit # @Html.DisplayNameFor(model => model.movies[0].Rating) # @Html.DisplayFor(modelItem => item.Rating)
+@model MvcMovie.Models.MovieGenreViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Movies" asp-action="Index" method="get">
+    <p>
+        <select asp-for="movieGenre" asp-items="Model.genres">
+            <option value="">All</option>
+        </select>
+
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies[0].Rating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.movies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+# Update the Views/Movies/Create.cshtml with a Rating field.
+# Views/Movies/Create.cshtml # Edit
+<div class="form-group">
+    <label asp-for="Rating" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Rating" class="form-control" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+</div>
+
+# The app won't work until we update the DB to include the new field. If you run it now, you'll get the following SqliteException:
+SqliteException: SQLite Error 1: 'no such column: m.Rating'.
+http://localhost:5000/Movies
+Error.
+An error occurred while processing your request.
+Development Mode
+Swapping to Development environment will display more detailed information about the error that occurred.
+Development environment should not be enabled in deployed applications, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the ASPNETCORE_ENVIRONMENT environment variable to Development, and restarting the application.
+$ dotnet run
+Hosting environment: Production
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+fail: Microsoft.EntityFrameworkCore.Query.RelationalQueryCompilationContextFactory[1]
+      An exception occurred in the database while iterating the results of a query.
+
+# You're seeing this error because the updated Movie model class is different than the schema of the Movie table of the existing database. (There's no Rating column in the database table.)
+# There are a few approaches to resolving the error:
+1. Drop the database and have the Entity Framework automatically re-create the database based on the new model class schema. With this approach, you lose existing data in the database — so you can't do this with a production database! Using an initializer to automatically seed a database with test data is often a productive way to develop an app.
+2. Manually modify the schema of the existing database so that it matches the model classes. The advantage of this approach is that you keep your data. You can make this change either manually or by creating a database change script.
+3. Use Code First Migrations to update the database schema.
+
+# For this tutorial, we'll drop and re-create the database when the schema changes. Run the following command from a terminal to drop the db:
+$ dotnet ef database drop
+
+# Update the SeedData class so that it provides a value for the new column. 
+# A sample change is shown below, but you'll want to make this change for each new Movie.
+new Movie
+{
+    Title = "When Harry Met Sally",
+    ReleaseDate = DateTime.Parse("1989-1-11"),
+    Genre = "Romantic Comedy",
+    Rating = "R",
+    Price = 7.99M
+},
+# Models/SeedData.cs # Edit
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
+
+namespace MvcMovie.Models
+{
+    public static class SeedData
+    {
+        public static void Initialize(IServiceProvider serviceProvider)
+        {
+            using (var context = new MvcMovieContext(
+                serviceProvider.GetRequiredService<DbContextOptions<MvcMovieContext>>()))
+            {
+                // Look for any movies.
+                if (context.Movie.Any())
+                {
+                    return;   // DB has been seeded
+                }
+
+                context.Movie.AddRange(
+                     new Movie
+                     {
+                         Title = "When Harry Met Sally",
+                         ReleaseDate = DateTime.Parse("1989-1-11"),
+                         Genre = "Romantic Comedy",
+                         Price = 7.99M,
+                         Rating = "R"
+                     },
+
+                     new Movie
+                     {
+                         Title = "Ghostbusters ",
+                         ReleaseDate = DateTime.Parse("1984-3-13"),
+                         Genre = "Comedy",
+                         Price = 8.99M,
+                         Rating = "PG"
+                     },
+
+                     new Movie
+                     {
+                         Title = "Ghostbusters 2",
+                         ReleaseDate = DateTime.Parse("1986-2-23"),
+                         Genre = "Comedy",
+                         Price = 9.99M,
+                         Rating = "PG"
+                     },
+
+                   new Movie
+                   {
+                       Title = "Rio Bravo",
+                       ReleaseDate = DateTime.Parse("1959-4-15"),
+                       Genre = "Western",
+                       Price = 3.99M,
+                         Rating = "G"
+                   }
+                );
+                context.SaveChanges();
+            }
+        }
+    }
+}
+# Add the Rating field to the Edit, Details, and Delete view.
+# Run the app and verify you can create/edit/display movies with a Rating field.
+# You should also add the Rating field to the Edit, Details, and Delete view templates.
+# Views/Movies/Create.cshtml
+<div class="form-group">
+    <label asp-for="Rating" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Rating" class="form-control" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+</div>
+# Views/Movies/Edit.cshtml
+<div class="form-group">
+    <label asp-for="Rating" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Rating" class="form-control" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+</div>
+# Views/Movies/Details.cshtml
+<dt>
+    @Html.DisplayNameFor(model => model.Rating)
+</dt>
+<dd>
+    @Html.DisplayFor(model => model.Rating)
+</dd>
+# Views/Movies/Delete.cshtml
+<dt>
+    @Html.DisplayNameFor(model => model.Rating)
+</dt>
+<dd>
+    @Html.DisplayFor(model => model.Rating)
+</dd>
+
+# Note
+[
+$ dotnet ef migrations remove
+$ dotnet ef migrations add InitialCreate
+$ dotnet ef database update
+$ dotnet run
+]
+
+$ sqlite3 --version
+3.25.1 2018-09-18 20:20:44 2ac9003de44da7dafa3fbb1915ac5725a9275c86bf2f3b7aa19321bf1460b386
+
+$ sqlite3 bin/Debug/netcoreapp1.1/MvcMovie.db
+.tables
+Movie                  __EFMigrationsHistory
+SELECT * FROM Movie;
+.exit
+
+$ dotnet ef database update
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.24
+Done.
+
+$ sqlite3 bin/Debug/netcoreapp1.1/MvcMovie.db
+.tables
+Movie                  __EFMigrationsHistory
+SELECT * FROM Movie;
+1|Romantic Comedy|7.99|R|1989-01-11 00:00:00|When Harry Met Sally
+2|Comedy|8.99|PG|1984-03-13 00:00:00|Ghostbusters
+3|Comedy|9.99|PG|1986-02-23 00:00:00|Ghostbusters 2
+4|Western|3.99|G|1959-04-15 00:00:00|Rio Bravo
+.exit
+
+
+# http://localhost:5000/Movies
+Title		Release Date	Genre	Price	Rating
+Harry Met Sally	1989-01-11	Comedy	7.99	R	Edit | Details | Delete
+Ghostbusters	1984-03-13	Comedy	8.99	PG	Edit | Details | Delete
+Ghostbusters 2	1986-02-23	Comedy	9.99	PG	Edit | Details | Delete
+Rio Bravo	1959-04-15	Western	3.99	G	Edit | Details | Delete
+
+
+## Add validation to an ASP.NET Core MVC app
+# In this section you'll add validation logic to the Movie model, and you'll ensure that the validation rules are enforced any time a user creates or edits a movie.
+
+# Keeping things DRY
+# One of the design tenets of MVC is DRY ("Don't Repeat Yourself"). ASP.NET Core MVC encourages you to specify functionality or behavior only once, and then have it be reflected everywhere in an app. This reduces the amount of code you need to write and makes the code you do write less error prone, easier to test, and easier to maintain.
+
+# The validation support provided by MVC and Entity Framework Core Code First is a good example of the DRY principle in action. You can declaratively specify validation rules in one place (in the model class) and the rules are enforced everywhere in the app.
+
+# Adding validation rules to the movie model
+Open the Movie.cs file. DataAnnotations provides a built-in set of validation attributes that you apply declaratively to any class or property. (It also contains formatting attributes like DataType that help with formatting and don't provide any validation.)
+
+# Update the Movie class to take advantage of the built-in Required, StringLength, RegularExpression, and Range validation attributes.
+public class Movie
+{
+    public int ID { get; set; }
+
+    [StringLength(60, MinimumLength = 3)]
+    [Required]
+    public string Title { get; set; }
+
+    [Display(Name = "Release Date")]
+    [DataType(DataType.Date)]
+    public DateTime ReleaseDate { get; set; }
+
+    [Range(1, 100)]
+    [DataType(DataType.Currency)]
+    public decimal Price { get; set; }
+
+    [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+    [Required]
+    [StringLength(30)]
+    public string Genre { get; set; }
+
+    [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
+    [StringLength(5)]
+    [Required]
+    public string Rating { get; set; }
+}
+# Models/Movie.cs # Edit
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace MvcMovie.Models
+{
+    public class Movie
+    {
+        public int ID { get; set; }
+
+        [StringLength(60, MinimumLength = 3)]
+        [Required]
+        public string Title { get; set; }
+
+        [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
+        public DateTime ReleaseDate { get; set; }
+
+        [Range(1, 100)]
+        [DataType(DataType.Currency)]
+        public decimal Price { get; set; }
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+        [Required]
+        [StringLength(30)]
+        public string Genre { get; set; }
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
+        [StringLength(5)]
+        [Required]
+        public string Rating { get; set; }
+    }
+}
+# he validation attributes specify behavior that you want to enforce on the model properties they're applied to. The Required and MinimumLength attributes indicates that a property must have a value; but nothing prevents a user from entering white space to satisfy this validation. The RegularExpression attribute is used to limit what characters can be input. In the code above, Genre and Rating must use only letters (First letter uppercase, white space, numbers and special characters are not allowed). The Range attribute constrains a value to within a specified range. The StringLength attribute lets you set the maximum length of a string property, and optionally its minimum length. Value types (such as decimal, int, float, DateTime) are inherently required and don't need the [Required] attribute.
+
+# Having validation rules automatically enforced by ASP.NET Core helps make your app more robust. It also ensures that you can't forget to validate something and inadvertently let bad data into the database.
+
+# Validation Error UI in MVC
+# Run the app and navigate to the Movies controller.
+# Tap the Create New link to add a new movie. Fill out the form with some invalid values. As soon as jQuery client side validation detects the error, it displays an error message.
+
+# http://localhost:5000/Movies/Create
+The Title field is required.
+Release Date
+mm/dd/yyyy
+The Release Date field is required.
+Genre
+The Genre field is required.
+Price
+The Price field is required.
+
+# Note
+
+# You may not be able to enter decimal commas in the Price field. To support jQuery validation for non-English locales that use a comma (",") for a decimal point, and non US-English date formats, you must take steps to globalize your app. This GitHub issue 4076 for instructions on adding decimal comma.
+
+# Notice how the form has automatically rendered an appropriate validation error message in each field containing an invalid value. The errors are enforced both client-side (using JavaScript and jQuery) and server-side (in case a user has JavaScript disabled).
+
+# A significant benefit is that you didn't need to change a single line of code in the MoviesController class or in the Create.cshtml view in order to enable this validation UI. The controller and views you created earlier in this tutorial automatically picked up the validation rules that you specified by using validation attributes on the properties of the Movie model class. Test validation using the Edit action method, and the same validation is applied.
+
+# The form data isn't sent to the server until there are no client side validation errors. You can verify this by putting a break point in the HTTP Post method, by using the Fiddler tool , or the F12 Developer tools.
+
+# How validation works
+# You might wonder how the validation UI was generated without any updates to the code in the controller or views. The following code shows the two Create methods.
+// GET: Movies/Create
+public IActionResult Create()
+{
+    return View();
+}
+
+// POST: Movies/Create
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Create(
+    [Bind("ID,Title,ReleaseDate,Genre,Price, Rating")] Movie movie)
+{
+    if (ModelState.IsValid)
+    {
+        _context.Add(movie);
+        await _context.SaveChangesAsync();
+        return RedirectToAction("Index");
+    }
+    return View(movie);
+}
+
+# The first (HTTP GET) Create action method displays the initial Create form. The second ([HttpPost]) version handles the form post. The second Create method (The [HttpPost] version) calls ModelState.IsValid to check whether the movie has any validation errors. Calling this method evaluates any validation attributes that have been applied to the object. If the object has validation errors, the Create method re-displays the form. If there are no errors, the method saves the new movie in the database. In our movie example, the form isn't posted to the server when there are validation errors detected on the client side; the second Create method is never called when there are client side validation errors. If you disable JavaScript in your browser, client validation is disabled and you can test the HTTP POST Create method ModelState.IsValid detecting any validation errors.
+
+# You can set a break point in the [HttpPost] Create method and verify the method is never called, client side validation won't submit the form data when validation errors are detected. If you disable JavaScript in your browser, then submit the form with errors, the break point will be hit. You still get full validation without JavaScript.
+
+# After you disable JavaScript in your browser, post invalid data and step through the debugger.
+
+# Below is portion of the Create.cshtml view template that you scaffolded earlier in the tutorial. It's used by the action methods shown above both to display the initial form and to redisplay it in the event of an error.
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Movie</h4>
+        <hr />
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*Markup removed for brevity.*@
+    </div>
+</form>
+
+# The Input Tag Helper uses the DataAnnotations attributes and produces HTML attributes needed for jQuery Validation on the client side. The Validation Tag Helper displays validation errors. See Validation for more information.
+
+# What's really nice about this approach is that neither the controller nor the Create view template knows anything about the actual validation rules being enforced or about the specific error messages displayed. The validation rules and the error strings are specified only in the Movie class. These same validation rules are automatically applied to the Edit view and any other views templates you might create that edit your model.
+
+# When you need to change validation logic, you can do so in exactly one place by adding validation attributes to the model (in this example, the Movie class). You won't have to worry about different parts of the application being inconsistent with how the rules are enforced — all validation logic will be defined in one place and used everywhere. This keeps the code very clean, and makes it easy to maintain and evolve. And it means that you'll be fully honoring the DRY principle.
+
+# Using DataType Attributes
+
+# Open the Movie.cs file and examine the Movie class. The System.ComponentModel.DataAnnotations namespace provides formatting attributes in addition to the built-in set of validation attributes. We've already applied a DataType enumeration value to the release date and to the price fields. The following code shows the ReleaseDate and Price properties with the appropriate DataType attribute.
+[Display(Name = "Release Date")]
+[DataType(DataType.Date)]
+public DateTime ReleaseDate { get; set; }
+
+[Range(1, 100)]
+[DataType(DataType.Currency)]
+public decimal Price { get; set; }
+
+# The DataType attributes only provide hints for the view engine to format the data (and supplies elements/attributes such as <a> for URL's and <a href="mailto:EmailAddress.com"> for email. You can use the RegularExpression attribute to validate the format of the data. The DataType attribute is used to specify a data type that's more specific than the database intrinsic type, they're not validation attributes. In this case we only want to keep track of the date, not the time. The DataType Enumeration provides for many data types, such as Date, Time, PhoneNumber, Currency, EmailAddress and more. The DataType attribute can also enable the application to automatically provide type-specific features. For example, a mailto: link can be created for DataType.EmailAddress, and a date selector can be provided for DataType.Date in browsers that support HTML5. The DataType attributes emit HTML 5 data- (pronounced data dash) attributes that HTML 5 browsers can understand. The DataType attributes do not provide any validation.
+
+# DataType.Date doesn't specify the format of the date that's displayed. By default, the data field is displayed according to the default formats based on the server's CultureInfo.
+
+# The DisplayFormat attribute is used to explicitly specify the date format:
+[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+public DateTime ReleaseDate { get; set; }
+
+# The ApplyFormatInEditMode setting specifies that the formatting should also be applied when the value is displayed in a text box for editing. (You might not want that for some fields — for example, for currency values, you probably don't want the currency symbol in the text box for editing.)
+
+# You can use the DisplayFormat attribute by itself, but it's generally a good idea to use the DataType attribute. The DataType attribute conveys the semantics of the data as opposed to how to render it on a screen, and provides the following benefits that you don't get with DisplayFormat:
+• The browser can enable HTML5 features (for example to show a calendar control, the locale-appropriate currency symbol, email links, etc.)
+• By default, the browser will render data using the correct format based on your locale.
+• The DataType attribute can enable MVC to choose the right field template to render the data (the DisplayFormat if used by itself uses the string template).
+
+# Note
+# jQuery validation doesn't work with the Range attribute and DateTime. For example, the following code will always display a client side validation error, even when the date is in the specified range:
+[Range(typeof(DateTime), "1/1/1966", "1/1/2020")]
+
+# You will need to disable jQuery date validation to use the Range attribute with DateTime. It's generally not a good practice to compile hard dates in your models, so using the Range attribute and DateTime is discouraged.
+
+# The following code shows combining attributes on one line:
+public class Movie
+{
+    public int ID { get; set; }
+
+    [StringLength(60, MinimumLength = 3), Required]
+    public string Title { get; set; }
+
+    [Display(Name = "Release Date"), DataType(DataType.Date)]
+    public DateTime ReleaseDate { get; set; }
+
+    [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$"), Required, StringLength(30)]
+    public string Genre { get; set; }
+
+    [Range(1, 100), DataType(DataType.Currency)]
+    public decimal Price { get; set; }
+
+    [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$"), Required, StringLength(5)]
+    public string Rating { get; set; }
+}
+
+# In the next part of the series, we'll review the application and make some improvements to the automatically generated Details and Delete methods.
+
+## Examine the Details and Delete methods of an ASP.NET Core app
+
+# Open the Movie controller and examine the Details method:
+// GET: Movies/Details/5
+public async Task<IActionResult> Details(int? id)
+{
+    if (id == null)
+    {
+        return NotFound();
+    }
+
+    var movie = await _context.Movie
+        .SingleOrDefaultAsync(m => m.ID == id);
+    if (movie == null)
+    {
+        return NotFound();
+    }
+
+    return View(movie);
+}
+# The MVC scaffolding engine that created this action method adds a comment showing an HTTP request that invokes the method. In this case it's a GET request with three URL segments, the Movies controller, the Details method and an id value. Recall these segments are defined in Startup.cs.
+app.UseMvc(routes =>
+{
+    routes.MapRoute(
+        name: "default",
+        template: "{controller=Home}/{action=Index}/{id?}");
+});
+# EF makes it easy to search for data using the SingleOrDefaultAsync method. An important security feature built into the method is that the code verifies that the search method has found a movie before it tries to do anything with it. For example, a hacker could introduce errors into the site by changing the URL created by the links from http://localhost:xxxx/Movies/Details/1 to something like http://localhost:xxxx/Movies/Details/12345 (or some other value that doesn't represent an actual movie). If you didn't check for a null movie, the app would throw an exception.
+
+# Examine the Delete and DeleteConfirmed methods.
+// GET: Movies/Delete/5
+public async Task<IActionResult> Delete(int? id)
+{
+    if (id == null)
+    {
+        return NotFound();
+    }
+
+    var movie = await _context.Movie
+        .SingleOrDefaultAsync(m => m.ID == id);
+    if (movie == null)
+    {
+        return NotFound();
+    }
+
+    return View(movie);
+}
+
+// POST: Movies/Delete/5
+[HttpPost, ActionName("Delete")]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> DeleteConfirmed(int id)
+{
+    var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
+    _context.Movie.Remove(movie);
+    await _context.SaveChangesAsync();
+    return RedirectToAction("Index");
+}
+# Note that the HTTP GET Delete method doesn't delete the specified movie, it returns a view of the movie where you can submit (HttpPost) the deletion. Performing a delete operation in response to a GET request (or for that matter, performing an edit operation, create operation, or any other operation that changes data) opens up a security hole.
+
+# The [HttpPost] method that deletes the data is named DeleteConfirmed to give the HTTP POST method a unique signature or name. The two method signatures are shown below:
+// GET: Movies/Delete/5
+public async Task<IActionResult> Delete(int? id)
+{
+...
+
+// POST: Movies/Delete/5
+[HttpPost, ActionName("Delete")]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> DeleteConfirmed(int id)
+{
+...
+
+# The common language runtime (CLR) requires overloaded methods to have a unique parameter signature (same method name but different list of parameters). However, here you need two Delete methods -- one for GET and one for POST -- that both have the same parameter signature. (They both need to accept a single integer as a parameter.)
+
+# There are two approaches to this problem, one is to give the methods different names. That's what the scaffolding mechanism did in the preceding example. However, this introduces a small problem: ASP.NET maps segments of a URL to action methods by name, and if you rename a method, routing normally wouldn't be able to find that method. The solution is what you see in the example, which is to add the ActionName("Delete") attribute to the DeleteConfirmed method. That attribute performs mapping for the routing system so that a URL that includes /Delete/ for a POST request will find the DeleteConfirmed method.
+
+# Another common work around for methods that have identical names and signatures is to artificially change the signature of the POST method to include an extra (unused) parameter. That's what we did in a previous post when we added the notUsed parameter. You could do the same thing here for the [HttpPost] Delete method:
+# Controllers/MoviesController.cs
+// POST: Movies/Delete/6
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Delete(int id, bool notUsed)
+
+// GET: Movies/Delete/5
+public async Task<IActionResult> Delete(int? id)
+{
+    if (id == null)
+    {
+        return NotFound();
+    }
+
+    var movie = await _context.Movie
+                .SingleOrDefaultAsync(m => m.ID == id);
+    if (movie == null)
+    {
+        return NotFound();
+    }
+
+    return View(movie);
+}
+// A  common work around for methods that have identical names and signatures is to artificially change the signature of the POST method to include an extra (unused) parameter. 
+// That's what we did in a previous post when we added the notUsed parameter. You could do the same thing here for the [HttpPost] Delete method:
+/*
+// POST: Movies/Delete/6
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Delete(int id, bool notUsed)
+*/
+
+/*
+$ winpty sqlite3 MvcMovie.db
+SQLite version 3.25.1 2018-09-18 20:20:44
+Enter ".help" for usage hints.
+sqlite> .help
+.archive ...           Manage SQL archives: ".archive --help" for details
+.auth ON|OFF           Show authorizer callbacks
+.backup ?DB? FILE      Backup DB (default "main") to FILE
+                         Add "--append" to open using appendvfs.
+.bail on|off           Stop after hitting an error.  Default OFF
+.binary on|off         Turn binary output on or off.  Default OFF
+.cd DIRECTORY          Change the working directory to DIRECTORY
+.changes on|off        Show number of rows changed by SQL
+.check GLOB            Fail if output since .testcase does not match
+.clone NEWDB           Clone data into NEWDB from the existing database
+.databases             List names and files of attached databases
+.dbconfig ?op? ?val?   List or change sqlite3_db_config() options
+.dbinfo ?DB?           Show status information about the database
+.dump ?TABLE? ...      Dump the database in an SQL text format
+                         If TABLE specified, only dump tables matching
+                         LIKE pattern TABLE.
+.echo on|off           Turn command echo on or off
+.eqp on|off|full       Enable or disable automatic EXPLAIN QUERY PLAN
+.excel                 Display the output of next command in a spreadsheet
+.exit                  Exit this program
+.expert                EXPERIMENTAL. Suggest indexes for specified queries
+.fullschema ?--indent? Show schema and the content of sqlite_stat tables
+.headers on|off        Turn display of headers on or off
+.help                  Show this message
+.import FILE TABLE     Import data from FILE into TABLE
+.imposter INDEX TABLE  Create imposter table TABLE on index INDEX
+.indexes ?TABLE?       Show names of all indexes
+                         If TABLE specified, only show indexes for tables
+                         matching LIKE pattern TABLE.
+.limit ?LIMIT? ?VAL?   Display or change the value of an SQLITE_LIMIT
+.lint OPTIONS          Report potential schema issues. Options:
+                         fkey-indexes     Find missing foreign key indexes
+.load FILE ?ENTRY?     Load an extension library
+.log FILE|off          Turn logging on or off.  FILE can be stderr/stdout
+.mode MODE ?TABLE?     Set output mode where MODE is one of:
+                         ascii    Columns/rows delimited by 0x1F and 0x1E
+                         csv      Comma-separated values
+                         column   Left-aligned columns.  (See .width)
+                         html     HTML <table> code
+                         insert   SQL insert statements for TABLE
+                         line     One value per line
+                         list     Values delimited by "|"
+                         quote    Escape answers as for SQL
+                         tabs     Tab-separated values
+                         tcl      TCL list elements
+.nullvalue STRING      Use STRING in place of NULL values
+.once (-e|-x|FILE)     Output for the next SQL command only to FILE
+                         or invoke system text editor (-e) or spreadsheet (-x)
+                         on the output.
+.open ?OPTIONS? ?FILE? Close existing database and reopen FILE
+                         The --new option starts with an empty file
+                         Other options: --readonly --append --zip
+.output ?FILE?         Send output to FILE or stdout
+.print STRING...       Print literal STRING
+.prompt MAIN CONTINUE  Replace the standard prompts
+.quit                  Exit this program
+.read FILENAME         Execute SQL in FILENAME
+.restore ?DB? FILE     Restore content of DB (default "main") from FILE
+.save FILE             Write in-memory database into FILE
+.scanstats on|off      Turn sqlite3_stmt_scanstatus() metrics on or off
+.schema ?PATTERN?      Show the CREATE statements matching PATTERN
+                          Add --indent for pretty-printing
+.selftest ?--init?     Run tests defined in the SELFTEST table
+.separator COL ?ROW?   Change the column separator and optionally the row
+                         separator for both the output mode and .import
+.sha3sum ?OPTIONS...?  Compute a SHA3 hash of database content
+.shell CMD ARGS...     Run CMD ARGS... in a system shell
+.show                  Show the current values for various settings
+.stats ?on|off?        Show stats or turn stats on or off
+.system CMD ARGS...    Run CMD ARGS... in a system shell
+.tables ?TABLE?        List names of tables
+                         If TABLE specified, only list tables matching
+                         LIKE pattern TABLE.
+.testcase NAME         Begin redirecting output to 'testcase-out.txt'
+.timeout MS            Try opening locked tables for MS milliseconds
+.timer on|off          Turn SQL timer on or off
+.trace FILE|off        Output each SQL statement as it is run
+.vfsinfo ?AUX?         Information about the top-level VFS
+.vfslist               List all available VFSes
+.vfsname ?AUX?         Print the name of the VFS stack
+.width NUM1 NUM2 ...   Set column widths for "column" mode
+                         Negative values right-justify
+sqlite> .databases
+main: C:\Users\Rajani\Desktop\MvcMovie\bin\Debug\netcoreapp1.1\MvcMovie.db
+sqlite> .tables
+Movie                  __EFMigrationsHistory
+sqlite> SELECT * FROM Movie;
+1|Historical Political Thriller||2.17|G|2017-12-14 00:00:00|The Post
+2|Action Crime Thriller|2.01|PG|2001-06-08 00:00:00|Swordfish
+3|Cyber Mystery Thriller|1.95|G|1995-07-28 00:00:00|The Net
+sqlite> .exit
+*/

@@ -1,0 +1,100 @@
+/* ===========================================================
+
+	$TABLES
+
+=========================================================== */
+
+
+/* ---- WRAP ---- */
+.table-wrap 					                    {width:100%; -webkit-overflow-scrolling:touch;}
+
+
+/* ---- TABLE ---- */
+TABLE 												{table-layout:fixed;  width:100%; min-width:$screen-medium-large; border:$borderWidth solid $grey-light; border-collapse:collapse; border-spacing:0; font-size:$baseSize;}
+THEAD                                               {border:$borderWidth solid $grey-light; color:$baseColour;}
+TBODY							                    {color:$baseColour;}
+TFOOT							                    {border:$borderWidth solid $grey-light; background-color:$blue-faint; color:$baseColour;}
+
+
+TR                                                  {height:45px; border-bottom:$borderWidth solid $grey-light;}
+
+TH,
+TD 								                    {padding:15px; text-align:center; vertical-align:top; overflow:hidden;}
+
+TH 								                    {background-color:$blue-fainter; font-family:$fontSetSecondary; font-size:$epsilon; font-weight:600; color:$baseColour; overflow:hidden; text-overflow:ellipsis;}
+TD								                    {font-weight:400; overflow:hidden;}
+
+
+/* ---- DATA GRID TABLE ---- */
+TABLE.grid-table 							        {}
+TABLE.grid-table TR                                 {background-color:$grey-faint;}
+TABLE.grid-table TR:nth-child(even)					{background-color:$grey-lighter;}
+
+
+
+/* ---- FEED TABLE ---- */
+TABLE.feed-table									{border:none; border-collapse:separate;}
+TABLE.feed-table TR									{height:35px;}
+TABLE.feed-table TH, 
+TABLE.feed-table TD			                        {padding:12px;}
+TABLE.feed-table THEAD TH							{border-bottom:$borderWidth solid $grey-light;}
+TABLE.feed-table TH:first-of-type					{border-left:$borderWidth solid $grey-light;}
+TABLE.feed-table TH:last-of-type					{border-right:$borderWidth solid $grey-light;}
+TABLE.feed-table TFOOT TH							{border-top:$borderWidth solid $grey-light; border-bottom:$borderWidth solid $grey-light;}
+TABLE.feed-table TBODY TD							{background-color:$grey-faint;}
+
+
+
+/* To check later 
+TD:last-child                                       {border-right:none;}
+
+.front-end-table TD:first-child                     {text-align:left; font-weight:bold;}
+
+.page-table TD                                      {border-right:none; text-align:left;}
+.page-table TR:nth-child(2n+1)                      {background:#e8e8e8;}
+
+.page-table TH                                      {background:#585858; font-weight:normal; color:#fff; text-align:left; border:none; padding: 5px 20px;}
+
+*/
+
+
+.table-wrap td select                               {height: 22px;}
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+@media screen and (max-width: 600px) {
+
+/*
+    TABLE {
+      border: 0;
+    }
+
+    TABLE THEAD {
+      display: none;
+    }
+
+    TABLE TR {
+      margin-bottom: 10px;
+      display: block;
+      border-bottom: 2px solid #ddd;
+    }
+
+    TABLE TD {
+      display: block;
+      text-align: right;
+      font-size: 13px;
+      border-bottom: 1px dotted #ccc;
+    }
+
+    TABLE TD:last-child {
+      border-bottom: 0;
+    }
+
+    TABLE TD:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+*/
+}

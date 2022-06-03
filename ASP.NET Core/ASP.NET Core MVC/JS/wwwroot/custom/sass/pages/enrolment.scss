@@ -1,0 +1,175 @@
+/* ===========================================================
+
+	$ENROLMENT
+
+=========================================================== */
+#enrolment-form sup                                     {vertical-align: super; font-size: smaller;}
+
+/* ==== CATTLE INFORMATION ==== */
+#enrolment-form .tooltip                                {float: right; height: 19px; top: -7px; position: relative;}
+#enrolment-form .tooltip I.icon                         {width: 32px; height: 34px; background-image:url("../assets/icons/orange/32/information.png");}
+
+#enrolment-form .hint                                   {height: 19px; top: -4px; position: relative; line-height: 24px; float: left;}
+#enrolment-form .hint I.icon                            {width: 25px; height: 25px; display: inline-block; background-image:url("../assets/icons/blue/32/information.png");}
+#enrolment-form .hint-text                              {float: left; width: 95%; margin-left: 5px;}
+
+/* ==== PROGRAM SELECTION ==== */
+.program-selection__header                              {}
+.program-selection__heading                             {}
+.program-selection__heading .program-text               {color:$primaryColour;}
+.program-selection__summary                             {}
+.program-selection__main                                {}
+
+/* ---- CONDITIONAL PRODUCTS ---- */
+.condition-product                                      {clear:both; border:$borderWidth solid $grey-lighter; background-color:$grey-faint; margin-bottom:15px;}
+.condition-product__header                              {clear:both; padding:8px 15px; border-bottom:5px solid $primaryColour; background-color:$grey-lighter;}
+.condition-product__heading                             {@include heading-font-size-full($epsilon, 600, 1, 0); @include heading-font-style($primaryColour);}
+.condition-product__body                                {clear:both; padding:15px;}
+.condition-product__icon                                {display:block; float:left; clear:left; width:48px; height:48px; margin:10px 20px 20px 10px; overflow:hidden;}
+.condition-product__buttons                             {clear:both; text-align:right;}
+.condition-product__buttons.buttons                     {margin-top:0; margin-bottom:0;}
+.condition-product SPAN.field.products                  {@include column(6); text-align:left;}
+.condition-product SPAN.field.number-of-shots           {@include column(6); text-align:center;}
+.condition-product SPAN.field.date-administered         {@include column(6); text-align:right;}
+.condition-product SPAN.field LABEL                     {width:auto;}
+
+.condition-products-row                                {clear:both;}
+.condition-product__buttons.buttons                    {margin-bottom: 20px;}
+.condition-products-row SPAN.field                     {margin-bottom: 10px;}
+
+.form-row ul li                                        {font-size:14px;}
+
+#invalid-enrolment-section ul,
+#invalid-enrolment-form ul
+                                                       {margin-bottom: 10px; margin-top: 10px;}
+#invalid-enrolment-section .error-messages,
+#invalid-enrolment-form .error-messages                {overflow: auto; margin-top: 5px; border: 1px solid #BF0D3E; background-color: #fff;}
+
+#invalid-enrolment-section .error-messages .wizard-nav__item.not-valid,
+#invalid-enrolment-form .error-messages .wizard-nav__item.not-valid,
+#invalid-enrolment-section .error-messages .wizard-nav__item.warning,
+#invalid-enrolment-form .error-messages .wizard-nav__item.warning               
+                                                       {margin-bottom: 0px;}
+#invalid-enrolment-form .error-messages .wizard-nav__item.not-valid a,
+#invalid-enrolment-form .error-messages .wizard-nav__item.warning a
+                                                       {text-align: left!important; 
+                                                        text-transform: capitalize;
+                                                        font-size: 18px;
+                                                        border: none;}
+#invalid-enrolment-form .error-messages .wizard-nav__item.not-valid .edit-step,
+#invalid-enrolment-form .error-messages .wizard-nav__item.warning .edit-step
+                                                       {text-transform: none;}
+#invalid-enrolment-form .error-messages .wizard-nav__item.not-valid .step-name,
+#invalid-enrolment-form .error-messages .wizard-nav__item.warning .step-name
+                                                       {margin-right: 10px;}
+#invalid-enrolment-form .error-messages .wizard-nav__item.not-valid .edit-step span,
+#invalid-enrolment-form .error-messages .wizard-nav__item.warning .edit-step span
+                                                       {text-decoration: underline; }
+  
+#invalid-enrolment-section .error-messages .wizard-nav__item.not-valid a,
+#invalid-enrolment-section .error-messages .wizard-nav__item.warning a
+                                                       {cursor: default;}
+
+#invalid-enrolment-section h4                          {text-transform: none; padding-bottom: 0; padding-top: 5px; margin-left: 10px;}
+
+.enrolmentFormOverlay                                  {position: absolute; width: 100%; height: 100%; left: 0; top: 0; }
+
+
+.red                                                   {background:$ruby-dark !important}
+
+.red-text                                              {color:$ruby-dark; font-weight:700;}
+
+.green                                                 {background:#008000 !important}
+
+.vet-section                                            {text-transform: uppercase; color:$blue-dark; font-family:$fontSetSecondary; font-weight:600;font-size: 19px;padding-top:9px !important;}
+.vet-section-grid                                       {min-width: 90px;}
+
+.k-window-content .k-pager-numbers .k-state-selected                     {min-height:27px;vertical-align: middle;padding-top:5px;}
+
+div.enrolmentStatus                         {width: 100%; display: inline-block; padding-top:3px; font-family: "proxima-nova-extra-condensed","Arial Narrow",Arial,Helvetica,sans-serif;font-weight:600; font-size: x-large; text-transform:uppercase;}
+div.enrolmentStatus span.enrolmentStatusContainer  {float: right;}
+div.enrolmentStatus span.cattleId           {padding-left:3px; vertical-align:bottom}
+div.enrolmentStatus I.icon                  {display:inline-block; width:24px; height:24px; background-image:url("../assets/icons/multi/24/sprite-enrolments-24_all.png");}
+div.enrolmentStatus span.EmptyEnrolment              {background-color:white; color: #e5a32a!important}
+div.enrolmentStatus span.EmptyEnrolment I.icon       {@include sprite-icon($xPos24, 0);}
+div.enrolmentStatus span.Draft              {background-color:white; color: #e5a32a!important}
+div.enrolmentStatus span.Draft I.icon       {@include sprite-icon($xPos24, 0);}
+div.enrolmentStatus span.Pending            {background-color:white; color: #157FBF!important;}
+div.enrolmentStatus span.Pending  I.icon    {@include sprite-icon($xPos24, -97px);}
+div.enrolmentStatus span.Rejected           {background-color:white; color: #bf0d3f!important;}
+div.enrolmentStatus span.Rejected  I.icon   {@include sprite-icon($xPos24, -197px);}
+div.enrolmentStatus span.Verified           {background-color:white; color: #008000!important;}
+div.enrolmentStatus span.Verified  I.icon   {@include sprite-icon($xPos24, -299px);}
+div.enrolmentStatus span.Archived           {background-color:white; color: #585858!important;}
+div.enrolmentStatus span.Archived I.icon    {@include sprite-icon($xPos24, -399px);}
+
+ /* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- MOBILE (portrait 0 - 480px) ---- */
+@media only screen and (max-width:$breakpoint-small) {
+    
+
+}
+
+/* ---- MOBILE (landscape 480px - 600px) ---- */
+@media only screen and (min-width:$breakpoint-small) and (max-width: $breakpoint-medium-small) {
+
+
+}
+
+/* ---- TABLET (portrait 600px - 768px) ---- */
+@media only screen and (min-width:$breakpoint-medium-small) and (max-width: $breakpoint-medium) {
+
+
+}
+
+/* ---- ALL MOBILE (0 - 768px) ---- */
+@media only screen and (max-width:$breakpoint-medium) {
+
+    /* ---- CONDITIONAL PRODUCTS ---- */
+    .condition-product                                      {}
+    .condition-product__header                              {}
+    .condition-product__heading                             {}
+    .condition-product__body                                {}
+    .condition-product__icon                                {}
+    .condition-product__buttons                             {}
+    .condition-product__buttons.buttons                     {}
+    .condition-product SPAN.field.products                  {float:none; clear:both; text-align:left;}
+    .condition-product SPAN.field.number-of-shots           {float:none; clear:both; text-align:left;}
+    .condition-product SPAN.field.date-administered         {float:none; clear:both; text-align:left;}
+
+}
+
+/* ---- TABLET (landscape 768px - 960px) ---- */
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-medium-large) {
+    
+
+}
+
+/* ---- TABLET + (768px +) ---- */
+@media only screen and (min-width:$breakpoint-medium) {
+
+    /* ---- CONDITIONAL PRODUCTS ---- */
+    .condition-product .fields--multiple                    {margin-bottom:0;}
+    .condition-product SPAN.field.products                  {@include column(6); text-align:left;}
+    .condition-product SPAN.field.number-of-shots           {@include column(6); text-align:center;}
+    .condition-product SPAN.field.date-administered         {@include column(6); text-align:right;}
+}
+
+/* ---- SMALL DESKTOP (960px - 1024px) ---- */
+@media only screen and (min-width:$breakpoint-medium-large) and (max-width: $breakpoint-large) {
+
+
+}
+
+/* ---- MEDIUM DESKTOP (1024px - 1280px) ---- */
+@media only screen and (min-width:$breakpoint-large) and (max-width: $breakpoint-extra-large) {
+
+
+}
+
+/* ---- LARGE DESKTOP (1280px +) ---- */
+@media only screen and (min-width:$breakpoint-extra-large) {
+
+
+}

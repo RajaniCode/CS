@@ -1,0 +1,224 @@
+C:\Users\Rajani\source\repos\SPA\SPA\bin\SPA.dll.config
+C:\Users\Rajani\source\repos\SPA\SPA\bin\SPA.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\SPA.pdb
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\csc.exe
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\csc.exe.config
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\csc.rsp
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\csi.exe
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\csi.exe.config
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\csi.rsp
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.AppContext.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Console.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.IO.Compression.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Security.Claims.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.ValueTuple.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\vbc.exe
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\vbc.exe.config
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\vbc.rsp
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\VBCSCompiler.exe
+C:\Users\Rajani\source\repos\SPA\SPA\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Antlr3.Runtime.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\EntityFramework.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\EntityFramework.SqlServer.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Newtonsoft.Json.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Owin.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Net.Http.Formatting.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Helpers.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Http.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Http.Owin.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Http.WebHost.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Mvc.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Optimization.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Razor.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.WebPages.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.WebPages.Razor.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\WebGrease.dll
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Antlr3.Runtime.pdb
+C:\Users\Rajani\source\repos\SPA\SPA\bin\EntityFramework.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\EntityFramework.SqlServer.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Newtonsoft.Json.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Net.Http.Formatting.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Helpers.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Http.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Http.Owin.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Http.WebHost.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Mvc.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Optimization.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.Razor.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.WebPages.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\System.Web.WebPages.Razor.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Rajani\source\repos\SPA\SPA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Rajani\source\repos\SPA\SPA\obj\Debug\SPA.csprojAssemblyReference.cache
+C:\Users\Rajani\source\repos\SPA\SPA\obj\Debug\SPA.csproj.CopyComplete
+C:\Users\Rajani\source\repos\SPA\SPA\obj\Debug\SPA.dll
+C:\Users\Rajani\source\repos\SPA\SPA\obj\Debug\SPA.pdb
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\SPA.dll.config
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\SPA.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\SPA.pdb
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\csc.exe
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\csc.exe.config
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\csc.rsp
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\csi.exe
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\csi.exe.config
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\csi.rsp
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.AppContext.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Console.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.IO.Compression.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.IO.Pipes.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Security.Claims.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.ValueTuple.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Xml.XPath.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\vbc.exe
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\vbc.exe.config
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\vbc.rsp
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\VBCSCompiler.exe
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Antlr3.Runtime.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\EntityFramework.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\EntityFramework.SqlServer.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Newtonsoft.Json.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Owin.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Net.Http.Formatting.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Helpers.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Http.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Http.Owin.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Http.WebHost.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Mvc.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Optimization.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Razor.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.WebPages.Deployment.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.WebPages.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.WebPages.Razor.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\WebGrease.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Antlr3.Runtime.pdb
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\EntityFramework.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\EntityFramework.SqlServer.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Newtonsoft.Json.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Net.Http.Formatting.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Helpers.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Http.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Http.Owin.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Http.WebHost.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Mvc.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Optimization.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.Razor.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.WebPages.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.WebPages.Deployment.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\System.Web.WebPages.Razor.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\obj\Debug\SPA.csprojAssemblyReference.cache
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\obj\Debug\SPA.csproj.CopyComplete
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\obj\Debug\SPA.dll
+C:\Users\rajanis\Desktop\.NET\WebAPI\SPA Template\SPA Template\SPA\SPA\obj\Debug\SPA.pdb

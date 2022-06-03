@@ -1,0 +1,15 @@
+/Users/rajaniapple/Desktop/Mnemonics/Generics/bin/Debug/net6.0/Generics
+/Users/rajaniapple/Desktop/Mnemonics/Generics/bin/Debug/net6.0/Generics.deps.json
+/Users/rajaniapple/Desktop/Mnemonics/Generics/bin/Debug/net6.0/Generics.runtimeconfig.json
+/Users/rajaniapple/Desktop/Mnemonics/Generics/bin/Debug/net6.0/Generics.dll
+/Users/rajaniapple/Desktop/Mnemonics/Generics/bin/Debug/net6.0/ref/Generics.dll
+/Users/rajaniapple/Desktop/Mnemonics/Generics/bin/Debug/net6.0/Generics.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Generics/obj/Debug/net6.0/Generics.csproj.AssemblyReference.cache
+/Users/rajaniapple/Desktop/Mnemonics/Generics/obj/Debug/net6.0/Generics.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rajaniapple/Desktop/Mnemonics/Generics/obj/Debug/net6.0/Generics.AssemblyInfoInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Generics/obj/Debug/net6.0/Generics.AssemblyInfo.cs
+/Users/rajaniapple/Desktop/Mnemonics/Generics/obj/Debug/net6.0/Generics.csproj.CoreCompileInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Generics/obj/Debug/net6.0/Generics.dll
+/Users/rajaniapple/Desktop/Mnemonics/Generics/obj/Debug/net6.0/ref/Generics.dll
+/Users/rajaniapple/Desktop/Mnemonics/Generics/obj/Debug/net6.0/Generics.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Generics/obj/Debug/net6.0/Generics.genruntimeconfig.cache

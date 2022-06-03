@@ -1,0 +1,348 @@
+// Use Parallel.Invoke() to execute methods concurrently.
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class DemoParallel
+{
+    // A method to be run as a task.
+    static void MyMeth()
+    {
+        Console.WriteLine("MyMeth starting");
+
+        for(int count = 0; count < 5; count++)
+        {
+            Thread.Sleep(500);
+            Console.WriteLine("In MyMeth, count is " + count );
+        }
+        Console.WriteLine("MyMeth terminating");
+    }
+
+    // A method to be run as a task.
+    static void MyMeth2()
+    {
+        Console.WriteLine("MyMeth2 starting");
+
+        for(int count = 0; count < 5; count++)
+        {
+            Thread.Sleep(500);
+            Console.WriteLine("In MyMeth2, count is " + count );
+         }
+        Console.WriteLine("MyMeth2 terminating");
+     }
+
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+        // Run two named methods.
+        Parallel.Invoke(MyMeth, MyMeth2);
+        Console.WriteLine("Main thread ending.");
+    }
+}
+
+// Use Parallel.Invoke( ) to execute methods concurrently.
+// This version uses lambda expressions.
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class DemoParallel
+{
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+
+        // Run two anonymous methods specified via lambda expressions.
+        Parallel.Invoke( () =>
+        {
+            Console.WriteLine("Expression #1 starting");
+            for(int count = 0; count < 5; count++)
+            {
+                Thread.Sleep(500);
+                Console.WriteLine("Expression #1 count is " + count );
+             }
+            Console.WriteLine("Expression #1 terminating");
+        },
+        () =>
+        {
+            Console.WriteLine("Expression #2 starting");
+            for(int count = 0; count < 5; count++)
+            {
+                Thread.Sleep(500);
+                Console.WriteLine("Expression #2 count is " + count );
+            }
+            Console.WriteLine("Expression #2 terminating");
+        });
+ Console.WriteLine("Main thread ending.");
+ }
+}
+
+
+// Use Parallel.For() to create a data-parallel loop.
+using System;
+using System.Threading.Tasks;
+
+class DemoParallelFor
+{
+    static int[] data;
+    // A method to be run as the body of a parallel loop.
+    // The statements in this loop are designed to simply
+    // consume some CPU time for the purposes of demonstration.
+   static void MyTransform(int i)
+   {
+        data[i] = data[i] / 10;
+
+        if(data[i] < 10000)
+        {
+            data[i] = 0;
+        }
+
+        if(data[i] > 10000 & data[i] < 20000)
+        {
+            data[i] = 100;
+        }
+
+        if(data[i] > 20000 & data[i] < 30000)
+        {
+            data[i] = 200;
+        }
+
+        if(data[i] > 30000)
+        {
+            data[i] = 300;
+        }
+     }
+    
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+        data = new int[100000000];
+
+        // Initialize the data using a regular for loop.
+        for(int i=0; i < data.Length; i++)
+        {
+            data[i] = i;
+        }
+
+        // A parallel For loop.
+        Parallel.For(0, data.Length, MyTransform);
+        Console.WriteLine("Main thread ending.");
+    }
+}
+
+// Show timing differences between sequential and parallel for loops.
+using System;
+using System.Threading.Tasks;
+using System.Diagnostics;
+
+class DemoParallelFor
+{
+    static int[] data;
+    // A method to be run as the body of a parallel loop.
+    // The statements in this loop are designed to simply
+    // consume some CPU time for the purposes of demonstration.
+    static void MyTransform(int i)
+    {
+        data[i] = data[i] / 10;
+        if(data[i] < 1000)
+        {
+            data[i] = 0;
+        }
+
+        if(data[i] > 1000 & data[i] < 2000)
+        {
+            data[i] = 100;
+        }
+
+        if(data[i] > 2000 & data[i] < 3000)
+        {
+            data[i] = 200;
+        }
+
+        if(data[i] > 3000)
+        {
+            data[i] = 300;
+        }
+    }
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+         // Create a Stopwatch instance to time loops.
+        Stopwatch sw = new Stopwatch();
+        data = new int[100000000];
+
+        // Initialize data.
+        sw.Start();
+
+        // Parallel version of initialization loop.
+        Parallel.For(0, data.Length, (i) => data[i] = i );
+         sw.Stop();
+         Console.WriteLine("Parallel initialization loop: {0} secs", sw.Elapsed.TotalSeconds);
+        sw.Reset();
+        sw.Start();
+
+        // Sequential version of initialization loop
+        for(int i=0; i < data.Length; i++)
+        {
+            data[i] = i;
+        }
+        sw.Stop();
+        Console.WriteLine("Sequential initialization loop: {0} secs",sw.Elapsed.TotalSeconds);
+        Console.WriteLine();
+        // Perform transforms.
+        sw.Start();
+        // Parallel version of transformation loop.
+        Parallel.For(0, data.Length, MyTransform);
+        sw.Stop();
+        Console.WriteLine("Parallel transform loop: {0} secs", sw.Elapsed.TotalSeconds);
+        sw.Reset();
+        sw.Start();
+        // Sequential version of transformation loop.
+        for(int i=0; i < data.Length; i++)
+       {
+            MyTransform(i);
+            sw.Stop();
+            Console.WriteLine("Sequential transform loop: {0} secs", sw.Elapsed.TotalSeconds);
+            Console.WriteLine("Main thread ending.");
+        }
+}
+
+// Use ParallelLoopResult, ParallelLoopState, and Break()
+// with a parallel For loop.
+using System;
+using System.Threading.Tasks;
+
+class DemoParallelForWithLoopResult
+{
+    static int[] data;
+    // A method to be run as the body of a parallel loop.
+    // The statements in this loop are designed to simply
+    // consume some CPU time for the purposes of demonstration.
+
+    static void MyTransform(int i, ParallelLoopState pls)
+    {
+        // Break out of loop if a negative value is found.
+        if(data[i] < 0)
+        {
+            pls.Break();
+        }
+
+        data[i] = data[i] / 10;
+
+        if(data[i] < 1000)
+        {
+            data[i] = 0;
+        }
+
+        if(data[i] > 1000 & data[i] < 2000)
+        {
+            data[i] = 100;
+        }
+
+        if(data[i] > 2000 & data[i] < 3000)
+        {
+            data[i] = 200;
+        }
+        
+        if(data[i] > 3000)
+        {
+            data[i] = 300;
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Main thread starting.");
+        data = new int[100000000];
+
+        // Initialize data.
+        for(int i=0; i < data.Length; i++)
+        {
+            data[i] = i;
+        }
+
+        // Put a negative value into data.
+        data[1000] = -10;
+
+        // Parallel transform loop.
+        ParallelLoopResult loopResult =Parallel.For(0, data.Length, MyTransform);
+
+        // See if the loop ran to completion.
+        if(!loopResult.IsCompleted)
+        {
+            Console.WriteLine("\nLoop Terminated early because a " +
+ "negative value was encountered\n" +
+ "in iteration number " +
+ loopResult.LowestBreakIteration + ".\n");
+        }
+        Console.WriteLine("Main thread ending.");
+    }
+}
+
+// Use ParallelLoopResult, ParallelLoopState, and Break()
+// with a parallel ForEach() loop.
+
+using System;
+using System.Threading.Tasks;
+
+class DemoParallelForWithLoopResult
+{
+    static int[] data;
+    // A method to be run as the body of a parallel loop.
+    // In this version, notice that the value of an element of
+    // of data is passed to v, not an index.
+    static void DisplayData(int v, ParallelLoopState pls)
+    {
+        // Break out of loop if a negative value is found.
+        if(v < 0)
+        {
+            pls.Break();
+        }
+            Console.WriteLine("Value: " + v);
+     }
+
+    static void Main()
+    {
+       Console.WriteLine("Main thread starting.");
+ data = new int[100000000];
+
+         // Initialize data.
+        for(int i=0; i < data.Length; i++)
+        {
+            data[i] = i;
+        }
+
+        // Put a negative value into data.
+        data[100000] = -10;
+
+        // Use a parallel ForEach() loop to display the data.
+        ParallelLoopResult loopResult =
+ Parallel.ForEach(data, DisplayData);
+        
+        /*
+        // Although the preceding code used a named method as the delegate that represented the 
+“body” of the loop, sometimes it is more convenient to use an anonymous method
+        // For example, here the “body” of the ForEach( ) loop is implemented as a lambda expression:
+        // Use a parallel ForEach() loop to display the data.
+        ParallelLoopResult loopResult = Parallel.ForEach(data, (v, pls) => 
+        {
+            Console.WriteLine("Value: " + v);
+            if(v < 0)
+            {
+                pls.Break();
+            }
+        });
+        */
+
+        // See if the loop ran to completion.
+        if(!loopResult.IsCompleted)
+        {
+            Console.WriteLine("\nLoop Terminated early because a " +
+ "negative value was encountered\n" +
+ "in iteration number " +
+ loopResult.LowestBreakIteration + ".\n");
+        }
+
+        Console.WriteLine("Main thread ending.");
+    }
+}

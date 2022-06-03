@@ -1,0 +1,20 @@
+﻿@model Gigya.UI.Areas.Account.ViewModels.LoginStatus
+
+@{
+    ViewData["Title"] = "LoggedIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string logoutActiveSession = Model.LogoutActiveSession;
+    ViewData["LogoutActiveSession"] = logoutActiveSession;
+    ViewData["GigyaId"] = Model.GigyaId;
+}
+
+@if (logoutActiveSession == "True")
+{
+    <h2 class="text-warning">Logout Active Session: @logoutActiveSession</h2>
+    @*<h2 style="color:#FFA900">Logout Active Session: @logoutActiveSession</h2>*@
+}
+else
+{
+    <h2 class="text-danger">Logout Active Session: @logoutActiveSession</h2>
+    @*<h2 style="color:#F93154">Logout Active Session: @logoutActiveSession</h2>*@
+}

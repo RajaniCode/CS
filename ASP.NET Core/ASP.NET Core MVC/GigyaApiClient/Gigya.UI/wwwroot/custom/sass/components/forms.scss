@@ -1,0 +1,393 @@
+/* ===========================================================
+
+	$FORMS
+
+=========================================================== */
+
+
+/* ---- FIELDSET ---- */
+FIELDSET						                        {padding:10px; margin-bottom:0; border-bottom:$borderWidth solid $grey-light !important; border:$borderWidth solid $white; padding-bottom: 35px;}
+LEGEND							                        {padding: 0px;font-size: 18px;float: left;font-weight: 600;line-height: 1;padding-bottom: 16px;color: #585858; width: 100%;}
+
+
+/* ---- FIELD GROUP ---- */
+.field-group                                            {clear:both; margin-bottom:30px;}
+
+/* ---- STANDARD FIELD ---- */
+DIV.field						                        {display:block; margin-bottom:20px;} 
+
+/* ---- INLINE FIELDS ---- */
+DIV.fields--multiple			                        {position:relative; display:block; margin-bottom:$baseLineHeight /1.5; @include clearfix;}
+SPAN.field						                        {display:block; float:left; padding-right:20px; margin-bottom:15px;}
+SPAN.field:last-child			                        {padding-right:0;}
+SPAN.field LABEL                                        {}	
+SPAN.field.field--date-range LABEL                      {width:auto; max-width:25%;}
+
+/* ---- FIELD MODIFIERS ---- */															
+.field.field--right                                     {text-align:right;}
+
+
+/* ---- LABELS ---- */
+LABEL 							                        {display:block; padding:5px 0; text-align:left; vertical-align:bottom; font-weight:normal; color:$grey-darker;}
+LABEL:first-child 				                        {padding-top:0;}
+INPUT[type="radio"] + LABEL.label--small, 
+LABEL.label--small				                        {font-size:$eta;}
+LABEL.label--large				                        {font-family:$fontSetSecondary; font-size:$gamma; font-weight:600; text-transform:uppercase;}
+LABEL.label--orange                                     {color:$secondaryColour;}
+
+
+INPUT[type="radio"] + LABEL                             {width: auto !important;max-width: 100% !important;}
+
+/* ---- MARKERS ---- */
+MARK.required						                    {font-size:$epsilon; color:$red-medium;}
+
+
+/* ---- CHECKBOX & RADIO LABELS (Following) ---- */
+INPUT[type="radio"] + LABEL,
+INPUT[type="checkbox"] + LABEL,
+INPUT[type="radio"] + SPAN,
+INPUT[type="checkbox"] + SPAN 	                        {display:inline-block; padding:5px 0; margin-right:15px; font-size:$zeta; color:$blue-dark; &:last-of-type{margin-right:2px;}}
+/* Menu Box Label */
+.menu-box__list--checkbox INPUT[type="checkbox"] + LABEL,
+.menu-box__list--checkbox INPUT[type="checkbox"] + SPAN {color:$blue-dark;} 
+
+
+/* ---- INSERTED TEXT (SAVED FIELD) ---- */
+.field INS						                        {display:block; width:100%; padding:10px 15px; background-color:$grey-faint; border-radius:$borderRadius-small;}
+
+
+/* ---- VALIDATION MESSAGE ---- */
+//.field .validation 				                    {position:relative; left:0; display:block; width:100%; margin:3px 0 0;}
+
+
+/* ---- MAX CHARACTER LIMIT ---- */
+.field .max-character-limit 				            {width:45%; float:right; font-style:italic; margin-right:4%; text-align:right;}
+
+
+/* ---- BOX BASED INPUTS ---- */
+INPUT[type="text"],
+INPUT[type="password"],
+INPUT[type="email"],
+INPUT[type="url"],
+INPUT[type="number"],
+INPUT[type="time"],
+INPUT[type="date"],
+INPUT[type="datetime"],
+INPUT[type="datetime-local"],
+INPUT[type="week"],
+INPUT[type="month"],
+INPUT[type="search"],
+INPUT[type="tel"],
+SELECT,
+TEXTAREA 						                        {width:100%; height:35px; padding:5px; margin:0; border:$borderWidth solid $grey-light; background-color:$white; font-size:$baseSize; line-height:1; resize:none; vertical-align:bottom;						 		                    
+                                                         &:focus {border-color:$grey-medium;}
+								                         &:disabled {background:$grey-medium;}}
+
+INPUT[readonly="readonly"]                              {background-color:$grey-faint;}
+
+
+/* ---- DATEBOX (RENDERS AS TEXTBOX IN FIREFOX) ---- */
+SPAN.field INPUT.date-box							    {width:25%;}
+
+
+/* ---- SELECT ---- */
+SELECT 							                        {background: $white url("../assets/images/select-bg.png") no-repeat right center; -webkit-appearance:none; -moz-appearance:none; text-indent:1px; text-overflow:''; z-index:1;
+						 		                         &:hover {cursor:pointer;} &:disabled {z-index: 0;}}
+SELECT,
+.select-wrap 					                        {position:relative; width:30%;}
+//.select-wrap:after 				                    {position:absolute; right:5px; top:10px; z-index:300; font-size:180%; color:$grey-dark; content:'\25BE'; &:focus {color:$grey-darker;}}
+SPAN.field .select-wrap SELECT						    {width:100%;}
+
+
+/* ---- RADIO & CHECKBOXES  ---- */
+INPUT[type="radio"] 			                        {margin-bottom:7px;}
+INPUT[type="radio"],
+INPUT[type="checkbox"] 			                        {width:auto;}
+
+
+/* ---- RANGE ---- */
+INPUT[type="range"]				                        {}
+
+
+/* ---- FILE ----*/
+/* with styling hack (not 100% perfected) */
+LABEL.input-file-wrap			                        {display:block; padding:0;}
+LABEL INPUT[type="file"]		                        {position:absolute; z-index:10; border:0;}
+LABEL INPUT[type="file"] + SPAN                         {position:absolute; z-index:20; min-width:110px; text-align:center; cursor:pointer;}
+
+
+/* ---- GRID INPUTS ---- */
+TABLE INPUT[type="text"],
+TABLE INPUT[type="password"],
+TABLE INPUT[type="email"],
+TABLE INPUT[type="url"],
+TABLE INPUT[type="number"],
+TABLE INPUT[type="time"],
+TABLE INPUT[type="date"],
+TABLE INPUT[type="datetime"],
+TABLE INPUT[type="datetime-local"],
+TABLE INPUT[type="week"],
+TABLE INPUT[type="month"],
+TABLE INPUT[type="search"],
+TABLE INPUT[type="tel"],
+TABLE SELECT,
+TABLE TEXTAREA 					                        {padding:5px 10px;}
+
+
+/* ==== KENDO OVERRIDES ==== */
+/* ---- KENDO ROUNDED ELEMENTS ---- */
+.k-block, .k-button, .k-textbox, .k-drag-clue,
+.k-touch-scrollbar, .k-window, 
+.k-window-titleless .k-window-content, 
+.k-window-action, .k-inline-block, 
+.k-grid .k-filter-options, 
+.k-grouping-header .k-group-indicator, 
+.k-autocomplete, .k-multiselect, .k-combobox,
+.k-dropdown, .k-dropdown-wrap, .k-datepicker,
+.k-timepicker, .k-colorpicker, .k-datetimepicker,
+.k-notification, .k-numerictextbox, .k-picker-wrap,
+.k-numeric-wrap, .k-colorpicker, .k-list-container, 
+.k-calendar-container, .k-calendar td, 
+.k-calendar .k-link, .k-treeview .k-in, 
+.k-editor-inline, .k-tooltip, .k-tile, 
+.k-slider-track, .k-slider-selection, 
+.k-upload, .k-split-button .k-gantt-views, 
+.k-gantt-views > .k-current-view                        {border-radius:0;}
+
+/* ---- k-widget ---- */
+.field .k-widget                                        {display:inline-block; box-sizing:border-box; vertical-align:middle;}
+
+/* ---- k-input ---- */
+.k-input, 
+INPUT.k-textbox, 
+TEXTAREA.k-textbox, 
+INPUT.k-textbox:hover, 
+TEXTAREA.k-textbox:hover, 
+.k-textbox > INPUT, .k-multiselect-wrap                 {background-color:$white; color:$baseColour;}
+
+/* ---- k-button ---- */
+SPAN.field.field--kendo-button .k-button                {position:absolute; top:0; right:22px;}
+SPAN.field.field--kendo-button:last-of-type .k-button   {right:2px;}
+
+/* ---- k-multiselect ---- */
+DIV.field.field--kendo-select                           {}
+SPAN.field.field--kendo-select                          {position:relative;}
+SPAN.field.field--kendo-select .k-widget.k-multiselect  {width:100%;}
+SPAN.field.field--kendo-select.field--kendo-button 
+.k-widget.k-multiselect                                 {padding-right:32px;}
+
+/* ---- k-numberbox ---- */
+DIV.field.field--kendo-number-box                       {}
+SPAN.field.field--kendo-number-box                      {position:relative;}
+SPAN.field.field--kendo-number-box .box-wrap            {display:inline-block; width:100%; padding-right:32px;}
+SPAN.field.field--kendo-number-box .k-widget.k-numerictextbox   {width:49%;}
+SPAN.field.field--kendo-number-box.field--kendo-button 
+.k-widget.k-numerictextbox                              {}
+
+
+
+/*invalid form elements*/
+
+.form-wrapper                                           {padding:15px;}
+
+.form-wrapper H3                                        {font-size: 22px;font-weight: 600;line-height: 25px;padding-bottom: 8px;}
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- ALL MOBILE (0 - 600px) ---- */
+@media only screen and (max-width: $breakpoint-medium-small) {
+
+    /* ---- STANDARD FIELD ---- */
+    DIV.field,						                        
+    DIV.fields--multiple                                    {margin-bottom:30px;}
+
+    /* ---- CHECKBOX & RADIO LABELS (Following) ---- */
+	INPUT[type="radio"] + LABEL,
+	INPUT[type="checkbox"] + LABEL, 							
+	INPUT[type="radio"] + SPAN,
+	INPUT[type="checkbox"] + SPAN                           {padding:0;}
+
+
+	/* ---- BOX BASED INPUTS ---- */
+	INPUT[type="text"],
+	INPUT[type="password"],
+	INPUT[type="email"],
+	INPUT[type="url"],
+	INPUT[type="number"],
+	INPUT[type="time"],
+	INPUT[type="date"],
+	INPUT[type="datetime"],
+	INPUT[type="datetime-local"],
+	INPUT[type="week"],
+	INPUT[type="month"],
+	INPUT[type="search"],
+	INPUT[type="tel"],
+	.select-wrap,
+	TEXTAREA 												{margin-bottom:10px;}
+
+    /* ---- DATEBOX (RENDERS AS TEXTBOX IN FIREFOX) ---- */
+    SPAN.field INPUT.date-box							    {width:100%;}
+
+	/* ---- INLINE FIELD'S ---- */
+	/* Detects element count within container and resizes each element accordingly */
+	DIV.fields--multiple									{margin-bottom:0;}
+	SPAN.field:first-child:nth-last-child(1),
+	SPAN.field:first-child:nth-last-child(1) ~ SPAN.field,
+	SPAN.field:first-child:nth-last-child(2),
+	SPAN.field:first-child:nth-last-child(2) ~ SPAN.field,	
+	SPAN.field:first-child:nth-last-child(3),
+	SPAN.field:first-child:nth-last-child(3) ~ SPAN.field, 								
+	SPAN.field:first-child:nth-last-child(4),
+	SPAN.field:first-child:nth-last-child(4) ~ SPAN.field,									
+	SPAN.field:first-child:nth-last-child(5),
+	SPAN.field:first-child:nth-last-child(5) ~ SPAN.field,	
+	SPAN.field:first-child:nth-last-child(6),
+	SPAN.field:first-child:nth-last-child(6) ~ SPAN.field,	
+	SPAN.field:first-child:nth-last-child(7),
+	SPAN.field:first-child:nth-last-child(7) ~ SPAN.field, 								
+	SPAN.field:first-child:nth-last-child(8),
+	SPAN.field:first-child:nth-last-child(8) ~ SPAN.field,									
+	SPAN.field:first-child:nth-last-child(9),
+	SPAN.field:first-child:nth-last-child(9) ~ SPAN.field	{width:100%; padding-right:0; margin-bottom:$baseLineHeight;}
+
+    /* ---- k-button ---- */
+    SPAN.field.field--kendo-button .k-button                {right:2px;}
+
+    /* ---- k-widget ---- */
+    .field .k-widget                                        {}
+
+}
+
+/* ---- TABLET (600px - 960px) ---- */
+@media only screen and (min-width: $breakpoint-medium-small) and (max-width: $breakpoint-medium-large) {
+
+    /* ---- k-numberbox ---- */
+    SPAN.field.field--kendo-number-box .k-widget.k-numerictextbox   {width:48%;}
+
+}
+
+/* ---- TABLET & DESKTOP (600px +) ---- */
+@media only screen and (min-width: $breakpoint-medium-small) {
+	
+	/* ---- LABELS ---- */
+	LABEL 													{display:inline-block; width:30%; margin-right:10px; text-align:right; font-weight:normal;}
+    LABEL.label--small 					                    {width:30%; vertical-align:middle;}
+    LABEL.label--large				                        {width:auto; margin-right:15px; text-align:right;}
+    LABEL.label--left,                                       
+    LABEL.label--large.label--left                          {text-align:left;}
+    LABEL.label--auto                                       {width:auto;}
+    INPUT + LABEL 											{margin:0 10px;}
+    LABEL.label--right                                      {text-align:right!important;}
+
+
+    /* ---- CHECKBOX & RADIO LABELS (Following) ---- */
+	INPUT[type="radio"] + LABEL,
+	INPUT[type="checkbox"] + LABEL,
+	INPUT[type="radio"] + SPAN,
+	INPUT[type="checkbox"] + SPAN 							{width:auto; min-width:40px; text-align:left;}
+	
+	/* ---- INSERTED TEXT (SAVED FIELD) ---- */
+	.field INS												{display:inline-block; width:65%;}	
+	
+	/* ---- VALIDATION MESSAGE ---- */
+	.field .validation 										{left:14px; width:65%; margin-left:30%;}
+	
+	/* ---- BOX BASED INPUTS ---- */
+	INPUT[type="text"],
+	INPUT[type="password"],
+	INPUT[type="email"],
+	INPUT[type="url"],
+	INPUT[type="number"],
+	INPUT[type="time"],
+	INPUT[type="date"],
+	INPUT[type="datetime"],
+	INPUT[type="datetime-local"],
+	INPUT[type="week"],
+	INPUT[type="month"],
+	INPUT[type="search"],
+	INPUT[type="tel"],
+	.select-wrap,
+	TEXTAREA 												{display:inline-block; width:65%;}
+    
+    /* ---- INLINE FIELD INPUT WIDTHS ---- */
+	SPAN.field LABEL										{width:100%; text-align:left;}
+	SPAN.field INPUT[type="text"],
+	SPAN.field INPUT[type="password"],
+	SPAN.field INPUT[type="email"],
+	SPAN.field INPUT[type="url"],
+	SPAN.field INPUT[type="number"],
+	/*SPAN.field INPUT[type="time"],
+	SPAN.field INPUT[type="date"],
+	SPAN.field INPUT[type="datetime"],
+	SPAN.field INPUT[type="datetime-local"],
+	SPAN.field INPUT[type="week"],
+	SPAN.field INPUT[type="month"],*/
+	SPAN.field INPUT[type="search"],
+	SPAN.field INPUT[type="tel"],
+	SPAN.field .select-wrap,
+	SPAN.field TEXTAREA										{width:100%;}
+    /* ---- INLINE FIELD MODIFIERS ---- */
+    SPAN.field.field--right						            {text-align:right; padding-right:15px;}	
+    SPAN.field LABEL.label--inner 							{width:auto;}
+			
+
+	/* ---- INLINE FIELDS ---- */
+	/* Detects element count within container and resizes each element accordingly */
+	SPAN.field:first-child:nth-last-child(1),
+    SPAN.field:first-child:nth-last-child(1) ~ SPAN.field	{width:100%; max-width:370px;}
+	
+	SPAN.field:first-child:nth-last-child(2),
+	SPAN.field:first-child:nth-last-child(2) ~ SPAN.field	{width:50%;}
+		
+	SPAN.field:first-child:nth-last-child(3),
+	SPAN.field:first-child:nth-last-child(3) ~ SPAN.field   {width:33.33%;} 
+	SPAN.field:first-child:nth-last-child(6),
+	SPAN.field:first-child:nth-last-child(6) ~ SPAN.field   {width:33.33%;}
+	SPAN.field:first-child:nth-last-child(9),
+	SPAN.field:first-child:nth-last-child(9) ~ SPAN.field   {width:33.33%;}
+										
+	SPAN.field:first-child:nth-last-child(4),
+	SPAN.field:first-child:nth-last-child(4) ~ SPAN.field   {width:25%;}
+    SPAN.field:first-child:nth-last-child(7),
+	SPAN.field:first-child:nth-last-child(7) ~ SPAN.field	{width:25%;}
+    SPAN.field:first-child:nth-last-child(8),
+	SPAN.field:first-child:nth-last-child(8) ~ SPAN.field	{width:25%;} 
+									
+	SPAN.field:first-child:nth-last-child(5),
+	SPAN.field:first-child:nth-last-child(5) ~ SPAN.field	{width:20%;}
+	SPAN.field:first-child:nth-last-child(10),
+	SPAN.field:first-child:nth-last-child(10) ~ SPAN.field	{width:20%;}  
+    
+    /* ==== WIZARD SPECIFIC ==== */
+
+	/* ---- WIZARD LABELS ---- */
+	.wizard FIELDSET LABEL 									{width:50%;max-width: 250px;text-align: left;}
+    .wizard FIELDSET LABEL.label--small 					{width:30%;}
+    .wizard FIELDSET LABEL.label--large 					{width:auto;}
+    /* ---- WIZARD CHECKBOX & RADIO LABELS (Following) ---- */
+	INPUT[type="radio"] + LABEL,
+	INPUT[type="checkbox"] + LABEL,
+	INPUT[type="radio"] + SPAN,
+	INPUT[type="checkbox"] + SPAN 							{width:auto; min-width:40px;}        
+      
+	/* ---- WIZARD BOX BASED INPUTS ---- */
+	.wizard FIELDSET INPUT[type="text"],
+	.wizard FIELDSET INPUT[type="password"],
+	.wizard FIELDSET INPUT[type="email"],
+	.wizard FIELDSET INPUT[type="url"],
+	.wizard FIELDSET INPUT[type="number"],
+	.wizard FIELDSET INPUT[type="time"],
+	.wizard FIELDSET INPUT[type="date"],
+	.wizard FIELDSET INPUT[type="datetime"],
+	.wizard FIELDSET INPUT[type="datetime-local"],
+	.wizard FIELDSET INPUT[type="week"],
+	.wizard FIELDSET INPUT[type="month"],
+	.wizard FIELDSET INPUT[type="search"],
+	.wizard FIELDSET INPUT[type="tel"],
+	.wizard FIELDSET .select-wrap,
+	.wizard FIELDSET TEXTAREA 								{width:45%;} 
+
+
+}
+
+

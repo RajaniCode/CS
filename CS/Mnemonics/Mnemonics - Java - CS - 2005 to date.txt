@@ -1,0 +1,3062 @@
+// Mnemonics // Java // CS // 2005 to date
+
+// Override // Java // CS
+import java.lang.System;
+
+class Program {
+    public static void main(String[] args) {     
+	BaseClass bc = new BaseClass();                                                                                                                                                      
+        BaseClass bcr;                                                                             
+        DerivedClass dc = new DerivedClass();                                                                                                                        
+        bcr = dc;                                                                              
+                   
+	System.out.println(bc.instanceMethod()); // BaseClass
+	System.out.println(dc.instanceMethod()); // DerivedClass // if instanceMethod() not implemented in DerivedClass, BaseClass                                                                                                                                       
+        System.out.println(bcr.instanceMethod()); // DerivedClass // Differs from CS regardless of 'new' modifier as methods are virtual by default in Java // if instanceMethod() not implemented in DerivedClass, BaseClass
+        System.out.println(((BaseClass)dc).instanceMethod()); // DerivedClass // Differs from CS regardless of 'new' modifier as methods are virtual by default in Java // if instanceMethod() not implemented in DerivedClass, BaseClass
+     }
+}
+
+class BaseClass {
+    // hiding intended in CS // virtual by default in Java hence @Override  
+    public String instanceMethod() {   
+        return "instanceMethod() in BaseClass";
+    }
+}
+
+class DerivedClass extends BaseClass {
+    @Override // default
+    // hiding intended in CS // virtual by default in Java hence @Override
+    public String instanceMethod() {     
+        return "instanceMethod() in DerivedClass";
+    }
+}
+
+// Output
+/*
+instanceMethod() in BaseClass
+instanceMethod() in DerivedClass
+instanceMethod() in DerivedClass
+instanceMethod() in DerivedClass
+*/
+
+
+// Override // CS // Java
+using System;
+
+class Program 
+{
+    static void Main() 
+    {     
+	BaseClass bc = new BaseClass();                                                                                                                                                      
+        BaseClass bcr;                                                                             
+        DerivedClass dc = new DerivedClass();                                                                                                                        
+        bcr = dc;                                                                              
+                   
+	Console.WriteLine(bc.InstanceMethod()); // BaseClass
+	Console.WriteLine(dc.InstanceMethod()); // DerivedClass // if instanceMethod() not implemented in DerivedClass, BaseClass                                                                                                                                       
+        Console.WriteLine(bcr.InstanceMethod()); // DerivedClass // Differs from CS regardless of 'new' modifier as methods are virtual by default in Java // if instanceMethod() not implemented in DerivedClass, BaseClass
+        Console.WriteLine(((BaseClass)dc).InstanceMethod()); // DerivedClass // Differs from CS regardless of 'new' modifier as methods are virtual by default in Java // if instanceMethod() not implemented in DerivedClass, BaseClass
+     }
+}
+
+class BaseClass {
+    // hiding intended in CS // virtual by default in Java hence @Override 
+    public string InstanceMethod() 
+    {     
+        return "InstanceMethod() in BaseClass";
+    }
+}
+
+class DerivedClass : BaseClass 
+{
+    // hiding intended in CS // virtual by default in Java hence @Override 
+    // warning CS0108: 'DerivedClass.InstanceMethod()' hides inherited member 'BaseClass.InstanceMethod()'. Use the new keyword if hiding was intended.
+    public string InstanceMethod() 
+    {     
+        return "InstanceMethod() in DerivedClass";
+    }
+}
+
+// Output
+/*
+/Users/rajaniapple/Desktop/Mnemonics/Override/Program.cs(32,19): warning CS0108: 'DerivedClass.InstanceMethod()' hides inherited member 'BaseClass.InstanceMethod()'. Use the new keyword if hiding was intended. [/Users/rajaniapple/Desktop/Mnemonics/Override/Override.csproj]
+InstanceMethod() in BaseClass
+InstanceMethod() in DerivedClass
+InstanceMethod() in BaseClass
+InstanceMethod() in BaseClass
+*/
+
+
+// protected // Java // CS
+import java.lang.System;
+
+class Program {
+    public static void main(String[] args) {   
+        A a = new A();
+        B b = new B();
+        C c = new C();
+
+        a = b; // 
+        b = (B)a; // Exception b = (B)a; // When a = b is commented out
+        // b = a as B; // No as keyword in Java
+
+        B.methodB();
+        c.method();
+    }
+}
+
+class A {
+    // default virtual // default access in Java is within the same package unlike C# where default is private
+    void method() {
+        System.out.println("Virtual in A");
+    }
+
+    // protected
+    protected void methodA() {
+        System.out.println("method in A");
+    }
+}
+
+class B extends A { 
+    // Scenarios // sealed // public // int
+    @Override // default
+    void method() { 
+        System.out.println("Override in B");
+        // return 1;
+    }
+
+    // Scenario: static
+    public static void methodB() { 
+        A a = new A();
+        B b = new B();
+        C c = new C();
+
+        // methodA(); // Scenario: static
+        // this.methodA(); // Scenario: static
+        // base.methodA(); // Scenario: static
+        a.methodA(); // Also Note: // protected // Unlike CS where protected is accessible from derived class in same/different/friend assembly // Java protected is accessible from derived class in the same/different package
+        b.methodA();
+        c.methodA();
+        System.out.println("method B");
+    }
+}
+
+class C extends B {
+    @Override // default
+    // No internal access specifier in Java // default access in Java is within the same package unlike C# where default is private
+    void method() {
+        System.out.println("Override in C");
+    }
+}
+
+// Output
+/*
+method in A
+method in A
+method in A
+method B
+Override in C
+*/
+
+// protected // CS // Java
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        A a = new A();
+        B b = new B();
+        C c = new C();
+
+        // a = b; // 
+        // b = (B)a; // Exception b = (B)a; // When a = b is commented out
+        b = a as B; // No Exception // When a = b is commented out // warning CS8600: Converting null literal or possible null value to non-nullable type. // No as keyword in Java
+
+        B.MethodB();
+        c.Method();
+    }
+}
+
+class A
+{
+    // No internal access specifier in Java // default access in Java is within the same package unlike C# where default is private
+    internal virtual void Method()
+    {
+        Console.WriteLine("Virtual in A");
+    }
+
+    // protected
+    protected void MethodA()
+    {
+        Console.WriteLine("Method in A");
+    }
+}
+
+class B : A
+{ 
+    // No internal access specifier in Java // default access in Java is within the same package unlike C# where default is private
+    // Scenarios // sealed // public // int
+    internal override void Method()
+    {
+        Console.WriteLine("Override in B");
+        // return 1;
+    }
+
+    // Scenario: static
+    public static void MethodB()
+    { 
+        A a = new A();
+        B b = new B();
+        C c = new C();
+
+        // MethodA(); // Scenario: static
+        // this.MethodA(); // Scenario: static
+        // base.MethodA(); // Scenario: static
+        // a.MethodA(); // Note: // protected // Unlike Java where protected is accessible from derived class class in the same/different package // C# protected is accessible from derived class in same/different/friend assembly via derived class instance only
+        b.MethodA();
+        c.MethodA();
+        Console.WriteLine("Method B");
+    }
+}
+
+class C : B
+{
+    // No internal access specifier in Java // default access in Java is within the same package unlike C# where default is private
+    internal override void Method()
+    {
+        Console.WriteLine("Override in C");
+    }
+}
+
+// Output
+/*
+/Users/rajaniapple/Desktop/Mnemonics/Protected/Program.cs(14,13): warning CS8600: Converting null literal or possible null value to non-nullable type. [/Users/rajaniapple/Desktop/Mnemonics/Protected/Protected.csproj]
+Method in A
+Method in A
+Method B
+Override in C
+*/
+
+
+// Generics // Java // CS
+import java.lang.System;
+
+class Program {
+    public static void main(String[] args) {
+        Generics<String> genericText = new Generics<String>("Hello, World!");
+        String textGenerics = genericText.getObject();
+        System.out.println("Object: " + textGenerics);
+        genericText.showType();
+
+        Generics<Integer> genericNumber = new Generics<Integer>(1234567890);
+        int numberGenerics = genericNumber.getObject();
+        System.out.println("Object: " + numberGenerics);
+        genericNumber.showType();
+
+        NonGenerics nonGenericText = new NonGenerics("Hello, World!");
+        String textNonGenerics = (String)nonGenericText.getObject();
+        System.out.println("Object: " + textNonGenerics);
+        nonGenericText.showType();
+
+        NonGenerics nonGenericNumber = new NonGenerics(1234567890);
+        int numberNonGenerics = (int)nonGenericNumber.getObject();
+        System.out.println("Object: " + numberNonGenerics);
+        nonGenericNumber.showType();
+    }
+}
+
+class Generics<T> {
+    T obj;
+
+    public Generics(T obj) {
+        this.obj = obj;
+    }
+
+    public T getObject() {
+        return obj;
+    }
+
+    public void showType() {
+        System.out.println("Type getClass: " + obj.getClass());
+        System.out.println("Type getClass getName: " + obj.getClass().getName());
+
+        // System.out.println("Type class: " + Object.class); // Java only for built-in classes // Unlike CS typeof(T)
+	// System.out.println("Type class getName: " + Object.class.getName()); // Java only for built-in classes // Unlike CS typeof(T).Name
+
+    }
+}
+
+class NonGenerics {
+    Object obj;
+
+    public NonGenerics(Object obj) {
+        this.obj = obj;
+    }
+
+    public Object getObject() {
+        return obj;
+    }
+
+    public void showType() {
+        System.out.println("Type getClass: " + obj.getClass()); // CS // obj.GetType()
+	System.out.println("Type getClass getName: " + obj.getClass().getName()); // CS // obj.GetType().Name
+
+    }
+}
+
+// Output
+/*
+Object: Hello, World!
+Type getClass: class java.lang.String
+Type getClass getName: java.lang.String
+Object: 1234567890
+Type getClass: class java.lang.Integer
+Type getClass getName: java.lang.Integer
+Object: Hello, World!
+Type getClass: class java.lang.String
+Type getClass getName: java.lang.String
+Object: 1234567890
+Type getClass: class java.lang.Integer
+Type getClass getName: java.lang.Integer
+*/
+
+// Generics // CS // Java
+using System;
+
+class Program 
+{
+    static void Main() 
+    {
+        Generics<string> genericText = new Generics<string>("Hello, World!");
+        String textGenerics = genericText.getObject();
+        Console.WriteLine("Object: " + textGenerics);
+        genericText.showType();
+
+        Generics<int> genericNumber = new Generics<int>(1234567890);
+        int numberGenerics = genericNumber.getObject();
+        Console.WriteLine("Object: " + numberGenerics);
+        genericNumber.showType();
+
+        NonGenerics nonGenericText = new NonGenerics("Hello, World!");
+        String textNonGenerics = (String)nonGenericText.getObject();
+        Console.WriteLine("Object: " + textNonGenerics);
+        nonGenericText.showType();
+
+        NonGenerics nonGenericNumber = new NonGenerics(1234567890);
+        int numberNonGenerics = (int)nonGenericNumber.getObject();
+        Console.WriteLine("Object: " + numberNonGenerics);
+        nonGenericNumber.showType();
+    }
+}
+
+class Generics<T> 
+{
+    T obj;
+
+    public Generics(T obj) 
+    {
+        this.obj = obj;
+    }
+
+    public T getObject() 
+    {
+        return obj;
+    }
+
+    public void showType() 
+    {
+        Console.WriteLine("Type GetType: " + obj.GetType()); // Java // getClass()
+        Console.WriteLine("Type GetType Name: " + obj.GetType().Name); // Java // getClass().getName()
+        Console.WriteLine("Type typeof: " + typeof(T)); // Unlike C# // Java only for built-in classes // Object.class
+        Console.WriteLine("Type typeof Name: " + typeof(T).Name); // Unlike C# // Java only for built-in classes // Object.class.getName()
+    }
+}
+
+class NonGenerics 
+{
+    Object obj;
+
+    public NonGenerics(Object obj) 
+    {
+        this.obj = obj;
+    }
+
+    public Object getObject() 
+    {
+        return obj;
+    }
+
+    public void showType() 
+    {
+        Console.WriteLine("Type: " + obj.GetType()); // Java // getClass()
+	// Console.WriteLine("Type: " + obj.GetType().Name); // Java // getClass().getName()
+    }
+}
+
+// Output
+/*
+/Users/rajaniapple/Desktop/Mnemonics/Generics/Program.cs(46,46): warning CS8602: Dereference of a possibly null reference. [/Users/rajaniapple/Desktop/Mnemonics/Generics/Generics.csproj]
+Object: Hello, World!
+Type GetType: System.String
+Type GetType Name: String
+Type typeof: System.String
+Type typeof Name: String
+Object: 1234567890
+Type GetType: System.Int32
+Type GetType Name: Int32
+Type typeof: System.Int32
+Type typeof Name: Int32
+Object: Hello, World!
+Type: System.String
+Object: 1234567890
+Type: System.Int32
+*/
+
+
+// Localization // Java // CS
+
+import java.lang.System;
+import java.text.Collator;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
+import java.util.Currency;
+import java.util.Date; // Deprecated
+import java.util.Locale;
+
+class LocaleInterpreted {
+    public static void main(String[] args) {
+        Localization local = new Localization();
+        local.print();
+    }
+}
+
+class Localization {
+
+    private void localeSensitive(Locale local) {
+	System.out.println(local.toString());
+	// Achtung	
+	// toUpperCase() is equivalent to toUpperCase(Locale.getDefault()).
+	// This method is locale sensitive, and may produce unexpected results if used for strings that are intended to be interpreted locale independently
+        // For instance, "title".toUpperCase() in a Turkish locale returns "T\u0130TLE", where '\u0130' is the LATIN CAPITAL LETTER I WITH DOT ABOVE character
+        // To obtain correct results for locale insensitive strings, use toUpperCase(Locale.ROOT)
+        System.out.println("title".toUpperCase(local));
+
+	Date dt = new Date(); // Deprecated
+	System.out.println("Deprecated Date: " + dt);
+	DateFormat formatDate = DateFormat.getDateInstance(DateFormat.DEFAULT, local);
+        System.out.println("Deprecated Date DateFormat Locale: " + formatDate.format(dt));
+
+	NumberFormat formatNumber = NumberFormat.getInstance(local);
+        System.out.println(formatNumber.format(Integer.MIN_VALUE));
+        System.out.println(formatNumber.format(Integer.MAX_VALUE));
+
+	formatNumber = NumberFormat.getCompactNumberInstance(local, NumberFormat.Style.SHORT);
+	formatNumber.setMaximumFractionDigits(2);
+        System.out.println(formatNumber.format(Integer.MIN_VALUE));
+	formatNumber = NumberFormat.getCompactNumberInstance(local, NumberFormat.Style.LONG);
+	formatNumber.setMaximumFractionDigits(2);
+        System.out.println(formatNumber.format(Integer.MAX_VALUE));
+
+	Currency currencyInstance = Currency.getInstance(local);
+        System.out.println(currencyInstance.getSymbol());
+        System.out.println();
+
+        System.out.println("Please enter your Turkish ı input:"); // ı // Tıtle@Example.Com
+        String email = System.console().readLine();
+        System.out.printf("Email: %s", email);
+        System.out.println();
+
+        String existingEmail = "title@example.com";
+        System.out.printf("Existing Email: %s", existingEmail);
+        System.out.println();
+
+        Boolean compare = email.equalsIgnoreCase(existingEmail);
+        System.out.printf("String equalsIgnoreCase(): %b", compare);
+        System.out.println();
+
+	// Note that this method does not take locale into account
+        // Compares two strings lexicographically, ignoring case differences
+        int sign = email.compareToIgnoreCase(existingEmail);  // ı // Tıtle@Example.Com // t@example.com
+        System.out.printf("String compareToIgnoreCase(): %d", sign);
+        System.out.println();
+  
+        Collator collate = Collator.getInstance(local);
+        compare = collate.equals(email, existingEmail); // ı // tıtle@example.com
+        System.out.printf("collate.compare: %b", compare);
+        System.out.println();
+
+        System.out.println();
+    }
+
+    public void print() {
+	
+	System.out.println("Default");
+	System.out.println("LocalDate.now(): " + LocalDate.now());
+	System.out.println("LocalTime.now(): " + LocalTime.now());
+	System.out.println("ZoneId.systemDefault(): " + ZoneId.systemDefault());
+	// DateTimeFormatter formatterDateTime = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+	DateTimeFormatter formatterDateTime = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy, h:mm:ss.A a, z, O");
+	// DateTimeFormatter formatterDateTime = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL);
+
+	ZonedDateTime now = ZonedDateTime.now();
+	System.out.println("ZonedDateTime.now(): " + formatterDateTime.format(now));
+	System.out.println("ZonedDateTime.now().getOffset(): " + now.getOffset());
+
+	// Current date-time with specified time zone
+	ZonedDateTime dateTimeZonedEuropeIstanbul = now.withZoneSameInstant(ZoneId.of("Europe/Istanbul"));
+	System.out.println("Current Date Time with Specified Time Zone of Europe/Istanbul: " + formatterDateTime.format(dateTimeZonedEuropeIstanbul));
+
+	ZonedDateTime dateTimeZonedEuropeLondon = now.withZoneSameInstant(ZoneId.of("Europe/London"));
+	System.out.println("Current Date Time with Specified Time Zone of Europe/London: " + formatterDateTime.format(dateTimeZonedEuropeLondon));  
+
+	ZonedDateTime dateTimeZonedAsiaBaku = now.withZoneSameInstant(ZoneId.of("Asia/Baku"));
+	System.out.println("Current Date Time with Specified Time Zone of Asia/Baku: " + formatterDateTime.format(dateTimeZonedAsiaBaku));
+
+	ZonedDateTime dateTimeZonedAmericaLos_Angeles = now.withZoneSameInstant(ZoneId.of("America/Los_Angeles"));
+	System.out.println("Current Date Time with Specified Time Zone of America/Los_Angeles: " + formatterDateTime.format(dateTimeZonedAmericaLos_Angeles));  
+
+	// Locale and LocalDate are orthogonal unlike Locale and deprecated Date
+	System.out.println("Locale.getDefault(): " + Locale.getDefault());
+	Date dt = new Date(); // Deprecated
+	System.out.println("Deprecated Date: " + dt);
+
+	System.out.println("Locale.ROOT language, country, and variant are empty strings, and is language/country neutral locale for the locale sensitive operations.");
+
+	System.out.println();
+
+        Locale defaultLocale = Locale.getDefault();
+
+	// Turkish
+        Locale turkish = new Locale("tr", "TR");	
+        localeSensitive(turkish);
+
+        // Default locale
+        localeSensitive(defaultLocale);
+
+        // Azerbaijani
+	Locale azerbaijani = new Locale("az", "AZ");
+        localeSensitive(azerbaijani);
+
+        // US // "en", "US" // OR // UK // "en", "GB" 
+	Locale enU = new Locale("en", "GB");
+        localeSensitive(enU );
+    }
+}
+
+// Output
+/*
+Default
+LocalDate.now(): 2022-05-03
+LocalTime.now(): 00:35:59.682047
+ZoneId.systemDefault(): Asia/Kolkata
+ZonedDateTime.now(): Tuesday, May 03, 2022, 12:35:59.2159683 AM, IST, GMT+5:30
+ZonedDateTime.now().getOffset(): +05:30
+Current Date Time with Specified Time Zone of Europe/Istanbul: Monday, May 02, 2022, 10:05:59.79559683 PM, TRT, GMT+3
+Current Date Time with Specified Time Zone of Europe/London: Monday, May 02, 2022, 8:05:59.72359683 PM, BST, GMT+1
+Current Date Time with Specified Time Zone of Asia/Baku: Monday, May 02, 2022, 11:05:59.83159683 PM, AZT, GMT+4
+Current Date Time with Specified Time Zone of America/Los_Angeles: Monday, May 02, 2022, 12:05:59.43559683 PM, PDT, GMT-7
+Locale.getDefault(): en_US
+Deprecated Date: Tue May 03 00:35:59 IST 2022
+Locale.ROOT language, country, and variant are empty strings, and is language/country neutral locale for the locale sensitive operations.
+
+tr_TR
+TİTLE
+Deprecated Date: Tue May 03 00:35:59 IST 2022
+Deprecated Date DateFormat Locale: 3 May 2022
+-2.147.483.648
+2.147.483.647
+-2,15 Mr
+2,15 milyar
+TRY
+
+Please enter your Turkish ı input:
+tıtle@example.com
+Email: tıtle@example.com
+Existing Email: title@example.com
+String equalsIgnoreCase(): true
+String compareToIgnoreCase(): 0
+collate.compare: false
+
+en_US
+TITLE
+Deprecated Date: Tue May 03 00:36:02 IST 2022
+Deprecated Date DateFormat Locale: May 3, 2022
+-2,147,483,648
+2,147,483,647
+-2.15B
+2.15 billion
+$
+
+Please enter your Turkish ı input:
+tıtle@example.com
+Email: tıtle@example.com
+Existing Email: title@example.com
+String equalsIgnoreCase(): true
+String compareToIgnoreCase(): 0
+collate.compare: false
+
+az_AZ
+TİTLE
+Deprecated Date: Tue May 03 00:36:05 IST 2022
+Deprecated Date DateFormat Locale: 3 may 2022
+-2.147.483.648
+2.147.483.647
+-2,15 mlrd
+2,15 milyard
+AZN
+
+Please enter your Turkish ı input:
+tıtle@example.com
+Email: tıtle@example.com
+Existing Email: title@example.com
+String equalsIgnoreCase(): true
+String compareToIgnoreCase(): 0
+collate.compare: false
+
+en_GB
+TITLE
+Deprecated Date: Tue May 03 00:36:06 IST 2022
+Deprecated Date DateFormat Locale: 3 May 2022
+-2,147,483,648
+2,147,483,647
+-2.15B
+2.15 billion
+£
+
+Please enter your Turkish ı input:
+tıtle@example.com
+Email: tıtle@example.com
+Existing Email: title@example.com
+String equalsIgnoreCase(): true
+String compareToIgnoreCase(): 0
+collate.compare: false
+*/
+
+// Localization // CS // Java
+
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+
+class Program
+{
+    static void Main()
+    {
+        Localization local = new Localization();
+        local.Print();
+    }
+}
+
+class Localization
+{
+    private void CultureVariance(CultureInfo culture)
+    {
+        Thread.CurrentThread.CurrentCulture = culture;
+        Console.WriteLine(Thread.CurrentThread.CurrentCulture.Name);
+
+        // Achtung
+        // The canonical example is the Turkish-I problem
+        // The Turkish ("tr-TR") alphabet includes an "I with a dot" character "İ" (\u0130), which is the capital version of "i"
+        // Turkish also includes a lowercase "i without a dot" character, "ı" (\u0131), which capitalizes to "I"
+        // This behavior occurs in the Azerbaijani ("az") culture as well
+        // Capitalizing "i" or lowercasing "I" are not valid among all cultures
+        // The default overloads for string comparison routines will be subject to variance between cultures
+        // If the data to be compared is non-linguistic, using the default overloads can produce undesirable results
+        Console.WriteLine("title".ToUpper() == "t\u0131tle".ToUpper());
+        Console.WriteLine("t\u0131tle".ToUpper());
+
+        Console.WriteLine("title".ToUpper() == "tıtle".ToUpper());
+        Console.WriteLine("tıtle".ToUpper());
+	
+	/*
+        // Sort ONLY
+        string i = "title";
+        string iTurkish = "t\u0131tle";
+	Console.WriteLine($"string.Compare: {string.Compare(i, iTurkish)}");
+	Console.WriteLine($"string.Compare CultureInfo.CurrentCulture: {string.Compare(i, iTurkish, false, culture)}");
+	Console.WriteLine($"string.Compare StringComparison.Ordinal: {string.Compare(i, iTurkish, StringComparison.Ordinal)}");
+        Console.WriteLine($"string.Compare CultureInfo.CurrentCulture, CompareOptions.Ordinal: {string.Compare(i, iTurkish, culture, CompareOptions.Ordinal)}");
+	*/
+
+
+        // string email = "Tıtle@example.com"; // ı
+        // Console.WriteLine(email);
+        Console.WriteLine("Please enter your Turkish ı input:"); // ı // Tıtle@Example.Com
+        string email = Console.ReadLine();
+        Console.WriteLine($"Email: {email}");
+
+        string existingEmail = "title@example.com";
+        Console.WriteLine($"Existing Email: {existingEmail}"); ;
+
+        bool compare = email.Equals(existingEmail, StringComparison.OrdinalIgnoreCase);
+        Console.WriteLine($"string Equals StringComparison.OrdinalIgnoreCase: {compare}");
+
+	// Fine for EFCore
+	compare = email.Equals(existingEmail);
+        Console.WriteLine($"string Equals: {compare}");
+	
+
+	Console.WriteLine(DateTime.Now);
+	Console.WriteLine(DateTime.Now.ToString(culture));
+	// string format = "dddd, MMMM dd, yyyy, h:mm:ss.fff tt, K";
+        string format = "dddd, MMMM dd, yyyy, h:mm:ss.fff tt, zzz";
+	Console.WriteLine(DateTime.Now.ToString(format));
+        Console.WriteLine(DateTime.Now.ToString(format, culture));
+        DateTime dateTimeParseExact = DateTime.ParseExact(DateTime.Now.ToString(format, culture), format, culture);
+        Console.WriteLine(dateTimeParseExact);
+
+	int start = 0;	
+	Func<int, IEnumerable<string>> numbers = counter =>
+            from i in Enumerable.Range(start, counter)
+            where Enumerable.Range(1, 1).All(j => i >= start)
+            select i.ToString("C", CultureInfo.CurrentCulture.NumberFormat);
+	int count = 10;
+        numbers(count).ToList().ForEach(x => { Console.Write(x + " "); });
+	Console.WriteLine();
+	Console.WriteLine(string.Join(", ", numbers(count).ToArray()));
+
+	Console.WriteLine(int.MinValue.ToString("C", CultureInfo.CurrentCulture.NumberFormat));
+	Console.WriteLine(int.MaxValue.ToString("C", CultureInfo.CurrentCulture.NumberFormat));
+        Console.WriteLine();
+    }
+
+    public void Print()
+    {
+        Console.WriteLine("Default");
+        Console.WriteLine($"Thread.CurrentThread.CurrentCulture.Name: {Thread.CurrentThread.CurrentCulture.Name}");
+        Console.WriteLine($"DateTime.Now: {DateTime.Now}");
+	Console.WriteLine();
+
+        CultureInfo currentCulture = CultureInfo.CurrentCulture;
+
+        // Turkish
+        CultureInfo turkish = new CultureInfo("tr-TR");
+        CultureVariance(turkish);
+
+        // Current Culture        
+        CultureVariance(currentCulture);
+
+        // Azerbaijani
+        CultureInfo azerbaijani = new CultureInfo("az-Latn-AZ");
+        CultureVariance(azerbaijani);
+
+        // US "en-US" // OR // UK "en-GB"
+        CultureInfo enU = new CultureInfo("en-GB");
+        CultureVariance(enU);
+    }
+}
+
+// Output
+/*
+/Users/rajaniapple/Desktop/Mnemonics/Localization/Program.cs(53,24): warning CS8600: Converting null literal or possible null value to non-nullable type. [/Users/rajaniapple/Desktop/Mnemonics/Localization/Localization.csproj]
+/Users/rajaniapple/Desktop/Mnemonics/Localization/Program.cs(59,24): warning CS8602: Dereference of a possibly null reference. [/Users/rajaniapple/Desktop/Mnemonics/Localization/Localization.csproj]
+Default
+Thread.CurrentThread.CurrentCulture.Name: 
+DateTime.Now: 05/03/2022 00:46:06
+
+tr-TR
+False
+TITLE
+False
+TITLE
+Please enter your Turkish ı input:
+Tıtle@Example.Com
+Email: Tıtle@Example.Com
+Existing Email: title@example.com
+string Equals StringComparison.OrdinalIgnoreCase: False
+string Equals: False
+3.05.2022 00:46:09
+3.05.2022 00:46:09
+Salı, Mayıs 03, 2022, 12:46:09.973 ÖÖ, +05:30
+Salı, Mayıs 03, 2022, 12:46:09.981 ÖÖ, +05:30
+3.05.2022 00:46:09
+₺0,00 ₺1,00 ₺2,00 ₺3,00 ₺4,00 ₺5,00 ₺6,00 ₺7,00 ₺8,00 ₺9,00 
+₺0,00, ₺1,00, ₺2,00, ₺3,00, ₺4,00, ₺5,00, ₺6,00, ₺7,00, ₺8,00, ₺9,00
+-₺2.147.483.648,00
+₺2.147.483.647,00
+
+
+False
+TıTLE
+False
+TıTLE
+Please enter your Turkish ı input:
+Tıtle@Example.Com
+Email: Tıtle@Example.Com
+Existing Email: title@example.com
+string Equals StringComparison.OrdinalIgnoreCase: False
+string Equals: False
+05/03/2022 00:46:11
+05/03/2022 00:46:11
+Tuesday, May 03, 2022, 12:46:11.300 AM, +05:30
+Tuesday, May 03, 2022, 12:46:11.300 AM, +05:30
+05/03/2022 00:46:11
+¤0.00 ¤1.00 ¤2.00 ¤3.00 ¤4.00 ¤5.00 ¤6.00 ¤7.00 ¤8.00 ¤9.00 
+¤0.00, ¤1.00, ¤2.00, ¤3.00, ¤4.00, ¤5.00, ¤6.00, ¤7.00, ¤8.00, ¤9.00
+(¤2,147,483,648.00)
+¤2,147,483,647.00
+
+az-Latn-AZ
+False
+TITLE
+False
+TITLE
+Please enter your Turkish ı input:
+Tıtle@Example.Com
+Email: Tıtle@Example.Com
+Existing Email: title@example.com
+string Equals StringComparison.OrdinalIgnoreCase: False
+string Equals: False
+03.05.2022 00:46:12
+03.05.2022 00:46:12
+çərşənbə axşamı, may 03, 2022, 12:46:12.192 AM, +05:30
+çərşənbə axşamı, may 03, 2022, 12:46:12.192 AM, +05:30
+03.05.2022 00:46:12
+0,00 ₼ 1,00 ₼ 2,00 ₼ 3,00 ₼ 4,00 ₼ 5,00 ₼ 6,00 ₼ 7,00 ₼ 8,00 ₼ 9,00 ₼ 
+0,00 ₼, 1,00 ₼, 2,00 ₼, 3,00 ₼, 4,00 ₼, 5,00 ₼, 6,00 ₼, 7,00 ₼, 8,00 ₼, 9,00 ₼
+-2.147.483.648,00 ₼
+2.147.483.647,00 ₼
+
+en-GB
+True
+TITLE
+True
+TITLE
+Please enter your Turkish ı input:
+Tıtle@Example.Com
+Email: Tıtle@Example.Com
+Existing Email: title@example.com
+string Equals StringComparison.OrdinalIgnoreCase: False
+string Equals: False
+03/05/2022 00:46:13
+03/05/2022 00:46:13
+Tuesday, May 03, 2022, 12:46:13.139 am, +05:30
+Tuesday, May 03, 2022, 12:46:13.139 am, +05:30
+03/05/2022 00:46:13
+£0.00 £1.00 £2.00 £3.00 £4.00 £5.00 £6.00 £7.00 £8.00 £9.00 
+£0.00, £1.00, £2.00, £3.00, £4.00, £5.00, £6.00, £7.00, £8.00, £9.00
+-£2,147,483,648.00
+£2,147,483,647.00
+*/
+
+
+// Reflection // Java // CS
+import java.lang.reflect.Modifier;
+import java.lang.StringBuilder;
+
+class Program {   
+    void Print(Class type) {       
+        System.out.println("isArray(): " + type.isArray());
+        System.out.println("getName(): " + type.getName());
+        System.out.println("Modifier.isFinal(): " + Modifier.isFinal(type.getModifiers()));
+        System.out.println("getSuperclass().getName(): " + type.getSuperclass().getName());
+        System.out.println();
+    }
+
+    public static void main(String[] args) {        
+        Class type1 = StringBuilder.class;
+        Class type2 = String.class;
+        Class type3 = String[].class;
+        Class type4 = A.class;
+
+        try {  
+            Class clas = Class.forName("java.lang.StringBuilder");
+            Object o = clas.newInstance();
+            StringBuilder builder = (StringBuilder) o;
+            builder.append("Hello, World!");
+            String s = builder.toString();
+            System.out.println(s);
+            System.out.println();
+        } catch(ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch(InstantiationException e) {
+            e.printStackTrace();
+        } catch(IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        Program prgm = new Program();
+        prgm.Print(type1);
+        prgm.Print(type2);
+        prgm.Print(type3);
+        prgm.Print(type4);
+    }
+}
+
+final class A { }
+
+/*
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+
+class Program {
+  public static void main(String[] argv) {
+    Class cls = java.lang.String.class;
+    Method method = cls.getMethods()[0];
+    Field field = cls.getFields()[0];
+
+    System.out.println(isPublicStaticFinal(field));
+  }
+
+  public static boolean isPublicStaticFinal(Field field) {
+    int modifiers = field.getModifiers();
+    return (Modifier.isPublic(modifiers) && Modifier.isStatic(modifiers) && Modifier.isFinal(modifiers));
+  }
+}
+*/
+
+
+// Output
+/*
+Note: Program.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Hello, World!
+
+isArray(): false
+getName(): java.lang.StringBuilder
+Modifier.isFinal(): true
+getSuperclass().getName(): java.lang.AbstractStringBuilder
+
+isArray(): false
+getName(): java.lang.String
+Modifier.isFinal(): true
+getSuperclass().getName(): java.lang.Object
+
+isArray(): true
+getName(): [Ljava.lang.String;
+Modifier.isFinal(): true
+getSuperclass().getName(): java.lang.Object
+
+isArray(): false
+getName(): A
+Modifier.isFinal(): true
+getSuperclass().getName(): java.lang.Object
+*/
+
+// Reflection // CS // Java
+
+using System;
+using System.Reflection;
+
+class Reflect
+{
+    int x;
+    int y;
+   
+    public Reflect(int k, int l)
+    {
+        x = k;
+        y = l;
+    }
+
+    public int additionMethod()
+    {
+        return x + y;
+    }
+
+    public bool isBetweenMethod(int a)
+    {
+        if((x<a) && (a<y))
+            return true;
+        else
+            return false;
+    }
+
+    public void setMethod(int a, int b)
+    {
+        Console.Write("Inside setMethod(int a, int b): ");
+        x = a;
+        y = b;
+        printMethod();
+    }
+
+    public void setMethod(double a, double b)
+    {
+        Console.Write("Inside setMethod(double a, double b): ");
+        x = (int)a;
+        y = (int)b;
+        printMethod();
+    }
+
+    public void printMethod()
+    {
+        Console.WriteLine("x = {0}, y = {1}", x, y);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Reflect rflct = new Reflect(10, 20);
+
+        Type t = typeof(Reflect);
+
+        Console.WriteLine("Invoking methods in {0}",   t.Name);
+    
+        MethodInfo[] mo = t.GetMethods();
+
+        foreach(MethodInfo m in mo)
+        {
+            ParameterInfo[] po = m.GetParameters();
+            
+            if((m.Name.CompareTo("setMethod")==0) && (po[0].ParameterType==typeof(int))) // ParameterType due to overloading
+            {
+                object[] args = new object[2];
+                args[0] = 9;
+                args[1] = 18;
+                m.Invoke(rflct, args);
+            }
+
+            else if((m.Name.CompareTo("setMethod")==0) && (po[0].ParameterType==typeof(double))) // ParameterType due to overloading
+            {
+                object[] args = new object[2];
+                args[0] = 1.12D;
+                args[1] = 23.4D;
+                m.Invoke(rflct, args); // return type, void 
+            }
+
+            else if(m.Name.CompareTo("isBetweenMethod")==0)
+            {
+                object[] args = new object[1];
+                args[0] = 14;
+                if((bool)m.Invoke(rflct, args)) // return type, bool
+                    Console.WriteLine("14 number is between x and y");
+                else
+                    Console.WriteLine("14 number is not between x and y");  
+            }
+
+            else if(m.Name.CompareTo("additionMethod")==0)
+            {
+                Console.WriteLine("Addition = {0}", ((int) m.Invoke(rflct , null)));  // return type, int            
+            }
+
+            else if(m.Name.CompareTo("printMethod")==0)
+            {
+                m.Invoke(rflct, null); // return type, void              
+            }
+        }
+    }
+}
+
+// Output
+/*
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/Program.cs(88,20): warning CS8605: Unboxing a possibly null value. [/Users/rajaniapple/Desktop/Mnemonics/Reflection/Reflection.csproj]
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/Program.cs(96,54): warning CS8605: Unboxing a possibly null value. [/Users/rajaniapple/Desktop/Mnemonics/Reflection/Reflection.csproj]
+Invoking methods in Reflect
+Addition = 30
+14 number is between x and y
+Inside setMethod(int a, int b): x = 9, y = 18
+Inside setMethod(double a, double b): x = 1, y = 23
+x = 1, y = 23
+*/
+
+
+# Exception Handling
+/*
+// CS 7
+
+using System;
+using System.Threading.Tasks;
+
+// CS 7
+
+class ClientService
+{ 
+    IClientsRepository clientsRepository;
+    IClientsNotifications clientsNotifications;
+
+    /*
+    // Pre-CS 7 throw exception in constructor
+    // Typical validation in constructor
+    public ClientService(IClientsRepository clientsRepository, IClientsNotifications clientsNotifications)
+    {
+        if (clientsRepository == null)
+        {
+            throw new ArgumentNullException(nameof(clientsRepository));
+        }
+
+        if (clientsNotifications == null)
+        {
+            throw new ArgumentNullException(nameof(clientsNotifications));
+        }
+
+        this.clientsRepository = clientsRepository;
+        this.clientsNotifications = clientsNotifications;
+    }
+    */
+
+    // CS 7 throw exception in constructor
+    public ClientService(IClientsRepository clientsRepository, IClientsNotifications clientsNotifications)
+    {
+       this.clientsRepository = clientsRepository ?? throw new ArgumentNullException(nameof(clientsRepository));
+       this.clientsNotifications = clientsNotifications ?? throw new ArgumentNullException(nameof(clientsNotifications));
+    }
+
+    private string backingField;
+
+    // Pre-CS 7 // throw exception in property
+    public string PropertyPreCS7
+    {
+        set
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            backingField = value;
+        }
+    }
+
+    // CS 7 // throw exception in property
+    public string PropertyCS7
+    {
+        set
+        {
+            backingField = value ?? throw new ArgumentNullException();
+        }
+    }
+
+    // CS 7 // throw exception in property
+    public string PropertyCS7ExpressionBodied
+    {
+        set => backingField = value ?? throw new ArgumentNullException();
+    }
+
+    // CS 7 // throw exception in method
+    // caution 
+    public void NotifyClients(string message)
+    {
+        if (message == null)
+        {
+            throw new ArgumentNullException(nameof(message));
+        }
+        var clients = clientsRepository.GetClientsToNotify();
+        // some other long running operation, possibly with side effects
+
+        var n = new Notification();
+        n.Clients = clients;
+        n.Message = message;
+
+        // more code
+    }
+    // end up with
+    public void NotifyClients2(string message)
+    {
+        var clients = clientsRepository.GetClientsToNotify();
+        // some long running operation, possibly with side effects
+        var n = new Notification();
+        n.Clients = clients;
+        n.Message = message ?? throw new ArgumentNullException(nameof(message));
+
+        // more code
+    }
+    // which is probably not written
+    // Throw expressions, used with caution, can make your constructors and property setters  a lot terser yet still expressive
+
+    // CS 7 // throw exception in method
+    public void Method(Discard dis)
+    {
+        _ = dis ?? throw new ArgumentException("Parameter cannot be null", nameof(dis));
+    }
+}
+
+public class Discard { }
+
+interface IClientsNotifications { }
+
+interface IClientsRepository : IClientsNotifications { object GetClientsToNotify(); }
+
+class ClientsRepository : IClientsRepository { public object GetClientsToNotify() => new object(); }
+
+internal class Notification
+{
+    public Notification() { }
+
+    public object Clients { get; internal set; }
+    public string Message { get; internal set; }
+}
+
+
+sealed class Address { }
+
+sealed class Person
+{
+    public string Name { get; }
+
+    public Address HomeAddress { get; }
+
+    // CS 7 throw exception in constructor
+    public Person(string name, Address homeAddress)
+    {
+        Name = name ?? throw new ArgumentNullException(nameof(name));
+
+        HomeAddress = homeAddress ?? throw new ArgumentNullException(nameof(homeAddress));
+    }
+}
+
+public class PersonCS7ExpressionBodied
+{
+    // CS 7 throw exception in constructor
+    public PersonCS7ExpressionBodied(string name) => Name = name ?? throw new ArgumentNullException(nameof(name));
+
+    public string Name { get; }
+}
+
+sealed class Delivery
+{
+    public Person Recipient { get; }
+
+    public Address Address { get; }
+
+    // CS 8 // nullable reference types
+    // public Delivery(Person recipient) : this(recipient, recipient.HomeAddress!) { }
+
+    // CS 7 throw exception in constructor
+    public Delivery(Person recipient, Address address)
+    {
+        Recipient = recipient ?? throw new ArgumentNullException(nameof(recipient));
+
+        Address = address ?? throw new ArgumentNullException(nameof(address));
+    }
+
+}
+
+class Asynchronous
+{
+    // CS 7 // throw exception in async method
+    public async Task<int> HandleRequirementAsync(AuthorizationHandlerContext context, ResourceOperationRequirement requirement)
+    {
+        _ = context ?? throw new ArgumentNullException(nameof(context));
+
+        _ = requirement ?? throw new ArgumentNullException(nameof(requirement));
+
+        return await default(Task<int>);
+    }
+}
+
+class ResourceOperationRequirement { }
+
+class AuthorizationHandlerContext { }
+
+// CS 8 // throw // Switch expressions
+class Patterns
+{
+    // Pattern matching enhancements:
+    // Switch expressions
+    // If your application defined an RGBColor type that is constructed from the R, G and B components, you could convert a Rainbow value to its RGB values using the following method containing a switch expression:
+    private RGBColor FromRainbow(Rainbow colorBand) =>
+    colorBand switch
+    {
+        Rainbow.Red => new RGBColor(0xFF, 0x00, 0x00),
+        Rainbow.Orange => new RGBColor(0xFF, 0x7F, 0x00),
+        Rainbow.Yellow => new RGBColor(0xFF, 0xFF, 0x00),
+        Rainbow.Green => new RGBColor(0x00, 0xFF, 0x00),
+        Rainbow.Blue => new RGBColor(0x00, 0x00, 0xFF),
+        Rainbow.Indigo => new RGBColor(0x4B, 0x00, 0x82),
+        Rainbow.Violet => new RGBColor(0x94, 0x00, 0xD3),
+        _ => throw new ArgumentException(message: "invalid enum value", paramName: nameof(colorBand)),
+    };
+}
+
+enum Rainbow
+{
+    Red,
+    Orange,
+    Yellow,
+    Green,
+    Blue,
+    Indigo,
+    Violet
+}
+
+class RGBColor
+{
+    public int R;
+    public int G;
+    public int B;
+
+    public RGBColor(int R, int G, int B)
+    {
+        this.R = R;
+        this.G = G;
+        this.B = B;
+    }
+}
+*/
+
+/*
+Courtesies:
+OpenJDK Runtime Environment
+.NET Platform
+*/
+
+// +
+
+// Code
+/*
+1 Code Format - Tried Visual Studio Community Format Document Ctrl K, + Ctrl D?
+  • Separate file for each class, interface, record, struct, and enum other than partial classes and partial methods.
+  • Code documentation summary, param, returns, and description with period in sentence case.
+  • One space before and after colon while extending or implementing a type.
+  • One blank line between method definitions, property definitions, and blocks of code.
+  • Discard whitespace.
+  • Curly braces for single statement if and if else block.
+  • Self-documenting naming conventions for types, methods, variables (member or local), and follow consistent naming conventions across the application.
+  # Note: 
+    # .NET Compiler Platform (Roslyn) Analyzers - Code Analysis
+    • Identifiers should not contain underscores
+    # DotNet Analyzers - StyleCop Analyzers
+    • A violation of rule occurs when a field name begins with an underscore.
+    # DotNet Analyzers - StyleCop Analyzers
+    • A violation of rule occurs when a field name contains an underscore.
+  • Identifiers for namespaces, types, members, and parameters cannot differ only by case.
+  • Specify access modifiers for default explicitly, private for private members and internal for internal types.
+  • Document README to tell why the project is useful, what can be done with the project, and how the project can be used.
+  • Verify packages.config file for dependencies and resolve conflicts.
+  • Document unresolved references and remove those manually before managing packages using Package Manager.
+  • Use Templates for Emails.
+2 Configuration:
+  • Configure URL, Path, Directory File, Date Time Format, Host, Proxy Host, Port, Proxy Port, App Environment, Session Timeout, Authentication Timeout, App Secret
+  • Safe storage of App Secret in development
+    • Command-line argument
+    • Custom provider, installed or created
+    • Directory files
+    • In-memory object
+    • Key Vault
+3 Diagnostics - Logging and tracing for instrumenting code to create log files.
+4 Consider logging framework, built-in or third-party logging provider and use it in conjunction with Microsoft.Extensions.Logging ILogger interface for Dependency injection (DI).
+5 Remove unused using statements.
+6 Sort using statements in the following order: 
+  1 static built-in System namespaces
+  2 Built-in System namespaces
+  3 Microsoft namespaces
+  4 Third-party namespaces
+  5 Custom namespaces
+7 Reduce the visibility of types and type members whether they can be accessed within the assembly or from friend, satellite or other assemblies.
+8 DONOT declare read only mutable reference types : An externally visible type that contains an externally visible read-only field that is a mutable reference type may be a security vulnerability 
+9 A static class can be used as a convenient container for sets of methods that just operate on input parameters and do not have to get or set any internal instance fields.
+10 Use this keyword to qualify members hidden by similar names (member name similar to parameter name) in constructor.
+11 Use Description Attribute for enums.
+12 For Type Conversion from string use TryParse as Convert and Parse require Exception handling, Convert is more useful as it uses Parse internally.
+13 Class library for utility classes and constants.
+14 Class library Resources File for custom messages.
+15 Globalization - CultureInfo: String comparison may lead to unexpected results when comparisons are affected by culture-specific casing rules.
+16 Globalization - CultureInfo:  Conversion to string with number format for currency
+17 Globalization - CultureInfo - IFormatProvider: Standard date and time format strings.
+18 Make the right choice between DateTime.Now and DateTime.UtcNow, and DateTimeOffset.UtcNow.
+19 String check for string whitespace: string.IsNullOrWhiteSpace instead of string.IsNullOrEmpty
+20 string.IsNullOrWhiteSpace takes precedence over !string.IsNullOrWhiteSpace.
+21 Redundant string format for string Interpolation $.
+22 Verbatim string literal @ instead of regular string literal \\.
+23 Universal Naming Convention (UNC) path for server and file.
+24 HttpStatusCode enum
+25 throw new ArgumentNullException
+
+_ = arg ?? throw new ArgumentNullException(nameof(arg));
+
+26 throw new ArgumentNullException
+
+if (arg1 == null || arg2 == null)
+{
+    throw new ArgumentException("arg1 or arg2 is null");
+}
+
+27 Suppress unjustified warnings
+
+#pragma warning disable CA1305 // Specify IFormatProvider
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+#pragma warning restore CA1305 // Specify IFormatProvider
+
+28 Exceptions must be re-thrown from the point where the stack trace should begin, catch more specific exception and re-throw for preserving call stack, put catch blocks targeted to specific allowed exceptions before a general exception catch block
+
+# Instead of catching general exception viz. in Service
+
+catch (Exception e)
+{
+   
+}
+
+# Catch more specific allowed exceptions before a general exception catch block
+
+catch (MailKit.Net.Smtp.SmtpCommandException e)
+{
+    // Log exception
+    throw;
+}
+catch (MailKit.Net.Smtp.SmtpProtocolException e)
+{
+    // Log exception
+    throw;
+}
+catch (MailKit.Security.AuthenticationException e)
+{
+    // Log exception
+    throw;
+}
+catch (MailKit.Security.SslHandshakeException e)
+{
+    // Log exception
+    throw;
+}
+
+# Depending on whether to catch generic exception
+
+catch (Exception e)
+{
+    // Log exception
+    throw;
+}
+
+# Handle the exception re-thrown viz. in Controller
+
+try
+{
+    // Draft message and email
+    Service.Email(message);
+}
+catch (Exception e)
+{
+    // Log exception                       
+    return Problem("Email Failed."); 
+}
+
+29 DONOT throw System.Exception, System.SystemException, System.NullReferenceException, or System.IndexOutOfRangeException 
+30 DONOT create exceptions that can be thrown in debug mode but not release mode. To identify run-time errors during the development phase, use Debug Assert instead.
+31 Use ActionResult<T> instead of ActionResult, to return a type deriving from ActionResult or return a specific type.
+32 IActionResult return type is appropriate when multiple ActionResult return types are possible in an action.
+
+33 Inject 
+
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSetting
+
+34 Use C# latest features viz. init-only property
+35 Be careful not to accidentally change a type of an element of the iterable collection. For example, it is easy to switch from System.Linq.IQueryable to System.Collections.IEnumerable in a foreach statement, which changes the execution of a query.
+
+
+# Sample Code with Code Documentation # Tried and tested # Self-documenting code/variable names
+//-----------------------------------------------------------------------
+// <copyright file=" RandomPasswordGenerator.cs" company="Company Name">
+//     Copyright (c) Company Name. All rights reserved.
+// </copyright>
+// <author>Jane Doe</author>
+//-----------------------------------------------------------------------
+
+Or
+
+// Copyright (c) Company Name. All rights reserved.
+// Licensed under the IT License. See LICENSE in the project root for license information.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Utility
+{
+    /// <summary>
+    /// Helper utility for generating a random password.
+    /// </summary>
+    public static class RandomPasswordGenerator
+    {
+        /// <summary>
+        /// Generates a random password.
+        /// <returns>A random password.</returns>
+        public static string GenerateRandomPassword()
+        {
+            const int RequiredLength = 8;
+            const int RequiredUniqueCharacters = 4;
+            const bool RequireUppercase = true;
+            const bool RequireLowercase = true;
+            const bool RequireDigit = true;
+            const bool RequireNonAlphanumeric = true;
+
+            string upperCase = string.Join("", Enumerable.Range('A', 'Z' - 'A' + 1).Select(x => ((char)x).ToString()));
+            string lowerCase = string.Join("", Enumerable.Range('a', 'z' - 'a' + 1).Select(x => ((char)x).ToString()));
+            string digits = string.Join("", Enumerable.Range(0, 10).Select(x => x.ToString()));
+            string nonAlphanumeric = string.Join("", Enumerable.Range(32, 127).Where(x => x >= 32 && x <= 47 || x >= 58 && x <= 64 || x >= 91 && x <= 96 || x >= 123 && x <= 126).Select(x => ((char)x).ToString()));
+
+            var ascii = new string[]
+            {
+                upperCase,
+                lowerCase,
+                digits,
+                nonAlphanumeric
+            };
+
+            var randomNumber = new Random(Environment.TickCount);
+            var characters = new List<char>();
+
+            if (RequireUppercase)
+            {
+                characters.Insert(randomNumber.Next(0, characters.Count), ascii[0][randomNumber.Next(0, ascii[0].Length)]);
+            }
+
+            if (RequireLowercase)
+            {
+                characters.Insert(randomNumber.Next(0, characters.Count), ascii[1][randomNumber.Next(0, ascii[1].Length)]);
+            }
+
+            if (RequireDigit)
+            {
+                characters.Insert(randomNumber.Next(0, characters.Count), ascii[2][randomNumber.Next(0, ascii[2].Length)]);
+            }
+
+            if (RequireNonAlphanumeric)
+            {
+                characters.Insert(randomNumber.Next(0, characters.Count), ascii[3][randomNumber.Next(0, ascii[3].Length)]);
+            }
+
+            for (int index = characters.Count; index < RequiredLength || characters.Distinct().Count() < RequiredUniqueCharacters; index++)
+            {
+                string sequence = ascii[randomNumber.Next(0, ascii.Length)];
+                characters.Insert(randomNumber.Next(0, characters.Count), sequence[randomNumber.Next(0, sequence.Length)]);
+            }
+
+            return new string(characters.ToArray());
+        }
+    }
+}
+*/
+
+// ++
+/*
+Namespace (essentially class/struct) elements (class, interface, delegate, struct, enum) cannot be explicitly declared as private, protected, or protected internal
+
+REFERENCE TYPES:
+
+class:
+// (Can be sealed, Can be static, Can be abstract)
+// (Can inherit object, Can implement interface)
+// <can be generic>
+
+
+data members 
+1. consts
+
+2. static fields (including static volatile and static readonly) 
+
+3. instance fields (including instance volatile and instance readonly) 
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+
+
+function members:
+1. methods (instance/static) <can be generic>
+
+*ONLY instance methods can be [abstract ONLY in abstract class & MUST be implemented] & can be 'sealed' when overridden
+[* although not abstract in interface, instance methods in interface can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) abstract class]
+
+
+# ONLY instance methods can be [virtual in class/abstract class] & can be 'sealed' when overridden
+[# although not virtual in interface, instance methods in interface can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+
+2. construcutors (instance/static(which must be parameterless))
+
+
+3. destructors
+
+
+4. indexers (instance, can't return void) (indexers cannot be static as 'this' cannot be used with static) :
+
+* indexers (can only be instance) [can only be accessor based] can be [abstract ONLY in abstract class & MUST be implemented] & can be 'sealed' when overridden
+[* although not abstract in interface, indexers (can only be instance) [can only be accessor based] in interface can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) abstract class]
+
+
+# indexers (instance) [can only be accessor based] can be [virtual in class/abstract class] & can be 'sealed' when overridden
+[# although not virtual in interface, indexers (can only be instance) [can only be accessor based] in interface can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+
+can be overloaded
+
+
+need not require an underlying array
+
+
+can be read-only without set accessors
+
+
+can be multidimensional
+
+
+5. properties (instance/static, can't return void)
+
+* ONLY instance properties [can only be accessor based] can be [abstract ONLY in abstract class & MUST be implemented] & can be 'sealed' when overridden
+[* although not abstract in interface, instance properties [can only be accessor based] in interface can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) class/abstract class]
+
+
+# ONLY instance properties [can only be accessor based] can be [virtual in class/abstract class] & can be 'sealed' when overridden
+[# although not vitual in interface, instance properties [can only be accessor based] in interface can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+staic property can access [const as read-only static property] DIRECTLY  
+
+staic property can access ONLY [static fields] including [static volatile] AND [static readonly as read-only static property] DIRECTLY 
+
+staic property can access [instance fields] including [instance volatile] AND [instance readonly as read-only static property] 
+USING mc CREATED INSIDE class as: static MyClass mc = new MyClass(); 
+
+instance property can access [const as read-only instance property] DIRECTLY  
+
+instance property can access [static/instance fields] including [static/instance volatile] AND [static/instance readonly as read-only static property] DIRECTLY 
+
+static property [except read-only] can be assigned in static constructor 
+
+static property [except read-only] &
+**[EXCEPT that accessing instance field (including instance volatile) [throws System.NullReferenceException]] *{NOT IN struct}* 
+can be assigned in instance constructor 
+
+instance property [except read-only] can be assigned in static constructor 
+USING: mc CREATED INSIDE class as: static MyClass mc = new MyClass(); 
+[NOT USEFUL for instance property accessing instance fields (including instance volatile)]
+[NOT USEFUL if simultaneously assigned in instance constructor]
+
+instance property [except read-only] can be assigned in instance constructor
+
+
+cannot be passed as ref/out parameters to methods
+
+cannot be overloaded
+
+two (or more) different properties [even if one is static and the other is instance] can access the same variable although unusual
+
+get operation should be nonintrusive although not enforced by the compiler
+
+
+6. events (instance/static):
+
+* ONLY instance events [except accessor based] can be [abstract ONLY in abstract class & MUST be implemented] & can be 'sealed' when overridden
+[* although not abstract in interface, instance events [except accessor based] in interface can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) abstract class]
+
+
+# ONLY instance events [including accessor based] can be [virtual in class/abstract class] & can be 'sealed' when overridden
+[# although not virtual in interface, instance events [including accessor based] in interface can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+
+7. operators (static)
+
+
+
+[The members of a class are the members declared in the class and the members inherited from the base class (except for the class object, which has no base class). 
+The members inherited from the base class include the constants, fields, methods, properties, events, indexers, operators, 
+and types of the base class, but not the instance constructors, destructors, and static constructors of the base class. 
+Base class members are inherited without regard to their accessibility.]
+
+
+
+
+interface:
+// (CANNOT be sealed, CANNOT be static, CANNOT be abstract)
+// (CANNOT inherit object, Can inherit another interface)
+// <can be generic [and the implementing abstract class/class/struct MUST be generic EXCEPT when implementing built-in IComparable interface]>
+
+
+(no member can be static)
+(no member can have explicit access modifier)
+(member cannot be abstract, virtual (override, new and cannot use 'base'))
+
+[all the mebers must be implemented by class/abstract class/struct, no partial implementation]
+
+[although not abstract in interface, instance methods, indexers (only instance), instance properties, instance events [except accessor based] can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) abstract class]
+
+[although not virtual in interface, instance methods, indexers (only instance), instance properties, instance events can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+
+NO data members
+
+function members:
+
+NO constructors/destructors/operator methods
+
+1. instance methods (only stubs [return type, method name, parameter(if any)] with semicolon (essentially abstract)) 
+<can be generic in generic/non-generic interface>
+
+2. indexers (instance, can't return void)  (get; set; (without body))
+
+can be overloaded
+
+can be multidimensional
+
+3. instance properties (instance, can't return void)  (get; set; (without body))
+
+instance properties in interface, public implementation by class/struct:
+
+instance property can access [const as read-only instance property] DIRECTLY  
+
+instance property can access [static/instance fields] including [static/instance volatile] AND [static/instance readonly as read-only static property] DIRECTLY 
+
+instance property [except read-only] can be assigned in static constructor 
+USING: [mc/ms] CREATED INSIDE class/struct as: [static MyClass mc = new MyClass();]/[static MyStruct ms = new MyStruct()]
+[NOT USEFUL for instance property accessing instance fields (including instance volatile)]
+[NOT USEFUL if simultaneously assigned in instance constructor]
+
+instance property [except read-only] can be assigned in instance constructor
+
+two (or more) different properties [ONLY instance properties in interface] can access the same variable although unusual
+
+
+instance properties in interface, private and explicit implementation by class/struct:
+
+instance property can access [const as read-only instance property] DIRECTLY  
+
+instance property can access [static/instance fields] including [static/instance volatile] AND [static/instance readonly as read-only static property] DIRECTLY 
+
+instance property [except read-only] can be assigned in static constructor 
+USING: [mc/ms] CREATED INSIDE class/struct as: [static MyClass mc = new MyClass();]/[static MyStruct ms = new MyStruct();]
+**{AND USING: mi CREATED INSIDE static constructor as: MyInterface mi = (MyInterface)mc;}**
+[NOT USEFUL for instance property accessing instance fields (including instance volatile)]
+[NOT USEFUL if simultaneously assigned in instance constructor]
+
+instance property [except read-only] can be assigned in instance constructor
+*{AND USING: mi CREATED INSIDE static constructor as: MyInterface mi = this;}*
+
+two (or more) different properties [ONLY instance properties in interface] can access the same variable although unusual
+
+
+
+cannot be passed as ref/out parameters to methods
+
+cannot be overloaded
+
+get operation should be nonintrusive although not enforced by the compiler
+
+
+4. instance events (implementing class/struct must supply the event)
+
+Note:
+
+1. interface can inherit from another interface (BUT interface cannot be 'sealed')
+
+2. An interface can itself inherit from multiple and multilevel interfaces.
+
+3. You can create interface reference variable
+
+4. You can specify derived interface member with new if it hides one defined by base interface
+
+5. any number of classes/abstract classes/structs can implement an interface (along with their own)
+
+6. one class/abstract class/struct can implement any number of interfaces (in a comma-separated list (base class if present must come first))
+
+7. can create explicit interface (member) implementation, 
+which MUST BE CALLED THROUGH an interface reference (to the implementing class' object TYPECAST USING THE INTERFACE)
+or
+which MUST BE CALLED THROUGH an interface reference (to the implementing struct's object TYPECAST USING THE INTERFACE)
+
+8. cannot create partial implemetation of interface
+
+9. any non-abstract type inheriting the interface must implement all its members
+(abstract type inheriting the interface must either implement or map onto abstract)
+
+10. interface can do without its members
+
+
+Note:
+while declaring method(member) in interface:
+
+1. return type and signature must match the return type and signature of the implementing method(member)
+
+2. declared using only their return type and signature
+
+3. no explicit access specifier allowed 
+(implicitly public, so the implementing method must also be public except during private(default) and explicit implementation)
+
+[The members of an interface are the members declared in the interface and in all base interfaces of the interface 
+The members in class object are not, strictly speaking, members of any interface 
+However, the members in class object are available via member lookup in any interface type and the members inherited from the class object]
+
+
+
+
+
+array: (A namespace cannot contain array directly but class/struct(at namespace level) can contain array directly)
+[The members of an array are the members inherited from the class (But NOT EXTEND) System.Array]
+
+
+
+
+delegate:
+// (CANNOT be sealed, CANNOT be static, CANNOT be abstract)
+// (CANNOT inherit object, CANNOT implement interface)
+// <can be generic>
+
+
+[The members of a delegate are the members inherited from the class (But NOT EXTEND) System.Delegate]
+
+{delegate can be used inside abstract class/class/struct. Although not as a member, can have access the modifiers as that of a member}
+
+
+
+
+object: (should only be inherited and extended only to class)
+[The members of objec correspond directly to the members of the class types they alias
+The members of object are the members of the System.Object class]
+
+
+
+string: (A namespace cannot contain string directly but class/struct(at namespace level) can contain string directly)
+[The members of string correspond directly to the members of the class types they alias. 
+The members of string are the members of the (But NOT EXTEND) System.String class]
+
+
+
+
+VALUE TYPES:
+
+struct:
+// (CANNOT be sealed, CANNOT be static, CANNOT be abstract)
+// (CANNOT inherit object, Can implement interface)
+// <can be generic>
+
+
+(member cannot be abstract, virtual (override, new and cannot use 'base'), protected or protected internal)
+
+data members (fields):
+1. consts
+
+2. static fields (including static volatile and static readonly)
+
+3. instance fields (including instance volatile and instance readonly) 
+[cannot have instance field (including instance volatile and instance readonly) initializers in structs]
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+
+
+function members:
+
+1. methods (instance/static) <can be generic>
+
+2. construcutors (instance/static (which must be parameterless)) (BUT NOT EXPLICIT parameterless instance constructor, because it is automatically defined (implicit)) 
+(However can have EXPLICIT parameterless static constructor(But not parameterized static constructor))
+*Note: struct cannot be static
+
+[NO DESTRUCTORS]
+
+3. indexers (instance, can't return void) 
+[can be overloaded 
+can be multidimensional]
+
+4. properties (instance/static, can't return void) 
+
+staic property can access [const as read-only static property] DIRECTLY  
+
+staic property can access ONLY [static fields] including [static volatile] AND [static readonly as read-only static property] DIRECTLY 
+
+staic property can access [instance fields] including [instance volatile] AND [instance readonly as read-only static property] 
+USING ms CREATED INSIDE struct as: static MyStruct mc = new MyStruct(); 
+
+instance property can access [const as read-only instance property] DIRECTLY  
+
+instance property can access [static/instance fields] including [static/instance volatile] AND [static/instance readonly as read-only static property] DIRECTLY 
+
+static property [except read-only] can be assigned in static constructor 
+
+static property [except read-only] &
+**[INCLUDING that accessing instance field (including instance volatile)] *{NOT IN class}* 
+can be assigned in instance constructor 
+
+instance property [except read-only] can be assigned in static constructor 
+USING: ms CREATED INSIDE struct as: static MyStruct ms = new MyStruct(); 
+[NOT USEFUL for instance property accessing instance fields (including instance volatile)]
+[NOT USEFUL if simultaneously assigned in instance constructor]
+
+instance property [except read-only] can be assigned in instance constructor
+
+
+cannot be passed as ref/out parameters to methods
+
+cannot be overloaded
+
+two (or more) different properties [even if one is static and the other is instance] can access the same variable although unusual
+
+get operation should be nonintrusive although not enforced by the compiler
+
+
+5. events (instance/static)
+
+6. operators (static)
+
+Note:
+
+1. can inherit only object (NOT EXTEND object unlike abstract class/static class/class), cannot be inherited
+
+2. structure object can be created using new but not required
+(when new is used, the specified constructor is called, when new is not used, 
+the object is still created but not initialized, need to perform initialization manually )
+ 
+(class to struct:)
+3. cannot contain EXPLICIT parameterless instance constructors but can have EXPLICIT parameterless static constructors
+4. cannot have instance (including instance volatile and instance readonly) field initializers in structs
+5. Hence, when parameterized instance constructor is used in struct 
+instance fields (including instance volatile and instance readonly) must be fully assigned before control leaves
+parameterized instance constructor OR : this()
+    
+6. {event} in [struct]:
+add:
+1. assign the event handler method without parenthesis (using class for static and using object for instance) to the delegate instance
+2. add the assigned delegate instance to the event list
+remove:
+1. remove the assigned delegate instance 
+
+
+[The members of a struct are the members declared in the struct 
+and the members inherited from the structís direct base class System.ValueType and the indirect base class object.
+(But NOT EXTEND System.ValueType, object unlike class)
+ 
+The members of a simple type correspond directly to the members of the struct type aliased by the simple type.
+Example: The members of sbyte are the members of the (But NOT EXTEND) System.SByte struct.]
+
+
+
+
+enum:
+// (CANNOT be sealed, CANNOT be static, CANNOT be abstract)
+// (CANNOT inherit object, CANNOT implement interface)
+// <CANNOT be generic>
+
+
+CAN extend only sbyte, byte, short, ushort, int, uint, long, or ulong [integral types other than char]
+[The members of an enumeration are the constants declared in the enumeration 
+and the members inherited from the enumerationís direct base class System.Enum 
+and the indirect base classes System.ValueType 
+and object. (But CANNOT EXTEND System.Enum, System.ValueType, object)]
+
+{enum can be used inside abstract class/class/struct, in which case can have the access modifiers as that of a member}
+
+
+
+
+***************************************************************************************************************************************************
+
+
+
+
+// abstract class:
+// (CANNOT be sealed, CANNOT be static)
+// (can inherit object, can implement interface)
+// <can be generic>
+
+
+data members 
+1. consts
+
+2. static fields (including static volatile and static readonly) 
+
+3. instance fields (including instance volatile and instance readonly) 
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+
+
+// members of a class are also members of an abstract class
+
+// abstract class have const, readonly [which can be assigned ONLY in BaseClass constructor via DerivedClass constructor using base()] 
+
+// abstract class can have constructors(instance/static (which must be parameterless)) and destructor
+ 
+// abstract class constructors can be overloaded using derived class constructor [using base()]
+
+// method/indexer/properties/events[except accessor based] can be abstract and that too only in abstract class  
+
+// method/indexer/properties/events[including accessor based] can be virtual and can be in abstract class
+
+// abstract class can do without abstract members (method/indexer/properties/events[except accessor based])
+
+// abstract method has only stubs with semicolon, can have parameter, but no body 
+
+
+// abstract method must be implemented (overridden and can be 'sealed') in all the 1st level derived non-abstract classes
+// NOT A MUST in the 1st level derived abstract classes (if any)
+// BUT MUST in the 1st level derived abstract classes' next level derived non-abstract classes (if any)
+// IF the next level derived classes are abstract then MUST in the further next level derived non-abstract classes (if any) and so on
+
+
+// abstract method cannot be static, as static cannot be used with abstract, virtual or override
+
+// abstract class cannot be instantiated but you can have reference variable of abstract class
+
+// abstract class can have concrete methods (both instance and static)
+
+// abstract class can have virtual methods 
+
+// abstract class can inherit from abstract or non-abstract class (including multilevel & excluding multiple)
+
+// non-abstract class can be inherited from an abstract class (including multilevel & excluding multiple)
+
+
+// instance methods in abstract class Can be be invoked using 
+// 1. [BASE CLASS REFERENCE that refers DERIVED CLASS OBJECT]
+// 2. [DERIVED CLASS OBJECT] 
+
+// static methods in abstract class can access instance variables by
+// 1. USING BASE CLASS REFERENCE PASSED IN PARAMETER that allows [BASE CLASS REFERENCE that refers DERIVED CLASS OBJECT] PASSED IN ARGUMENT from Main()
+// 2. USING BASE CLASS REFERENCE PASSED IN PARAMETER that allows [DERIVED CLASS OBJECT] PASSED IN ARGUMENT from Main()
+
+
+
+// abstract, virtual CANNOT be private (default) in base class
+// and when overridden in derived class, the access modifier, return type and parameter(if any) should be same
+
+// abstract, virtual CAN be protected in base class BUT:
+// accessed ONLY INSIDE *derived class (or derived from it) 
+// accessed ONLY INSIDE *derived classes[including further derived] of the same/different assembly
+// [#especially for instance member] via a qualifier of type derived class [$via qualifier of further derived in further derived] 
+// [*derived class should NOT be thought of Main()'s class]
+// [Note: class should be public for accessing from derived class in different assembly]
+
+
+// #Note: to call virtualMethod() that is in abstract BaseClass
+// use 'base' inside an instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]  
+// or inside the overridden method of virtual (if overridden) or inside the overridden method of abstract (if any)
+// using dot and argument for the parameter(if any) 
+
+// *Note: 'base' cannot be used in a static method 
+
+// @Note: 'base' ONLY for new (instance method that is in BaseClass) AND virtual (method that is in BaseClass) 
+// BUT NOT for abstract method (method that is in BaseClass) 
+
+// $Note:  use BaseClass for new (static method that is in BaseClass) 
+// inside static or instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]
+// using dot and argument for the parameter (if any)
+
+
+
+
+// static class:
+// (CANNOT be sealed, CANNOT be abstract)
+// (can inherit object, CANNOT implement interface)
+// <can be generic>
+
+
+data members 
+1. consts
+
+2. static fields (including static volatile and static readonly) 
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [ONLY inside static method in static class] (ASSIGNMENT AT DECLARATION MUST)
+
+
+// static class can contain only consts, static variables, static methods, static properties, static events
+
+// static class can contain only static constructor
+
+// static class cannot contain destructor
+
+// static class cannot have protected or protected internal members but can be protected or protected internal in a class/struct(at namespace level)
+
+// static class cannot be derived 
+
+// static class can EXTEND (and inherit only static members) only from object
+
+// static class can use static object (built-in)
+*/
+
+// +++
+1. 
+// static members are associated with class
+
+
+
+
+2. 
+// instance members are associated with objects 
+
+
+
+
+3.
+/*
+
+class member accessibility:
+
+private(default): 
+1. accessible only in the class in which it is declared
+
+< 
+
+protected: 
+(private(default): 1) and
+2. accessible ONLY INSIDE *derived classes[including further derived] of the same/different/friend assembly
+[#especially for instance member] via a qualifier of type derived class [$via qualifier of further derived in further derived] 
+[Note: The class where it is protected should be public for accessing from derived class in different assembly]
+[But the class where it is protected can be internal for accessing from derived class in friend assembly]
+
+<
+
+internal:
+(internal: 1, 2) and
+3. accessible in all the classes/derived classes of the same assembly and friend assembly
+
+<
+
+protected internal:
+(protected internal: 1, 2, 3)
+[Note: The class where it is protected internal should be public for accessing from derived class in different assembly]
+[But the class where it is protected internal can be internal for accessing from derived class in friend assembly]
+
+
+
+
+public:
+accessible in all the classes/derived classes, of the same/different/friend assembly
+[Note: The class where it is public should be public for accessing from different assembly]
+[But the class where it is public can be internal for accessing from friend assembly]
+
+*/
+
+
+
+
+4.
+/*
+
+struct member accessibility:
+
+private(default): 
+1. accessed only in the struct in which it is declared
+
+<
+
+internal:
+(internal: 1) and
+2. accessed in all the structs of the same assembly
+
+<
+
+public:
+accessed in all the structs of the same/different assembly
+
+*/
+
+
+
+
+
+5. 
+// 'new' must precede the member type and name // new public int number // public new int number;
+
+// 'new' must precede the method return type // new public void myMethod() // public new void myMethod()
+
+
+
+
+6. 
+// 'static' must precede the member type and name eg. public static int number;
+
+
+
+
+7. 
+// 'this' is used for uncoverint instance variables; 
+
+// Also: 'this' is used 'for one constructor to invoke another; for constructor with implied default arguments, which are not explicitly specified
+
+// Also: 'this' is used for indexers
+
+// this() can be used in struct constructor overloading
+
+// static cannot be used with 'this'
+
+
+// *Note: 'this' cannot be used in a static method 
+
+
+
+
+
+8. 
+// static cannot be used with override, virtual, or abstract (but static can be used with new)
+
+
+
+
+9.
+// #Note: to call virtualMethod() that is in abstract BaseClass
+// use "base.virtualMethod()" inside an instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]  
+// or use "base.virtualMethod()" inside the overridden method of virtual (if overridden) 
+// or use "base.virtualMethod()" inside the overridden method of abstract (if any)
+// using dot and argument for the parameter(if any) 
+
+// *Note: 'base' cannot be used in a static method 
+
+// @Note: 'base' ONLY for new (instance method that is in BaseClass) AND virtual (method that is in BaseClass) 
+// BUT NOT for abstract method (method that is in BaseClass) 
+
+// $Note:  use BaseClass for new (static method that is in BaseClass) 
+// inside static or instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]
+// using dot and argument for the parameter (if any)
+
+
+
+
+10.
+// 'base' can ONLY be used with new (non-static and non-private) and that too in inheritance
+
+// abstract, virtual CANNOT be private (default) in base class
+// and when overridden in derived class, the access modifier, return type and parameter(if any) should be same
+
+// abstract, virtual CAN be protected in base class BUT:
+// accessed ONLY INSIDE *derived class (or derived from it) 
+// accessed ONLY INSIDE *derived classes[including further derived] of the same/different assembly
+// [#especially for instance member] via a qualifier of type derived class [$via qualifier of further derived in further derived] 
+// [*derived class should NOT be thought of Main()'s class]
+// [Note: class should be public for accessing from derived class in different assembly]
+
+
+
+
+11.
+abstract - override:
+
+access modifiers should be same
+[Note: NO member modifier 'static']
+[override cannot be marked as new or virtual or abstract]
+return types should be same
+parameters should be same
+
+Note:
+'base' CANNOT be used with 'abstract' abstractMethod()
+'sealed' can be used only with override, talking about methods
+'sealed' means cannot be further overridden in a further derived class
+[But abstractMethod() can be used with 'new' in a derived class or a further derived class 
+and that means "hiding" 
+and that means access modifier, member modifier['static'] and retun type can be changed
+(and parameter can be changed which means it an entirely different method and does not mean "hiding")]
+
+
+virtual - override:
+access modifiers should be same
+[Note: No member modifier 'static']
+[override cannot be marked as new or virtual or abstract]
+return types should be same
+parameters should be same
+
+Note:
+'base.' CAN be used with 'virtual' virtualMethod()
+'sealed' can be used only with override, talking about methods
+'sealed' means cannot be further overridden in a further derived class
+[But abstractMethod() can be used with 'new' in a derived class or a further derived class 
+and that means "hiding" 
+and that means access modifier, member modifier['static'] and retun type can be changed
+(and parameter can be changed which means it an entirely different method and does not mean "hiding")]
+
+
+new (used when hiding was intended) in inheritance:
+access modifiers, [ALSO member modifier 'static'], return types CAN BE DIFFERENT
+BUT PARAMETERS SHOULD BE SAME
+[In case parameters are different, it will be an entirely different method 
+and hiding WON'T be intended]
+
+
+
+
+
+12. 
+// Dynamic Polymorphism // No wonder static methods are NOT allowed // Runtime Polymorphism // Method Overriding  
+// Method Overriding: Capability of a DERIVED CLASS to override the characteristics of the parent class. 
+// Provides different implementation of an inherited member (Method) in the DERIVED CLASS
+// Always create reference variable
+access specifiers, [NO member modifier 'static'], return types, parameters SHOULD BE SAME
+
+
+
+
+13. 
+// Static Polymorphism // static methods are ALLOWED// Compile time Polymorphism // Method Overloading
+// Method Overloading: Two or more methods within the same class can share the same name, as long as their parameter delarations are different 
+// Within the same class and Nothing to do with inheritance unlike Overriding
+access modifiers, [ALSO member modifier 'static'], return types CAN BE DIFFERENT
+PARAMETER number, type and order SHOULD BE DIFFERENT
+
+
+
+
+14.
+// instance [methods/indexers/properties/events]  (only when override) can be sealed, 
+// so as to prevent further overridding (further different implementation) in a further derived class
+// [BUT can be called using 'base' in an instance method in a further derived class, and that instance method can be called from Main() method] 
+
+
+// You can call base class instance fields (including instance volatile and instance readonly) and instance [methods/indexers/properties/events] 
+// in a derived class instance method using 'base', and then call the instance method from Main()
+
+
+// [Only assignment, call, increment, decrement, and new object expressions can be used as a statement]
+
+
+
+
+15.
+// Constructor Overloading:
+// ?Note: parameterless constructor [NEEDED if there is constructor overloading AND parameterless constructor call] 
+
+// Method Overloading:
+// ?Note: parameterless Method [NEEDED if there is method overloading AND parameterless method call] 
+
+
+
+
+16.
+// 1. base() corresponds parameterless BaseClass constructor
+
+// 2. explicit base() NEED NOT have the corresponding explicit parameterless BaseClass constructor
+
+// 3. 'parameterized base(<parameter*>)' MUST have the corresponding parameterized BaseClass constructor
+
+// 4. Hence 'parameterized base(<parameter*>)' assigns BaseClass variables [even private (default)]
+
+
+// 5. parameterless constructor [NEEDED if there is constructor overloading AND parameterless constructor call] 
+// 6. parameterless constructor [NEEDED if there is BaseClass constructor overloading AND DerivedClass constructor overloading] BUT
+//    7. parameterless constructor [NOT NEEDED ONLY if 'parameterized base(<parameter*>)' extends 
+//       EVERY DerivedClass parameterized constructor AND if there is NO explicit DerivedClass parameterless constructor] THEREFORE
+//       8. parameterless constructor [NEEDED if 'parameterized base(<parameter*>)' extends 
+//          EVERY DerivedClass parameterized constructor BUT if there is EXPLICIT DerivedClass parameterless constructor]
+//       9. parameterless constructor [NEEDED if 'parameterless base()' OR NOTHING extends EVERY DerivedClass parameterized constructor 
+//          EVEN if there is NO EXPLICIT DerivedClass parameterless constructor]
+// [EXPLICIT DerivedClass parameterless constructor may be prompted by DerivedClass constructor overloading AND 
+//  DerivedClass parameterless constructor call, OR
+//  if there is FurtherDerivedClass AND DerivedClass parameterless constructor call and so on] 
+// 10. Note: parameter* is any variable(s) from the extended DerivedClass parameterized constructor's signature
+
+
+// [INHERITANCE: CANNOT Call PROTECTED INSTANCE FROM DERIVED via a qualifier of type 'BaseClass']
+
+
+
+
+17. 
+/*
+
+static variable can be used in instance method*
+1. and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+2. and assigned value from OUTSIDE the method USING CLASS in Main() in the same, or different class in which case it should be public
+3. and assigned value from OUTSIDE the method USING METHOD CALL in Main() in the same or different class
+4. and assigned value INSIDE THE METHOD DIRECTLY
+
+*static variable can be used in instance method [in different class] ONLY by USING CLASS and should be PUBLIC
+
+
+
+static variable can be used in static method*
+1. and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+2. and assigned value from OUTSIDE the method USING CLASS in Main() in the same, or different class in which case it should be public
+3. and assigned value from OUTSIDE the method USING METHOD CALL in Main() in the same or different class
+4. and assigned value INSIDE THE METHOD DIRECTLY
+
+*static variable can be used in static method [in different class] ONLY by USING CLASS and should be PUBLIC
+
+
+
+instance variable can be used in instance method*
+1. and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+2. and assigned value from OUTSIDE the method USING INSTANCE in Main() in the same, or different class in which case it should be public
+3. and assigned value from OUTSIDE the method USING METHOD CALL in Main() in the same or different class
+4. and assigned value INSIDE THE METHOD DIRECT
+
+*instance variable can be used in instance method [in different class] 
+ONLY by USING REFERENCE PASSED IN PARAMETER that allows OBJECT PASSED IN ARGUMENT from Main() and should be PUBLIC
+[Note: also in same class as one of the ways]
+
+
+instance variable can be used in static method* 
+ONLY by USING REFERENCE PASSED IN PARAMETER that allows OBJECT PASSED IN ARGUMENT from Main()
+1. and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+2. and assigned value from OUTSIDE the method USING INSTANCE in Main() in the same, or different class in which case it should be public
+3. and assigned value from OUTSIDE the method USING METHOD CALL in Main() in the same or different class
+4. and assigned value INSIDE THE METHOD DIRECT
+
+*instance variable can be used in static method [in different class]
+ONLY by USING REFERENCE PASSED IN PARAMETER that allows OBJECT PASSED IN ARGUMENT from Main() and should be PUBLIC
+
+
+[INHERITANCE: CANNOT Call PROTECTED INSTANCE FROM DERIVED via a qualifier of type 'BaseClass']
+
+
+// *Note:
+// In case static variable is used either in instance method or static method, 
+// and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+// UNLIKE THE CASE OF INSTANCE VARIABLE, the STATIC VARIABLE should be called/used immediately after assigned using CONSTRUCTOR CALL, 
+// otherwise if called or used after subsequent assignment using CONSTRUCTOR CALL(S)
+// ONLY THE LAST ASSIGNMENT VALUE will be its value 
+    
+// [ALSO IN CASE OF assignments USING CLASS, the STATIC VARIABLE should be called/used immediately after assigned using CLASS, 
+// otherwise if called or used after subsequent assignment using CLASS(ES)
+// ONLY THE LAST ASSIGNMENT VALUE will be its value 
+
+// [BUT NOT IN CASE OF assignments USING METHOD CALLS in Main() in the same or different class]
+
+
+*/
+
+
+
+
+18.
+// Even though in the same class, instance member cannot be used directly in Main() but using instance 
+
+
+
+
+19. 
+// member names cannot be the same as their enclosing type
+
+// A class [including static and abstract](at namespace level) containing class(es)[including static and abstract]/struct(s) can only be 1. public 2. internal 3. default
+
+// A struct (at namespace level) containing class(es)[including static and abstract]/struct(s) can only be 1. public 2. internal 3. default
+
+
+
+
+
+20.
+
+// (Class/Struct (outer) in namespace) cannot be declared as private, protected, or protected internal
+
+// member names cannot be the same as their enclosing type
+
+// A namespace member contained in a class [including static and abstract] (at namespace level) can be public, private (default), protected, internal, protected internal
+// (accessibility as same as class member) 
+
+// A namespace member contained in a struct (at namespace level) can be public, private (default), internal 
+// (accessibility as same as struct member) 
+
+
+
+
+21.
+// member names cannot be the same as their enclosing type
+
+// A namespace member contained in a class [including static and abstract] (at namespace level) 
+// is accessed using the class [including static and abstract] (at namespace level) that contains it 
+
+// A namespace member contained in a struct (at namespace level) is accessed using the struct(at namespace level) that contains it 
+
+
+
+
+22.
+// A static constructor (which must be parameterless) can be in class/struct
+// A static constructor has no access modifier 
+// A static constructor must be parameterless therefore cannot be overloaded
+// A static constructor initializes static variables (attributes of a class rather than an instance)
+// A static constructor is called automatically before instance constructor
+// A static constructor is executed before instance constructor
+// A staic constructor can also access instance variable (BUT NOT readonly) using: static MyClass mc = new MyClass(); 
+
+
+
+
+23.
+/* 
+
+A base class cannot be less accessible than the derived class:
+
+class A {}
+public class B : A { } // Not possible because base class is less accessible than the derived class
+
+internal class A {}
+internal class B { public class C : A {} } // Possible as long as B is as accessible as A
+
+*/
+
+
+
+
+24. 
+/*
+
+If a method's return type is a class, then return type (class) cannot be less accessible than the method 
+
+class A {}
+class B 
+{  A H() // public not possible, because return type (class) cannot be less accessible than the method 
+   {
+      
+   }
+}
+
+*/
+
+
+
+
+25.
+/* 
+
+A class/struct can be MORE or LESS accessible than the interface implemented by it:
+
+interface I {}
+public class C : I {}
+
+or
+
+public interface I {}
+class C : I {}
+
+*/
+
+
+
+26.
+/*
+
+// accessors' access modifier must be more restrictive than the [property or indexer] 
+
+
+public string PetName
+{
+    get { return carName.ToUpperInvariant(); }
+    internal  set { carName = value; }
+}
+
+// The default access modifier for accessors is the  access modifier of the [property or indexer] and NOT private
+
+
+// Cannot specify accessibility modifiers for both accessors of the [property or indexer] 
+[can only specify either for get or for set accessor]
+
+
+//Read-Only Standard property
+public string PetName
+{
+    get { return carName.ToUpperInvariant(); }
+    private set { carName = value; }
+}
+
+//Write-Only Standard property
+public string PetName
+{
+    private get { return carName.ToUpperInvariant(); }
+    set { carName = value; }
+}
+
+*/
+
+
+
+
+27.
+// volatile (nullable type CANNOT be volatile):
+
+// The volatile keyword indicates that a field might be modified by multiple concurrently executing threads
+// Fields that are declared volatile are not subject to compiler optimizations that assume access by a single thread
+// This ensures that the most up-to-date value is present in the field at all times
+
+// volatile modifier is usually used for a field (static/instance) (BUT NOT const/readonly) that is accessed by multiple threads 
+// without using the lock statement to serialize access.
+
+// The volatile keyword can be applied to these types:
+
+// 1. Reference types viz., array, string etc
+
+// 2. Pointer types (in an unsafe context)
+
+// 3. Built-in structs such as sbyte, byte, short, ushort, int, uint, char, float, and bool [cannot be long, ulong, double, decimal]
+
+// 4. An enum type with an integral base type
+
+// 5. Generic type parameters known to be reference types
+
+// 6. IntPtr and UIntPtr
+
+// 7. The type in question must be the field of a class or struct. Local variables cannot be declared volatile
+
+
+// readonly (nullable type can be readonly):
+// 1. can be static or instance 
+// 2. static readonly can be Initialized ONLY in declaration OR in its class'[BUT NOT derived] static constructor(which cannot be overloaded)
+// 3. instance readonly can be Initialized ONLY in declaration OR in its class'[BUT NOT derived] instance constructor(including overloading) 
+// 4. static readonly is accessed with its class, like static member (in instance/static method) 
+// 5. instance readonly is accessed with instance reference, like instance member (in instance/static method) 
+// 6. Assignment not a MUST, but warning will occur if not assigned
+// 7. Local variables cannot be declared readonly
+
+
+// const (nullable type CANNOT be const): 
+// 1. Assigned ONLY AND 2. MUST in declaration 
+// 3. Accessed with class like static member (in instance/static method)
+// 4. const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+// 5.  A const field of a reference type other than string can only be initialized with null viz., const MyClass _myClass = null;
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+
+
+
+
+28.
+ 
+/* 
+
+A statement such as: array[i]; is not possible; But x = array[i]; is possible in a for loop with i iterations with x and array being same types and array[i] already assigned vaules
+int x; // 
+int i;
+int[] array = new int[10];
+
+for(i=0; i < 10; i++)
+    array[i] += i; // Check for array[i] = i;
+
+for(i=0; i < 10; i++)
+{
+    x = array[i];
+    Console.WriteLine("x = " + x);
+}
+// Console.WriteLine("x = " + x); // x should be assigned such as int x = 0;
+
+*/
+
+// Also: number[i] = i;  is possible in a for loop with i iterations 
+// Also: temp += a[i]; temp being string (character array), a[i] being character array ('a' being string)   
+// Also: temp += parts[i]; temp and parts being string arrays 
+
+
+
+
+29. 
+// || and && Short-Circuit Logical Operators evaluate the second operand only when necessary, otherwise as same as normal versions : | and &
+
+
+
+
+30. 
+// Console.Write() is INVALID
+// Console.Write("print string") Returns cursor on the same line
+// Console.Write(" ") Returns cursor on the same line with one space (" " can be appended with string and can be more than once)
+// Console.Write("\n") Returns cursor on the next line ("\n" can be appended with string and can be more than once)
+
+// Console.WriteLine() Returns cursor on the next line
+// Console.WriteLine("\n") Returns cursor on the line next to the next line ("\n" can be appended with string and can be more than once)
+
+/* 
+
+Note: 
+If Console.WriteLine()  or Console.Write("print string")  is preceded by Console.Write(" ")
+Console.WriteLine()  or Console.Write("print string") cursor starts from where Console.Write(" ") returns the cursor that is on the previous line
+As a result in this case, Console.WriteLine(); will not create a line of space
+so only Console.WriteLine("\n") Console.Write("\n\n") create a line of space
+
+*/
+
+
+
+
+31. 
+// "", null, string.Empty, String.Empty for string
+// ' ' means one space and only for char
+// '' is INVALID
+
+
+
+
+32.
+/*
+
+{event} in [struct]:
+
+add:
+1. assign the event handler method without parenthesis (using class for static and using object for instance) to the delegate instance
+2. add the assigned delegate instance to the event list
+
+remove:
+1. remove the assigned delegate instance 
+
+*/  
+
+
+
+
+33.
+/*
+
+A private and explicit [interface] implementation of an {event} (by class/struct) must use property syntax
+
+For a private and explicit [interface] implementation of an {event} (by struct) must use property syntax:
+
+use: delegate array
+
+or
+
+use: OnEvent() in [interface]
+
+*/
+
+
+
+
+34.
+// {}; for anonymous method, do while, while(not complusory), array assignment
+
+
+
+
+35. 
+/*
+
+While using access modifiers with (property / indexer) accessors:
+accessors' access modifier must be more restrictive (less accessible) than the property or the indexer
+
+*/
+
+
+
+
+36.
+/*
+
+[interface] {property or indexer} must have at least one accessor 
+[interface] {property or indexer} must have either get/set whichever is public
+
+*/
+
+
+
+
+37.
+/*
+
+class to struct:
+1. cannot have instance field initializers
+2. cannot contain EXPLICIT parameterless instance constructors but can have EXPLICIT parameterless static constructors
+3. must be fully assigned before control leaves the constructor OR use this()
+4. {event} in [struct]:
+add:
+1. assign the event handler method without parenthesis (using class for static and using object for instance) to the delegate instance
+2. add the assigned delegate instance to the event list
+remove:
+1. remove the assigned delegate instance
+
+*/
+
+
+
+
+38.
+// enum // named constants can only be alphanumeric (should start with alphabet), should be unique and should not be in quotation
+
+
+
+
+39. 
+// 'this' is the argument for the corresponding object reference parameter
+
+// method without parenthesis is the argument for the corresponding delegate reference parameter
+
+
+
+
+40.
+// Inside Console.WriteLine()/Console.Write(), you can call only the method that returns (even if the method contains Console.WriteLine())
+// AND the returning method (even if the method contains Console.WriteLine()) can be copied to a variable of type same as the return type of the method, and the variable can be printed
+// i.e., a void method cannot be called inside Console.WriteLine()/Console.Write()
+
+// NOTE: 'return;' in a void method means exit and doesn't mean returning value
+
+// NOTE: char method can return (char)0;
+
+
+
+
+41.
+/*
+
+In a method:
+return x/2; ( x is unassigned)
+is different from:
+x = x/2; ( x is assigned)
+return x;
+
+*/
+
+
+
+
+42. 
+/*
+
+An assembly (exe/dll) can be generated using several .cs files (but entry point[static void Main()] in only one of the files):
+
+//>csc 1.cs 1a.cs 1b.cs
+
+//>1
+
+// (1.cs containing entry point[static void Main()])
+
+*/
+
+
+
+
+43. 
+/*
+
+Different Assembly:
+
+//>csc 1.cs
+//>csc 1a.cs /reference:1.exe
+
+
+//OR
+
+
+//>csc /target:library 1.cs
+//>csc 1a.cs /reference:1.dll 
+
+
+//OR
+
+
+//>csc 1.cs
+//>csc 1a.cs /r:1.exe
+
+
+//OR
+
+
+//>csc /t:library 1.cs
+//>csc 1a.cs /r:1.dll 
+
+
+
+
+Friend Assembly:
+using System.Runtime.CompilerServices; // in 1a.cs
+[assembly:InternalsVisibleTo("1")]     // declaring 1.cs as friend assembly in 1a.cs // declare for one class, all classes will be shared
+
+
+//>csc /t:library 1a.cs
+
+//>csc 1.cs /r:1a.dll
+
+
+//OR
+
+
+//>csc 1a.cs
+
+//>csc 1.cs /r:1a.exe
+
+*/
+
+
+
+
+44.
+/*
+
+From console:
+To create exe:
+csc 1.cs
+
+To create dll:
+csc /t:library 1.cs
+
+(exe/dll will be created in the same folder that you are creating from)
+
+*/
+
+
+
+
+45.
+/*
+
+In case of IDE:
+1. exe (executable) is created (automatically when you compile) in bin/Debug folder(default) of the application folder 
+
+2. dll (class library) can be created by Selecting File->New->Project->Visual C# Projects->Class Library. 
+type the code in Class1.css
+build the dll is created (automatically whe you BUILD) in bin/Debug folder(default) of the application folder 
+
+*/
+
+
+
+
+46.
+/*
+
+For REFLECTION:
+1. Copy dll/exe:
+bin/Debug folder(default) of the REFLECTION application folder 
+
+OR
+
+2. Add Reference (for the REFLECTION application) by browsing to the folder where the dll/exe is present
+
+*/
+
+
+
+
+
+47.
+/*
+
+// Visual C# 2005 Compiler Options:
+// >csc /?
+
+
+// Compiling unsafe:
+
+// >csc 1.cs /unsafe
+
+// >1
+
+
+// Visual Studio:
+
+// Open the project's Properties page. For details, see How to: Set Project Properties (C#, J#).
+
+// Click the Build property page.
+
+// Select the Allow Unsafe Code check box.
+
+*/
+
+
+
+
+48.
+// The extern modifier is used to declare a method that is implemented externally. 
+// A common use of the extern modifier is with the DllImport attribute when using System.Runtime.InteropServices to call into unmanaged code;
+
+// It is an error to use the abstract and extern modifiers together to modify the same member. 
+// Using the extern modifier means that the method is implemented outside the C# code, 
+// while using the abstract modifier means that the method implementation is not provided in the class.
+
+
+// The extern keyword also can define an external assembly alias, 
+// making it possible to reference different versions of the same component from within a single assembly. 
+
+// It can sometimes be necessary to reference two versions of assemblies that have the same fully-qualified type names, 
+// for example when you need to use two or more versions of an assembly in the same application. 
+// By using an external assembly alias, the namespaces from each assembly can be wrapped inside root-level namespaces named by the alias,
+// allowing them to be used in the same file.
+
+// To reference two assemblies with the same fully-qualified type names, an alias must be specified on the command line, as follows:
+
+// /r:GridV1=grid.dll
+
+// /r:GridV2=grid20.dll
+
+// This creates the external aliases GridV1 and GridV2. To use these aliases from within a program, 
+
+// reference them using the extern keyword. For example:
+
+// extern alias GridV1;
+
+// extern alias GridV2;
+
+ 
+// Each extern alias declaration introduces an additional root-level namespace that parallels (but does not lie within) the global namespace. 
+// Thus types from each assembly can be referred to without ambiguity using their fully qualified name, rooted in the appropriate namespace-alias
+
+
+// extern alias X; in 1.cs
+
+
+// csc /t:library 1a.cs
+
+// >csc 1.cs 1b.cs /r:X=1a.dll
+
+// OR
+
+//>csc 1a.cs
+
+//>csc 1.cs 1b.cs /r:X=1a.exe
+
+
+
+
+
+49.
+/*
+
+Generics:
+
+1. indexers, properties, events, operators cannot be generic, 
+   but can be used in a generic class and make use of the generic type parameters of that class
+
+2. extern modifier cannot be applied to the generic method
+
+3. pointer types cannot be used as type arguments
+
+4. If a generic class contains a static field, then each constructed type has its own copy of that field. 
+   This means that each instance of the same constructed type shares the same static field. 
+   However, a different constructed type shares a different copy of that field. 
+   Thus a static field is not shared by all constructed types."
+
+5. object can be used as type argument and this can be parameter [but not in static cases]
+
+
+*/
+
+
+
+
+50.
+/*
+
+C# 2.0:
+
+1. Generics
+2. Nullable types
+3. Iterators
+4. Partial Classes/Structs/Interfaces
+5. Anonymous methods
+6. The :: operator (Namespace Alias Qualifier)
+7. Static Classes
+8. Covariance and contravariance
+9. Fixed-size buffers [Note: Available only in an unsafe context], sizeof(type)
+10. Friend assemblies
+11. Extern Aliases [Note: extern Methods has been available since the creation of C#]
+12. Delegate Method Group Conversion
+13. Access Modifiers with Accessors [Note: For properties and indexers]
+14. #pragma directives
+15. ?? Operator or Null-Coalesce Operator
+16. System.Predicate
+17. System.Action
+
+
+51.
+/*
+var (Implicitly-typed local variables):
+
+Implicitly-typed local variables cannot be constant          
+
+The contextual keyword 'var' may only appear within a local variable declaration              
+
+dynamic:
+
+readonly member variable
+
+static readonly member variable
+
+const member variable = null*
+
+local variable
+
+const local variable = null*
+
+A const field of a reference type other than string can only be initialized with null. (Member/Local Variable)    
+*/

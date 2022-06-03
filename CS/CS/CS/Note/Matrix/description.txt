@@ -1,0 +1,12 @@
+A class representing a Matrix consisting of "Fractions". Features include
+-constructors to initialize matrix directly (using Fractions, doubles, integers) 
+-some methods include
+	-Determinent 
+	-Inverse 
+	-Echelon Form (can be used to solve system of equations) 
+	-Reduced Echelon Form etc. 
+-operators overload(+,-,*,/) 
+-Fraction class included (also written by me)
+-other details given in the class 
+
+Description: A website for programmers where they can view programs from others and can upload their own. Also contains some nice logic problems and much more.

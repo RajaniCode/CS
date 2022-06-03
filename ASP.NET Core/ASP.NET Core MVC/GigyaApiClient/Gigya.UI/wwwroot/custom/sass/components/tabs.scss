@@ -1,0 +1,138 @@
+/* ===========================================================
+
+	$TABS
+
+=========================================================== */
+
+
+.tab-panel                                          {clear:both; width:auto;}
+
+/* ---- TAB STRIP ---- */
+.tab-panel__tab-strip                               {clear:both; width:auto; border-bottom:$borderWidth solid $grey-light;}
+.tab-panel__tab                                     {position:relative; display:inline-block; height:50px; padding:15px 40px 15px 60px; border:$borderWidth solid $blue-dark; margin:0 0 5px 1px; background-color:$primaryColour; vertical-align:bottom; 
+													 font-family:$fontSetTertiary; font-size:$epsilon; font-weight:600; color:$white; text-decoration:uppercase; &:hover{border:$borderWidth solid $blue-medium; background-color:$blue-light; color:$white;}}
+.tab-panel__tab:first-of-type						{margin-left:0;}
+.tab-panel__tab:last-of-type						{margin-right:0;} 
+.tab-panel__tab.active                              {position:relative; top:1px; height:56px; border:$borderWidth solid $grey-light !important; margin-bottom:0; background-color:$grey-faint !important; border-bottom:0 !important; color:$baseColour; &:hover{border:$borderWidth solid $grey-light; border-bottom:0; background-color:$grey-faint;}}
+.tab-panel__tab.inactive                            {border:$borderWidth solid $blue-dark; background-color:$primaryColour; color:$white; &:hover{border:$borderWidth solid $blue-dark; background-color:$primaryColour; color:$white;}}
+.tab-panel__tab SPAN                                {display:inline-block; height:100%;}
+.tab-panel__tab I.icon                              {position:absolute; z-index:200; top:5px; left:10px; width:32px; height:34px;}
+
+
+/* ---- TAB BODY ---- */
+.tab-panel__body-wrap                               {clear:both; width:auto; padding:30px 20px; border:$borderWidth solid $grey-light; border-top:0; background-color:$grey-faint;}
+.tab-panel__body                                    {transition:opacity $transitionSpeed ease;}
+//.tab-panel__body.active                             {display:block; opacity:$opacityFull;}
+//.tab-panel__body.inactive                           {display:none; opacity:$opacityNone;}
+
+
+
+/* ---- TAB STRIP COLOUR CHANGES ---- */
+
+.tab-panel__tab--draft                              {border: 1px solid #e5a32a !important; background-color: #e5a32a !important;}
+                                                           
+.tab-panel__tab--all                                {border: 1px solid #83939b !important; background-color: #83939b !important; padding: 15px 40px 15px 40px !important;}
+                                                     
+.tab-panel__tab--rejected                           {border: 1px solid #bf0d3f !important; background-color: #bf0d3f !important;}
+                                                    
+.tab-panel__tab--approved                           {border: 1px solid #008000 !important; background-color: #008000 !important;}
+                                                    
+.tab-panel__tab--archived                           {border: 1px solid #585858 !important; background-color: #585858 !important;}
+
+.tab-panel__tab--all i.icon                         {display:none;}
+
+
+
+/* ---- NOTIFICATION SPAN COLOUR EDITS ---- */
+
+span.draft      {color:#e5a32a}
+        
+span.pending    {color:#157FBF} 
+        
+span.rejected   {color:#bf0d3f}
+        
+span.approved   {color:#008000}
+        
+span.archived   {color:#585858}
+
+
+
+/* ---- Action Icons ---- */
+
+ul.action--icons{margin-bottom:0px;}
+
+a.action_button {float:left; width:30px;height:30px;}
+
+a.action_button i.grid-button--icon-only {
+    float: left;
+    width: 100%;
+    height: 100%;
+    background: url("../assets/icons/dashboard/enrollment-actions.png");
+}
+
+
+a.action_button i.download {
+    background-position: -30px 0px;
+}
+
+
+a.action_button i.additional {
+    background-position: -60px 0px;
+}
+
+a.action_button i.delete  {
+    background-position: -86px 0px;
+}
+
+
+.notifications a.action_button i.delete  {
+    background-position: -113px 0px;
+}
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- ALL MOBILE & TABLET (0 - 768px) ---- */
+@media only screen and (max-width: $breakpoint-medium) {
+
+    /* ---- TAB STRIP ---- */
+    .tab-panel__tab                                     {display:block; clear:both; width:auto; margin-left:30px; &:last-of-type{margin-bottom:5px;}}
+    .tab-panel__tab.active                              {height:50px; border-bottom:$borderWidth solid $grey-light; margin-left:0; margin-bottom:5px; &:hover{border-bottom:$borderWidth solid $grey-light;}}   
+    .tab-panel__tab:first-of-type						{margin-left:30px;}
+    .tab-panel__tab.active:first-of-type				{margin-left:0;}
+}
+
+
+/* ---- TABLET (portrait 600px - 768px) ---- */
+@media only screen and (min-width:$breakpoint-medium-small) and (max-width: $breakpoint-medium) {
+
+
+}
+
+/* ---- TABLET (landscape 768px - 960px) ---- */
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-medium-large) {
+
+    /* ---- TAB STRIP ---- */
+    .tab-panel__tab                                     {padding:15px 15px 15px 40px;}
+    .tab-panel__tab I.icon                              {top:12px; width:24px; height:26px;}
+}
+
+/* ---- SMALL DESKTOP (960px - 1024px) ---- */
+@media only screen and (min-width:$breakpoint-medium-large) and (max-width: $breakpoint-large) {
+
+    /* ---- TAB STRIP ---- */
+    .tab-panel__tab                                     {padding:15px 20px 15px 50px;}
+    .tab-panel__tab I.icon                              {top:12px; width:24px; height:26px;}
+}
+
+/* ---- MEDIUM DESKTOP (1024px - 1280px) ---- */
+@media only screen and (min-width:$breakpoint-large) and (max-width: $breakpoint-extra-large) {
+
+
+}
+
+/* ---- LARGE DESKTOP (1280px +) ---- */
+@media only screen and (min-width:$breakpoint-extra-large) {
+
+
+}

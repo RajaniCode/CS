@@ -1,0 +1,5 @@
+C:\Documents and Settings\RAJANI\Desktop\TryCatchFinally\TryCatchFinally\bin\Debug\TryCatchFinally.exe
+C:\Documents and Settings\RAJANI\Desktop\TryCatchFinally\TryCatchFinally\bin\Debug\TryCatchFinally.pdb
+C:\Documents and Settings\RAJANI\Desktop\TryCatchFinally\TryCatchFinally\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\RAJANI\Desktop\TryCatchFinally\TryCatchFinally\obj\Debug\TryCatchFinally.exe
+C:\Documents and Settings\RAJANI\Desktop\TryCatchFinally\TryCatchFinally\obj\Debug\TryCatchFinally.pdb

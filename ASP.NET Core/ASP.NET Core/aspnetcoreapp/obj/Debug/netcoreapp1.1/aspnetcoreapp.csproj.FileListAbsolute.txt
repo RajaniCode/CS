@@ -1,0 +1,8 @@
+E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.deps.json
+E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.runtimeconfig.json
+E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.runtimeconfig.dev.json
+E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.dll
+E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.pdb
+E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\obj\Debug\netcoreapp1.1\aspnetcoreapp.AssemblyInfo.cs
+E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\obj\Debug\netcoreapp1.1\aspnetcoreapp.dll
+E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\obj\Debug\netcoreapp1.1\aspnetcoreapp.pdb

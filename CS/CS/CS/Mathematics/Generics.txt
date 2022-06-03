@@ -1,0 +1,71 @@
+// Generics
+
+using System;
+
+class G<T>
+{
+    T t;
+    
+    public G(T t)
+    {
+        this.t = t;
+    }
+
+    public void Show() 
+    {
+        Console.WriteLine("Type is: {0}", typeof(T));
+    }        
+
+    public T Get() 
+    {
+        return t;
+    }    
+}
+
+class NG
+{
+    object o;
+    
+    public NG(object o)
+    {
+        this.o = o;
+    }
+
+    public void Show() 
+    {
+        Console.WriteLine("Type: {0}", o.GetType());
+    }        
+
+    public object Get() 
+    {
+        return o;
+    }    
+}
+
+class Program
+{
+    static void Main()
+    {
+        int i = 0;
+        string s = string.Empty;
+        G<int> gi = new G<int>(1);
+        gi.Show();
+        i = gi.Get();
+        Console.WriteLine("Object: {0}", i);
+        G<string> gs = new G<string>("Hello, World!");
+        gs.Show();
+        s = gs.Get();
+        Console.WriteLine("Object: {0}", s);
+        Console.WriteLine();
+
+        NG ngi = new NG(1);
+        ngi.Show();
+        i = (int)ngi.Get(); // Explicit cast
+        Console.WriteLine("Object: {0}", i);
+        NG ngs = new NG("Hello, World!");
+        ngs.Show();
+        s = ngs.Get() as string; // Explicit cast
+        Console.WriteLine("Object: {0}", s);
+        Console.WriteLine(); 
+    }
+}

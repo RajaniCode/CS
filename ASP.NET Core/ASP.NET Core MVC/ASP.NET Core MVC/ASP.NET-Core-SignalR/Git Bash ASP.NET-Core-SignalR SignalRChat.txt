@@ -1,0 +1,218 @@
+
+Rajani@Samsung MINGW64 ~
+$ dotnet --info
+.NET Core SDK (reflecting any global.json):
+ Version:   2.1.402
+ Commit:    3599f217f4
+
+Runtime Environment:
+ OS Name:     Windows
+ OS Version:  6.3.9600
+ OS Platform: Windows
+ RID:         win81-x64
+ Base Path:   C:\Program Files\dotnet\sdk\2.1.402\
+
+Host (useful for support):
+  Version: 2.1.4
+  Commit:  85255dde3e
+
+.NET Core SDKs installed:
+  2.1.402 [C:\Program Files\dotnet\sdk]
+
+.NET Core runtimes installed:
+  Microsoft.AspNetCore.All 2.1.4 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.All]
+  Microsoft.AspNetCore.App 2.1.4 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 2.1.4 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+
+To install additional .NET Core runtimes or SDKs:
+  https://aka.ms/dotnet-download
+
+
+Rajani@Samsung MINGW64 ~
+$ cd "C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR"
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR
+$ dotnet new webapp -o SignalRChat
+The template "ASP.NET Core Web App" was created successfully.
+This template contains technologies from parties other than Microsoft, see https://aka.ms/aspnetcore-template-3pn-210 for details.
+
+Processing post-creation actions...
+Running 'dotnet restore' on SignalRChat\SignalRChat.csproj...
+  Restoring packages for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\SignalRChat.csproj...
+  Generating MSBuild file C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\obj\SignalRChat.csproj.nuget.g.props.
+  Generating MSBuild file C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\obj\SignalRChat.csproj.nuget.g.targets.
+  Restore completed in 4.63 sec for C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\SignalRChat.csproj.
+
+Restore succeeded.
+
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR
+$ dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+You can invoke the tool using the following command: libman
+Tool 'microsoft.web.librarymanager.cli' (version '1.0.163') was successfully installed.
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR
+$ cd SignalRChat
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR/SignalRChat
+$ libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+wwwroot/lib/signalr/dist/browser/signalr.js written to disk
+wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
+Installed library "@aspnet/signalr@1.0.3" to "wwwroot/lib/signalr"
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR/SignalRChat
+$ mkdir -p Hubs
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR/SignalRChat
+$ touch Hubs/ChatHub.cs
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR/SignalRChat
+$ touch wwwroot/js/chat.js
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR/SignalRChat
+$ dotnet run
+Using launch settings from C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\Properties\launchSettings.json...
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]
+      User profile is available. Using 'C:\Users\Rajani\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+Hosting environment: Development
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Application is shutting down...
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR/SignalRChat
+$ dotnet run
+Using launch settings from C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\Properties\launchSettings.json...
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]
+      User profile is available. Using 'C:\Users\Rajani\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+Hosting environment: Development
+Content root path: C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat
+Now listening on: http://localhost:53353
+Application started. Press Ctrl+C to shut down.
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker[1]
+      Route matched with {page = "/Index"}. Executing action /Index
+info: Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker[2]
+      Executed action /Index in 124.9013ms
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 315.6451ms 200 text/html; charset=utf-8
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/css/site.css
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/lib/bootstrap/dist/css/bootstrap.css
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/js/chat.js
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/lib/jquery/dist/jquery.js
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/lib/bootstrap/dist/js/bootstrap.js
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\css\site.css'
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/js/chat.js'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\js\chat.js'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 33.9798ms 200 application/javascript
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 35.3774ms 200 text/css
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/js/site.js?v=dLGP40S79Xnx6GqUthRF6NWvjvhQ1nOvdVSwaNcgG18
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\js\site.js'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 3.6519ms 200 application/javascript
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.js'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\lib\bootstrap\dist\js\bootstrap.js'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 24.7477ms 200 application/javascript
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.css'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\lib\bootstrap\dist\css\bootstrap.css'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 49.4411ms 200 text/css
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/jquery/dist/jquery.js'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\lib\jquery\dist\jquery.js'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 51.7533ms 200 application/javascript
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 POST http://localhost:53353/chatHub/negotiate text/plain;charset=UTF-8 0
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 0.6025ms 200 font/woff2
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 115.5461ms 200 application/json
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/chatHub?id=UD-JUX50AggSdA10ShNuhg
+info: Microsoft.AspNetCore.SignalR.HubConnectionContext[1]
+      Completed connection handshake. Using HubProtocol 'json'.
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/
+info: Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker[1]
+      Route matched with {page = "/Index"}. Executing action /Index
+info: Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvoker[2]
+      Executed action /Index in 3.0258ms
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 4.2556ms 200 text/html; charset=utf-8
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/css/site.css
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/lib/jquery/dist/jquery.js
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/lib/bootstrap/dist/js/bootstrap.js
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/js/site.js?v=dLGP40S79Xnx6GqUthRF6NWvjvhQ1nOvdVSwaNcgG18
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\css\site.css'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 1.6843ms 200 text/css
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\js\site.js'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/lib/bootstrap/dist/css/bootstrap.css
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 0.4425ms 200 application/javascript
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/js/chat.js
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/js/chat.js'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\js\chat.js'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 0.4425ms 200 application/javascript
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.js'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\lib\bootstrap\dist\js\bootstrap.js'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 3.3373ms 200 application/javascript
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.css'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\lib\bootstrap\dist\css\bootstrap.css'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 3.4925ms 200 text/css
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/jquery/dist/jquery.js'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\lib\jquery\dist\jquery.js'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 65.8955ms 200 application/javascript
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 POST http://localhost:53353/chatHub/negotiate text/plain;charset=UTF-8 0
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 0.4932ms 200 application/json
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2'. Physical path: 'C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\ASP.NET-Core-SignalR\SignalRChat\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2'
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 0.5638ms 200 font/woff2
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:53353/chatHub?id=lE41Z3IxwNGxxnpnG9akZw
+info: Microsoft.AspNetCore.SignalR.HubConnectionContext[1]
+      Completed connection handshake. Using HubProtocol 'json'.
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 35153.1494ms 101
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 30475.4662ms 101
+Application is shutting down...
+
+Rajani@Samsung MINGW64 ~/Desktop/2018/Working/CS/ASP.NET-Core-MVC/ASP.NET-Core-SignalR/SignalRChat
+$

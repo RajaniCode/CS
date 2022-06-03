@@ -1,0 +1,27 @@
+# xsd to CS
+xsd Sample.xsd /c /l:CS
+
+# CS to dll to xsd
+csc /t:library SampleList.cs
+# xsd SampleList.dll
+xsd /t:SampleList /t:SampleListIds SampleList.dll
+
+# xsd to CS
+# If you would like to generate data contracts from schemas make sure to use the /dataContractOnly option
+svcutil Sample.xsd /language:CS /dataContractOnly
+
+# svc to CS (System.Runtime.Serialization)
+svcutil http://localhost:8080/SampleId.svc?singleWsdl
+svcutil http://localhost:8080/SampleId.svc?singleWsdl /noconfig
+svcutil http://localhost:8080/SampleId.svc /noconfig
+
+# svc to wsdl, xsd
+svcutil /t:metadata http://localhost:8080/SampleId.svc
+# svc to wsdl
+svcutil /t:metadata http://localhost:8080/SampleId.svc?singleWsdl
+
+# wsdl to CS (System.Xml.Serialization)
+wsdl http://localhost:8080/SampleId.svc?singleWsdl
+# Namespace="http://tempuri.org/" # Namespace="http://schemas.microsoft.com/ws/2005/02/mex/bindings"
+wsdl http://localhost:8080/SampleId.svc
+wsdl http://localhost:8080/SampleId.svc?WSDL

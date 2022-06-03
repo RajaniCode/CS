@@ -1,0 +1,7 @@
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\DML\DML\bin\Debug\config.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\DML\DML\bin\Debug\nw_customers.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\DML\DML\bin\Debug\DML.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\DML\DML\bin\Debug\DML.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\DML\DML\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\DML\DML\obj\x86\Debug\DML.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\DML\DML\obj\x86\Debug\DML.pdb

@@ -1,0 +1,135 @@
+// Indexers
+
+using System;
+
+class G<T>
+{
+    T[ ] arr = new T[100];
+
+    // Indexer to allow client code to use [ ] notation
+    public T this[int i]
+    {
+       get { return arr[i]; }
+       set { arr[i] = value; }
+    }
+}
+
+class NG
+{
+    object[ ] arr = new object[100];
+
+    // Indexer to allow client code to use [ ] notation
+    public object this[int i]
+    {
+       get { return arr[i]; }
+       set { arr[i] = value; }
+    }
+}
+
+class A
+{
+    string[ ] arr = new string[100];
+
+    // Indexer to allow client code to use [ ] notation
+    public string this[int i]
+    {
+       get { return arr[i]; }
+       set { arr[i] = value; }
+    }
+}
+
+class Generic<T>
+{
+    T[ , ] arr = new T[100, 100];
+
+    // Indexer to allow client code to use [ , ] notation
+    // Indexers can declare optional parameters
+    public T this[int i, int j = 5]
+    {
+       get { return arr[i, j]; }
+       set { arr[i, j] = value; }
+    }
+}
+
+class NonGeneric
+{
+    object[ , ] arr = new object[100, 100];
+
+    // Indexer to allow client code to use [ , ] notation
+    // Indexers can declare optional parameters
+    public object this[int i, int j = 5]
+    {
+       get { return arr[i, j]; }
+       set { arr[i, j] = value; }
+    }
+}
+
+class ArrayLike
+{
+    string[ , ] arr = new string[100, 100];
+
+    // Indexer to allow client code to use [ , ] notation
+    // Indexers can declare optional parameters
+    public string this[int i, int j = 5]
+    {
+       get { return arr[i, j]; }
+       set { arr[i, j] = value; }
+    }
+}
+
+class IndexerClient
+{
+    public void Print()
+    {
+        var g = new G<string>();
+        g[0] = "G - Hello, World!";
+        Console.WriteLine(g[0]);
+        Console.WriteLine();
+        
+        var ng = new NG();
+        ng[0] = "NG - Hello, World!";
+        Console.WriteLine(ng[0]);
+        Console.WriteLine();
+
+        A stringA = new A();
+        stringA[0] = "String A - Hello, World!";
+        Console.WriteLine(stringA[0]);
+        Console.WriteLine();
+
+        var gen = new Generic<string>();
+        gen[0, 0] = "Generic - Hello, World!";
+        Console.WriteLine(gen[0, 0]);
+        gen[0, 5] = "Generic - Indexer Optional Parameter default value is 5";
+        Console.WriteLine(gen[0]);
+        gen[0, 10] = "Generic - Indexer Named Arguments [j:10, i:0]";
+        Console.WriteLine(gen[j:10, i:0]);
+        Console.WriteLine();
+
+        NonGeneric ngen = new NonGeneric();
+        ngen[0, 0] = "Non Generic - Hello, World!";
+        Console.WriteLine(ngen[0, 0]);
+        ngen[0, 5] = "Non Generic - Indexer Optional Parameter default value is 5";
+        Console.WriteLine(ngen[0]);
+        ngen[0, 10] = "Non Generic - Indexer Named Arguments [j:10, i:0]";
+        Console.WriteLine(ngen[j:10, i:0]);
+        Console.WriteLine();
+
+        ArrayLike stringArrayLike = new ArrayLike();
+        stringArrayLike[0, 0] = "String Array Like - Hello, World!";
+        Console.WriteLine(stringArrayLike[0, 0]);
+        stringArrayLike[0, 5] = "String Array Like - Indexer Optional Parameter default value is 5";
+        Console.WriteLine(stringArrayLike[0]);
+        stringArrayLike[0, 10] = "String Array Like - Indexer Named Arguments [j:10, i:0]";
+        Console.WriteLine(stringArrayLike [j:10, i:0]);
+        Console.WriteLine();
+   }
+}
+
+class Program
+{
+    static void Main()
+    {
+       IndexerClient client = new IndexerClient();
+       client.Print();
+    }
+}

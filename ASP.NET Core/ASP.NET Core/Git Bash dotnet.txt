@@ -1,0 +1,47 @@
+
+Aspire@Acer MINGW64 ~
+$ dotnet --version
+1.0.3
+
+Aspire@Acer MINGW64 ~
+$ cd "E:\Working\CS\TODO\ASP.NET-Core"
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core
+$ mkdir aspnetcoreapp
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core
+$ cd aspnetcoreapp
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/aspnetcoreapp
+$ dotnet new web
+Content generation time: 219.442 ms
+The template "ASP.NET Core Empty" created successfully.
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/aspnetcoreapp
+$ dotnet restore
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\aspnetcoreapp.csproj...
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\obj\aspnetcoreapp.csproj.nuget.g.props.
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\obj\aspnetcoreapp.csproj.nuget.g.targets.
+  Writing lock file to disk. Path: E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\obj\project.assets.json
+  Restore completed in 4.84 sec for E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp\aspnetcoreapp.csproj.
+
+  NuGet Config files used:
+      C:\Users\Aspire\AppData\Roaming\NuGet\NuGet.Config
+
+  Feeds used:
+      https://api.nuget.org/v3/index.json
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/aspnetcoreapp
+$ dotnet run
+Hosting environment: Production
+Content root path: E:\Working\CS\TODO\ASP.NET-Core\aspnetcoreapp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 304.3207ms 200
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[2]
+      Request finished in 0.5564ms 200

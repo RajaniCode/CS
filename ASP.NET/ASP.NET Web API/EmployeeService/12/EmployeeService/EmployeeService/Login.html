@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body style="padding-top:20px">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="well">
+            <!--Table to capture username and password-->
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th colspan="2">
+                            Existing User Login
+                            <a href="Register.html" class="btn btn-success pull-right">
+                                Register
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Usename</td>
+                        <td>
+                            <input type="text" id="txtUsername" placeholder="Username" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            <input type="password" id="txtPassword"
+                                   placeholder="Password" />
+                        </td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2">
+                            <input id="btnLogin" class="btn btn-success" type="button"
+                                   value="Login" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th>
+                            Social Logins
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="button" id="btnGoogleLogin"
+                                   value="Login with Google" class="btn btn-success" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" id="btnFacebookLogin"
+                                   value="Login with Facebook" class="btn btn-success" />
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <!--Bootstrap alert to display error message if the login fails-->
+            <div id="divError" class="alert alert-danger collapse">
+
+
+                <a id="linkClose" href="#" class="close">&times;</a>
+                <div id="divErrorText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--<script src="Scripts/jquery-1.10.2.min.js"></script>-->
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+
+    <script src="Scripts/GoogleAuthentication.js"></script>
+    <script src="Scripts/FacebookAuthentication.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            getAccessTokenGoogle();
+
+            getAccessTokenFacebook();
+
+            $('#linkClose').click(function () {
+                $('#divError').hide('fade');
+            });
+
+            $('#btnLogin').click(function () {
+                $.ajax({
+                    // Post username, password & the grant type to /token
+                    url: '/token',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: {
+                        username: $('#txtUsername').val(),
+                        password: $('#txtPassword').val(),
+                        grant_type: 'password'
+                    },
+                    // When the request completes successfully, save the
+                    // access token in the browser session storage and
+                    // redirect the user to Data.html page. We do not have
+                    // this page yet. So please add it to the
+                    // EmployeeService project before running it
+                    success: function (response) {
+                        // sessionStorage.setItem("accessToken", response.access_token);
+                        localStorage.setItem("accessToken", response.access_token);
+                        localStorage.setItem("userName", response.userName);
+                        window.location.href = "Data.html";
+                    },
+                    // Display errors if any in the Bootstrap alert <div>
+                    error: function (jqXHR) {
+                        $('#divErrorText').text(jqXHR.responseText);
+                        $('#divError').show('fade');
+                    }
+                });
+            });
+
+            /*
+             * https://localhost:44337/api/Account/ExternalLogins?returnUrl=%2F&generateState=true 
+             * <ArrayOfExternalLoginViewModel xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/EmployeeService.Models">
+             *  <ExternalLoginViewModel>
+             *   <Name>Google</Name>
+             *   <State>RuBQp4bmix272VpyNlJ4QZv5-g11h-oA7AcXHMTUBvg1</State>
+             *   <Url>
+             *    /api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=https%3A%2F%2Flocalhost%3A44337%2F&state=RuBQp4bmix272VpyNlJ4QZv5-g11h-oA7AcXHMTUBvg1
+             *   </Url>
+             *  </ExternalLoginViewModel>
+             *  <ExternalLoginViewModel>
+             *   <Name>Facebook</Name>
+             *   <State>RuBQp4bmix272VpyNlJ4QZv5-g11h-oA7AcXHMTUBvg1</State>
+             *   <Url>
+             *    /api/Account/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=https%3A%2F%2Flocalhost%3A44337%2F&state=RuBQp4bmix272VpyNlJ4QZv5-g11h-oA7AcXHMTUBvg1
+             *   </Url>
+             *  </ExternalLoginViewModel>
+             *  </ArrayOfExternalLoginViewModel>
+            */
+
+            // Install-Package Microsoft.Owin.Security.Google -Version 4.1.0
+            $('#btnGoogleLogin').click(function () {
+                // https://console.developers.google.com
+                // https://localhost:44337
+                // https://localhost:44337/signin-google
+                // https://myaccount.google.com/permissions
+                // https://localhost:44337/api/Account/ExternalLogins?returnUrl=%2F&generateState=true                
+                // /api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=https%3A%2F%2Flocalhost%3A44337%2F&state=IxmBkiD0Nc00iHTxEFqBDh1L_pEpoqnbNB8V7llBZEo1
+                // https://www.url-encode-decode.com/
+                // https://localhost:44337/Login.html
+                // Encode url
+                // https%3A%2F%2Flocalhost%3A44337%2FLogin.html
+                window.location.href = "/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=https%3A%2F%2Flocalhost%3A44337%2FLogin.html&state=IxmBkiD0Nc00iHTxEFqBDh1L_pEpoqnbNB8V7llBZEo1";
+            });
+
+            $('#btnFacebookLogin').click(function () {
+                // https://developers.facebook.com/
+                // TestApp
+                // Valid OAuth Redirect URIs // Not required
+                // https://localhost:44337
+                // https://localhost:44337/signin-facebook
+                // /api/Account/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=https%3A%2F%2Flocalhost%3A44337%2F&state=RuBQp4bmix272VpyNlJ4QZv5-g11h-oA7AcXHMTUBvg1
+                // https://www.url-encode-decode.com/
+                // https://localhost:44337/Login.html
+                // Encode url
+                // https%3A%2F%2Flocalhost%3A44337%2FLogin.html
+                window.location.href = "/api/Account/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=https%3A%2F%2Flocalhost%3A44337%2FLogin.html&state=RuBQp4bmix272VpyNlJ4QZv5-g11h-oA7AcXHMTUBvg1";
+            });
+        });
+    </script>
+</body>
+</html>

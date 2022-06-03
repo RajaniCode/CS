@@ -1,0 +1,123 @@
+
+$ dotnet --version
+1.0.3
+
+$ cd "E:\Working\CS\TODO\CS.NET-Core"
+
+$ dotnet new console -o hwapp
+
+Welcome to .NET Core!
+---------------------
+Learn more about .NET Core @ https://aka.ms/dotnet-docs. Use dotnet --help to see available commands or go to https://aka.ms/dotnet-cli-docs.
+
+Telemetry
+--------------
+The .NET Core tools collect usage data in order to improve your experience. The data is anonymous and does not include command-line arguments. The data is collected by Microsoft and shared with the community.
+You can opt out of telemetry by setting a DOTNET_CLI_TELEMETRY_OPTOUT environment variable to 1 using your favorite shell.
+You can read more about .NET Core tools telemetry @ https://aka.ms/dotnet-cli-telemetry.
+
+Configuring...
+-------------------
+A command is running to initially populate your local package cache, to improve restore speed and enable offline access. This command will take up to a minute to complete and will only happen once.
+Decompressing 100% 11574 ms
+Expanding 100% 130775 ms
+Getting ready...
+Content generation time: 136.8266 ms
+The template "Console Application" created successfully.
+
+$ ls
+ CS6/   CS7/  'Git Bash dotnet.txt'   hwapp/  'Installing .NET Core and Visual Studio Code in Windows.pdf'   NETCoreRefreshWindows_high.mp4   Note.txt
+
+$ cd hwapp
+
+$ ls
+hwapp.csproj  Program.cs
+
+$ cat Program.cs
+using System;
+
+namespace hwapp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
+
+$ cat hwapp.csproj
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>
+
+$ dotnet restore
+  Restoring packages for E:\Working\CS\TODO\CS.NET-Core\hwapp\hwapp.csproj...
+  Generating MSBuild file E:\Working\CS\TODO\CS.NET-Core\hwapp\obj\hwapp.csproj.nuget.g.props.
+  Generating MSBuild file E:\Working\CS\TODO\CS.NET-Core\hwapp\obj\hwapp.csproj.nuget.g.targets.
+  Writing lock file to disk. Path: E:\Working\CS\TODO\CS.NET-Core\hwapp\obj\project.assets.json
+  Restore completed in 3.47 sec for E:\Working\CS\TODO\CS.NET-Core\hwapp\hwapp.csproj.
+
+  NuGet Config files used:
+      C:\Users\Aspire\AppData\Roaming\NuGet\NuGet.Config
+
+  Feeds used:
+      https://api.nuget.org/v3/index.json
+
+$ dotnet run
+Hello World!
+
+$ dotnet --help
+.NET Command Line Tools (1.0.3)
+Usage: dotnet [host-options] [command] [arguments] [common-options]
+
+Arguments:
+  [command]             The command to execute
+  [arguments]           Arguments to pass to the command
+  [host-options]        Options specific to dotnet (host)
+  [common-options]      Options common to all commands
+
+Common options:
+  -v|--verbose          Enable verbose output
+  -h|--help             Show help
+
+Host options (passed before the command):
+  -d|--diagnostics      Enable diagnostic output
+  --version             Display .NET CLI Version Number
+  --info                Display .NET CLI Info
+
+Commands:
+  new           Initialize .NET projects.
+  restore       Restore dependencies specified in the .NET project.
+  build         Builds a .NET project.
+  publish       Publishes a .NET project for deployment (including the runtime).
+  run           Compiles and immediately executes a .NET project.
+  test          Runs unit tests using the test runner specified in the project.
+  pack          Creates a NuGet package.
+  migrate       Migrates a project.json based project to a msbuild based project.
+  clean         Clean build output(s).
+  sln           Modify solution (SLN) files.
+
+Project modification commands:
+  add           Add items to the project
+  remove        Remove items from the project
+  list          List items in the project
+
+Advanced Commands:
+  nuget         Provides additional NuGet commands.
+  msbuild       Runs Microsoft Build Engine (MSBuild).
+  vstest        Runs Microsoft Test Execution Command Line Tool.
+
+$ dotnet clean
+Microsoft (R) Build Engine version 15.1.1012.6693
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+
+$ dotnet run
+Hello World!

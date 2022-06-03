@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head><link href="58624bba6f9a865ff785e54bad2a962f-419eacb1c8e8efebd3b25669052cbae1-RequestReducedStyle.css" rel="Stylesheet" type="text/css" />
+        <title>LINQ - Using System.Reflection with LINQ Queries</title>        
+        <meta name="description" content="Use LINQ to right queries against the objects in your code using the Reflection APIs." />
+        
+        <script src="f6b6e866e5e2458559f00797fa79d556-f80bfd125d08096d2146234e2c03c3cb-RequestReducedScript.js" type="text/javascript" ></script>
+        <script type="text/javascript">
+            function initializePage() {
+                var otherTabClass = 'otherTab';
+                var hiddenPreClass = 'hidden';
+
+                var htmlDecode = function(encodedData) {
+                    var decodedData = "";
+                    if (encodedData) {
+                        var div = document.createElement('div');
+                        div.innerHTML = encodedData;
+                        decodedData = div.firstChild.nodeValue.replace( /\\r\\n/ig , '\r\n');
+                    }
+                    return decodedData;
+                };
+                
+                Galleries.iterateElem(Galleries.findElem(null, 'div', 'scriptcode'), function (index, scriptBlock) {
+                    var titleElem = Galleries.findElem(scriptBlock, 'div', 'title')[0];
+                    var labelElems = Galleries.findElem(titleElem, 'span');
+                    if (labelElems.length == 0) {
+                        labelElems = titleElem;
+                    }
+                    var languageSpans = Galleries.findElem(scriptBlock, 'span', 'hidden');
+                    var pres = Galleries.findElem(scriptBlock, 'pre');
+                    if (languageSpans.length > 0 && pres.length > 1) {
+                        Galleries.iterateElem(labelElems, function(index, elem) {
+                            var codePre = pres[index];
+                            var labelSpan = elem;
+                            var languageSpan = languageSpans[index];
+                            
+                            elem.code = codePre.innerHTML.replace( /(\r(\n)?)|((\r)?\n)/ig , '\\r\\n');
+                            
+                            codePre.className = codePre.className.replace(hiddenPreClass, '');
+                            
+                            languageSpan.parentNode.removeChild(languageSpan);
+                        });
+
+                        pres = Galleries.findElem(scriptBlock, 'pre');
+                        Galleries.iterateElem(labelElems, function(index, elem) {
+                            var codePre = pres[index];
+                            var labelSpan = elem;
+                            if (index == 0) {
+                                scriptBlock.activeTab = 0;
+                            }
+                            else {
+                                labelSpan.className += otherTabClass;
+                                codePre.className += hiddenPreClass;
+                            }
+                            Galleries.attachEventHandler(labelSpan, 'click', function(e) {
+                                var activeTab = scriptBlock.activeTab;
+                                labelElems[activeTab].className += otherTabClass;
+                                pres[activeTab].className += hiddenPreClass;
+
+                                codePre.className = codePre.className.replace(hiddenPreClass, '');
+                                labelSpan.className = labelSpan.className.replace(otherTabClass, '');
+                                scriptBlock.activeTab = index;
+
+                                if (window.parent.Galleries) {
+                                    window.parent.Galleries.resizeDesc();
+                                }
+                            });
+                        });
+
+                        var preview = Galleries.findElem(scriptBlock, 'div', 'preview');
+                        if (preview.length == 0) {
+                            preview.push(pres[pres.length - 1]);
+                        }
+                        Galleries.iterateElem(preview, function(index, elem) {
+                            elem.parentNode.removeChild(elem);
+                        });
+
+                        if (window.clipboardData && clipboardData.setData) {
+                            var copyLink = document.createElement('a');
+                            copyLink.href = 'javascript:void(0);';
+                            copyLink.className = 'copyCode';
+                            copyLink.innerHTML = 'Copy Code';
+                            Galleries.attachEventHandler(copyLink, 'click', function (e) {
+                                clipboardData.setData("Text", htmlDecode(labelElems[scriptBlock.activeTab].code));
+                                return false;
+                            });
+                            scriptBlock.insertBefore(copyLink, scriptBlock.childNodes[0]);
+                        }
+                    }
+                });
+
+                if ((window.parent) && (window.parent.Galleries)) {
+                    window.parent.Galleries.resizeDesc();
+                }
+
+            }
+
+            Galleries.onWindowLoad(function(){
+                initializePage();
+            });
+
+        </script>
+                <style type="text/css">
+                    body { 
+                        font-family: 'Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+                    }
+                </style>
+        <base target="_parent" />
+    </head>
+    <body>
+        <div id="longDesc">
+            
+<h1>Introduction</h1>
+<p><span id="ctl00_ctl00_Content_TabContentPanel_Content_wikiSourceLabel">Use LINQ to right queries against the objects in your code using the Reflection APIs.</span></p>
+<h1><span>Building the Sample</span></h1>
+<p>Press F5</p>
+<div class="section" id="demonstratesSection">
+<h1>Description</h1>
+<p>The sample shows how to use methods from the System.Reflection namespace to run queries over types from System.Xml.Linq.dll. The by-product is an HTML document outlining the public APIs for the assembly.</p>
+<p>The Reflector application generates an HTML document that outlines the public API for a given assembly. The task is achieved in two phases. First, an XML document is emitted in memory. (See method
+<span class="code">Emit*()</span>.) The document captures the relevant aspects of the assembly's metadata. In the second phase, an HTML document is extracted from the XML document. (See method
+<span class="code">Extract*()</span>.) Note that the two phases use the same query constructions to handle similar information in different representations.</p>
+<h1>Sample Code</h1>
+<p>&nbsp;</p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">        XElement EmitAssembly(Assembly assembly) 
+        {
+            return new XElement(&quot;assembly&quot;,
+                        new XAttribute(&quot;name&quot;, assembly.ManifestModule.Name),
+                        from type in assembly.GetTypes()
+                        where GetVisible(type)
+                        group type by GetNamespace(type) into g
+                        orderby g.Key
+                        select EmitNamespace(g.Key, g));
+        }</pre>
+<div class="preview">
+<pre id="codePreview" class="csharp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XElement&nbsp;EmitAssembly(Assembly&nbsp;assembly)&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">new</span>&nbsp;XElement(<span class="cs__string">&quot;assembly&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">new</span>&nbsp;XAttribute(<span class="cs__string">&quot;name&quot;</span>,&nbsp;assembly.ManifestModule.Name),&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;type&nbsp;<span class="cs__keyword">in</span>&nbsp;assembly.GetTypes()&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;GetVisible(type)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;group&nbsp;type&nbsp;by&nbsp;GetNamespace(type)&nbsp;into&nbsp;g&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderby&nbsp;g.Key&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select&nbsp;EmitNamespace(g.Key,&nbsp;g));&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+</div>
+</div>
+</div>
+<div class="endscriptcode">&nbsp;</div>
+<p>&nbsp;</p>
+</div>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>Visual Basic</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">vb</span>
+<pre class="hidden">    Public Function EmitAssembly(ByVal assembly As Assembly) As XElement
+        Return &lt;assembly name=&lt;%= assembly.ManifestModule.Name %&gt;&gt;
+                   &lt;%= From type In assembly.GetTypes() _
+                       Where GetVisible(type) _
+                       Group type By GetNamespace = GetNamespace(type) Into g = Group _
+                       Order By GetNamespace _
+                       Select EmitNamespace(GetNamespace, g) %&gt;
+               &lt;/assembly&gt;
+    End Function</pre>
+<div class="preview">
+<pre id="codePreview" class="vb">&nbsp;&nbsp;&nbsp;&nbsp;<span class="visualBasic__keyword">Public</span>&nbsp;<span class="visualBasic__keyword">Function</span>&nbsp;EmitAssembly(<span class="visualBasic__keyword">ByVal</span>&nbsp;assembly&nbsp;<span class="visualBasic__keyword">As</span>&nbsp;Assembly)&nbsp;<span class="visualBasic__keyword">As</span>&nbsp;XElement&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="visualBasic__keyword">Return</span>&nbsp;&lt;assembly&nbsp;name=&lt;%=&nbsp;assembly.ManifestModule.Name&nbsp;%&gt;&gt;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;%=&nbsp;From&nbsp;type&nbsp;<span class="visualBasic__keyword">In</span>&nbsp;assembly.GetTypes()&nbsp;_&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Where&nbsp;GetVisible(type)&nbsp;_&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group&nbsp;type&nbsp;By&nbsp;GetNamespace&nbsp;=&nbsp;GetNamespace(type)&nbsp;Into&nbsp;g&nbsp;=&nbsp;Group&nbsp;_&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order&nbsp;By&nbsp;GetNamespace&nbsp;_&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="visualBasic__keyword">Select</span>&nbsp;EmitNamespace(GetNamespace,&nbsp;g)&nbsp;%&gt;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/assembly&gt;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="visualBasic__keyword">End</span>&nbsp;<span class="visualBasic__keyword">Function</span></pre>
+</div>
+</div>
+</div>
+<h1><span>Source Code Files</span></h1>
+<ul>
+<li>C#
+<ul>
+<li><a class="browseFile" href="http://code.msdn.microsoft.com/LINQ-Using-SystemReflection-f3fe63d4/sourcecode?fileId=24060&amp;pathId=1842281619">Program.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/LINQ-Using-SystemReflection-f3fe63d4/sourcecode?fileId=24060&amp;pathId=16606386">Reflector.cs</a>
+</li></ul>
+</li><li>VB
+<ul>
+<li><a class="browseFile" href="http://code.msdn.microsoft.com/LINQ-Using-SystemReflection-f3fe63d4/sourcecode?fileId=22731&amp;pathId=1555370156">Program.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/LINQ-Using-SystemReflection-f3fe63d4/sourcecode?fileId=22731&amp;pathId=1348274588">Reflector.vb</a>
+</li></ul>
+</li></ul>
+
+        </div>
+    </body>
+</html>

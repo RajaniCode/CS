@@ -1,0 +1,10 @@
+C:\Users\Rajani\Desktop\CSC2010CS4\CSC2010CS4\bin\Debug\CSC2010CS4.exe
+C:\Users\Rajani\Desktop\CSC2010CS4\CSC2010CS4\bin\Debug\CSC2010CS4.pdb
+C:\Users\Rajani\Desktop\CSC2010CS4\CSC2010CS4\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Rajani\Desktop\CSC2010CS4\CSC2010CS4\obj\x86\Debug\CSC2010CS4.exe
+C:\Users\Rajani\Desktop\CSC2010CS4\CSC2010CS4\obj\x86\Debug\CSC2010CS4.pdb
+C:\Users\Rajani\Desktop\WIP\CSC2010CS4\CSC2010CS4\obj\x86\Debug\CSC2010CS4.exe
+C:\Users\Rajani\Desktop\WIP\CSC2010CS4\CSC2010CS4\obj\x86\Debug\CSC2010CS4.pdb
+C:\Users\Rajani\Desktop\WIP\CSC2010CS4\CSC2010CS4\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Rajani\Desktop\WIP\CSC2010CS4\CSC2010CS4\bin\Debug\CSC2010CS4.exe
+C:\Users\Rajani\Desktop\WIP\CSC2010CS4\CSC2010CS4\bin\Debug\CSC2010CS4.pdb

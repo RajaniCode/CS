@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "mR3kB/Z0tkcwHxrA/Mx45aa7s4eb6ljmfXOxQ31T3+gTC7/NmDx/hI2PGI3mBjvBX6O/bJ3Vg7tNxx1V/y+bNw==",
+  "success": true,
+  "projectFilePath": "D:\\Rajani\\Technical2021\\CS\\CS\\CS.NET\\CS6\\CS6\\CS6.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rajanis\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
+    "C:\\Users\\rajanis\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",
+    "C:\\Users\\rajanis\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.1.0\\microsoft.netcore.dotnethostpolicy.2.1.0.nupkg.sha512",
+    "C:\\Users\\rajanis\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.1.0\\microsoft.netcore.dotnethostresolver.2.1.0.nupkg.sha512",
+    "C:\\Users\\rajanis\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.0\\microsoft.netcore.platforms.2.1.0.nupkg.sha512",
+    "C:\\Users\\rajanis\\.nuget\\packages\\microsoft.netcore.targets\\2.1.0\\microsoft.netcore.targets.2.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

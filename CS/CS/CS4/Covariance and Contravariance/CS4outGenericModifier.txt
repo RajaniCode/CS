@@ -1,0 +1,99 @@
+// CS 4
+/*
+out (Generic Modifier)
+*/
+
+// out (Generic Modifier)
+// For generic type parameters, the out keyword specifies that the type parameter is covariant
+// The out keyword can be used in generic interfaces and delegates
+// Covariance means to use a more derived type than that specified by the generic parameter, and this allows for implicit conversion of classes that implement variant interfaces and implicit conversion of delegate types
+// Covariance and contravariance are supported for reference types, however they are not supported for value types
+// An interface that has a covariant type parameter enables its methods to return more derived types than those specified by the type parameter
+// For example, because in IEnumerable<(Of <(T>)>), type T is covariant, an object of the IEnumerabe(Of String) type can be assigned to an object of the IEnumerable(Of Object) type without using any special conversion methods
+// A covariant delegate can be assigned another delegate of the same type, however with a more derived generic type parameter
+
+using System;
+
+// Declare, extend, and implement a covariant generic interface, and use implicit conversion for class that implements covariant generic interface
+
+// Covariant interface
+interface ICovariant<out R> { }
+// Extending covariant interface
+interface IExtCovariant<out R> : ICovariant<R> { }
+/*
+// In a generic interface, a type parameter can be declared covariant if it satisfies the condition that the type parameter is used only as a return type of interface methods and not used as a type of method arguments
+// Exception to this rule is that if in a covariant interface there is a contravariant generic delegate as a method parameter, the covariant type can be used as a generic type parameter for this delegate
+// The type parameter is not used as a generic constraint for the interface methods
+*/
+
+// Implementing covariant interface.
+class ImplementingCovariant<R> : ICovariant<R> { }
+class ImplicitConversion
+{
+    public void Assignment()
+    {
+        ICovariant<object> iobj = new ImplementingCovariant<object>();
+        ICovariant<string> istr = new ImplementingCovariant<String>();
+
+        // istr can be assigned to iobj because the ICovariant interface is covariant
+        Console.WriteLine("Implicit conversion for class that implements covariant generic interface");
+        Console.WriteLine("Before Implicit Conversion: {0}", iobj is ICovariant<string>);
+        iobj = istr;
+        Console.WriteLine("After Implicit Conversion: {0}", iobj is ICovariant<string>);
+        Console.WriteLine();
+    }
+}
+
+class BaseClass { }
+
+class DerivedClass : BaseClass { }
+
+// Declare, instantiate, and invoke a covariant generic delegate by implicitly converting delegate types
+
+// Covariant delegate
+public delegate R DCovariant<out R>();
+/*
+// In a generic delegate, a type can be declared covariant if it is used only as a method return type and not used for method arguments
+*/
+
+class ImplicitConversionDelegate
+{
+    // Method that match the delegate signature
+    private BaseClass BaseMatch()
+    {
+       return new BaseClass(); 
+    }
+   
+   // Method that match the delegate signature
+    private DerivedClass DerivedMatch()
+    {
+        return new DerivedClass();
+    }
+
+    public void AssignmentInvoke()
+    {
+        // Instantiate the delegates with the methods
+        DCovariant<BaseClass> dBase = BaseMatch;
+        DCovariant<DerivedClass> dDerived = DerivedMatch;
+
+        // dDerived can be assigned to dBase because the DCovariant delegate is covariant
+        Console.WriteLine("Implicitly converting delegate types");
+        dBase = dDerived;
+
+        // Invoke the delegate
+        Console.WriteLine("Invoke covariant generic delegate");
+        dBase();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        ImplicitConversion implicitConvert = new ImplicitConversion();
+        implicitConvert.Assignment();
+
+        ImplicitConversionDelegate implicitConvertDelegate = new ImplicitConversionDelegate();
+        implicitConvertDelegate.AssignmentInvoke();
+    }
+}

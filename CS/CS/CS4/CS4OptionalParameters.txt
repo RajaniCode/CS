@@ -1,0 +1,251 @@
+﻿// CS 4
+/*
+Optional Parameters
+Optional Parameters Overload Resolution
+*/
+
+// Optional Parameters
+/*
+// Methods, Constructors, and Indexers can declare optional parameters
+// A parameter is optional if it specifies a default value in its declaration
+// Adding an optional parameter to a public method that’s called from another assembly requires recompilation of both assemblies — just as though the parameter were mandatory
+// The default value of an optional parameter must be specified by a constant expression, or a parameterless constructor of a value type
+// Optional parameters cannot be marked with ref or out
+// Mandataory parameters must occur before optional parameters in both the method declaration and the method call (the exception is with params arguments, which still always come last) — Optional parameters must appear after all required parameters — A parameter array must be the last parameter in a formal parameter list after Optional Arguments if any
+// Cannot specify a default value for a parameter array
+// There can be only 1 parameter array in a formal parameter list
+// A default parameter value of a reference type other than string can only be initialized with null
+// Cannot Overload Methods by differnce in Optional Parameter
+// Cannot Overload Constructors by differnce in Optional Parameter
+// Cannot Overload  Indexers by differnce in Optional Parameter
+// All the Parameters in Methods can be Optional Parameters
+// All the Parameters in Constructors can be Optional Parameters
+// All the Parameters in Indexers can be Optional Parameters
+*/
+
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class OptionalParameters
+{
+    int a;
+    int b;
+    int c;
+    int[] integerArray;
+    int[] parameterIntegerArray;
+    string[ , ] arr = new string[100, 100];
+
+    public OptionalParameters() 
+    {
+        Console.WriteLine("Explicit default constructor");
+    }
+
+    // Constructors can declare Optional Parameters
+    public OptionalParameters(int a, int b = 2, int c = 3, int[] integerArray = null, params int[] parameterIntegerArray)
+    {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.integerArray = integerArray;
+        this.parameterIntegerArray = parameterIntegerArray;
+    }
+
+    public void PrintMemberVariables()
+    {
+        Console.WriteLine("a = {0}, b = {1}, c = {2}", a, b, c);
+
+        if(integerArray != null && integerArray.Length > 0)
+        {
+            Console.WriteLine("Integer Array:");
+            integerArray.ToList().ForEach(Console.WriteLine);
+        }
+        else
+        {
+            Console.WriteLine("Integer Array is null or empty");
+        }
+
+        if(parameterIntegerArray != null && parameterIntegerArray.Length > 0) 
+        {
+            Console.WriteLine("Parameter Integer Array:");
+            parameterIntegerArray.ToList().ForEach(Console.WriteLine);
+        }
+        else
+        {
+            Console.WriteLine("Parameter Integer Array is null or empty");
+        }
+        Console.WriteLine();
+    }
+
+    // Methods can declare Optional Parameters
+    public void OptionalParametersMethod(string a, string b = "B", string c = "C", string[] stringArray = null, params string[] parameterStringArray)
+    {
+        Console.WriteLine("a = {0}, b = {1}, c = {2}", a, b, c);
+
+        if(stringArray != null && stringArray.Length > 0)
+        {
+            Console.WriteLine("String Array:");
+            stringArray.ToList().ForEach(Console.WriteLine);
+        }
+        else
+        {
+            Console.WriteLine("String Array is null or empty");
+        }
+
+        if(parameterStringArray != null && parameterStringArray.Length > 0) 
+        {
+            Console.WriteLine("Parameter String Array:");
+            parameterStringArray.ToList().ForEach(Console.WriteLine);
+        }
+        else
+        {
+            Console.WriteLine("Parameter String Array is null or empty");
+        }
+        Console.WriteLine();
+    }
+
+    // Indexers can declare optional parameters
+    // Indexer to allow client code to use [ , ] notation
+    public string this[int i, int j = 5]
+    {
+       get { return arr[i, j]; }
+       set { arr[i, j] = value; }
+    }
+
+    public void CallOptionalParametersConstructor()
+    {
+        Console.WriteLine("Optional Parameters Constructor");
+
+        Console.WriteLine("()");
+        OptionalParameters option = new OptionalParameters();
+        // Explicit Default Constructor
+        option.PrintMemberVariables();
+
+        Console.WriteLine("(11, 22, 33, 44, 55) will not compile");
+        /*
+        option = new OptionalParameters(11, 22, 33, 44, 55);
+        option.PrintMemberVariables();
+        */
+
+        Console.WriteLine("(11, null, null) will not compile");
+        /*
+        option = new OptionalParameters(11, null, null);
+        option.PrintMemberVariables();
+        */
+
+        Console.WriteLine("(11, 22, 33, null, 55, 66)");
+        OptionalParameters option1 = new OptionalParameters(11, 22, 33, null, 55, 66);
+        option1.PrintMemberVariables();
+
+        Console.WriteLine("(111, 222, 333, null, new [] { 555, 666 })");
+        OptionalParameters option2 = new OptionalParameters(111, 222, 333, null, new [] { 555, 666 });
+        option2.PrintMemberVariables();
+
+        Console.WriteLine("(1111, 2222, 3333 null, null)");
+        OptionalParameters option3 = new OptionalParameters(1111, 2222, 3333, null, null);
+        option3.PrintMemberVariables();
+
+        Console.WriteLine("(11111, 22222, 33333 null)");
+        OptionalParameters option4 = new OptionalParameters(11111, 22222, 33333, null);
+        option4.PrintMemberVariables();
+
+        Console.WriteLine("(1)");
+        OptionalParameters option5 = new OptionalParameters(1);
+        option5.PrintMemberVariables();
+    }
+
+    public void CallOptionalParametersMethod()
+    {
+        Console.WriteLine("Optional Parameters Method");
+        Console.WriteLine("(\"AA\", \"BB\", \"CC\", \"DD\", \"EE\") will not compile");
+        // OptionalParametersMethod("AA", "BB", "CC", "DD", "EE");
+
+        Console.WriteLine("(\"AA\", null, null) will compile unlike value types");
+        OptionalParametersMethod("AA", null, null);
+
+        Console.WriteLine("(\"AAA\", \"BBB\", \"CCC\", null, \"EEE\", \"FFF\")");
+        OptionalParametersMethod("AAA", "BBB", "CCC", null, "EEE", "FFF");
+
+        Console.WriteLine("(\"AAAA\", \"BBBB\", \"CCCC\", new[] { \"DDDD\", \"EEEE\" }, \"FFFF\")");
+        OptionalParametersMethod("AAAA", "BBBB", "CCCC", new[] { "DDDD", "EEEE" }, "FFFF");
+
+        Console.WriteLine("(\"AAAAA\", \"BBBBB\", \"CCCCC\", null, null)");
+        OptionalParametersMethod("AAAAA", "BBBBB", "CCCCC", null, null);
+
+        Console.WriteLine("(\"AAAAAA\", \"BBBBBB\", \"CCCCCC\", null)");
+        OptionalParametersMethod("AAAAAA", "BBBBBB", "CCCCCC", null);
+
+        Console.WriteLine("(\"A\")");
+        OptionalParametersMethod("A");
+    }
+    
+    public void CallOptionalParametersIndexer()
+    {
+        Console.WriteLine("Optional Parameters in Indexers");
+        OptionalParameters stringArrayLike = new OptionalParameters();
+        stringArrayLike[0, 0] = "Hello, World!";
+        Console.WriteLine(stringArrayLike[0, 0]);
+        stringArrayLike[0, 5] = "Indexer Optional Parameter default value is 5";
+        Console.WriteLine(stringArrayLike[0]);
+        Console.WriteLine();
+    }
+
+    public void Print() 
+    {
+        CallOptionalParametersConstructor();
+        CallOptionalParametersMethod();
+        CallOptionalParametersIndexer();
+    }
+}
+
+class OptionalParametersOverloadResolution
+{
+    // Optional Parameters Overload Resolution
+    // M(5)
+    // Not applicable because 5 doesnt convert to string
+    public void M(string s, int i = 1)
+    {
+        Console.WriteLine("M(string s, int i = 1) called");
+    }
+
+    // M(5)
+    // Conversion from 5 to int [M(int)] is better than the conversion from 5 to object [M(object)]
+    public void M(object o)
+    {
+       Console.WriteLine("M(object o) called");
+    }
+
+    // M(5)
+    // Applicable because its second parameter is optional however, optional parameter is omitted
+    public void M(int i, string s = "Hello, World!")
+    {
+       Console.WriteLine("M(int i, string s = \"Hello, World!\") called");
+    }
+
+    // M(5)
+    public void M(int i)
+    {
+       Console.WriteLine("M(int) called");
+    }
+
+    public void Print()
+    {
+        // Optional Parameters Overload Resolution
+        Console.WriteLine("Overload Resolution");
+        // If two signatures are equally good, one that does not omit optional parameters is preferred
+        M(5);
+        Console.WriteLine();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        OptionalParameters optionalParams = new OptionalParameters();
+        optionalParams.Print();
+
+        OptionalParametersOverloadResolution oveloadResolution = new OptionalParametersOverloadResolution();
+        oveloadResolution.Print();
+    }
+}

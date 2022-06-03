@@ -1,0 +1,88 @@
+/* ===========================================================
+
+	$SEARCH RESULTS (Using ezSearch for Umbraco 7)
+
+=========================================================== */
+
+
+.ezsearch-summary P                                 {color:$grey-dark;}
+.ezsearch-summary P STRONG                          {font-size:125%; font-weight:bold; font-style:italic;}
+
+.ezsearch-result-count P                            {color:$grey-dark;}
+
+.ezsearch-results                                   {}
+.ezsearch-result                                    {margin-bottom:$baseLineHeight; @include clearfix;}
+
+.ezsearch-result__image-box                         {float:left; padding-right:20px;}
+.ezsearch-result__image                             {width:100%; max-width:64px; max-height:64px;}
+
+.ezsearch-result__text                              {float:none; overflow:hidden;}
+.ezsearch-result H4                                 {padding-bottom:5px; font-family:$fontSetPrimary !important; font-size:$epsilon !important; font-weight:600;}
+
+.ezsearch-result__details                           {clear:both; padding-bottom:10px; @include clearfix;}
+.ezsearch-result__url                               {float:left; color:$green-dark;}
+.ezsearch-result__file-size                         {float:right; color:$green-dark; font-size:$zeta * 1.1; font-weight:600;}
+
+.ezsearch-pager                                     {padding:15px 0; font-family:$fontSetSecondary; font-size:$beta; font-weight:600; text-align:center;}
+
+.ezsearch-pager .page                               {display:inline-block; padding:0 8px;}   
+.ezsearch-pager .prev,
+.ezsearch-pager .next                               {display:inline-block; font-size:$alpha;}
+  
+.ezsearch-pager .prev                               {padding-right:8px;}
+.ezsearch-pager .next                               {padding-left:8px;}
+
+.ezsearch-pager SPAN.page                           {color:$grey_darker;}
+.ezsearch-pager SPAN.prev,
+.ezsearch-pager SPAN.next                           {color:$teal_medium; opacity:$opacityLow;}
+
+.ezsearch-pager A.page,
+.ezsearch-pager A.prev,
+.ezsearch-pager A.next                              {color:$teal_medium; &:hover{color:$teal_light;}}
+
+.ezsearch-no-results                                {}
+
+
+
+
+
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+
+/* ======== MOBILE ======== */
+@media screen and (max-width: $breakpoint-medium) {
+	
+    .ezsearch-result__image-box                         {width:64px;}
+    .ezsearch-result__url                               {float:none; clear:both;}
+    .ezsearch-result__file-size                         {float:none; clear:both;}
+
+    .ezsearch-pager                                     {font-size:$gamma;}
+    .ezsearch-pager .next                               {font-size:$beta;}
+
+}
+
+/* ======== TABLET ======== */
+@media screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
+
+    .ezsearch-result__image-box                         {width:72px;}
+
+    .ezsearch-pager                                     {font-size:$gamma;}
+    .ezsearch-pager .next                               {font-size:$beta;}
+	
+}
+
+/* ======== DESKTOP ======== */
+@media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-extra-large) {
+
+    .ezsearch-result__image-box                         {width:72px;}
+
+}
+
+/* ======== LARGE DESKTOP ======== */
+@media screen and (min-width: $breakpoint-extra-large) {
+
+    .ezsearch-result__image-box                         {width:84px;}
+	
+}

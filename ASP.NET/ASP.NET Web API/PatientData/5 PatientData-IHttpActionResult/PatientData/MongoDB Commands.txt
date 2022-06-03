@@ -1,0 +1,36 @@
+$ mongo
+
+
+# Returns a document that reports on the arguments and configuration options used to start the mongod or mongos instance
+db.serverCmdLineOpts()
+
+
+# Drop Database from mongo shell
+use <database>
+db.dropDatabase()
+
+
+# Create Database and Collection
+use beginnersbookdb
+
+db.beginnersbook.insert({
+  name: "Chaitanya",
+  age: 30,
+  website: "beginnersbook.com"
+})
+
+db.beginnersbook.find()
+
+exit
+# OR
+quit()
+
+
+# Drop Database from command-line
+$ mongo beginnersbookdb --eval "db.dropDatabase()"
+
+
+# Shutdown Server
+$ mongo
+use admin
+db.dropshutdownServer()

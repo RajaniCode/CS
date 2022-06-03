@@ -1,0 +1,9 @@
+https://www.nuget.org/packages/Microsoft.CodeAnalysis.NetAnalyzers
+https://github.com/dotnet/roslyn-analyzers
+
+
+https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Analyzers
+
+
+https://www.nuget.org/packages/StyleCop.Analyzers
+https://github.com/DotNetAnalyzers/StyleCopAnalyzers

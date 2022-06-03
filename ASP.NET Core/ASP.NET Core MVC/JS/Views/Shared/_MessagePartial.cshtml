@@ -1,0 +1,128 @@
+﻿<div id="successInfo" class="alert alert-success alert-dismissible" hidden>
+    <span id="successSpanMessage">
+        <img id="successSpanImage" src="~/custom/icons/blue/32/successful.png" style="vertical-align: middle; margin-right: 10px;" />
+    </span>
+</div>
+
+<div id="warningInfo" class="alert alert-warning alert-dismissible" hidden>
+    <span id="warningSpanMessage">
+        <img id="warningSpanImage" src="~/custom/icons/orange/32/information.png" style="vertical-align: middle; margin-right: 10px;" />
+    </span>
+</div>
+
+<div id="errorInfo" class="alert alert-danger alert-dismissible" hidden>
+    <span id="errorSpanMessage">
+        <img id="errorSpanImage" src="~/custom/icons/red/32/warning.png" style="vertical-align: middle; margin-right: 10px;" />
+    </span>
+</div>
+
+<div id="popupModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-header" style="padding: 5px; background: #157FBF; border-color: #157FBF; color: #FFFFFF; border-radius: 0; ">
+                <div id="popupModalTitle" class="modal-title" style="font-size: 16px; font-weight: 600;"></div>
+                <button id="popupModalClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="popupModalBody" class="modal-body" style="padding: 5px; font-size: 14px; font-weight: 500;">
+            </div>
+            <div class="modal-footer border-0" style="justify-content: flex-end; padding: 5px;">
+                <button id="popupModalOK" type="button" class="btn btn-primary btn-sm" data-dismiss="modal" style="width: 70px; background-color: #FF5E03; border-color: #FF5E03; border-radius: 0px; font-size: 16px; font-weight: 600;">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-header" style="padding: 5px; background: #157FBF; border-color: #157FBF; color: #FFFFFF; border-radius: 0; ">
+                <div id="deleteModalTitle" class="modal-title" style="font-size: 16px; font-weight: 600;"></div>
+                <button id="deleteModalClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="deleteModalBody" class="modal-body" style="padding: 5px; font-size: 14px; font-weight: 500;">
+            </div>
+            <div class="modal-footer border-0" style="justify-content: flex-end; padding: 5px;">
+                <button id="deleteModalOK" type="button" class="btn btn-primary btn-sm" style="width: 70px; background-color: #FF5E03; border-color: #FF5E03; border-radius: 0px;">OK</button>
+                <button id="deleteModalCancel" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" style="width: 70px; background-color: #FF5E03; border-color: #FF5E03; border-radius: 0px;">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function showMessageWithStatus(message, status) {
+        let element;
+        let spanElement;
+        switch (status) {
+            case "success":
+                element = $("#successInfo");
+                spanElement = $("#successSpanMessage");
+                break;
+            case "warning":
+                element = $("#warningInfo");
+                spanElement = $("#warningSpanMessage");
+                break;
+            case "error":
+                element = $("#errorInfo");
+                spanElement = $("#errorSpanMessage");
+                break;
+            default:
+                break;
+        }
+        if (element != null && spanElement != null) {
+            element.attr("hidden", false);
+            spanElement.append(message);
+            element.fadeTo(5000, 500).slideUp(500, function () {
+                $(this).slideUp(500);
+            });
+            element.click(function () {
+                $(this).attr("hidden", true);
+            });
+        }
+    }
+
+    function popupMessageWithTitleDomain(message, title, domain) {
+        $('#popupModalTitle').text(title);
+        $('#popupModalBody').text(message);
+        $('#popupModal').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+        $('#popupModal').modal('show');
+        if (domain != null) {
+            $("#popupModalOK").on('click', function () {
+                window.location.replace(currentDomain);
+            });
+            $("#popupModalClose").on('click', function () {
+                window.location.replace(currentDomain);
+            });
+        }
+    }
+
+    function deleteModalWithTitleFunc(message, title, func) {
+        $('#deleteModalTitle').text(title);
+        $('#deleteModalBody').text(message);
+        $('#deleteModal').modal({
+            backdrop: 'static',
+            keyboard: false
+        })
+            .on('click', '#deleteModalOK', function () {
+                $('#deleteModal').modal('hide');
+                if (func != null) {
+                    func();
+                }
+            });
+        $("#deleteModalCancel").on('click', function () {
+            $('#deleteModal').off('click');
+            $('#deleteModal').modal('hide');
+        });
+        $("#deleteModalClose").on('click', function () {
+            $('#deleteModal').off('click');
+            $('#deleteModal').modal('hide');
+        });
+    }
+</script>

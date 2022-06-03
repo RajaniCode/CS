@@ -1,0 +1,67 @@
+/* ===========================================================
+
+	$MIXINS
+
+=========================================================== */
+
+/* ======== HEADINGS ======== */
+
+/* ---- HEADING FONT SIZE ---- */
+@mixin heading-font-size($fontSize)		                    {font-size:$fontSize; font-weight:600; line-height:1; padding-bottom:$fontSize / 2;}
+@mixin heading-font-size-full($size,$weight,$line,$pad)     {font-size:$size; font-weight:$weight; line-height:$line; padding-bottom:$pad;}
+
+/* ---- HEADING FONT STYLE ---- */
+@mixin heading-font-style($fontColour)		                {font-family:$fontSetSecondary; color:$fontColour;}
+@mixin heading-font-style-full($font,$colour,$case)	        {font-family:$font; color:$colour; text-transform:$case;}
+
+
+
+/* ======== GRADIENTS ======== */
+
+/* ---- 2 COLOUR GRADIENT ---- */
+@mixin gradient-two-colour($colour1,$colour2)               {background:$colour1; background:-moz-linear-gradient(top, $colour1 0%, $colour2 100%);
+                                                             background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,$colour1), color-stop(100%,$colour2));
+                                                             background:-webkit-linear-gradient(top, $colour1 0%, $colour2 100%);
+                                                             background:-o-linear-gradient(top, $colour1 0%,$colour2 100%);
+                                                             background:-ms-linear-gradient(top, $colour1 0%,$colour2 100%);
+                                                             background:linear-gradient(to bottom, $colour1 0%,$colour2 100%);
+                                                             filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$colour1}, endColorstr=#{$colour2},GradientType=0);}
+
+/* ======== SHADOWS ======== */
+@mixin shadow($horiz,$vert,$blur,$red,$green,$blue,$alpha,$inset) {-webkit-box-shadow: $horiz $vert $blur rgba($red, $green, $blue, $alpha),$inset;
+                                                            -moz-box-shadow: $horiz $vert $blur rgba($red, $green, $blue, $alpha),$inset;
+                                                            box-shadow: $horiz $vert $blur rgba($red, $green, $blue, $alpha),$inset;}
+
+
+/* ======== FLEXBOX PROPERTY SETS  ========= */
+
+/* Set on container element */
+@mixin flexbox-display                                      {display:-webkit-box;           /* OLD - iOS 6-, Safari 3.1-6 */
+                                                             display:-moz-box;              /* OLD - Firefox 19- */
+                                                             display:-ms-flexbox;           /* OLD - TWEENER - IE 10 */
+                                                             display:-webkit-flex;          /* RECENT - Chrome */
+                                                             display:flex;                  /* NEW - Firefox, Chrome, Opera, IE11 */
+}
+@mixin flexbox-direction($direction)                        {-webkit-flex-direction:$direction; -moz-flex-direction:$direction; -ms-flex-direction:$direction; flex-direction:$direction; }
+@mixin flexbox-flex($value)                                 {-webkit-box-flex:$value; -webkit-flex:$value; -moz-flex:$value; -ms-flex:$value; flex:$value;}
+@mixin flexbox-align-content($align)                        {-webkit-align-content:$align; align-content:$align;}
+@mixin flexbox-align-items($align)                          {-webkit-align-items:$align; align-items:$align;}
+
+
+/* ---- 2D Translate ---- */
+@mixin translate($transX,$transY)                           {-webkit-transform:translate($transX,$transY);      /* Chrome, Safari, Opera 15.0+ */
+                                                             -moz-transform:translate($transX,$transY);         /* Firefox */
+                                                             -ms-transform:translate($transX,$transY);          /* IE 9 */
+                                                             -o-transform:translate($transX,$transY);           /* Opera 10.5 - 15.0 */
+                                                             transform:translate($transX,$transY);
+}
+
+
+/* ---- Centralize Element (Must be inside block element set to position:relative) ---- */
+@mixin translate-centralize                                 {position:absolute; top:50%; left:50%; @include translate(-50%,-50%);}
+@mixin translate-centralize-left                            {position:absolute; top:50%; left:24%; @include translate(-50%,-50%);}
+@mixin translate-centralize-right                           {position:absolute; top:50%; left:74%; @include translate(-50%,-50%);}
+
+/* ======== VIEWPORT IMAGE (Must be inside a relatively positioned element) ======== */
+// Makes sure images are always in the correct aspect ratio inside viewport container
+@mixin viewport-image                                       {position:absolute; top:50%; left:50%; @include translate(-50%,-50%); width:auto; height:auto; min-width:100%; min-height:100%; max-width:none;}

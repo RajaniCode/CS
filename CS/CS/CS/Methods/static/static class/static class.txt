@@ -1,0 +1,27 @@
+// static class:
+// (can extend built-in object)
+// <can be generic>
+// (cannot be sealed, abstract)
+
+
+data members 
+1. consts
+
+2. static fields (including static volatile and static readonly) 
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [ONLY inside static method in static class] (ASSIGNMENT AT DECLARATION MUST)
+
+
+// static class can contain only consts, static variables, static methods, static properties, static events
+
+// static class can contain only static constructor
+
+// static class cannot contain destructor
+
+// static class cannot have protected or protected internal members but can be protected or protected internal in a class/struct(essentially namespace)
+
+// static class cannot be derived 
+
+// static class can EXTEND (and inherit only static members) only from object
+
+// static class can use static object (built-in)

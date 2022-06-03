@@ -1,0 +1,76 @@
+﻿@page
+
+@using Microsoft.Extensions.Options
+@using FileUploadRazorPages.Utilities
+
+@inject IOptions<AppSettings> appSetting
+
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+    var appGuidFileName = appSetting.Value.AppGuidFileName;
+
+    var appGuidFileExtension = appSetting.Value.AppGuidFileExtension;
+}
+
+<h1>Files Stored On Disk</h1>
+
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+
+@if (Model.Files.Count() == 0)
+{
+    <p>
+        No files are available. Visit <a asp-page="/FileUpload">File Upload</a> page to upload file.
+    </p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th class="text-left">
+                    Delete
+                </th>
+                <th class="text-left">
+                    File
+                </th>
+                <th class="text-right">
+                    Size (Bytes)
+                </th>
+                <th class="text-right">
+                    Download
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var file in Model.Files)
+            {
+                <tr>
+                    <td class="text-left">
+                        <a asp-page="./FileDelete" asp-route-fileName="@file.Name">Delete</a>
+                    </td>
+                    <td class="text-left">
+                        @string.Concat(file.Name.Split(appGuidFileName)[0], file.Name.Split(appGuidFileExtension)[1])
+                    </td>
+                    <td class="text-right">
+                        @file.Length.ToString("N0")
+                    </td>
+                    <td class="text-right">
+                        <a asp-page-handler="FileDownload" asp-route-fileName="@file.Name">Download</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

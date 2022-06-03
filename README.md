@@ -1,2 +1,9 @@
-# CS
-C#, .NET, .NET Core, ASP.NET Core MVC, ASP.NET Core Razor Pages, Entity Framework Core
+C#
+--
+
+
+Courtesies:
+-----------
+https://dotnet.microsoft.com  
+https://azure.microsoft.com  
+https://rules.sonarsource.com/csharp

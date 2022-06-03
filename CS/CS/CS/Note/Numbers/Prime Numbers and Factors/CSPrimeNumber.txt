@@ -1,0 +1,125 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class PrimeSeries
+{
+    public void PrimeFunc()
+    {
+        Func<int, int, IEnumerable<int>> EnumerableRange =
+            (startPoint, endPoint) =>
+                Enumerable.Range(Math.Min(startPoint, endPoint), Math.Abs(startPoint - endPoint) + 1);
+
+        Func<int, int, bool> isFullyDivided =
+            (value, divisor) =>
+                (value % divisor).Equals(0);
+
+        int start = 2;
+        int end = 1000;
+
+        var query =
+        EnumerableRange(start, end)
+        .Where(value => EnumerableRange(2, (int)Math.Ceiling(Math.Sqrt(value)))
+            .Any(divisor =>
+                value != 2
+                &&
+                isFullyDivided(value, divisor))
+                );
+
+        var primeNumbers =
+            EnumerableRange(start, end)
+            .Except(query);
+ 
+        Console.WriteLine("Prime Numbers Func");
+        primeNumbers.ToList().ForEach(Console.WriteLine);
+        Console.WriteLine();
+
+        Console.WriteLine("Number of Prime Numbers in list: {0}", primeNumbers.ToList().Count);
+        Console.WriteLine();
+
+        Console.WriteLine("Number of Prime Numbers from query: {0}", primeNumbers.Count());
+        Console.WriteLine();
+    }
+
+    public void PrimeLinqFunc()
+    {
+        var count = 1000;
+        var primeNumbers = from number in Enumerable.Range(0, count / 2) where 
+        (
+            (Func<int, bool>) (n =>
+            {
+                for (int i = 2; i * i <= n; i++)
+                {  
+                    if(n % i == 0)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            })
+        ) (number == 0 ? 2 : (2 * number + 1))
+        select (number == 0 ? 2 : (2 * number + 1));
+
+        Console.WriteLine("Prime Numbers LinqFunc");
+        primeNumbers.ToList().ForEach(Console.WriteLine);
+        Console.WriteLine();
+
+        Console.WriteLine("Number of Prime Numbers in list: {0}", primeNumbers.ToList().Count);
+        Console.WriteLine();
+
+        Console.WriteLine("Number of Prime Numbers from query: {0}", primeNumbers.Count());
+        Console.WriteLine();
+    }
+
+    private void PrimeFuncLinqAsParallel()
+    {
+        Func<int, IEnumerable<int>> primeNumbersAsParallel = count => 
+            from i in Enumerable.Range(2, count).AsParallel() where Enumerable.Range(2, i - 2).All(j => i % j != 0)
+            select i;
+
+        Console.WriteLine("Prime Numbers FuncLinqAsParallel");
+        primeNumbersAsParallel(1000).ToList().ForEach(Console.WriteLine);
+        Console.WriteLine();
+
+        Console.WriteLine("Number of Prime Numbers Parallel in list: {0}", primeNumbersAsParallel(1000).ToList().Count);
+        Console.WriteLine();
+
+        Console.WriteLine("Number of Prime Numbers Parallel from query: {0}", primeNumbersAsParallel(1000).Count());
+        Console.WriteLine();
+    }
+
+    private void PrimeFuncLinq()
+    {
+        Func<int, IEnumerable<int>> primeNumbers = count =>
+            from i in Enumerable.Range(2, count)
+            where Enumerable.Range(2, i - 2).All(j => i % j != 0)
+            select i; 
+
+        Console.WriteLine("Prime Numbers FuncLinq");
+        primeNumbers(1000).ToList().ForEach(Console.WriteLine);
+        Console.WriteLine();
+
+        Console.WriteLine("Number of Prime Numbers in list: {0}", primeNumbers(1000).ToList().Count);
+        Console.WriteLine();
+
+        Console.WriteLine("Number of Prime Numbers from query: {0}", primeNumbers(1000).Count());
+        Console.WriteLine();
+    }
+
+    public void Print()
+    {
+        PrimeFuncLinq();
+        // PrimeFuncLinqAsParallel();
+        // PrimeLinqFunc();
+        // PrimeFunc();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        PrimeSeries prime = new PrimeSeries();
+        prime.Print();
+    }
+}

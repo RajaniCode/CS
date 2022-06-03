@@ -1,0 +1,504 @@
+
+/* ======== 32px ICON SPRITE LOCATIONS VARIABLES ======== */
+$icon32-add:0;
+$icon32-arrowhead-up:-82px;
+$icon32-arrowhead-down:-164px;
+$icon32-arrowhead-left:-246px;
+$icon32-arrowhead-right:-328px;
+$icon32-chevron-down:-410px;
+$icon32-chevron-left:-492px;
+$icon32-chevron-right:-574px;
+$icon32-chevron-up:-656px;
+$icon32-basket:-738px;
+$icon32-tick:-820px;
+$icon32-redo:-902px;
+$icon32-sync:-984px;
+$icon32-refresh:-1066px;
+$icon32-undo:-1148px;
+$icon32-edit:-1230px;
+$icon32-cursor:-1312px;
+$icon32-close:-1394px;
+$icon32-cancel:-1476px;
+$icon32-delete:-1558px;
+$icon32-home:-1640px;
+$icon32-user:-1722px;
+$icon32-user-search:-1804px;
+$icon32-user-add:-1886px;
+$icon32-user-delete:-1968px;
+$icon32-user-refresh:-2050px;
+$icon32-user-time:-2132px;
+$icon32-user-info:-2214px;
+$icon32-user-lock:-2296px;
+$icon32-user-new:-2378px;
+$icon32-user-back:-2460px;
+$icon32-user-world:-2542px;
+$icon32-user-mail:-2624px;
+$icon32-user-settings:-2706px;
+$icon32-data:-2788px;
+$icon32-data-edit:-2870px;
+$icon32-data-search:-2952px;
+$icon32-data-replace:-3034px;
+$icon32-data-delete:-3116px;
+$icon32-data-add:-3198px;
+$icon32-data-error:-3280px;
+$icon32-data-warning:-3362px;
+$icon32-data-copy:-3444px;
+$icon32-login:-3526px;
+$icon32-logout:-3608px;
+$icon32-document:-3690px;
+$icon32-document-download:-3772px;
+$icon32-document-add:-3854px;
+$icon32-document-search:-3936px;
+$icon32-document-warning:-4018px;
+$icon32-document-exchange:-4100px;
+$icon32-warning:-4182px;
+$icon32-submit:-4264px;
+$icon32-tick-alt:-4346px;
+$icon32-upload:-4428px;
+$icon32-download:-4510px;
+$icon32-save:-4592px;
+$icon32-error:-4674px;
+$icon32-excel:-4756px;
+$icon32-word:-4838px;
+$icon32-pdf:-4920px;
+$icon32-pdf-export:-5002px;
+$icon32-csv-export:-5084px;
+$icon32-tooltip:-5166px;
+$icon32-info:-5248px;
+$icon32-clock:-5330px;
+$icon32-search-clock:-5412px;
+$icon32-lock-open:-5494px;
+$icon32-lock-closed:-5576px;
+$icon32-print:-5658px;
+$icon32-search:-5740px;
+$icon32-view:-5822px;
+$icon32-search-refresh:-5904px;
+$icon32-search-open:-5986px;
+$icon32-mail:-6068px;
+$icon32-filter:-6150px;
+$icon32-filter-edit:-6232px;
+$icon32-filter-accept:-6314px;
+$icon32-filter-descending:-6396px;
+$icon32-filter-ascending:-6478px;
+$icon32-filter-add:-6560px;
+$icon32-filter-delete:-6642px;
+$icon32-filter-new:-6724px;
+$icon32-flag:-6806px;
+$icon32-critical:-6888px;
+$icon32-menu:-6970px;
+$icon32-star:-7052px;
+$icon32-sticker-free:-7134px;
+$icon32-sticker-new:-7216px;
+$icon32-star-new:-7298px;
+$icon32-power:-7380px;
+$icon32-star-cute:-7462px;
+$icon32-sticker-sale:-7544px;
+$icon32-sticker-discount:-7626px;
+$icon32-collapse:-7708px;
+$icon32-expand:-7790px;
+$icon32-sync-alt:-7872px;
+$icon32-count:-7954px;
+$icon32-grid:-8036px;
+$icon32-bin:-8118px;
+
+
+/* ======== 32px ICON SPRITE LOCATIONS ======== */
+I.icon--32.icon--add						            {@include sprite-icon($xPos32,$icon32-add);}
+.button.icon--32.icon--add,
+.grid-button.icon--32.icon--add					        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-menu);}
+
+I.icon--32.icon--arrowhead-up				            {@include sprite-icon($xPos32,$icon32-arrowhead-up);}
+.button.icon--32.icon--arrowhead-up,
+.grid-button.icon--32.icon--arrowhead-up			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-arrowhead-up);}
+
+I.icon--32.icon--arrowhead-down				            {@include sprite-icon($xPos32,$icon32-arrowhead-down);}
+.button.icon--32.icon--arrowhead-down,
+.grid-button.icon--32.icon--arrowhead-down		        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-arrowhead-down);}
+
+I.icon--32.icon--arrowhead-left				            {@include sprite-icon($xPos32,$icon32-arrowhead-left);}
+.button.icon--32.icon--arrowhead-left,
+.grid-button.icon--32.icon--arrowhead-left		        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-arrowhead-left);}
+
+I.icon--32.icon--arrowhead-right			            {@include sprite-icon($xPos32,$icon32-arrowhead-right);}
+.button.icon--32.icon--arrowhead-right,
+.grid-button.icon--32.icon--arrowhead-right		        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-arrowhead-right);}
+
+I.icon--32.icon--chevron-down				            {@include sprite-icon($xPos32,$icon32-chevron-down);}
+.button.icon--32.icon--chevron-down,
+.grid-button.icon--32.icon--chevron-down			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-chevron-down);}
+
+I.icon--32.icon--chevron-left				            {@include sprite-icon($xPos32,$icon32-chevron-left);}
+.button.icon--32.icon--chevron-left,
+.grid-button.icon--32.icon--chevron-left			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-chevron-left);}
+
+I.icon--32.icon--chevron-right				            {@include sprite-icon($xPos32,$icon32-chevron-right);}
+.button.icon--32.icon--chevron-right,
+.grid-button.icon--32.icon--chevron-right		        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-chevron-right);}
+
+I.icon--32.icon--chevron-up					            {@include sprite-icon($xPos32,$icon32-chevron-up);}
+.button.icon--32.icon--chevron-up,
+.grid-button.icon--32.icon--chevron-up			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-chevron-up);}
+
+I.icon--32.icon--basket						            {@include sprite-icon($xPos32,$icon32-basket);}
+.button.icon--32.icon--basket,
+.grid-button.icon--32.icon--basket				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-basket);}
+
+I.icon--32.icon--tick						            {@include sprite-icon($xPos32,$icon32-tick);}
+.button.icon--32.icon--tick,
+.grid-button.icon--32.icon--tick					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-tick);}
+
+I.icon--32.icon--redo						            {@include sprite-icon($xPos32,$icon32-redo);}
+.button.icon--32.icon--redo,
+.grid-button.icon--32.icon--redo					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-redo);}
+
+I.icon--32.icon--sync						            {@include sprite-icon($xPos32,$icon32-sync);}
+.button.icon--32.icon--sync,
+.grid-button.icon--32.icon--sync					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-sync);}
+
+I.icon--32.icon--refresh					            {@include sprite-icon($xPos32,$icon32-refresh);}
+.button.icon--32.icon--refresh,
+.grid-button.icon--32.icon--refresh				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-refresh);}
+
+I.icon--32.icon--undo						            {@include sprite-icon($xPos32,$icon32-undo);}
+.button.icon--32.icon--undo,
+.grid-button.icon--32.icon--undo					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-undo);}
+
+I.icon--32.icon--edit						            {@include sprite-icon($xPos32,$icon32-edit);}
+.button.icon--32.icon--edit,
+.grid-button.icon--32.icon--edit					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-edit);}
+
+I.icon--32.icon--cursor						            {@include sprite-icon($xPos32,$icon32-cursor);}
+.button.icon--32.icon--cursor,
+.grid-button.icon--32.icon--cursor				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-cursor);}
+
+I.icon--32.icon--close						            {@include sprite-icon($xPos32,$icon32-close);}
+.button.icon--32.icon--close,
+.grid-button.icon--32.icon--close				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-close);}
+
+I.icon--32.icon--cancel						            {@include sprite-icon($xPos32,$icon32-cancel);}
+.button.icon--32.icon--cancel,
+.grid-button.icon--32.icon--cancel				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-cancel);}
+
+I.icon--32.icon--delete						            {@include sprite-icon($xPos32,$icon32-delete);}
+.button.icon--32.icon--delete,
+.grid-button.icon--32.icon--delete				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-delete);}
+
+I.icon--32.icon--home						            {@include sprite-icon($xPos32,$icon32-home);}
+.button.icon--32.icon--home,
+.grid-button.icon--32.icon--home					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-home);}
+
+I.icon--32.icon--user						            {@include sprite-icon($xPos32,$icon32-user);}
+.button.icon--32.icon--user,
+.grid-button.icon--32.icon--user					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user);}
+
+I.icon--32.icon--user-search				            {@include sprite-icon($xPos32,$icon32-user-search);}
+.button.icon--32.icon--user-search,
+.grid-button.icon--32.icon--user-search			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-search);}
+
+I.icon--32.icon--user-add					            {@include sprite-icon($xPos32,$icon32-user-add);}
+.button.icon--32.icon--user-add,
+.grid-button.icon--32.icon--user-add				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-add);}
+
+I.icon--32.icon--user-delete				            {@include sprite-icon($xPos32,$icon32-user-delete);}
+.button.icon--32.icon--user-delete,
+.grid-button.icon--32.icon--user-delete			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-delete);}
+
+I.icon--32.icon--user-refresh				            {@include sprite-icon($xPos32,$icon32-user-refresh);}
+.button.icon--32.icon--user-refresh,
+.grid-button.icon--32.icon--user-refresh			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-refresh);}
+
+I.icon--32.icon--user-time					            {@include sprite-icon($xPos32,$icon32-user-time);}
+.button.icon--32.icon--user-time,
+.grid-button.icon--32.icon--user-time			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-time);}
+
+I.icon--32.icon--user-info					            {@include sprite-icon($xPos32,$icon32-user-info);}
+.button.icon--32.icon--user-info,
+.grid-button.icon--32.icon--user-info			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-info);}
+
+I.icon--32.icon--user-lock					            {@include sprite-icon($xPos32,$icon32-user-lock);}
+.button.icon--32.icon--user-lock,
+.grid-button.icon--32.icon--user-lock			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-lock);}
+
+I.icon--32.icon--user-new					            {@include sprite-icon($xPos32,$icon32-user-new);}
+.button.icon--32.icon--user-new,
+.grid-button.icon--32.icon--user-new				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-new);}
+
+I.icon--32.icon--user-back					            {@include sprite-icon($xPos32,$icon32-user-back);}
+.button.icon--32.icon--user-back,
+.grid-button.icon--32.icon--user-back			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-back);}
+
+I.icon--32.icon--user-world					            {@include sprite-icon($xPos32,$icon32-user-world);}
+.button.icon--32.icon--user-world,
+.grid-button.icon--32.icon--user-world			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-world);}
+
+I.icon--32.icon--user-mail					            {@include sprite-icon($xPos32,$icon32-user-mail);}
+.button.icon--32.icon--user-mail,
+.grid-button.icon--32.icon--user-mail			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-mail);}
+
+I.icon--32.icon--user-settings				            {@include sprite-icon($xPos32,$icon32-user-settings);}
+.button.icon--32.icon--user-settings,
+.grid-button.icon--32.icon--user-settings		        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-user-settings);}
+
+I.icon--32.icon--data						            {@include sprite-icon($xPos32,$icon32-data);}
+.button.icon--32.icon--data,
+.grid-button.icon--32.icon--data					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-data);}
+
+I.icon--32.icon--data-edit					            {@include sprite-icon($xPos32,$icon32-data-edit);}
+.button.icon--32.icon--data-edit,
+.grid-button.icon--32.icon--data-edit			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-data-edit);}
+
+I.icon--32.icon--data-search				            {@include sprite-icon($xPos32,$icon32-data-search);}
+.button.icon--32.icon--data-search,
+.grid-button.icon--32.icon--data-search			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-data-search);}
+
+I.icon--32.icon--data-replace				            {@include sprite-icon($xPos32,$icon32-data-replace);}
+.button.icon--32.icon--data-replace,
+.grid-button.icon--32.icon--data-replace			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-data-replace);}
+
+I.icon--32.icon--data-delete				            {@include sprite-icon($xPos32,$icon32-data-delete);}
+.button.icon--32.icon--data-delete,
+.grid-button.icon--32.icon--data-delete			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-data-delete);}
+
+I.icon--32.icon--data-add					            {@include sprite-icon($xPos32,$icon32-data-add);}
+.button.icon--32.icon--data-add,
+.grid-button.icon--32.icon--data-add				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-data-add);}
+
+I.icon--32.icon--data-error					            {@include sprite-icon($xPos32,$icon32-data-error);}
+.button.icon--32.icon--data-error,
+.grid-button.icon--32.icon--data-error			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-data-error);}
+
+I.icon--32.icon--data-warning				            {@include sprite-icon($xPos32,$icon32-data-warning);}
+.button.icon--32.icon--data-warning,
+.grid-button.icon--32.icon--data-warning			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-data-warning);}
+
+I.icon--32.icon--data-copy					            {@include sprite-icon($xPos32,$icon32-data-copy);}
+.button.icon--32.icon--data-copy,
+.grid-button.icon--32.icon--data-copy			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-data-copy);}
+
+I.icon--32.icon--login						            {@include sprite-icon($xPos32,$icon32-login);}
+.button.icon--32.icon--login,
+.grid-button.icon--32.icon--login				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-login);}
+
+I.icon--32.icon--logout						            {@include sprite-icon($xPos32,$icon32-logout);}
+.button.icon--32.icon--logout,
+.grid-button.icon--32.icon--logout				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-logout);}
+
+I.icon--32.icon--document					            {@include sprite-icon($xPos32,$icon32-document);}
+.button.icon--32.icon--document,
+.grid-button.icon--32.icon--document				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-document);}
+
+I.icon--32.icon--document-download			            {@include sprite-icon($xPos32,$icon32-document-download);}
+.button.icon--32.icon--document-download,
+.grid-button.icon--32.icon--document-download	        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-document-download);}
+
+I.icon--32.icon--document-add				            {@include sprite-icon($xPos32,$icon32-document-add);}
+.button.icon--32.icon--document-add,
+.grid-button.icon--32.icon--document-add			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-document-add);}
+
+I.icon--32.icon--document-search			            {@include sprite-icon($xPos32,$icon32-document-search);}
+.button.icon--32.icon--document-search,
+.grid-button.icon--32.icon--document-search		        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-document-search);}
+
+I.icon--32.icon--document-warning			            {@include sprite-icon($xPos32,$icon32-document-warning);}
+.button.icon--32.icon--document-warning,
+.grid-button.icon--32.icon--document-warning		    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-document-warning);}
+
+I.icon--32.icon--document-exchange			            {@include sprite-icon($xPos32,$icon32-document-exchange);}
+.button.icon--32.icon--document-exchange,
+.grid-button.icon--32.icon--document-exchange	        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-document-exchange);}
+
+I.icon--32.icon--warning					            {@include sprite-icon($xPos32,$icon32-warning);}
+.button.icon--32.icon--warning,
+.grid-button.icon--32.icon--warning				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-warning);}
+
+I.icon--32.icon--submit						            {@include sprite-icon($xPos32,$icon32-submit);}
+.button.icon--32.icon--submit,
+.grid-button.icon--32.icon--submit				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-submit);}
+
+I.icon--32.icon--tick-alt					            {@include sprite-icon($xPos32,$icon32-tick-alt);}
+.button.icon--32.icon--tick-alt,
+.grid-button.icon--32.icon--tick-alt				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-tick-alt);}
+
+I.icon--32.icon--upload						            {@include sprite-icon($xPos32,$icon32-upload);}
+.button.icon--32.icon--upload,
+.grid-button.icon--32.icon--upload				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-upload);}
+
+I.icon--32.icon--download					            {@include sprite-icon($xPos32,$icon32-download);}
+.button.icon--32.icon--download,
+.grid-button.icon--32.icon--download				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-download);}
+
+I.icon--32.icon--save						            {@include sprite-icon($xPos32,$icon32-save);}
+.button.icon--32.icon--save,
+.grid-button.icon--32.icon--save					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-save);}
+
+I.icon--32.icon--error						            {@include sprite-icon($xPos32,$icon32-error);}
+.button.icon--32.icon--error,
+.grid-button.icon--32.icon--error				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-error);}
+
+I.icon--32.icon--excel						            {@include sprite-icon($xPos32,$icon32-excel);}
+.button.icon--32.icon--excel,
+.grid-button.icon--32.icon--excel				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-excel);}
+
+I.icon--32.icon--word						            {@include sprite-icon($xPos32,$icon32-word);}
+.button.icon--32.icon--word,
+.grid-button.icon--32.icon--word					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-word);}
+
+I.icon--32.icon--pdf						            {@include sprite-icon($xPos32,$icon32-pdf);}
+.button.icon--32.icon--pdf,
+.grid-button.icon--32.icon--pdf					        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-pdf);}
+
+I.icon--32.icon--pdf-export					            {@include sprite-icon($xPos32,$icon32-pdf-export);}
+.button.icon--32.icon--pdf-export,
+.grid-button.icon--32.icon--pdf-export			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-pdf-export);}
+
+I.icon--32.icon--csv-export					            {@include sprite-icon($xPos32,$icon32-csv-export);}
+.button.icon--32.icon--csv-export,
+.grid-button.icon--32.icon--csv-export			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-csv-export);}
+
+I.icon--32.icon--tooltip					            {@include sprite-icon($xPos32,$icon32-tooltip);}
+.button.icon--32.icon--tooltip,
+.grid-button.icon--32.icon--tooltip				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-tooltip);}
+
+I.icon--32.icon--info						            {@include sprite-icon($xPos32,$icon32-info);}
+.button.icon--32.icon--info,
+.grid-button.icon--32.icon--info					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-info);}
+
+I.icon--32.icon--clock						            {@include sprite-icon($xPos32,$icon32-clock);}
+.button.icon--32.icon--clock,
+.grid-button.icon--32.icon--clock				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-clock);}
+
+I.icon--32.icon--search-clock				            {@include sprite-icon($xPos32,$icon32-search-clock);}
+.button.icon--32.icon--search-clock,
+.grid-button.icon--32.icon--search-clock			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-search-clock);}
+
+I.icon--32.icon--lock-open					            {@include sprite-icon($xPos32,$icon32-lock-open);}
+.button.icon--32.icon--lock-open,
+.grid-button.icon--32.icon--lock-open			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-lock-open);}
+
+I.icon--32.icon--lock-closed				            {@include sprite-icon($xPos32,$icon32-lock-closed);}
+.button.icon--32.icon--lock-closed,
+.grid-button.icon--32.icon--lock-closed			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-lock-closed);}
+
+I.icon--32.icon--print						            {@include sprite-icon($xPos32,$icon32-print);}
+.button.icon--32.icon--print,
+.grid-button.icon--32.icon--print				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-print);}
+
+I.icon--32.icon--search						            {@include sprite-icon($xPos32,$icon32-search);}
+.button.icon--32.icon--search,
+.grid-button.icon--32.icon--search				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-search);}
+
+I.icon--32.icon--view						            {@include sprite-icon($xPos32,$icon32-view);}
+.button.icon--32.icon--view,
+.grid-button.icon--32.icon--view					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-view);}
+
+I.icon--32.icon--search-refresh			                {@include sprite-icon($xPos32,$icon32-search-refresh);}
+.button.icon--32.icon--search-refresh,
+.grid-button.icon--32.icon--search-refresh		        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-search-refresh);}
+
+I.icon--32.icon--search-open				            {@include sprite-icon($xPos32,$icon32-search-open);}
+.button.icon--32.icon--search-open,
+.grid-button.icon--32.icon--search-open			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-search-open);}
+
+I.icon--32.icon--mail						            {@include sprite-icon($xPos32,$icon32-mail);}
+.button.icon--32.icon--mail,
+.grid-button.icon--32.icon--mail					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-mail);}
+
+I.icon--32.icon--filter						            {@include sprite-icon($xPos32,$icon32-filter);}
+.button.icon--32.icon--filter,
+.grid-button.icon--32.icon--filter				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-filter);}
+
+I.icon--32.icon--filter-edit				            {@include sprite-icon($xPos32,$icon32-edit);}
+.button.icon--32.icon--filter-edit,
+.grid-button.icon--32.icon--filter-edit			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-filter-edit);}
+
+I.icon--32.icon--filter-accept				            {@include sprite-icon($xPos32,$icon32-filter-accept);}
+.button.icon--32.icon--filter-accept,
+.grid-button.icon--32.icon--filter-accept		        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-filter-accept);}
+
+I.icon--32.icon--filter-descending			            {@include sprite-icon($xPos32,$icon32-filter-descending);}
+.button.icon--32.icon--filter-descending,
+.grid-button.icon--32.icon--filter-descending	        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-filter-descending);}
+
+I.icon--32.icon--filter-ascending			            {@include sprite-icon($xPos32,$icon32-filter-ascending);}
+.button.icon--32.icon--filter-ascending,
+.grid-button.icon--32.icon--filter-ascending		    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-filter-ascending);}
+
+I.icon--32.icon--filter-add					            {@include sprite-icon($xPos32,$icon32-filter-add);}
+.button.icon--32.icon--filter-add,
+.grid-button.icon--32.icon--filter-add			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-filter-add);}
+
+I.icon--32.icon--filter-delete				            {@include sprite-icon($xPos32,$icon32-filter-delete);}
+.button.icon--32.icon--filter-delete,
+.grid-button.icon--32.icon--filter-delete		        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-filter-delete);}
+
+I.icon--32.icon--filter-new					            {@include sprite-icon($xPos32,$icon32-filter-new);}
+.button.icon--32.icon--filter-new,
+.grid-button.icon--32.icon--filter-new			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-filter-new);}
+
+I.icon--32.icon--flag						            {@include sprite-icon($xPos32,$icon32-flag);}
+.button.icon--32.icon--flag,
+.grid-button.icon--32.icon--flag					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-flag);}
+
+I.icon--32.icon--critical					            {@include sprite-icon($xPos32,$icon32-critical);}
+.button.icon--32.icon--critical,
+.grid-button.icon--32.icon--critical				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-critical);}
+
+I.icon--32.icon--menu						            {@include sprite-icon($xPos32,$icon32-menu);}
+.button.icon--32.icon--menu,
+.grid-button.icon--32.icon--menu					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-menu);}
+
+I.icon--32.icon--star						            {@include sprite-icon($xPos32,$icon32-star);}
+.button.icon--32.icon--star,
+.grid-button.icon--32.icon--star					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-star);}
+
+I.icon--32.icon--sticker-free				            {@include sprite-icon($xPos32,$icon32-sticker-free);}
+.button.icon--32.icon--sticker-free,
+.grid-button.icon--32.icon--sticker-free			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-sticker-free);}
+
+I.icon--32.icon--sticker-new				            {@include sprite-icon($xPos32,$icon32-sticker-new);}
+.button.icon--32.icon--sticker-new,
+.grid-button.icon--32.icon--sticker-new			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-sticker-new);}
+
+I.icon--32.icon--star-new					            {@include sprite-icon($xPos32,$icon32-star-new);}
+.button.icon--32.icon--star-new,
+.grid-button.icon--32.icon--star-new				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-star-new);}
+
+I.icon--32.icon--power						            {@include sprite-icon($xPos32,$icon32-power);}
+.button.icon--32.icon--power,
+.grid-button.icon--32.icon--power				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-power);}
+
+I.icon--32.icon--star-cute					            {@include sprite-icon($xPos32,$icon32-star-cute);}
+.button.icon--32.icon--star-cute,
+.grid-button.icon--32.icon--star-cute			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-star-cute);}
+
+I.icon--32.icon--sticker-sale				            {@include sprite-icon($xPos32,$icon32-sticker-sale);}
+.button.icon--32.icon--sticker-sale,
+.grid-button.icon--32.icon--sticker-sale			    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-sticker-sale);}
+
+I.icon--32.icon--sticker-discount			            {@include sprite-icon($xPos32,$icon32-sticker-discount);}
+.button.icon--32.icon--sticker-discount,
+.grid-button.icon--32.icon--sticker-discount		    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-sticker-discount);}
+
+I.icon--32.icon--collapse					            {@include sprite-icon($xPos32,$icon32-collapse);}
+.button.icon--32.icon--collapse,
+.grid-button.icon--32.icon--collapse				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-collapse);}
+
+I.icon--32.icon--expand						            {@include sprite-icon($xPos32,$icon32-expand);}
+.button.icon--32.icon--expand,
+.grid-button.icon--32.icon--expand				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-expand);}
+
+I.icon--32.icon--sync-alt					            {@include sprite-icon($xPos32,$icon32-sync-alt);}
+.button.icon--32.icon--sync-alt,
+.grid-button.icon--32.icon--sync-alt				    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-sync-alt);}
+
+I.icon--32.icon--count						            {@include sprite-icon($xPos32,$icon32-count);}
+.button.icon--32.icon--count,
+.grid-button.icon--32.icon--count				        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-count);}
+
+I.icon--32.icon--grid						            {@include sprite-icon($xPos32,$icon32-grid);}
+.button.icon--32.icon--grid,
+.grid-button.icon--32.icon--grid					    {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-grid);}
+
+I.icon--32.icon--bin						            {@include sprite-icon($xPos32,$icon32-bin);}
+.button.icon--32.icon--bin,
+.grid-button.icon--32.icon--bin					        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-bin);}

@@ -1,0 +1,55 @@
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall"
+gcc stdcall-main.cpp -o stdcall-main
+./stdcall-main
+
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall"
+gcc -c stdcall.cpp
+gcc -shared -o stdcall.dll stdcall.o
+
+
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall"
+gcc cdecl-main.cpp -o cdecl-main
+./cdecl-main
+
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall"
+gcc -c cdecl.cpp
+gcc -shared -o cdecl.dll cdecl.o
+
+
+
+
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall"
+gcc cdecl-main.cpp -o cdecl-main
+./cdecl-main
+gcc -c cdecl.cpp
+gcc -shared -o cdecl.dll cdecl.o
+gcc stdcall-main.cpp -o stdcall-main
+./stdcall-main
+gcc -c stdcall.cpp
+gcc -shared -o stdcall.dll stdcall.o
+gcc thiscall-main.cpp -o thiscall-main
+./thiscall-main
+gcc -c thiscall.cpp
+gcc -shared -o thiscall.dll thiscall.o
+export PATH="/C/Users/rajanis/Downloads/.NET/dotnet-sdk-5.0.100-rc.1.20452.10-win-x64/":$PATH
+dotnet --version
+cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9"
+dotnet new console -o CdeclStdcall
+cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall"
+rm -rf Program.cs
+
+# cdecl CdeclStdcall.csproj
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+dotnet build
+dotnet run

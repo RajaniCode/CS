@@ -1,0 +1,45 @@
+// Perfect Number
+
+using System;
+using System.Collections.Generic; 
+using System.Linq;
+
+class PerfectNumberSeries
+{
+    private bool IsPerfectNumber(int number)
+    {
+        long sum = 0L;
+
+        for(long i = 1L ; i <= number / 2 ; i++){
+            if(number % i == 0) sum += i;
+        }
+
+        return sum == number;
+    }
+
+    public void Print()
+    {
+        // int[] perfectNumbers5 = { 6, 28, 496, 8128, 33550336 };
+        
+        IEnumerable<int> numbers = Enumerable.Range(1, 33550337);
+        
+        // numbers.ToList().ForEach(x => { Console.WriteLine(x); });
+        
+        numbers.ToList().ForEach(number => 
+        { 
+            if(IsPerfectNumber(number))
+            {
+                Console.WriteLine("{0} is Perfect Number", number);
+            } 
+       });
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        PerfectNumberSeries perfect = new PerfectNumberSeries();
+        perfect.Print();
+    }
+}

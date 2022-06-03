@@ -1,0 +1,77 @@
+// CS 4
+/*
+Tuple
+*/
+
+// Tuple
+// A tuple is a data structure that has a specific number and sequence of elements
+// A tuple can have one to seven elements
+// In addition, a tuple can have eight or more elements by nesting tuple objects in the Rest property of a Tuple<(Of <(T1, T2, T3, T4, T5, T6, T7, TRest>)>) object
+// Tuples are commonly used in four ways:
+// To represent a single set of data for example, a tuple can represent a database record, and its components can represent individual fields of the record
+// To provide easy access to, and manipulation of, a data set
+// To return multiple values from a method without using out parameters
+// To pass multiple values to a method through a single parameter for example, the Thread.Start(Object) method has a single parameter that lets you supply one value to the method that the thread executes at startup time, if you supply a Tuple<(Of <(T1, T2, T3>)>) object as the method argument, you can supply the threads startup routine with three items of data
+// The Tuple class does not itself represent a tuple instead, it is a factory class that provides static methods for creating instances of the tuple types, and it provides helper methods that can be called to instantiate tuple objects without having to explicitly specify the type of each tuple component
+// Any public static members of this type are thread safe and any instance members are not guaranteed to be thread safe
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Tuples
+{
+    public void Print()
+    {
+         Console.WriteLine("Tuples");
+        // An instance of a tuple class can be created by calling its class constructor
+        var newYork = new Tuple<string, int, int, int, int, int, int>("New York", 7891957, 7781984, 7894862, 7071639, 7322564, 8008278);
+        Console.WriteLine("A 7-tuple or septuple that contains population data for New York City for each census from 1950 through 2000: {0}", newYork);
+        Console.WriteLine();
+        Console.WriteLine("New York Lowercase: {0}", newYork.Item1.ToLower());
+        Console.WriteLine();
+
+        // Creating the same tuple object by using a helper method is more straightforward
+        var bigApple = Tuple.Create("New York", 7891957, 7781984, 7894862, 7071639, 7322564, 8008278);
+        Console.WriteLine("A 7-tuple or septuple that contains population data for New York City for each census from 1950 through 2000: {0}", bigApple);
+        Console.WriteLine();
+        Console.WriteLine("New York Uppercase: {0}", bigApple.Item1.ToUpper());
+        Console.WriteLine();
+
+        // Comparing Tuples
+        // Tuples are classes (and therefore reference types) therefore, comparing two distinct instances with the equality operator returns false however, the Equals method is overridden to compare each individual element instead:
+        // False
+        Console.WriteLine("newYork == bigApple: {0}",  newYork == bigApple);
+        // True
+        Console.WriteLine("newYork.Equals(bigApple): {0}", newYork.Equals(bigApple));
+        Console.WriteLine();
+
+        Console.WriteLine("Tuple Item Property cannot be assigned to (it is read-only)");
+        Console.WriteLine("371 is an Armstrong Number since 3**3 + 7**3 + 1**3 = 371");
+        var t = Tuple.Create(3, 7, 1, "Armstrong Number Digits");
+         var armstrongNumber = Math.Pow(t.Item1, 3) + Math.Pow(t.Item2, 3) + Math.Pow(t.Item3, 3);
+        Console.WriteLine("Armstrong Number: {0}", armstrongNumber);
+        Console.WriteLine();
+
+        // The Create() helper methods directly support the creation of tuple objects that have from one to eight components (that is, singletons through octuples)
+        // Although there is no practical limit to the number of components a tuple may have, helper methods are not available to create a tuple with nine or more components
+        // To create such a tuple, the Tuple<(Of <(T1, T2, T3, T4, T5, T6, T7, TRest>)>).Tuple<(Of <(T1, T2, T3, T4, T5, T6, T7, TRest>)>) constructor must be called
+        // An 8-tuple (octuple) that contains prime numbers that are less than 20
+        var primes = Tuple.Create(2, 3, 5, 7, 11, 13, 17, 19);
+        // foreach statement cannot operate on variables of type `System.Tuple<int,int,int,int,int,int,int,System.Tuple<int>>' because it does not contain a definition for `GetEnumerator' or is inaccessible
+        Console.WriteLine("An 8-tuple (octuple) that contains prime numbers that are less than 20: {0}", primes);
+        Console.WriteLine();
+
+        Console.WriteLine("Prime numbers less than 20: " + "{0}, {1}, {2}, {3}, {4}, {5}, {6}, and {7}", primes.Item1, primes.Item2, primes.Item3, primes.Item4, primes.Item5, primes.Item6, primes.Item7, primes.Rest.Item1);
+        Console.WriteLine();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Tuples tupl = new Tuples();
+        tupl.Print();
+    }
+}

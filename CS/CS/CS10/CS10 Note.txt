@@ -1,0 +1,1 @@
+Beginning with C# 10, you can use string interpolation to initialize a constant string when all the expressions used for placeholders are also constant strings. In other words, every interpolationexpression must be a string, and it must be a compile time constant.

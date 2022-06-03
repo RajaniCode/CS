@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@await Html.PartialAsync("~/Views/Shared/_MessagePartial.cshtml")
+
+@*<script>
+    @{
+        <text>
+            error = "@TempData["Error"]";
+        </text>
+    }
+</script>
+
+@if (TempData["Error"] != null)
+{
+    @section Scripts
+    {
+        <script type="text/javascript">
+            showMessageWithStatus("@TempData["Error"]", "error");
+        </script>
+    }
+}*@
+
+@section Scripts
+{
+    <script type="text/javascript">
+        @if (TempData["Error"] as string == "Even")
+        {
+            <text>
+                showMessageWithStatus("Even-steven.", "success");
+            </text>
+        }
+        else if (TempData["Error"] as string == "Odd")
+        {
+
+            if (new Random().Next(1, 10) % 2 == 0)
+            {
+                <text>
+                    showMessageWithStatus("Odd.", "error");
+                </text>
+            }
+            else
+            {
+                <text>
+                    showMessageWithStatus("Odd.", "warning");
+                </text>
+            }
+        }
+    </script>
+}

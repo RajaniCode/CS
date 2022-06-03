@@ -1,0 +1,15 @@
+/Users/rajaniapple/Desktop/Mnemonics/Localization/bin/Debug/net6.0/Localization
+/Users/rajaniapple/Desktop/Mnemonics/Localization/bin/Debug/net6.0/Localization.deps.json
+/Users/rajaniapple/Desktop/Mnemonics/Localization/bin/Debug/net6.0/Localization.runtimeconfig.json
+/Users/rajaniapple/Desktop/Mnemonics/Localization/bin/Debug/net6.0/Localization.dll
+/Users/rajaniapple/Desktop/Mnemonics/Localization/bin/Debug/net6.0/ref/Localization.dll
+/Users/rajaniapple/Desktop/Mnemonics/Localization/bin/Debug/net6.0/Localization.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Localization/obj/Debug/net6.0/Localization.csproj.AssemblyReference.cache
+/Users/rajaniapple/Desktop/Mnemonics/Localization/obj/Debug/net6.0/Localization.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rajaniapple/Desktop/Mnemonics/Localization/obj/Debug/net6.0/Localization.AssemblyInfoInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Localization/obj/Debug/net6.0/Localization.AssemblyInfo.cs
+/Users/rajaniapple/Desktop/Mnemonics/Localization/obj/Debug/net6.0/Localization.csproj.CoreCompileInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Localization/obj/Debug/net6.0/Localization.dll
+/Users/rajaniapple/Desktop/Mnemonics/Localization/obj/Debug/net6.0/ref/Localization.dll
+/Users/rajaniapple/Desktop/Mnemonics/Localization/obj/Debug/net6.0/Localization.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Localization/obj/Debug/net6.0/Localization.genruntimeconfig.cache

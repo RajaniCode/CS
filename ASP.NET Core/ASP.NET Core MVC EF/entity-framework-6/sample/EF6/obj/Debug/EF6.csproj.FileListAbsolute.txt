@@ -1,0 +1,14 @@
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\bin\Debug\EF6.dll.config
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\bin\Debug\EF6.dll
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\bin\Debug\EF6.pdb
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\bin\Debug\EntityFramework.dll
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\bin\Debug\EntityFramework.xml
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\obj\Debug\EF6.Migrations.Initial.resources
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\obj\Debug\EF6.csproj.GenerateResource.cache
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\obj\Debug\EF6.csproj.CoreCompileInputs.cache
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\obj\Debug\EF6.csproj.CopyComplete
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\obj\Debug\EF6.dll
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\obj\Debug\EF6.pdb
+C:\Users\rajanis\Desktop\data\entity-framework-6\sample\EF6\obj\Debug\EF6.csprojAssemblyReference.cache

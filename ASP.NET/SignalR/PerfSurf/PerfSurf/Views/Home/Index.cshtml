@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>SignalR Demo!</h1>
+
+<div>
+    <div class="col-md-4">
+        <input type="text" placeholder="Message" data-bind="value:message" />
+        <button class="btn btn-primary" data-bind="click:sendMessage">Send</button>
+    </div>
+    <div class="col-md-4">
+        <div data-bind="foreach:messages">
+            <div data-bind="text: $data"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="~/SignalR/hubs"></script>
+    <script src="~/Scripts/knockout-3.5.1.js"></script>
+    <script src="~/Scripts/perfSurf.js"></script>
+}

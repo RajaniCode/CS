@@ -1,0 +1,536 @@
+Namespace (essentially class/struct) elements (class, interface, delegate, struct, enum) cannot be explicitly declared as private, protected, or protected internal
+
+REFERENCE TYPES:
+
+class:
+// (Can be sealed, Can be static, Can be abstract)
+// (Can inherit object, Can implement interface)
+// <can be generic>
+
+
+data members 
+1. consts
+
+2. static fields (including static volatile and static readonly) 
+
+3. instance fields (including instance volatile and instance readonly) 
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+
+
+function members:
+1. methods (instance/static) <can be generic>
+
+*ONLY instance methods can be [abstract ONLY in abstract class & MUST be implemented] & can be 'sealed' when overridden
+[* although not abstract in interface, instance methods in interface can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) abstract class]
+
+
+# ONLY instance methods can be [virtual in class/abstract class] & can be 'sealed' when overridden
+[# although not virtual in interface, instance methods in interface can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+
+2. construcutors (instance/static(which must be parameterless))
+
+
+3. destructors
+
+
+4. indexers (instance, can't return void) (indexers cannot be static as 'this' cannot be used with static) :
+
+* indexers (can only be instance) [can only be accessor based] can be [abstract ONLY in abstract class & MUST be implemented] & can be 'sealed' when overridden
+[* although not abstract in interface, indexers (can only be instance) [can only be accessor based] in interface can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) abstract class]
+
+
+# indexers (instance) [can only be accessor based] can be [virtual in class/abstract class] & can be 'sealed' when overridden
+[# although not virtual in interface, indexers (can only be instance) [can only be accessor based] in interface can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+
+can be overloaded
+
+
+need not require an underlying array
+
+
+can be read-only without set accessors
+
+
+can be multidimensional
+
+
+5. properties (instance/static, can't return void)
+
+* ONLY instance properties [can only be accessor based] can be [abstract ONLY in abstract class & MUST be implemented] & can be 'sealed' when overridden
+[* although not abstract in interface, instance properties [can only be accessor based] in interface can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) class/abstract class]
+
+
+# ONLY instance properties [can only be accessor based] can be [virtual in class/abstract class] & can be 'sealed' when overridden
+[# although not vitual in interface, instance properties [can only be accessor based] in interface can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+staic property can access [const as read-only static property] DIRECTLY  
+
+staic property can access ONLY [static fields] including [static volatile] AND [static readonly as read-only static property] DIRECTLY 
+
+staic property can access [instance fields] including [instance volatile] AND [instance readonly as read-only static property] 
+USING mc CREATED INSIDE class as: static MyClass mc = new MyClass(); 
+
+instance property can access [const as read-only instance property] DIRECTLY  
+
+instance property can access [static/instance fields] including [static/instance volatile] AND [static/instance readonly as read-only static property] DIRECTLY 
+
+static property [except read-only] can be assigned in static constructor 
+
+static property [except read-only] &
+**[EXCEPT that accessing instance field (including instance volatile) [throws System.NullReferenceException]] *{NOT IN struct}* 
+can be assigned in instance constructor 
+
+instance property [except read-only] can be assigned in static constructor 
+USING: mc CREATED INSIDE class as: static MyClass mc = new MyClass(); 
+[NOT USEFUL for instance property accessing instance fields (including instance volatile)]
+[NOT USEFUL if simultaneously assigned in instance constructor]
+
+instance property [except read-only] can be assigned in instance constructor
+
+
+cannot be passed as ref/out parameters to methods
+
+cannot be overloaded
+
+two (or more) different properties [even if one is static and the other is instance] can access the same variable although unusual
+
+get operation should be nonintrusive although not enforced by the compiler
+
+
+6. events (instance/static):
+
+* ONLY instance events [except accessor based] can be [abstract ONLY in abstract class & MUST be implemented] & can be 'sealed' when overridden
+[* although not abstract in interface, instance events [except accessor based] in interface can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) abstract class]
+
+
+# ONLY instance events [including accessor based] can be [virtual in class/abstract class] & can be 'sealed' when overridden
+[# although not virtual in interface, instance events [including accessor based] in interface can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+
+7. operators (static)
+
+
+
+[The members of a class are the members declared in the class and the members inherited from the base class (except for the class object, which has no base class). 
+The members inherited from the base class include the constants, fields, methods, properties, events, indexers, operators, 
+and types of the base class, but not the instance constructors, destructors, and static constructors of the base class. 
+Base class members are inherited without regard to their accessibility.]
+
+
+
+
+interface:
+// (CANNOT be sealed, CANNOT be static, CANNOT be abstract)
+// (CANNOT inherit object, Can inherit another interface)
+// <can be generic [and the implementing abstract class/class/struct MUST be generic EXCEPT when implementing built-in IComparable interface]>
+
+
+(no member can be static)
+(no member can have explicit access modifier)
+(member cannot be abstract, virtual (override, new and cannot use 'base'))
+
+[all the mebers must be implemented by class/abstract class/struct, no partial implementation]
+
+[although not abstract in interface, instance methods, indexers (only instance), instance properties, instance events [except accessor based] can be mapped onto abstract 
+in the implementing (MUST & only public implementation is possible) abstract class]
+
+[although not virtual in interface, instance methods, indexers (only instance), instance properties, instance events can be mapped onto virtual 
+in the implementing (only public implementation is possible) class/abstract class]
+
+
+NO data members
+
+function members:
+
+NO constructors/destructors/operator methods
+
+1. instance methods (only stubs [return type, method name, parameter(if any)] with semicolon (essentially abstract)) 
+<can be generic in generic/non-generic interface>
+
+2. indexers (instance, can't return void)  (get; set; (without body))
+
+can be overloaded
+
+can be multidimensional
+
+3. instance properties (instance, can't return void)  (get; set; (without body))
+
+instance properties in interface, public implementation by class/struct:
+
+instance property can access [const as read-only instance property] DIRECTLY  
+
+instance property can access [static/instance fields] including [static/instance volatile] AND [static/instance readonly as read-only static property] DIRECTLY 
+
+instance property [except read-only] can be assigned in static constructor 
+USING: [mc/ms] CREATED INSIDE class/struct as: [static MyClass mc = new MyClass();]/[static MyStruct ms = new MyStruct()]
+[NOT USEFUL for instance property accessing instance fields (including instance volatile)]
+[NOT USEFUL if simultaneously assigned in instance constructor]
+
+instance property [except read-only] can be assigned in instance constructor
+
+two (or more) different properties [ONLY instance properties in interface] can access the same variable although unusual
+
+
+instance properties in interface, private and explicit implementation by class/struct:
+
+instance property can access [const as read-only instance property] DIRECTLY  
+
+instance property can access [static/instance fields] including [static/instance volatile] AND [static/instance readonly as read-only static property] DIRECTLY 
+
+instance property [except read-only] can be assigned in static constructor 
+USING: [mc/ms] CREATED INSIDE class/struct as: [static MyClass mc = new MyClass();]/[static MyStruct ms = new MyStruct();]
+**{AND USING: mi CREATED INSIDE static constructor as: MyInterface mi = (MyInterface)mc;}**
+[NOT USEFUL for instance property accessing instance fields (including instance volatile)]
+[NOT USEFUL if simultaneously assigned in instance constructor]
+
+instance property [except read-only] can be assigned in instance constructor
+*{AND USING: mi CREATED INSIDE static constructor as: MyInterface mi = this;}*
+
+two (or more) different properties [ONLY instance properties in interface] can access the same variable although unusual
+
+
+
+cannot be passed as ref/out parameters to methods
+
+cannot be overloaded
+
+get operation should be nonintrusive although not enforced by the compiler
+
+
+4. instance events (implementing class/struct must supply the event)
+
+Note:
+
+1. interface can inherit from another interface (BUT interface cannot be 'sealed')
+
+2. An interface can itself inherit from multiple and multilevel interfaces.
+
+3. You can create interface reference variable
+
+4. You can specify derived interface member with new if it hides one defined by base interface
+
+5. any number of classes/abstract classes/structs can implement an interface (along with their own)
+
+6. one class/abstract class/struct can implement any number of interfaces (in a comma-separated list (base class if present must come first))
+
+7. can create explicit interface (member) implementation, 
+which MUST BE CALLED THROUGH an interface reference (to the implementing class' object TYPECAST USING THE INTERFACE)
+or
+which MUST BE CALLED THROUGH an interface reference (to the implementing struct's object TYPECAST USING THE INTERFACE)
+
+8. cannot create partial implemetation of interface
+
+9. any non-abstract type inheriting the interface must implement all its members
+(abstract type inheriting the interface must either implement or map onto abstract)
+
+10. interface can do without its members
+
+
+Note:
+while declaring method(member) in interface:
+
+1. return type and signature must match the return type and signature of the implementing method(member)
+
+2. declared using only their return type and signature
+
+3. no explicit access specifier allowed 
+(implicitly public, so the implementing method must also be public except during private(default) and explicit implementation)
+
+[The members of an interface are the members declared in the interface and in all base interfaces of the interface 
+The members in class object are not, strictly speaking, members of any interface 
+However, the members in class object are available via member lookup in any interface type and the members inherited from the class object]
+
+
+
+
+
+array: (A namespace cannot contain array directly but class/struct(at namespace level) can contain array directly)
+[The members of an array are the members inherited from the class (But NOT EXTEND) System.Array]
+
+
+
+
+delegate:
+// (CANNOT be sealed, CANNOT be static, CANNOT be abstract)
+// (CANNOT inherit object, CANNOT implement interface)
+// <can be generic>
+
+
+[The members of a delegate are the members inherited from the class (But NOT EXTEND) System.Delegate]
+
+{delegate can be used inside abstract class/class/struct. Although not as a member, can have access the modifiers as that of a member}
+
+
+
+
+object: (should only be inherited and extended only to class)
+[The members of objec correspond directly to the members of the class types they alias
+The members of object are the members of the System.Object class]
+
+
+
+string: (A namespace cannot contain string directly but class/struct(at namespace level) can contain string directly)
+[The members of string correspond directly to the members of the class types they alias. 
+The members of string are the members of the (But NOT EXTEND) System.String class]
+
+
+
+
+VALUE TYPES:
+
+struct:
+// (CANNOT be sealed, CANNOT be static, CANNOT be abstract)
+// (CANNOT inherit object, Can implement interface)
+// <can be generic>
+
+
+(member cannot be abstract, virtual (override, new and cannot use 'base'), protected or protected internal)
+
+data members (fields):
+1. consts
+
+2. static fields (including static volatile and static readonly)
+
+3. instance fields (including instance volatile and instance readonly) 
+[cannot have instance field (including instance volatile and instance readonly) initializers in structs]
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+
+
+function members:
+
+1. methods (instance/static) <can be generic>
+
+2. construcutors (instance/static (which must be parameterless)) (BUT NOT EXPLICIT parameterless instance constructor, because it is automatically defined (implicit)) 
+(However can have EXPLICIT parameterless static constructor(But not parameterized static constructor))
+*Note: struct cannot be static
+
+[NO DESTRUCTORS]
+
+3. indexers (instance, can't return void) 
+[can be overloaded 
+can be multidimensional]
+
+4. properties (instance/static, can't return void) 
+
+staic property can access [const as read-only static property] DIRECTLY  
+
+staic property can access ONLY [static fields] including [static volatile] AND [static readonly as read-only static property] DIRECTLY 
+
+staic property can access [instance fields] including [instance volatile] AND [instance readonly as read-only static property] 
+USING ms CREATED INSIDE struct as: static MyStruct mc = new MyStruct(); 
+
+instance property can access [const as read-only instance property] DIRECTLY  
+
+instance property can access [static/instance fields] including [static/instance volatile] AND [static/instance readonly as read-only static property] DIRECTLY 
+
+static property [except read-only] can be assigned in static constructor 
+
+static property [except read-only] &
+**[INCLUDING that accessing instance field (including instance volatile)] *{NOT IN class}* 
+can be assigned in instance constructor 
+
+instance property [except read-only] can be assigned in static constructor 
+USING: ms CREATED INSIDE struct as: static MyStruct ms = new MyStruct(); 
+[NOT USEFUL for instance property accessing instance fields (including instance volatile)]
+[NOT USEFUL if simultaneously assigned in instance constructor]
+
+instance property [except read-only] can be assigned in instance constructor
+
+
+cannot be passed as ref/out parameters to methods
+
+cannot be overloaded
+
+two (or more) different properties [even if one is static and the other is instance] can access the same variable although unusual
+
+get operation should be nonintrusive although not enforced by the compiler
+
+
+5. events (instance/static)
+
+6. operators (static)
+
+Note:
+
+1. can inherit only object (NOT EXTEND object unlike abstract class/static class/class), cannot be inherited
+
+2. structure object can be created using new but not required
+(when new is used, the specified constructor is called, when new is not used, 
+the object is still created but not initialized, need to perform initialization manually )
+ 
+(class to struct:)
+3. cannot contain EXPLICIT parameterless instance constructors but can have EXPLICIT parameterless static constructors
+4. cannot have instance (including instance volatile and instance readonly) field initializers in structs
+5. Hence, when parameterized instance constructor is used in struct 
+instance fields (including instance volatile and instance readonly) must be fully assigned before control leaves
+parameterized instance constructor OR : this()
+    
+6. {event} in [struct]:
+add:
+1. assign the event handler method without parenthesis (using class for static and using object for instance) to the delegate instance
+2. add the assigned delegate instance to the event list
+remove:
+1. remove the assigned delegate instance 
+
+
+[The members of a struct are the members declared in the struct 
+and the members inherited from the struct’s direct base class System.ValueType and the indirect base class object.
+(But NOT EXTEND System.ValueType, object unlike class)
+ 
+The members of a simple type correspond directly to the members of the struct type aliased by the simple type.
+Example: The members of sbyte are the members of the (But NOT EXTEND) System.SByte struct.]
+
+
+
+
+enum:
+// (CANNOT be sealed, CANNOT be static, CANNOT be abstract)
+// (CANNOT inherit object, CANNOT implement interface)
+// <CANNOT be generic>
+
+
+CAN extend only sbyte, byte, short, ushort, int, uint, long, or ulong [integral types other than char]
+[The members of an enumeration are the constants declared in the enumeration 
+and the members inherited from the enumeration’s direct base class System.Enum 
+and the indirect base classes System.ValueType 
+and object. (But CANNOT EXTEND System.Enum, System.ValueType, object)]
+
+{enum can be used inside abstract class/class/struct, in which case can have the access modifiers as that of a member}
+
+
+
+
+***************************************************************************************************************************************************
+
+
+
+
+// abstract class:
+// (CANNOT be sealed, CANNOT be static)
+// (can inherit object, can implement interface)
+// <can be generic>
+
+
+data members 
+1. consts
+
+2. static fields (including static volatile and static readonly) 
+
+3. instance fields (including instance volatile and instance readonly) 
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+
+
+// members of a class are also members of an abstract class
+
+// abstract class have const, readonly [which can be assigned ONLY in BaseClass constructor via DerivedClass constructor using base()] 
+
+// abstract class can have constructors(instance/static (which must be parameterless)) and destructor
+ 
+// abstract class constructors can be overloaded using derived class constructor [using base()]
+
+// method/indexer/properties/events[except accessor based] can be abstract and that too only in abstract class  
+
+// method/indexer/properties/events[including accessor based] can be virtual and can be in abstract class
+
+// abstract class can do without abstract members (method/indexer/properties/events[except accessor based])
+
+// abstract method has only stubs with semicolon, can have parameter, but no body 
+
+
+// abstract method must be implemented (overridden and can be 'sealed') in all the 1st level derived non-abstract classes
+// NOT A MUST in the 1st level derived abstract classes (if any)
+// BUT MUST in the 1st level derived abstract classes' next level derived non-abstract classes (if any)
+// IF the next level derived classes are abstract then MUST in the further next level derived non-abstract classes (if any) and so on
+
+
+// abstract method cannot be static, as static cannot be used with abstract, virtual or override
+
+// abstract class cannot be instantiated but you can have reference variable of abstract class
+
+// abstract class can have concrete methods (both instance and static)
+
+// abstract class can have virtual methods 
+
+// abstract class can inherit from abstract or non-abstract class (including multilevel & excluding multiple)
+
+// non-abstract class can be inherited from an abstract class (including multilevel & excluding multiple)
+
+
+// instance methods in abstract class Can be be invoked using 
+// 1. [BASE CLASS REFERENCE that refers DERIVED CLASS OBJECT]
+// 2. [DERIVED CLASS OBJECT] 
+
+// static methods in abstract class can access instance variables by
+// 1. USING BASE CLASS REFERENCE PASSED IN PARAMETER that allows [BASE CLASS REFERENCE that refers DERIVED CLASS OBJECT] PASSED IN ARGUMENT from Main()
+// 2. USING BASE CLASS REFERENCE PASSED IN PARAMETER that allows [DERIVED CLASS OBJECT] PASSED IN ARGUMENT from Main()
+
+
+
+// abstract, virtual CANNOT be private (default) in base class
+// and when overridden in derived class, the access modifier, return type and parameter(if any) should be same
+
+// abstract, virtual CAN be protected in base class BUT:
+// accessed ONLY INSIDE *derived class (or derived from it) 
+// accessed ONLY INSIDE *derived classes[including further derived] of the same/different assembly
+// [#especially for instance member] via a qualifier of type derived class [$via qualifier of further derived in further derived] 
+// [*derived class should NOT be thought of Main()'s class]
+// [Note: class should be public for accessing from derived class in different assembly]
+
+
+// #Note: to call virtualMethod() that is in abstract BaseClass
+// use 'base' inside an instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]  
+// or inside the overridden method of virtual (if overridden) or inside the overridden method of abstract (if any)
+// using dot and argument for the parameter(if any) 
+
+// *Note: 'base' cannot be used in a static method 
+
+// @Note: 'base' ONLY for new (instance method that is in BaseClass) AND virtual (method that is in BaseClass) 
+// BUT NOT for abstract method (method that is in BaseClass) 
+
+// $Note:  use BaseClass for new (static method that is in BaseClass) 
+// inside static or instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]
+// using dot and argument for the parameter (if any)
+
+
+
+
+// static class:
+// (CANNOT be sealed, CANNOT be abstract)
+// (can inherit object, CANNOT implement interface)
+// <can be generic>
+
+
+data members 
+1. consts
+
+2. static fields (including static volatile and static readonly) 
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [ONLY inside static method in static class] (ASSIGNMENT AT DECLARATION MUST)
+
+
+// static class can contain only consts, static variables, static methods, static properties, static events
+
+// static class can contain only static constructor
+
+// static class cannot contain destructor
+
+// static class cannot have protected or protected internal members but can be protected or protected internal in a class/struct(at namespace level)
+
+// static class cannot be derived 
+
+// static class can EXTEND (and inherit only static members) only from object
+
+// static class can use static object (built-in)

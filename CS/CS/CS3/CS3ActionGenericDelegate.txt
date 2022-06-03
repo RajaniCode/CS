@@ -1,0 +1,67 @@
+// CS 3
+/*
+Action Generic Delegate
+*/
+
+using System;
+
+class ActionGeneric
+{
+    public void Print()
+    {
+        Action<string> message;
+        message = Console.WriteLine;
+        message("Hello, World!");
+    }
+}
+
+class ActionAnonymous
+{
+    public void Print()
+    {
+        Action<string> message;
+        message = delegate(string s) { Console.WriteLine(s); };
+        message("Hello, World!");
+    }
+}
+
+class ActionLambda
+{
+   public void Print()
+   {
+        Action<string> message;
+        message = s => Console.WriteLine(s);
+        message("Hello, World!");
+   }
+}
+
+// < CS 3
+delegate void DelegateSignature(string message);
+
+class Delegates
+{
+    public void Print()
+    {
+        DelegateSignature message;
+        message = Console.WriteLine;
+        message("Hello, World!");   
+   }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        ActionGeneric generic = new ActionGeneric();
+        generic.Print();
+        
+        ActionAnonymous anonymous = new ActionAnonymous();
+        anonymous.Print();
+
+        ActionLambda lambda = new ActionLambda();
+        lambda.Print();
+
+        Delegates del = new Delegates();
+        del.Print();
+    }
+}

@@ -1,0 +1,715 @@
+Synchronous and Asynchronous Programming
+A synchronous operation does not return to its caller until it finishes its job. For example, in synchronous 
+context, if Method1 calls Method2, the program control does not return to Method1 until the CLR finishes 
+with Method2, and this makes the synchronous operation a blocking operation. In synchronous context, 
+the program will only be allowed to do one thing at a time. 
+
+Example of synchronous method call
+using System;
+using System.Diagnostics;
+using System.Threading;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ Stopwatch stopwatch = new Stopwatch();
+ stopwatch.Start();
+ Method1();
+ Method2();
+ Method3();
+ Method4();
+ Method5();
+ stopwatch.Stop();
+ Console.WriteLine("Elapsed time: {0}ms", 
+ stopwatch.ElapsedMilliseconds);
+ Console.ReadKey();
+ }
+ static void Method1() { Thread.Sleep(10); }
+ static void Method2() { Thread.Sleep(10); }
+ static void Method3() { Thread.Sleep(10); }
+ static void Method4() { Thread.Sleep(10); }
+ static void Method5() { Thread.Sleep(10); }
+ }
+}
+This program will produce the output (output might vary when you run it locally):
+Elapsed time: 50ms
+
+
+
+Definition of the Task Class
+public class Task : IThreadPoolWorkItem, IAsyncResult, IDisposable
+{
+ /* 8 overloaded */
+ public Task(Action action) {}
+ /* 21 overloaded */
+ public ConfiguredTaskAwaitable ConfigureAwait( 
+ bool continueOnCapturedContext) {}
+ /* 4 overloaded */
+ public static Task Delay(int millisecondsDelay) {}
+ public void Dispose() {}
+ public static Task<TResult> FromResult<TResult>
+ (TResult result) {}
+ public TaskAwaiter GetAwaiter() {}
+ /* 8 overloaded */
+ public static Task Run(Action action) {}
+ /* 2 overloaded */
+ public void RunSynchronously() {}
+ /* 2 overloaded */
+ public void Start() {}
+ /* 5 overloaded */
+ public void Wait() {}
+ /* 5 overloaded */
+ public static void WaitAll(params Task[] tasks) {}
+ /* 5 overloaded */
+ public static int WaitAny(params Task[] tasks) {}
+ /* 4 overloaded */
+ public static Task WhenAll(IEnumerable<Task> tasks) {}
+ /* 4 overloaded */
+ public static Task<Task> WhenAny(IEnumerable<Task> tasks) {}
+ public static YieldAwaitable Yield() {}
+ public object AsyncState {}
+ public TaskCreationOptions CreationOptions {}
+ public static int? CurrentId {}
+ public AggregateException Exception {}
+ public static TaskFactory Factory {}
+ public int Id {}
+ public bool IsCanceled {}
+ public bool IsCompleted {}
+ public bool IsFaulted {}
+ public TaskStatus Status {}
+}
+
+ Task Creation Using the Run Method
+using System;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ /* A task will be instantiated and scheduled to run sometime 
+ * later on and 
+ * return the instance of the Task to displayTask variable. */ 
+ Task displayTask = Task.Run(() => 
+ Console.WriteLine("async in C# 5.0"));
+ /* Continue until the task completes */
+ while (true)
+ {
+ /* To check whether the task has completed or not */
+ if (displayTask.IsCompleted)
+ {
+ Console.WriteLine("Task completed!");
+ break;
+ }
+ }
+ Console.ReadLine();
+ }
+ }
+}
+The program will produce the output:
+async in C# 5.0
+Task completed!
+You could also use the Start method from the Task class to start a task, as demonstrated in 
+the following program. 
+
+Task Creation Using the Task Constructor
+using System;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ /* An instance of the Task will be instantiated. */
+ Task displayTask = new Task(
+ /* The Task will execute the Action block */
+ () => Console.WriteLine("async in C# 5.0"),
+ /* Task creation options */ 
+ TaskCreationOptions.None );
+ displayTask.Start(); 
+ /* The Task will execute sometimes later */
+ displayTask.Wait(); 
+ /* Explicitly wait for the task to finish */
+ Console.ReadLine();
+ }
+ }
+}
+This will produce the output:
+async in C# 5.0
+
+TaskStatus Enum
+public enum TaskCreationOptions
+{
+ /* It indicates that the created Task will be attached to the 
+ * parent in the Task hierarchy */
+ AttachedToParent = 4,
+ /* It indicates to throw an InvalidOperationException when a 
+ * child task try to attach */
+ DenyChildAttach = 8,
+ /* It prevents the immediate scheduler from being seen as the 
+ * current scheduler in the created task.*/
+ HideScheduler = 0x10,
+ /* It indicates that the newly created Task will be long running task. */
+ LongRunning = 2,
+ /* It indicates to use the default behavior when the Task will created.*/
+ None = 0,
+ /* It indicates that the Task scheduled to run sooner will run sooner 
+ * and the Task scheduled to run later will run later. */
+ PreferFairness = 1
+}
+
+The following program demonstrates the use of the TaskCreationOptions enum
+
+Return Value from the Task
+using System;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ Task<string> displayTask = new Task<string>(
+ () => "async in C# 5.0", TaskCreationOptions.None);
+ displayTask.Start();
+ Console.WriteLine("Result from the Task : {0}", 
+ displayTask.Result);
+ Console.ReadLine();
+ }
+ }
+}
+This program will produce the output:
+Result from the Task : async in C# 5.0
+
+TaskStatus Enum
+public enum TaskStatus
+{
+ /* It indicates that the task has been canceled.*/ 
+ Canceled = 6,
+ /* It indicates that the CLR sets this status when the task has been 
+ * initialized but has not been scheduled yet. */
+ Created = 0,
+ /* It indicates that the CLR sets Faulted status if there is any 
+ * unhandled exception.*/
+ Faulted = 7,
+ /* It indicates that the task completed successfully.*/
+ RanToCompletion = 5,
+ /* It indicates that the Task is Running but has not completed yet.*/
+Running = 3,
+ /* It indicates that the CLR scheduled the Task internally but waiting 
+ * to be activated.*/
+ WaitingForActivation = 1,
+ /* It indicates that the CLR finished executing the Task but waiting 
+ * for the attached child tasks to finish (if there is any).*/
+ WaitingForChildrenToComplete = 4,
+ /* It indicates that the CLR scheduled the task for execution still 
+ * waiting to execute.*/
+ WaitingToRun = 2
+}
+
+Example of the IsCompleted, IsCanceled, and IsFaulted
+using System;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ Task<string> displayTask = Task.Run(() =>
+ {
+ /* To simulate as doing something.*/
+for (int i = 0; i <= Int16.MaxValue; ++i) ; 
+ return "async in C# 5.0";
+ });
+ Console.WriteLine("Result from the Task : {0}", 
+ displayTask.Result);
+ if (displayTask.IsCompleted) 
+ Console.Write(TaskStatus.RanToCompletion.ToString());
+ if (displayTask.IsCanceled) 
+ Console.Write(TaskStatus.Canceled.ToString());
+ if (displayTask.IsFaulted) 
+ Console.Write(TaskStatus.Faulted.ToString());
+ Console.ReadLine();
+ }
+ }
+}
+This program will produce the output:
+Result from the Task : async in C# 5.0
+RanToCompletion
+
+Example of the TaskStatus
+using System;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ Task displayTask = Task.Run(() =>
+ {
+ Task.Delay(500000);
+ for (int i = 0; i < byte.MaxValue; ++i) ;
+ Console.WriteLine("async in C# 5.0");
+ });
+ while (true)
+ {
+ Console.WriteLine(displayTask.Status.ToString());
+ if (displayTask.IsCompleted)
+ break;
+ }
+ Console.WriteLine(displayTask.Status.ToString());
+
+Console.ReadLine();
+ }
+ }
+}
+This program will produce the output:
+WaitingToRun
+Running
+Running
+Running
+async in C# 5.0
+Running
+RanToCompletion
+
+
+Wait for the Task to Finish
+using System;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ Task displayTask = Task.Run(
+ () => Console.WriteLine("async in C# 5.0"));
+ Console.WriteLine(
+ "Task completion status : {0}, waiting to finish....", 
+ displayTask.IsCompleted);
+ displayTask.Wait();
+ Console.ReadLine();
+ }
+ }
+}
+This program will produce the output:
+Task completion status : False, waiting to finish....
+async in C# 5.0
+
+Example of the Continuations Using Task
+using System;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+namespace Ch14
+{
+class Program
+ {
+ static void Main()
+ {
+ ShowEvenNumbers();
+ Console.WriteLine("Waiting.....");
+ for (int i = 0; i <= Int16.MaxValue * 100; ++i) ;
+ Console.ReadLine();
+ }
+ static void ShowEvenNumbers()
+ {
+ /* A Task is instantiated*/
+ Task<int> evenNumbersTask = Task.Run(
+ () => Enumerable.Range(1, 
+ new Random().Next(Int16.MaxValue)).Count(
+ item => item % 2 == 0));
+ /* Retrieved the awaiter from the Task instantiated earlier */
+ TaskAwaiter<int> awaiter = evenNumbersTask.GetAwaiter();
+ 
+ /* Setup the continuation block in the awaiter of the Task 
+ * evenNumbersTask */
+ awaiter.OnCompleted(() =>
+ {
+ /* Continuation code block */
+ Console.WriteLine("Complete, Total no of even : {0}",
+ awaiter.GetResult());
+ });
+ /* Following line or lines is not part of the continuation 
+ * code block in relation to the Task evenNumbersTask */
+ Console.WriteLine("Schedule to complete...");
+ }
+ }
+}
+This program will produce the output:
+Schedule to complete...
+Waiting.....
+Complete, Total no of even : 10652
+
+The TaskAwaiter Struct
+public struct TaskAwaiter<TResult> : 
+ ICriticalNotifyCompletion, INotifyCompletion
+{
+ public bool IsCompleted {}
+ public void OnCompleted(Action continuation) {}
+ public void UnsafeOnCompleted(Action continuation) {}
+ public TResult GetResult() {}
+}
+The OnCompleted method from the TaskAwaiter<TResult> struct is used to set the continuation of the 
+task to execute when the task should complete its execution. The OnCompleted method internally calls the 
+OnCompletedInternal method from the TaskAwaiter<TResult> struct, as shown in the following program. 
+
+OnCompletedInternal Method
+internal static void OnCompletedInternal(
+ Task task, Action continuation, bool continueOnCapturedContext, 
+ bool flowExecutionContext)
+{
+ if (continuation == null)
+ {
+ throw new ArgumentNullException("continuation");
+ }
+ StackCrawlMark lookForMyCaller = StackCrawlMark.LookForMyCaller;
+ if (TplEtwProvider.Log.IsEnabled(EventLevel.Verbose, ~EventKeywords.None))
+ {
+ continuation = OutputWaitEtwEvents(task, continuation);
+ }
+ /* Setup the continuation for the Task */
+ task.SetContinuationForAwait(
+ continuation, /* continuation - represents continuation code 
+ * block which execute after finishing the Task.*/
+ continueOnCapturedContext, 
+ flowExecutionContext, 
+ ref lookForMyCaller);
+}
+
+Example of the ContinueWith
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ ShowEvenNumbers();
+ Console.WriteLine("Waiting.....");
+ for (int i = 0; i <= Int16.MaxValue * 100; ++i) ;
+ Console.ReadLine();
+ }
+ static void ShowEvenNumbers()
+ {
+ Task<int> evenNumbersTask = Task.Run(
+ () => Enumerable.Range(1, 
+ new Random().Next(Int16.MaxValue)).
+ Count(item => item % 2 == 0));
+ evenNumbersTask.ContinueWith(task =>
+ {
+ Console.WriteLine("Complete, Total no of even : {0}", 
+ task.Result);
+ });
+ Console.WriteLine("Schedule to complete...");
+ }
+ }
+}
+This program will produce the output:
+Schedule to complete...
+Waiting.....
+Complete, Total no of even : 12896
+
+
+TaskContinuationOptions Enum
+public enum TaskContinuationOptions
+{
+ AttachedToParent = 4,
+ DenyChildAttach = 8,
+ ExecuteSynchronously = 0x80000,
+ HideScheduler = 0x10,
+ LazyCancellation = 0x20,
+ LongRunning = 2,
+ None = 0,
+ NotOnCanceled = 0x40000,
+ NotOnFaulted = 0x20000,
+ NotOnRanToCompletion = 0x10000,
+ OnlyOnCanceled = 0x30000,
+ OnlyOnFaulted = 0x50000,
+OnlyOnRanToCompletion = 0x60000,
+ PreferFairness = 1
+}
+
+Definition of the TaskScheduler Class
+public abstract class TaskScheduler
+{
+ protected TaskScheduler() {}
+ public static TaskScheduler FromCurrentSynchronizationContext() {} 
+ protected internal virtual bool TryDequeue(Task task) {}
+ protected bool TryExecuteTask(Task task) {}
+ 
+ /* abstract methods */
+ protected abstract bool TryExecuteTaskInline(Task task, 
+ bool taskWasPreviouslyQueued);
+ protected abstract IEnumerable<Task> GetScheduledTasks();
+ protected internal abstract void QueueTask(Task task);
+ /* Properties */
+ public static TaskScheduler Current {}
+ public static TaskScheduler Default {}
+ public int Id {}
+ public virtual int MaximumConcurrencyLevel {}
+ /*Event in TaskScheduler class */
+ public static event EventHandler<UnobservedTaskExceptionEventArgs> 
+UnobservedTaskException {}
+}
+
+
+Definition of the ExecutionContext Class
+public sealed class ExecutionContext : IDisposable, ISerializable
+{
+ public static ExecutionContext Capture() {}
+ public ExecutionContext CreateCopy() {}
+ public void Dispose() {}
+ public void GetObjectData(SerializationInfo info, 
+ StreamingContext context) {}
+ public static bool IsFlowSuppressed() {}
+ public static void RestoreFlow() {}
+ public static void Run(ExecutionContext executionContext, 
+ ContextCallback callback, object state) {}
+ public static AsyncFlowControl SuppressFlow() {}
+}
+
+
+
+Example of the State Machine Run on the Captured Execution Context 
+using System;
+using System.Threading;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ /*Instantiates an instance of the State machine */
+ StateMachine sm = new StateMachine();
+ /*Initialize the State machine with it's default value*/
+ sm.State = 1;
+ /* Start the State machine */
+ sm.MoveNext();
+ /* Queue the captured execution context with the workitem in the 
+ * ThreadPool to process later. */
+ ThreadPool.QueueUserWorkItem(state =>
+ RunLaterOn<object>(
+ /* Get the current execution context */
+ CaptureExecutionContext(), 
+ /* pass the callback code block */
+ new Action<object>(Callback), 
+ /* The State machine which maintains the state */
+ sm)); 
+ /* Do something else. */
+ for (int i = 0; i <= Int16.MaxValue; ++i)
+ if (i % byte.MaxValue == 0)
+ Console.Write(".");
+ Console.ReadLine();
+ }
+ /* This code block capture the current execution context */
+ static ExecutionContext CaptureExecutionContext()
+ {
+ return ExecutionContext.Capture();
+ }
+ /* This code block will run the callback code block on the 
+
+ * captured execution context*/
+ static void RunLaterOn<T>(
+ ExecutionContext context, Action<T> callback, object state)
+ {
+ ExecutionContext.Run(context, 
+ new ContextCallback(Callback), state);
+ }
+ /* This code block used as the callback */
+ static void Callback(object state)
+ {
+ ((StateMachine)state).MoveNext();
+ }
+ }
+ /* The State machine used to maintain the state of the operation */
+ public class StateMachine
+ {
+ public int State { get; set; }
+ public void MoveNext()
+ {
+ switch (State)
+ {
+ case 0:
+ Console.Write("State 0");
+ State = 1;
+ break;
+ case 1:
+ Console.Write("State 1");
+ for (int i = 0; i <= byte.MaxValue; ++i) ;
+ State = 0;
+ break;
+ default:
+ Console.Write("State -1");
+ State = 10;
+ break;
+ }
+ }
+ }
+}
+This program will produce the output:
+State 1.................................................................................State 0.
+...............................................
+
+Definition of the AggregateException Class
+public class AggregateException : Exception
+{
+ /* 7 overloaded constructors*/
+ public AggregateException() {} 
+ public AggregateException Flatten() {}
+ public override Exception GetBaseException() {}
+ public override void GetObjectData(
+ SerializationInfo info, StreamingContext context) {}
+ public void Handle(Func<Exception, bool> predicate) {}
+ public override string ToString() {} 
+ public ReadOnlyCollection<Exception> InnerExceptions {}
+}
+The AggregateException class contains the InnerExceptions property where the CLR puts all the 
+aggregated exceptions. You can get all the original exceptions back after enumerating in the 
+InnerExceptions from the AggregateException class. Listing 14-20 shows the use of the AggregateException
+class.
+Listing 14-20. Exception Handling in the Task
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ int limit = new Random().Next(Int32.MaxValue);
+
+Task<int> evenNumbersTask = Task.Run(
+ () => Enumerable.Range(1, limit).Count(item =>
+ {
+ if (item == Int16.MaxValue)
+ /* Out of Range will be concat with the original
+ * Framework given exception message */
+ throw new ArgumentOutOfRangeException(
+ "Out of Range....");
+ return item % 2 == 0;
+ }));
+ try
+ {
+ evenNumbersTask.Wait(); /* Wait for the Exception to occur. */
+ }
+ catch (AggregateException aggregateException)
+ {
+ aggregateException
+ .InnerExceptions
+ .Where(item => item is ArgumentOutOfRangeException)
+ .ToList() /* Contains ArgumentOutOfRangeException */
+ .ForEach(age => Console.WriteLine(age.Message));
+ }
+ }
+ }
+}
+This program will produce the output:
+Specified argument was out of the range of valid values.
+Parameter name: Out of Range....
+
+
+Example of the Exception for the Task that Attached with Child
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ int limit = new Random().Next(Int32.MaxValue);
+ var evenNumbersTask = Task.Factory.StartNew(() =>
+ {
+ var r = Task.Factory.StartNew(() =>
+ {
+ Enumerable.Range(1, limit).Count(item =>
+ {
+ if (item == Int16.MaxValue)
+ /* Out of Range will be concat with the original 
+ * Framework given exception message */
+ throw new ArgumentOutOfRangeException(
+ "Out of Range....");
+ return item % 2 == 0;
+ });
+ }, TaskCreationOptions.AttachedToParent);
+ }, TaskCreationOptions.AttachedToParent);
+ try
+ {
+ evenNumbersTask.Wait(); /* Wait for the Exception to occur. */
+ }
+ catch (AggregateException aggregateException)
+ {
+ aggregateException
+ .Flatten()
+ .InnerExceptions
+ .Where(item => item is ArgumentOutOfRangeException)
+ .ToList() /* Contains ArgumentOutOfRangeException */
+ .ForEach(age => Console.WriteLine(age.Message));
+ }
+ }
+ }
+}
+This program will produce the output:
+Specified argument was out of the range of valid values.
+Parameter name: Out of Range....
+
+Exception of the Task that Detached with Child
+Listing 14-22 shows an example of the exception handling for the task that detached with child.
+Listing 14-22. Example of the Exception of the Task that Detached with Child
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+namespace Ch14
+{
+ class Program
+ {
+ static void Main()
+ {
+ int limit = new Random().Next(Int32.MaxValue);
+ var evenNumbersTask = Task.Factory.StartNew(() =>
+ {
+ var r = Task.Factory.StartNew(() =>
+ {
+ Enumerable.Range(1, limit).Count(item =>
+ {
+ if (item == Int16.MaxValue)
+ /* Out of Range will be concat with the original 
+ * Framework given exception message */
+ throw new ArgumentOutOfRangeException(
+ "Out of Range....");
+ return item % 2 == 0;
+ });
+ });
+ r.Wait();
+ });
+ try
+ {
+ evenNumbersTask.Wait(); /* Wait for the Exception to occur. */
+ }
+ catch (AggregateException aggregateException)
+ {
+ aggregateException
+ .Flatten()
+ .InnerExceptions
+ .Where(item => item is ArgumentOutOfRangeException)
+ .ToList() /* Contains ArgumentOutOfRangeException */
+ .ForEach(age => Console.WriteLine(age.Message));
+ }
+ }
+ }
+}
+This program will produce the output:
+Specified argument was out of the range of valid values.
+Parameter name: Out of Range....
+

@@ -1,0 +1,111 @@
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ export PATH=$PATH:"/C/msys64/mingw64/bin/"
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ gcc --version
+gcc.exe (Rev2, Built by MSYS2 project) 8.3.0
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall"
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ gcc cdecl-main.cpp -o cdecl-main
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ ./cdecl-main
+Hello, cdecl!
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ gcc -c cdecl.cpp
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ gcc -shared -o cdecl.dll cdecl.o
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ gcc stdcall-main.cpp -o stdcall-main
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ ./stdcall-main
+Hello, stdcall!
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ gcc -c stdcall.cpp
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ gcc -shared -o stdcall.dll stdcall.o
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ gcc thiscall-main.cpp -o thiscall-main
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ ./thiscall-main
+Hello, thiscall!
+
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ gcc -c thiscall.cpp
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ gcc -shared -o thiscall.dll thiscall.o
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ export PATH="/C/Users/rajanis/Downloads/.NET/dotnet-sdk-5.0.100-rc.1.20452.10-win-x64/":$PATH
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ dotnet --version
+5.0.100-rc.1.20452.10
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9"
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9
+$ dotnet new console -o CdeclStdcall
+Creating this template will make changes to existing files:
+  Overwrite   CdeclStdcall.csproj
+
+Rerun the command and pass --force to accept and create.
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9
+$ cd "D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall"
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ rm -rf Program.cs
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ dotnet build
+Microsoft (R) Build Engine version 16.8.0-preview-20451-02+51a1071f8 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall\CdeclStdcall.csproj (in 63 ms).
+  You are using a preview version of .NET. See: https://aka.ms/dotnet-core-preview
+  CdeclStdcall -> D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CdeclStdcall\bin\Debug\net5.0\CdeclStdcall.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.17
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ dotnet run
+Hello, stdcall!
+Hello, cdecl!
+Marshal: thiscall
+Hello, stdcall!
+Hello, cdecl!
+Marshal: thiscall
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$ dotnet run
+Hello, stdcall!
+Hello, cdecl!
+Marshal: thiscall
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/CS.NET-Core/CS9/CdeclStdcall
+$

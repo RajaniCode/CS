@@ -1,0 +1,29 @@
+# .NET Core 5.0.100-rc.2
+export PATH="/C/Users/rajanis/Downloads/.NET/dotnet-sdk-5.0.100-rc.2.20479.15-win-x64/":$PATH
+
+set path=C:\Users\rajanis\Downloads\.NET\dotnet-sdk-5.0.100-rc.2.20479.15-win-x64\;%path%
+
+# .NET Core 5.0.100-rc.1
+export PATH="/C/Users/rajanis/Downloads/.NET/dotnet-sdk-5.0.100-rc.1.20452.10-win-x64/":$PATH
+
+set path=C:\Users\rajanis\Downloads\.NET\dotnet-sdk-5.0.100-rc.1.20452.10-win-x64\;%path%
+
+dotnet
+
+# .NET Core 3.7.0
+export PATH=$PATH:"/C/Users/rajanis/.nuget/packages/microsoft.net.compilers.toolset/3.7.0/tasks/net472/"
+
+set path=%path%;C:\Users\rajanis\.nuget\packages\microsoft.net.compilers.toolset\3.7.0\tasks\net472\
+
+csc
+
+csc -langversion:?
+
+csc -langversion:preview Program.cs
+
+# .NET Framewok
+export PATH=$PATH:"/C/Windows/Microsoft.NET/Framework64/v4.0.30319/"
+
+set path=%path%;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\
+
+csc /langversion:5 CS5.cs

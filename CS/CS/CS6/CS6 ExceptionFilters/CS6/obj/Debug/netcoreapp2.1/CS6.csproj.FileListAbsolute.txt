@@ -1,0 +1,11 @@
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\bin\Debug\netcoreapp2.1\CS6.deps.json
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\bin\Debug\netcoreapp2.1\CS6.runtimeconfig.json
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\bin\Debug\netcoreapp2.1\CS6.runtimeconfig.dev.json
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\bin\Debug\netcoreapp2.1\CS6.dll
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\bin\Debug\netcoreapp2.1\CS6.pdb
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\obj\Debug\netcoreapp2.1\CS6.csprojAssemblyReference.cache
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\obj\Debug\netcoreapp2.1\CS6.csproj.CoreCompileInputs.cache
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\obj\Debug\netcoreapp2.1\CS6.AssemblyInfoInputs.cache
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\obj\Debug\netcoreapp2.1\CS6.AssemblyInfo.cs
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\obj\Debug\netcoreapp2.1\CS6.dll
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS6\CS6 ExceptionFilters\CS6\obj\Debug\netcoreapp2.1\CS6.pdb

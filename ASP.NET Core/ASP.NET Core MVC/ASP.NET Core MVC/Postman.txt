@@ -1,0 +1,128 @@
+https://www.getpostman.com/
+
+https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
+
+# Use Postman to send a Retrieve [GET] request [http://localhost:5000/api/todo]
+• Set the HTTP method to GET
+
+• Select Send
+
+Select the Headers tab in the lower pane and copy the Location header:
+
+Headers (4)
+Content-Type ->application/json; charset=utf-8
+Date ->Mon, 08 May 2017 10:54:30 GMT
+Server ->Kestrel
+Transfer-Encoding ->chunked
+
+Status: 200 OK
+
+Body [JSON]
+[
+  {
+    "key": 1,
+    "name": "Item1",
+    "isComplete": true
+  },
+  {
+    "key": 2,
+    "name": "walk dog",
+    "isComplete": true
+  }
+]
+
+
+# Use Postman to send a Create [POST] request [http://localhost:5000/api/todo]
+• Set the HTTP method to POST
+• Select the Body radio button
+• Select the raw radio button
+• Set the type to JSON
+
+• In the key-value editor, enter a Todo item such as JSON
+{
+  "name":"walk dog",
+  "isComplete":true
+}
+
+• Select Send
+
+Select the Headers tab in the lower pane and copy the Location header:
+
+Headers (5)
+Content-Type ->application/json; charset=utf-8
+Date ->Mon, 08 May 2017 10:05:55 GMT
+Location ->http://localhost:5000/api/Todo/2
+Server ->Kestrel
+Transfer-Encoding ->chunked
+
+Status: 201 Created
+
+Body [JSON]
+{
+  "key": 2,
+  "name": "walk dog",
+  "isComplete": true
+}
+
+
+# Use Postman to send a Update [PUT] request [http://localhost:5000/api/todo/1]
+• Set the HTTP method to PUT 
+• Select the Body radio button
+• Select the raw radio button
+• Set the type to JSON
+
+• In the key-value editor, enter a Todo item such as JSON [Note the space in "Item 1"]
+{
+  "key": 1,
+  "name": "Item 1",
+  "isComplete": true
+}
+
+• Select Send
+
+Select the Headers tab in the lower pane and copy the Location header:
+
+Headers (2)
+Date ->Mon, 08 May 2017 10:16:14 GMT
+Server ->Kestre
+
+Status: 204 No Content
+
+
+# Use Postman to send a Delete [Delete] request [http://localhost:5000/api/todo/1]
+• Set the HTTP method to DELETE 
+
+• Select Send
+
+Select the Headers tab in the lower pane and copy the Location header:
+
+Headers (2)
+Date ->Mon, 08 May 2017 11:04:48 GMT
+Server ->Kestrel
+
+Status: 204 No Content
+
+
+# Use Postman to send a Retrieve [GET] request [http://localhost:5000/api/todo]
+• Set the HTTP method to GET
+
+• Select Send
+
+Select the Headers tab in the lower pane and copy the Location header:
+
+Headers (4)
+Content-Type ->application/json; charset=utf-8
+Date ->Mon, 08 May 2017 11:06:23 GMT
+Server ->Kestrel
+Transfer-Encoding ->chunked
+
+Status: 200 OK
+
+Body [JSON]
+[
+  {
+    "key": 2,
+    "name": "walk dog",
+    "isComplete": true
+  }
+]

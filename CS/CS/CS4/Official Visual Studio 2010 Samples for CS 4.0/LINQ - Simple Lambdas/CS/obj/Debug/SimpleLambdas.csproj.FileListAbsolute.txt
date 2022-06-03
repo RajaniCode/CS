@@ -1,0 +1,15 @@
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\SimpleLambdas\bin\Debug\Simple.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\SimpleLambdas\bin\Debug\Simple.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\SimpleLambdas\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\SimpleLambdas\obj\Debug\Simple.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\SimpleLambdas\obj\Debug\Simple.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\SimpleLambdas\bin\Debug\Simple.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\SimpleLambdas\bin\Debug\Simple.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\SimpleLambdas\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\SimpleLambdas\obj\Debug\Simple.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\SimpleLambdas\obj\Debug\Simple.pdb
+C:\CSharpSamples\LinqSamples\SimpleLambdas\bin\Debug\Simple.exe
+C:\CSharpSamples\LinqSamples\SimpleLambdas\bin\Debug\Simple.pdb
+C:\CSharpSamples\LinqSamples\SimpleLambdas\obj\Debug\ResolveAssemblyReference.cache
+C:\CSharpSamples\LinqSamples\SimpleLambdas\obj\Debug\Simple.exe
+C:\CSharpSamples\LinqSamples\SimpleLambdas\obj\Debug\Simple.pdb

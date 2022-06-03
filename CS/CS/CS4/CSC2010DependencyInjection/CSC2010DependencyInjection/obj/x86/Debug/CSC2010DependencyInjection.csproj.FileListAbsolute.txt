@@ -1,0 +1,5 @@
+C:\Users\Rajani\Desktop\CSC2010DependencyInjection\CSC2010DependencyInjection\bin\Debug\CSC2010DependencyInjection.exe
+C:\Users\Rajani\Desktop\CSC2010DependencyInjection\CSC2010DependencyInjection\bin\Debug\CSC2010DependencyInjection.pdb
+C:\Users\Rajani\Desktop\CSC2010DependencyInjection\CSC2010DependencyInjection\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Rajani\Desktop\CSC2010DependencyInjection\CSC2010DependencyInjection\obj\x86\Debug\CSC2010DependencyInjection.exe
+C:\Users\Rajani\Desktop\CSC2010DependencyInjection\CSC2010DependencyInjection\obj\x86\Debug\CSC2010DependencyInjection.pdb

@@ -1,0 +1,282 @@
+dotnet new console -o hwapp
+[
+hwapp\CS.NET-Core.csproj
+hwapp\Program.cs
+C:\Users\Aspire\.templateengine\dotnetcli\v1.0.3
+]
+
+dotnet restore
+[
+hwapp\obj
+]
+
+dotnet run
+[
+hwapp\bin
+]
+
+dotnet clean
+// OR
+rm -rf obj
+rm -rf bin
+
+
+/*
+dotnet new --help
+Usage: new [options]
+Options:
+  -h, --help                 Displays help for this command.
+  -l, --list                 Lists templates containing the specified template name. If no name is specified, lists all templates.
+  -n, --name                 The name for the output being created. If no name is specified, the name of the output directory is used.
+  -o, --output               Location to place the generated output.
+  -i, --install              Installs a source or a template pack.
+  -u, --uninstall            Uninstalls a source or a template pack.
+  --interactive              Allows the internal dotnet restore command to stop and wait for user input or action (for example to complete authentication).
+  --nuget-source             Specifies a NuGet source to use during install.
+  --type                     Filters templates based on available types. Predefined values are "project" and "item".
+  --dry-run                  Displays a summary of what would happen if the given command line were run if it would result in a template creation.
+  --force                    Forces content to be generated even if it would change existing files.
+  -lang, --language          Filters templates based on language and specifies the language of the template to create.
+  --update-check             Check the currently installed template packs for updates.
+  --update-apply             Check the currently installed template packs for update, and install the updates.
+  --search                   Searches for the templates on NuGet.org.
+  --author <AUTHOR>          Filters the templates based on the author. Applies to --search and --list.
+  --package <PACKAGE>        Filters the templates based on NuGet package ID. Applies to --search.
+  --columns <COLUMNS_LIST>   Comma separated list of columns to display in --list and --search output.
+                             The supported columns are: language, tags, author, type.
+  --columns-all              Display all columns in --list and --search output.
+  --tag <TAG>                Filters the templates based on the tag. Applies to --search and --list.
+*/
+
+
+/*
+$ dotnet new --interactive
+Template Name                                 Short Name           Language    Tags
+--------------------------------------------  -------------------  ----------  ----------------------
+Console Application                           console              [C#],F#,VB  Common/Console
+Class library                                 classlib             [C#],F#,VB  Common/Library
+WPF Application                               wpf                  [C#],VB     Common/WPF
+WPF Class library                             wpflib               [C#],VB     Common/WPF
+WPF Custom Control Library                    wpfcustomcontrollib  [C#],VB     Common/WPF
+WPF User Control Library                      wpfusercontrollib    [C#],VB     Common/WPF
+Windows Forms App                             winforms             [C#],VB     Common/WinForms
+Windows Forms Control Library                 winformscontrollib   [C#],VB     Common/WinForms
+Windows Forms Class Library                   winformslib          [C#],VB     Common/WinForms
+Worker Service                                worker               [C#],F#     Common/Worker/Web
+MSTest Test Project                           mstest               [C#],F#,VB  Test/MSTest
+NUnit 3 Test Project                          nunit                [C#],F#,VB  Test/NUnit
+NUnit 3 Test Item                             nunit-test           [C#],F#,VB  Test/NUnit
+xUnit Test Project                            xunit                [C#],F#,VB  Test/xUnit
+Razor Component                               razorcomponent       [C#]        Web/ASP.NET
+Razor Page                                    page                 [C#]        Web/ASP.NET
+MVC ViewImports                               viewimports          [C#]        Web/ASP.NET
+MVC ViewStart                                 viewstart            [C#]        Web/ASP.NET
+Blazor Server App                             blazorserver         [C#]        Web/Blazor
+Blazor WebAssembly App                        blazorwasm           [C#]        Web/Blazor/WebAssembly
+ASP.NET Core Empty                            web                  [C#],F#     Web/Empty
+ASP.NET Core Web App (Model-View-Controller)  mvc                  [C#],F#     Web/MVC
+ASP.NET Core Web App                          webapp               [C#]        Web/MVC/Razor Pages
+ASP.NET Core with Angular                     angular              [C#]        Web/MVC/SPA
+ASP.NET Core with React.js                    react                [C#]        Web/MVC/SPA
+ASP.NET Core with React.js and Redux          reactredux           [C#]        Web/MVC/SPA
+Razor Class Library                           razorclasslib        [C#]        Web/Razor/Library
+ASP.NET Core Web API                          webapi               [C#],F#     Web/WebAPI
+ASP.NET Core gRPC Service                     grpc                 [C#]        Web/gRPC
+dotnet gitignore file                         gitignore                        Config
+global.json file                              globaljson                       Config
+NuGet Config                                  nugetconfig                      Config
+Dotnet local tool manifest file               tool-manifest                    Config
+Web Config                                    webconfig                        Config
+Solution File                                 sln                              Solution
+Protocol Buffer File                          proto                            Web/gRPC
+Examples:
+    dotnet new mvc --auth Individual
+    dotnet new wpf
+    dotnet new --help
+    dotnet new nunit --help
+*/
+
+
+/*
+dotnet new sln --help
+Usage: new [options]
+Options:
+  -h, --help                 Displays help for this command.
+  -l, --list                 Lists templates containing the specified template name. If no name is specified, lists all templates.
+  -n, --name                 The name for the output being created. If no name is specified, the name of the output directory is used.
+  -o, --output               Location to place the generated output.
+  -i, --install              Installs a source or a template pack.
+  -u, --uninstall            Uninstalls a source or a template pack.
+  --interactive              Allows the internal dotnet restore command to stop and wait for user input or action (for example to complete authentication).
+  --nuget-source             Specifies a NuGet source to use during install.
+  --type                     Filters templates based on available types. Predefined values are "project" and "item".
+  --dry-run                  Displays a summary of what would happen if the given command line were run if it would result in a template creation.
+  --force                    Forces content to be generated even if it would change existing files.
+  -lang, --language          Filters templates based on language and specifies the language of the template to create.
+  --update-check             Check the currently installed template packs for updates.
+  --update-apply             Check the currently installed template packs for update, and install the updates.
+  --search                   Searches for the templates on NuGet.org.
+  --author <AUTHOR>          Filters the templates based on the author. Applies to --search and --list.
+  --package <PACKAGE>        Filters the templates based on NuGet package ID. Applies to --search.
+  --columns <COLUMNS_LIST>   Comma separated list of columns to display in --list and --search output.
+                             The supported columns are: language, tags, author, type.
+  --columns-all              Display all columns in --list and --search output.
+  --tag <TAG>                Filters the templates based on the tag. Applies to --search and --list.
+Solution File
+Author: Microsoft
+Description: Create an empty solution containing no projects
+    (No Parameters)
+*/
+# Creates solution file with the same name as the current folder
+dotnet new sln
+# Creates solution file with the specified name "App"
+dotnet new sln -n App
+
+
+/*
+$ dotnet sln add --help
+Usage: dotnet sln <SLN_FILE> add [options] <PROJECT_PATH>
+
+Arguments:
+  <SLN_FILE>       The solution file to operate on. If not specified, the command will search the current directory for one.
+  <PROJECT_PATH>   The paths to the projects to add to the solution.
+
+Options:
+  --in-root               Place project in root of the solution, rather than creating a solution folder.
+  -s, --solution-folder   The destination solution folder path to add the projects to.
+  -h, --help              Show command line help.
+*/
+
+
+/*
+dotnet new console --help
+Usage: new [options]
+Options:
+  -h, --help                 Displays help for this command.
+  -l, --list                 Lists templates containing the specified template name. If no name is specified, lists all templates.
+  -n, --name                 The name for the output being created. If no name is specified, the name of the output directory is used.
+  -o, --output               Location to place the generated output.
+  -i, --install              Installs a source or a template pack.
+  -u, --uninstall            Uninstalls a source or a template pack.
+  --interactive              Allows the internal dotnet restore command to stop and wait for user input or action (for example to complete authentication).
+  --nuget-source             Specifies a NuGet source to use during install.
+  --type                     Filters templates based on available types. Predefined values are "project" and "item".
+  --dry-run                  Displays a summary of what would happen if the given command line were run if it would result in a template creation.
+  --force                    Forces content to be generated even if it would change existing files.
+  -lang, --language          Filters templates based on language and specifies the language of the template to create.
+  --update-check             Check the currently installed template packs for updates.
+  --update-apply             Check the currently installed template packs for update, and install the updates.
+  --search                   Searches for the templates on NuGet.org.
+  --author <AUTHOR>          Filters the templates based on the author. Applies to --search and --list.
+  --package <PACKAGE>        Filters the templates based on NuGet package ID. Applies to --search.
+  --columns <COLUMNS_LIST>   Comma separated list of columns to display in --list and --search output.
+                             The supported columns are: language, tags, author, type.
+  --columns-all              Display all columns in --list and --search output.
+  --tag <TAG>                Filters the templates based on the tag. Applies to --search and --list.
+Console Application (C#)
+Author: Microsoft
+Description: A project for creating a command-line application that can run on .NET Core on Windows, Linux and macOS
+Options:
+  -f|--framework  The target framework for the project.
+                      net5.0           - Target net5.0
+                      netcoreapp3.1    - Target netcoreapp3.1
+                      netcoreapp2.1    - Target netcoreapp2.1
+                  Default: net5.0
+
+  --langVersion   Sets the LangVersion property in the created project file
+                  text - Optional
+
+  --no-restore    If specified, skips the automatic restore of the project on create.
+                  bool - Optional
+                  Default: false
+*/
+# Creates Console Project with the current folder name
+dotnet new console
+# Creates Console Project with the specified name "ConsoleApp"
+dotnet new console -n ConsoleApp
+# Creates Console Project with the specified output directory name "ConsoleApp"
+dotnet new console -o ConsoleApp
+cd ConsoleApp
+dotnet new sln -n ConsoleApp
+dotnet sln ConsoleApp.sln add ConsoleApp.csproj
+dotnet sln ConsoleApp.sln list
+dotnet sln ConsoleApp.sln remove ConsoleApp.csproj
+dotnet sln ConsoleApp.sln list
+dotnet sln ConsoleApp.sln add ConsoleApp.csproj
+dotnet sln ConsoleApp.sln list
+dotnet clean
+dotnet build
+dotnet restore
+dotnet run
+
+[
+dotnet sln ConsoleApp.sln add ConsoleApp.csproj MathematicsDotnet/MathematicsDotnet.csproj
+]
+
+[
+dotnet add ConsoleApp.csproj reference MathematicsDotnet/MathematicsDotnet.csproj
+dotnet remove ConsoleApp.csproj reference MathematicsDotnet/MathematicsDotnet.csproj
+]
+
+dotnet new webapp -n WebApp
+# OR
+dotnet new webapp -o WebApp
+cd WebApp
+
+# .sln and .csproject (option of solution and project in the same directory)
+dotnet clean
+dotnet build
+dotnet restore
+dotnet run
+
+
+dotnet --version
+dotnet --list-sdks
+# dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+# devenv $ devenv /?
+# export PATH=$PATH:"/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/"
+# set path=%path%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\
+dotnet restore
+# devenv <SolutionName>.sln -build
+# cd
+# dotnet run --project <path>/<ProjectName>.csproject
+
+
+
+
+# dotnet 5.0 # dotnet 3.1 # Exists # C:/Program Files/dotnet/ # Prefix  $ dotnet --version
+$ export PATH="/C/Users/rajanis/Downloads/.NET/dotnet-sdk-5.0.100-win-x64/":$PATH
+# csc # .NET Framework $ csc -version $ csc -langversion:? $ csi -version
+$ export PATH=$PATH:"/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/MSBuild/Current/Bin/Roslyn/"
+# nuget $ nuget ? # nuget install Microsoft.Net.Compilers.Toolset -Version 3.10.0
+$ export PATH=$PATH:"/C/Users/rajanis/Downloads/NuGet/"
+# csc # csi # .NET Core $ csc -version $ csc -langversion:? $ csi -version
+$ export PATH=$PATH:"/D/Rajani/Technical-2021/CS/CS/Programs/Microsoft.Net.Compilers.Toolset.3.10.0/tasks/net472/"
+# devenv $ devenv /?
+$ export PATH=$PATH:"/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/"
+# ildasm # sn # xsd # SvcUtil # wsdl $ ildasm -? $ sn -version $ xsd -version $ svcutil -version $ wsdl /?
+$ export PATH=$PATH:"/C/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/"
+# SQL Server # SqlPackage $ sqlpackage -help
+$ export PATH=$PATH:"/C/Program Files (x86)/Microsoft SQL Server/140/DAC/bin/"
+# SQL Server # SqlPackage # Visual Studio $ sqlpackage -help
+$ export PATH=$PATH:"/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/Extensions/Microsoft/SQLDB/DAC/150/"
+
+
+
+
+# dotnet 5.0 # dotnet 3.1 # Exists # C:\Program Files\dotnet # Prefix > dotnet --version
+> set path=C:\Users\rajanis\Downloads\.NET\dotnet-sdk-5.0.100-win-x64\;%path%
+# csc # .NET Framework > csc -version > csc -langversion:? > csi -version
+> set path=%path%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\Roslyn\
+# nuget > nuget ? # nuget install Microsoft.Net.Compilers.Toolset -Version 3.10.0
+> set path=%path%;C:\Users\rajanis\Downloads\NuGet\
+# csc # csi # .NET Core > csc -version > csc -langversion:? > csi -version
+> set path=%path%;D:\Rajani\Technical-2021\CS\CS\Programs\Microsoft.Net.Compilers.Toolset.3.10.0\tasks\net472\
+# devenv > devenv /?
+> set path=%path%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\
+# ildasm # sn # xsd # SvcUtil # wsdl > ildasm -? > sn -version > xsd -version > svcutil -version > wsdl /?
+> set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\
+# SQL Server # SqlPackage > sqlpackage -help
+> set path=%path%;C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\
+# SQL Server # SqlPackage # Visual Studio > sqlpackage -help
+> set path=%path%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\150\

@@ -1,0 +1,75 @@
+﻿// CS 4
+/*
+Dynamic Binding
+*/
+
+﻿using System;
+using System.Reflection;
+
+class DynamicBinding
+{
+    public void Print()
+    {
+        // class
+        object instance = new Maths();
+        Type instanceType = instance.GetType();
+        object result = instanceType.InvokeMember("IntegerSquare", BindingFlags.InvokeMethod, null, instance, new object[] { 1 });
+
+        int number = (int)result;
+        Console.WriteLine("Number using Reflection: " + number);
+ 
+        // Dynamic Binding
+        dynamic runtime = new Maths();
+        number = runtime.IntegerSquare(2);
+        Console.WriteLine("Number using dynamic: " + number);
+
+        // dll
+        /*
+        Assembly assemblyName = Assembly.LoadFrom("Sample.dll");
+        Type assemblyTypeName = assemblyName.GetType("Mathematics.Maths");
+        object instance = Activator.CreateInstance(assemblyTypeName);
+        object result = assemblyTypeName.InvokeMember("IntegerSquare", BindingFlags.InvokeMethod, null, instance, new object[] { 5 });
+
+        int number = (int)result;
+        Console.WriteLine("Number using Reflection: " + number);
+
+        // Dynamic Binding
+        dynamic runtime = Activator.CreateInstance(assemblyTypeName);
+        number = runtime.IntegerSquare(5);
+        Console.WriteLine("Number using dynamic: " + number);
+        */
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        DynamicBinding dynamicBind  = new DynamicBinding();
+        dynamicBind.Print();
+    }
+}
+
+class Maths
+{
+    public int IntegerSquare(int integerNumber)
+    {
+        return integerNumber * integerNumber;
+    }
+}
+
+/*
+// Sample.dll
+// Sample.cs
+// csc /target:library Sample.cs
+namespace Mathematics
+{
+    public class Maths
+    {
+        public int IntegerSquare(int integerNumber)
+        {
+            return integerNumber * integerNumber;
+        }
+    }
+}
+*/

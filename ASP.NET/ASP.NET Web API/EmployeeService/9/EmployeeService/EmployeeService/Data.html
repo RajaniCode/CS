@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body style="padding-top:20px">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="well">
+            <input id="btnLoadEmployees" class="btn btn-success"
+                   type="button" value="Load Employees" />
+            <span id="spanUsername" class="text-muted"></span>
+            <input id="btnLogoff" class="btn btn-success pull-right"
+                   type="button" value="Log Off" />
+        </div>
+        <div id="divData" class="well hidden">
+            <table class="table table-bordered" id="tblData">
+                <thead>
+                    <tr class="success">
+                        <td>ID</td>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>Gender</td>
+                        <td>Salary</td>
+                    </tr>
+                </thead>
+                <tbody id="tblBody"></tbody>
+            </table>
+        </div>
+        <div class="modal fade" tabindex="-1" id="errorModal"
+             data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">Session Expired</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <h2 class="modal-title">Close this message to login again</h2>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger"
+                                data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divError" class="alert alert-danger collapse">
+            <a id="linkClose" href="#" class="close">&times;</a>
+            <div id="divErrorText"></div>
+        </div>
+    </div>
+
+    <!--<script src="Scripts/jquery-1.10.2.min.js"></script>-->
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#spanUsername').text('Hello ' + localStorage.getItem('userName'));
+
+            // if (sessionStorage.getItem('accessToken') == null) {
+            if (localStorage.getItem('accessToken') == null) {
+                window.location.href = "Login.html";
+            }
+
+            $('#btnLogoff').click(function () {
+                // sessionStorage.removeItem('accessToken');
+                localStorage.removeItem('accessToken');
+                window.location.href = "Login.html";
+            });
+
+            $('#linkClose').click(function () {
+                $('#divError').hide('fade');
+            });
+
+            $('#errorModal').on('hidden.bs.modal', function () {
+                window.location.href = "Login.html";
+            });
+
+            $('#btnLoadEmployees').click(function () {
+                $.ajax({
+                    url: '/api/employees',
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer '
+                            // + sessionStorage.getItem("accessToken")
+                            + localStorage.getItem("accessToken")
+                    },
+                    success: function (data) {
+                        $('#divData').removeClass('hidden');
+                        $('#tblBody').empty();
+                        $.each(data, function (index, value) {
+                            var row = $('<tr><td>' + value.ID + '</td><td>'
+                                + value.FirstName + '</td><td>'
+                                + value.LastName + '</td><td>'
+                                + value.Gender + '</td><td>'
+                                + value.Salary + '</td></tr>');
+                            $('#tblData').append(row);
+                        });
+                    },
+                    error: function (jQXHR) {
+                        // If status code is 401, access token expired, so
+                        // redirect the user to the login page
+                        if (jQXHR.status == "401") {
+                            $('#errorModal').modal('show');
+                        }
+                        else {
+                            $('#divErrorText').text(jqXHR.responseText);
+                            $('#divError').show('fade');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

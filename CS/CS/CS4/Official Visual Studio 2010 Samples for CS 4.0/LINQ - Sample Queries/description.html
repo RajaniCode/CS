@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><link href="description/54dce56d9ee1e6f2489b2b5def22cfb6-6291eab0c69d18e65e2627727b6c3dce-RequestReducedStyle.css" rel="Stylesheet" type="text/css" />
+    <title>LINQ - Sample Queries</title>
+    
+    
+    <script src="description/6982159224d7a85a1df1fb78faaaa74c-7f637e20664af8990a67bc9713763402-RequestReducedScript.js" type="text/javascript" ></script>
+    <style type="text/css">
+        #projectInfo {
+            overflow: auto;
+        }
+        #longDesc {
+            clear:both;
+            margin: 25px 0 10px 0;
+        }
+
+        #SampleIndexList{
+        margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="offlineDescription">
+        <div id="projectInfo">
+            <div class="section">
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Technologies">Technologies</label>
+                        <div id="Technologies">
+                            LINQ
+                        </div>
+                    </div>
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Topics">Topics</label>
+                        <div id="Topics">
+                            LINQ to SQL, LINQ to XML, LINQ to Objects, Data Access, LINQ to DataSets
+                        </div>
+                    </div>
+                <div class="itemBar">
+                    <label for="LastUpdated">Last Updated</label>
+                    <div id="LastUpdated">7/25/2011</div>
+                </div>
+                <div class="itemBarLong">
+                    <label for="License">License</label>
+                    <div id="License">
+                        <a href="license.rtf">Custom</a></div>
+                </div>
+            </div>
+        </div>
+        
+                   
+<script type="text/javascript">
+    function initializePage() {
+        var otherTabClass = 'otherTab';
+        var hiddenPreClass = 'hidden';
+
+        var htmlDecode = function(encodedData) {
+            var decodedData = "";
+            if (encodedData) {
+                var div = document.createElement('div');
+                div.innerHTML = encodedData;
+                decodedData = div.firstChild.nodeValue.replace( /\\r\\n/ig , '\r\n');
+            }
+            return decodedData;
+        };
+                
+        Galleries.iterateElem(Galleries.findElem(null, 'div', 'scriptcode'), function (index, scriptBlock) {
+            var titleElem = Galleries.findElem(scriptBlock, 'div', 'title')[0];
+            var labelElems = Galleries.findElem(titleElem, 'span');
+            if (labelElems.length == 0) {
+                labelElems = titleElem;
+            }
+            var languageSpans = Galleries.findElem(scriptBlock, 'span', 'hidden');
+            var pres = Galleries.findElem(scriptBlock, 'pre');
+            if (languageSpans.length > 0 && pres.length > 1) {
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    var languageSpan = languageSpans[index];
+                            
+                    elem.code = codePre.innerHTML.replace( /(\r(\n)?)|((\r)?\n)/ig , '\\r\\n');
+                            
+                    codePre.className = codePre.className.replace(hiddenPreClass, '');
+                            
+                    languageSpan.parentNode.removeChild(languageSpan);
+                });
+
+                pres = Galleries.findElem(scriptBlock, 'pre');
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    if (index == 0) {
+                        scriptBlock.activeTab = 0;
+                    }
+                    else {
+                        labelSpan.className += otherTabClass;
+                        codePre.className += hiddenPreClass;
+                    }
+                    Galleries.attachEventHandler(labelSpan, 'click', function(e) {
+                        var activeTab = scriptBlock.activeTab;
+                        labelElems[activeTab].className += otherTabClass;
+                        pres[activeTab].className += hiddenPreClass;
+
+                        codePre.className = codePre.className.replace(hiddenPreClass, '');
+                        labelSpan.className = labelSpan.className.replace(otherTabClass, '');
+                        scriptBlock.activeTab = index;
+                    });
+                });
+
+                var preview = Galleries.findElem(scriptBlock, 'div', 'preview');
+                if (preview.length == 0) {
+                    preview.push(pres[pres.length - 1]);
+                }
+                Galleries.iterateElem(preview, function(index, elem) {
+                    elem.parentNode.removeChild(elem);
+                });
+
+                if (window.clipboardData && clipboardData.setData) {
+                    var copyLink = document.createElement('a');
+                    copyLink.href = 'javascript:void(0);';
+                    copyLink.className = 'copyCode';
+                    copyLink.innerHTML = 'Copy Code';
+                    Galleries.attachEventHandler(copyLink, 'click', function (e) {
+                        clipboardData.setData("Text", htmlDecode(labelElems[scriptBlock.activeTab].code));
+                        return false;
+                    });
+                    scriptBlock.insertBefore(copyLink, scriptBlock.childNodes[0]);
+                }
+            }
+        });
+    }
+
+    Galleries.onWindowLoad(function(){
+        initializePage();
+    });
+
+</script>
+<div id="longDesc">
+    
+<h1>Introduction</h1>
+<p>This sample contains about 101 examples from each of these areas:</p>
+<pre>LINQ To Objects
+LINQ To SQL
+LINQ to DataSet
+LINQ to Xml
+</pre>
+<h1><span>Building the Sample</span></h1>
+<p>Press F5</p>
+<div class="section" id="demonstratesSection">
+<h1>Description</h1>
+<p>Run the project, and select the type of LINQ sample that you want to examine. Examine the options, and run each query that interests you. The output from the query and the source code is displayed on the interface of the application.</p>
+<h1>Screenshot</h1>
+<p><img src="description/screenshot.png" alt="" width="707" height="503"></p>
+</div>
+<h1><span>Source Code Files</span></h1>
+<p><strong>C# </strong></p>
+<ul>
+<li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=1990494364">LinqSamples.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=1526178047">LinqToSqlSamples.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=1361119186">LinqToXmlSamples.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=1421182920">Mapping.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=1119009820">Northwind.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=784929164">NorthwindExtended.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=343357611">NorthwindMapped.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=2145124756">ObjectDumper.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=1325312866">Program.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=1053121876">SampleForm.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=1005586080">SampleHarness.cs</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=23655&amp;pathId=1336726406">XQueryUseCases.cs</a>
+</li><li></li></ul>
+<p><strong>VB </strong></p>
+<ul>
+<li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=1750577627">LinqSamples.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=735346472">LinqToDataSetSamples.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=1473309970">LinqToSQLSamples.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=521681129">LinqToXMLSamples.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=2127541115">Northwind.designer.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=1904743350">NorthwindDataSet.Designer.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=2035267744">NorthwindMapped.designer.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=292072007">NorthwindMapped.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=1592792535">ObjectDumper.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=1819067619">SampleForm.designer.vb</a>
+</li><li><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=1502334505">SampleForm.vb</a><a class="browseFile" href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/sourcecode?fileId=22789&amp;pathId=1274036599">XQueryUseCases.vb</a>
+</li></ul>
+<h1><strong>101 LINQ Samples</strong></h1>
+<ul>
+<li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Restriction-Operators-b15d29ca">Restriction Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-to-DataSets-09787825">Projection Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Partitioning-Operators-c68aaccc">Partitioning Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../SQL-Ordering-Operators-050af19e">Ordering Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-to-DataSets-Grouping-c62703ea">Grouping Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Set-Operators-374f34fe">Set Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Conversion-Operators-e4e59714">Conversion Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Element-Operators-0f3f12ce">Element Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Element-Operators-0f3f12ce">Generation Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Quantifiers-f00e7e3e">Quantifiers</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Aggregate-Operators-c51b3869">Aggregate Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Miscellaneous-6b72bb2a">Miscellaneous Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-to-DataSets-Custom-41738490">Custom Sequence Operators</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Query-Execution-ce0d3b95">Query Execution</a> </li><li><a href="http://code.msdn.microsoft.com/vstudio/LINQ-Sample-Queries-13a42a54/../LINQ-Join-Operators-dabef4e9">Join Operators</a> </li></ul>
+<h1>More Information</h1>
+<p>For more information, see:</p>
+<ul>
+<li>.NET Framework Developer Center: <a href="http://msdn.microsoft.com/en-us/netframework/aa904594.aspx" >
+http://msdn.microsoft.com/en-us/netframework/aa904594.aspx</a> </li><li>LINQ (Language-Integrated Query): <a href="http://msdn.microsoft.com/en-us/library/bb397926.aspx" >
+http://msdn.microsoft.com/en-us/library/bb397926.aspx</a> </li><li>LINQ to XML: <a href="http://msdn.microsoft.com/en-us/library/bb387098.aspx" >
+http://msdn.microsoft.com/en-us/library/bb387098.aspx</a> </li><li>LINQ to SQL: <a href="http://msdn.microsoft.com/en-us/library/bb386976.aspx" >
+http://msdn.microsoft.com/en-us/library/bb386976.aspx</a> </li><li>LINQ to Datasets: <a href="http://msdn.microsoft.com/en-us/library/bb386977.aspx" >
+http://msdn.microsoft.com/en-us/library/bb386977.aspx</a> </li><li>LINQ to Objects: <a href="http://msdn.microsoft.com/en-us/library/bb397919.aspx" >
+http://msdn.microsoft.com/en-us/library/bb397919.aspx</a> </li></ul>
+
+</div>
+
+
+    </div>
+</body>
+</html>
