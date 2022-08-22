@@ -1,0 +1,57 @@
+% export PATH=$PATH:"/Users/rajaniapple/Downloads/Software/CS/SDK/Binaries/dotnet-sdk-6.0.400-osx-arm64"
+
+$ dotnet --version
+
+$ dotnet new console
+
+$ dotnet new sln -n CS9
+
+$ dotnet sln CS9.sln add CS9.csproj
+
+$ dotnet run
+
+
+# Build project and its dependencies (default)
+dotnet build
+
+# Build project and its dependencies using Debug configuration
+dotnet build --configuration Debug
+
+# Build project and its dependencies using Release configuration
+dotnet build --configuration Release
+
+
+# Clean default build of the project
+dotnet clean
+
+# Clean project built using the Debug configuration
+dotnet clean --configuration Debug
+
+# Clean project built using the Release configuration
+dotnet clean --configuration Release
+
+
+# Run project (default)
+# Ensure # dotnet clean
+dotnet run
+
+# Run project specifying Debug configuration:
+# Ensure # dotnet clean --configuration Debug
+# dotnet run --property:Configuration=Debug
+dotnet run --configuration Debug
+
+# Run project specifying Release configuration:
+# Ensure # dotnet clean --configuration Release
+# dotnet run --property:Configuration=Release # Requies # dotnet build
+dotnet run --configuration Release
+
+
+# dotnet restore command uses NuGet to restore dependencies as well as project-specific tools that are specified in the project file
+# In most cases, you don't need to explicitly use the dotnet restore command, since a NuGet restore is run implicitly if necessary when you run the following commands
+dotnet new
+dotnet build
+dotnet build-server
+dotnet run
+dotnet test
+dotnet publish
+dotnet pack

@@ -1,0 +1,18 @@
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\.NET\CS\gcc\CPP\Msys64-Mingw64-GCC"
+gcc msys64-mingw64-gcc-main.cpp -o msys64-mingw64-gcc-main
+./msys64-mingw64-gcc-main
+
+
+
+
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+export PATH=$PATH:"/C/Users/rajanis/.nuget/packages/microsoft.net.compilers.toolset/3.7.0/tasks/net472/"
+csc -version
+cd "D:\RajaniS Master Folder\.NET\CS\gcc\CPP\Msys64-Mingw64-GCC"
+gcc -c msys64-mingw64-gcc.cpp
+gcc -shared -o msys64-mingw64-gcc.dll msys64-mingw64-gcc.o
+csc MinGW64GCC.cs -unsafe
+./MinGW64GCC

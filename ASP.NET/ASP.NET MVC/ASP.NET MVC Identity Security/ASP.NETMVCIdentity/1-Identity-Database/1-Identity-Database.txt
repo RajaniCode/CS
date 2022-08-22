@@ -1,0 +1,18 @@
+ASP.NET MVC Individual User Accounts
+
+
+[
+https://localhost:44392/Account/Register
+https://localhost:44392/Account/Login
+email@example.com
+Hola!123
+]
+
+
+# 1-Identity-Database
+https://localhost:44392/Account/Register
+https://localhost:44392/Account/Login
+email@example.com
+Hola!123
+
+Backup App_Data

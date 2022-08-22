@@ -1,0 +1,26 @@
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ export PATH=$PATH:"/C/msys64/mingw64/bin/"
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ gcc --version
+gcc.exe (Rev2, Built by MSYS2 project) 8.3.0
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ cd "D:\RajaniS Master Folder\.NET\CS\gcc\C\Msys64-Mingw64-GCC"
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/gcc/C/Msys64-Mingw64-GCC
+$ gcc msys64-mingw64-gcc-main.c -o msys64-mingw64-gcc-main
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/gcc/C/Msys64-Mingw64-GCC
+$ ./msys64-mingw64-gcc-main
+Hello, World!
+Hello, World!
+Hello, World!
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/gcc/C/Msys64-Mingw64-GCC
+$

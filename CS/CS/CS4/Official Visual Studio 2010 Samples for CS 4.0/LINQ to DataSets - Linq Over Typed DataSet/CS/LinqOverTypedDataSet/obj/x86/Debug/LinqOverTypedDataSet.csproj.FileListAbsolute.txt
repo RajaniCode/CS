@@ -1,0 +1,6 @@
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\LINQ over DataSets\LinqOverTypedDataSet\LinqOverTypedDataSet\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\LINQ over DataSets\LinqOverTypedDataSet\LinqOverTypedDataSet\bin\Debug\LinqOverTypedDataSet.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\LINQ over DataSets\LinqOverTypedDataSet\LinqOverTypedDataSet\bin\Debug\LinqOverTypedDataSet.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\LINQ over DataSets\LinqOverTypedDataSet\LinqOverTypedDataSet\obj\x86\Debug\LinqOverTypedDataSet.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\LINQ over DataSets\LinqOverTypedDataSet\LinqOverTypedDataSet\obj\x86\Debug\LinqOverTypedDataSet.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\LINQ over DataSets\LinqOverTypedDataSet\LinqOverTypedDataSet\bin\Debug\Customers.xml

@@ -1,0 +1,10 @@
+C:\Documents and Settings\srajani\Desktop\Console\Console\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\srajani\Desktop\Console\Console\bin\Debug\Console.exe
+C:\Documents and Settings\srajani\Desktop\Console\Console\bin\Debug\Console.pdb
+C:\Documents and Settings\srajani\Desktop\Console\Console\obj\Debug\Console.exe
+C:\Documents and Settings\srajani\Desktop\Console\Console\obj\Debug\Console.pdb
+E:\Rajani\Rajani\Visual Studio 2005\C#\Beta\Console\Console\obj\Debug\Console.exe
+E:\Rajani\Rajani\Visual Studio 2005\C#\Beta\Console\Console\obj\Debug\Console.pdb
+E:\Rajani\Rajani\Visual Studio 2005\C#\Beta\Console\Console\bin\Debug\Console.exe
+E:\Rajani\Rajani\Visual Studio 2005\C#\Beta\Console\Console\bin\Debug\Console.pdb
+E:\Rajani\Rajani\Visual Studio 2005\C#\Beta\Console\Console\obj\Debug\ResolveAssemblyReference.cache

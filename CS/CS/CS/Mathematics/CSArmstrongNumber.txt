@@ -1,0 +1,185 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class ArmstrongSeries
+{
+    /*
+    public void Range(int start, int count)
+    {
+        Func<int, IEnumerable<int>> numbers = counter =>
+            from i in Enumerable.Range(start, counter)
+            where Enumerable.Range(1, 1).All(j => i > -100)
+            select i;
+
+        numbers(count).ToList().ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+    }
+
+    public void RangeStartStop(int start, int stop)
+    {
+        Func<int, IEnumerable<int>> numbers = end =>
+            from i in Enumerable.Range(start, (end - start + 1))
+            where Enumerable.Range(1, 1).All(j => i > -100)
+            select i;
+
+        numbers(stop).ToList().ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+    }
+    */
+
+    public List<int> Armstrong(int start, int stop, double power)
+    {
+        Func<int, IEnumerable<int>> armstrongNumbers = end =>
+            from i in Enumerable.Range(start, (end - start + 1))
+            where Enumerable.Range(1, 1).All
+            (
+            	j => i == Convert.ToString(i).Select(x => Math.Pow(Convert.ToDouble(x.ToString()), power)
+	    ).Sum())
+            select i;
+
+        return armstrongNumbers(stop).ToList();
+    }
+    
+    public void Print()
+    {
+       // Range(-10, 20);
+       // RangeStartStop(-10, 20);
+
+        Console.WriteLine("3-Digit Armstrong Numbers");
+        List<int> armstrongNumbers = Armstrong(100, 999, 3D);
+        armstrongNumbers.ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+
+        Console.WriteLine("4-Digit Armstrong Numbers");
+        armstrongNumbers = Armstrong(1000, 9999, 4D);
+        armstrongNumbers.ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+
+        Console.WriteLine("5-Digit Armstrong Numbers");
+        armstrongNumbers = Armstrong(10000, 99999, 5D);
+        armstrongNumbers.ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+
+        Console.WriteLine("6-Digit Armstrong Numbers");
+        armstrongNumbers = Armstrong(100000, 999999, 6D);
+        armstrongNumbers.ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+
+        Console.WriteLine("7-Digit Armstrong Numbers");
+        armstrongNumbers = Armstrong(1000000, 9999999, 7D);
+        armstrongNumbers.ForEach(x => { Console.WriteLine(x); });
+        Console.WriteLine();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        ArmstrongSeries armstrong = new ArmstrongSeries();
+        armstrong.Print();
+    }
+}
+
+/*
+// Armstrong Numbers < 2147483647 // Console.WriteLine(Int32.MaxValue);
+1-Digit Armstrong Numbers
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+3-Digit Armstrong Numbers
+153
+370
+371
+407
+4-Digit Armstrong Numbers
+1634
+8208
+9474
+5-Digit Armstrong Numbers
+54748
+92727
+93084
+6-Digit Armstrong Numbers
+548834
+7-Digit Armstrong Numbers
+1741725
+4210818
+9800817
+9926315
+8-Digit Armstrong Numbers
+24678050
+24678051
+88593477
+9-Digit Armstrong Numbers
+146511208
+472335975
+534494836
+912985153
+
+// 3-Digit Armstrong Numbers
+
+1 + 125 + 27 = 153
+
+27 + 343 + 0 = 370
+
+27 + 343 + 1 = 371
+
+64 + 0 + 343 = 407
+
+// 4-Digit Armstrong Numbers
+
+1 + 1296 + 81 + 256 = 1634
+
+4096 + 16 + 0 + 4096 = 8208
+
+6561 + 256 + 2401 + 256 = 9474
+
+// 5-Digit Armstrong Numbers
+
+3125 + 1024 + 16807 + 1024 + 32768 = 54748
+
+59049 + 32 + 16807 + 32 + 16807 = 92727
+
+59049 + 243 + 0 + 32768 + 1024 = 93084
+
+// 6-Digit Armstrong Numbers
+
+15625 + 4096 + 262144 + 262144 + 729 + 4096 = 548834
+
+// 7-Digit Armstrong Numbers
+
+1 + 823543 + 16384 + + 1 + 823543 + 128 + 78125 = 1741725
+
+16384 + 128 + 1 + 0 + 2097152 + 1 + 2097152 = 4210818
+
+4782969 + 2097152 + 0 + 0 + 2097152 + 1 + 823543 = 9800817
+
+4782969 + 4782969 + 128 + 279936 + 2187 + 1 + 78125 = 9926315
+
+// 8-Digit Armstrong Numbers
+
+256 + 65536 + 1679616 + 5764801 + 16777216 + 0 + 390625 + 0 = 24678050
+
+256 + 65536 + 1679616 + 5764801 + 16777216 + 0 + 390625 + 1 = 24678051
+
+16777216 + 16777216 + 390625 + 43046721 + 6561 + 65536 + 5764801 + 5764801 = 88593477
+
+// 9-Digit Armstrong Numbers
+
+1 + 262144 + 10077696 + 1953125 + 1 + 1 + 512 + 0 + 134217728 = 146511208
+
+262144 + 40353607 + 512 + 19683 + 19683 + 1953125 + 387420489 + 40353607 + 1953125 = 472335975
+
+1953125 + 19683 + 262144 + 262144 + 387420489 + 262144 + 134217728 + 19683 + 10077696 = 534494836
+
+387420489 + 1 + 512 + 387420489 + 134217728 + 1953125 + 1 + 1953125 + 19683 = 912985153
+*/

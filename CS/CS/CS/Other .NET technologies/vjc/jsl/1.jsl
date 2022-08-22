@@ -1,0 +1,11 @@
+package Example;
+import System.*;
+
+public class Example
+{
+	public static void main(String[] args)
+	{
+		Console.Write("Welcome to J#!");
+	}
+}
+

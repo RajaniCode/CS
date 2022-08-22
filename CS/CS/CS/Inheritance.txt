@@ -1,0 +1,45 @@
+using System;
+
+public class BaseClass
+{
+    public void BaseMethod()
+    {
+        Console.WriteLine("Base Class Method");
+    }
+}
+
+class DerivedClass : BaseClass
+{
+    public void DerivedMethod()
+    {
+        Console.WriteLine("Derived Class Method");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        BaseClass bc = new BaseClass();
+        DerivedClass dc = new DerivedClass();
+
+        //bc = dc; // Fine
+        //bc.BaseMethod(); // Fine
+
+        //dc = bc; // Won't compile
+
+        //dc = (DerivedClass)bc; //System.NullReferenceException unless previously bc = dc; 
+        //dc = (DerivedClass)bc as DerivedClass; //System.NullReferenceException unless previously bc = dc; 
+
+        dc = bc as DerivedClass; // dc will be null unless it was previously: bc = dc; 
+
+        if (dc != null) // if (dc is BaseClass) // if (dc is DerivedClass) // in case of previously: bc = dc; 
+        {
+            dc.BaseMethod(); //System.NullReferenceException unless previously bc = dc; 
+            dc.DerivedMethod(); //System.NullReferenceException unless previously bc = dc; 
+        }
+
+        Console.WriteLine("Fine");
+        Console.ReadKey();
+    }
+}

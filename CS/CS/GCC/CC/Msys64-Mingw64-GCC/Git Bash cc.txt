@@ -1,0 +1,42 @@
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ export PATH=$PATH:"/C/msys64/mingw64/bin/"
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ gcc --version
+gcc.exe (Rev2, Built by MSYS2 project) 8.3.0
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ export PATH=$PATH:"/C/Users/rajanis/.nuget/packages/microsoft.net.compilers.toolset/3.7.0/tasks/net472/"
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ csc -version
+3.7.0-6.20375.2 (34202cc2)
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ cd "D:\RajaniS Master Folder\.NET\CS\gcc\CC\Msys64-Mingw64-GCC"
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/gcc/CC/Msys64-Mingw64-GCC
+$ gcc -c msys64-mingw64-gcc.cc
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/gcc/CC/Msys64-Mingw64-GCC
+$ gcc -shared -o msys64-mingw64-gcc.dll msys64-mingw64-gcc.o
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/gcc/CC/Msys64-Mingw64-GCC
+$ csc MinGW64GCC.cs -unsafe
+Microsoft (R) Visual C# Compiler version 3.7.0-6.20375.2 (34202cc2)
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/gcc/CC/Msys64-Mingw64-GCC
+$ ./MinGW64GCC
+Hello, World!
+Hello, World!
+Hello, World!
+
+rajanis@MSSPLLAP165 MINGW64 /d/RajaniS Master Folder/.NET/CS/gcc/CC/Msys64-Mingw64-GCC
+$

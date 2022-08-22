@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>annotations</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Gigya1\**" />
+    <Compile Remove="Views\Home\**" />
+    <Content Remove="Gigya1\**" />
+    <Content Remove="Views\Home\**" />
+    <EmbeddedResource Remove="Gigya1\**" />
+    <EmbeddedResource Remove="Views\Home\**" />
+    <None Remove="Gigya1\**" />
+    <None Remove="Views\Home\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Account\Models\LoggedInViewModel.cs" />
+    <Compile Remove="Areas\Account\Models\LoggedOutViewModel.cs" />
+    <Compile Remove="Models\LoginViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="smartystreets-dotnet-sdk" Version="8.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\custom\sass\base\generics.scss" />
+    <None Include="wwwroot\custom\sass\base\images.scss" />
+    <None Include="wwwroot\custom\sass\base\reset.scss" />
+    <None Include="wwwroot\custom\sass\base\typography.scss" />
+    <None Include="wwwroot\custom\sass\components\buttons.scss" />
+    <None Include="wwwroot\custom\sass\components\forms.scss" />
+    <None Include="wwwroot\custom\sass\components\icons.scss" />
+    <None Include="wwwroot\custom\sass\components\lists.scss" />
+    <None Include="wwwroot\custom\sass\components\slider.scss" />
+    <None Include="wwwroot\custom\sass\components\spritePositions\icons-enrolment.scss" />
+    <None Include="wwwroot\custom\sass\components\spritePositions\icons12.scss" />
+    <None Include="wwwroot\custom\sass\components\spritePositions\icons16.scss" />
+    <None Include="wwwroot\custom\sass\components\spritePositions\icons20.scss" />
+    <None Include="wwwroot\custom\sass\components\spritePositions\icons24.scss" />
+    <None Include="wwwroot\custom\sass\components\spritePositions\icons32.scss" />
+    <None Include="wwwroot\custom\sass\components\spritePositions\icons48.scss" />
+    <None Include="wwwroot\custom\sass\components\sprites.scss" />
+    <None Include="wwwroot\custom\sass\components\tabbs.scss" />
+    <None Include="wwwroot\custom\sass\components\tables.scss" />
+    <None Include="wwwroot\custom\sass\components\tabs.scss" />
+    <None Include="wwwroot\custom\sass\components\widgets.scss" />
+    <None Include="wwwroot\custom\sass\helpers\helpers.scss" />
+    <None Include="wwwroot\custom\sass\helpers\mixins.scss" />
+    <None Include="wwwroot\custom\sass\helpers\variables.scss" />
+    <None Include="wwwroot\custom\sass\ie.css.map" />
+    <None Include="wwwroot\custom\sass\ie.scss" />
+    <None Include="wwwroot\custom\sass\ie\ie8.scss" />
+    <None Include="wwwroot\custom\sass\layout\articles.scss" />
+    <None Include="wwwroot\custom\sass\layout\aside.scss" />
+    <None Include="wwwroot\custom\sass\layout\body.scss" />
+    <None Include="wwwroot\custom\sass\layout\footer.scss" />
+    <None Include="wwwroot\custom\sass\layout\grid.scss" />
+    <None Include="wwwroot\custom\sass\layout\header.scss" />
+    <None Include="wwwroot\custom\sass\layout\kendo-override.scss" />
+    <None Include="wwwroot\custom\sass\layout\main.scss" />
+    <None Include="wwwroot\custom\sass\layout\media.scss" />
+    <None Include="wwwroot\custom\sass\layout\nav.scss" />
+    <None Include="wwwroot\custom\sass\layout\search.scss" />
+    <None Include="wwwroot\custom\sass\master.css.map" />
+    <None Include="wwwroot\custom\sass\master.scss" />
+    <None Include="wwwroot\custom\sass\pages\content-full.scss" />
+    <None Include="wwwroot\custom\sass\pages\content-sidebar.scss" />
+    <None Include="wwwroot\custom\sass\pages\dashboard.scss" />
+    <None Include="wwwroot\custom\sass\pages\enrolment.scss" />
+    <None Include="wwwroot\custom\sass\pages\home.scss" />
+    <None Include="wwwroot\custom\sass\pages\login.scss" />
+    <None Include="wwwroot\custom\sass\pages\product info.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GigyaApiClient\GigyaApiClient.csproj" />
+  </ItemGroup>
+
+</Project>

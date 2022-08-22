@@ -1,0 +1,10 @@
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\bin\Debug\CSC2008ValueTypeReferenceType.exe
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\bin\Debug\CSC2008ValueTypeReferenceType.pdb
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\obj\Debug\CSC2008ValueTypeReferenceType.exe
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\obj\Debug\CSC2008ValueTypeReferenceType.pdb
+C:\Documents and Settings\RAJANI\My Documents\Rajani\CS\Note\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\obj\Debug\CSC2008ValueTypeReferenceType.exe
+C:\Documents and Settings\RAJANI\My Documents\Rajani\CS\Note\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\obj\Debug\CSC2008ValueTypeReferenceType.pdb
+C:\Documents and Settings\RAJANI\My Documents\Rajani\CS\Note\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\bin\Debug\CSC2008ValueTypeReferenceType.exe
+C:\Documents and Settings\RAJANI\My Documents\Rajani\CS\Note\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\bin\Debug\CSC2008ValueTypeReferenceType.pdb
+C:\Documents and Settings\RAJANI\My Documents\Rajani\CS\Note\CSC2008ValueTypeReferenceType\CSC2008ValueTypeReferenceType\obj\Debug\ResolveAssemblyReference.cache

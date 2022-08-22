@@ -1,0 +1,85 @@
+// CS 4
+/*
+in (Generic Modifier)
+*/
+
+// in (Generic Modifier)
+// For generic type parameters, the in keyword specifies that the type parameter is contravariant
+// The in keyword can be used in generic interfaces and delegates
+// Contravariance means to use a less derived type than that specified by the generic parameter and this allows for implicit conversion of classes that implement variant interfaces and implicit conversion of delegate types
+// Covariance and contravariance in generic type parameters are supported for reference types, however they are not supported for value types
+// A type can be declared contravariant in a generic interface or delegate if it is used only as a type of method arguments and not used as a method return type
+// Ref and out parameters cannot be variant
+// An interface that has a contravariant type parameter allows its methods to accept arguments of less derived types than those specified by the interface type parameter
+// For example, because in the IComparer<(Of <(T>)>) interface, type T is contravariant, an object of the IComparer(Of Person) type can be assigned to an object of the IComparer(Of Employee) type without using any special conversion methods if Employee inherits Person
+// A contravariant delegate can be assigned another delegate of the same type, however with a less derived generic type parameter
+
+using System;
+
+// Declare, extend, and implement a contravariant generic interface, and use implicit conversion for class that implements contravariant generic interface
+// Contravariant interface
+interface IContravariant<in T> { }
+
+// Extending contravariant interface.
+interface IExtContravariant<in T> : IContravariant<T> { }
+
+// Implementing contravariant interface
+class ImplementingContravariant<T> : IContravariant<T> { }
+
+class ImplicitConversion
+{
+    public void Assignment()
+    {
+        IContravariant<object> iobj = new ImplementingContravariant<object>();
+        IContravariant<string> istr = new ImplementingContravariant<string>();
+
+        // iobj can be assigned to istr because the IContravariant interface is contravariant
+        Console.WriteLine("Implicit conversion for class that implements contravariant generic interface");
+        Console.WriteLine("Before Implicit Conversion: {0}", istr is IContravariant<object>);
+        istr = iobj;
+        Console.WriteLine("After Implicit Conversion: {0}", istr is IContravariant<object>);
+        Console.WriteLine();
+    }
+}
+
+class BaseClass { }
+
+class DerivedClass : BaseClass { }
+
+// Declare, instantiate, and invoke a contravariant generic delegate by implicitly converting delegate types
+// Contravariant delegate
+public delegate void DContravariant<in A>(A argument);
+
+class ImplicitConversionDelegate
+{
+    // Methods that match the delegate signature
+    private void BaseMatch(BaseClass bc) { }
+    private void DerivedMatch(DerivedClass dc) { }
+
+    public void AssignmentInvoke()
+    {
+        // Instantiating the delegates with the methods
+        DContravariant<BaseClass> dBase = BaseMatch;
+        DContravariant<DerivedClass> dDerived = DerivedMatch;
+
+        // dBase can be assigned to dDerived because the DContravariant delegate is contravariant
+        Console.WriteLine("Implicitly converting delegate types");
+         dDerived = dBase;
+
+        // Invoke the delegate
+        Console.WriteLine("Invoke contravariant generic delegate");
+        dDerived(new DerivedClass());
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        ImplicitConversion implicitConvert = new ImplicitConversion();
+        implicitConvert.Assignment();
+
+        ImplicitConversionDelegate implicitConvertDelegate = new ImplicitConversionDelegate();
+        implicitConvertDelegate.AssignmentInvoke();
+    }
+}

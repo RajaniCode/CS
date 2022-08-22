@@ -1,0 +1,2 @@
+var framework = $"{Request.Url.Scheme}://{Request.Url.Host}{Request.Url.PathAndQuery}";
+var core = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";

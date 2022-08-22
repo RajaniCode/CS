@@ -1,0 +1,504 @@
+
+/* ======== 24px ICON SPRITE LOCATIONS VARIABLES ======== */
+$icon24-add:0;
+$icon24-arrowhead-up:-74px;
+$icon24-arrowhead-down:-148px;
+$icon24-arrowhead-left:-222px;
+$icon24-arrowhead-right:-296px;
+$icon24-chevron-down:-370px;
+$icon24-chevron-left:-444px;
+$icon24-chevron-right:-518px;
+$icon24-chevron-up:-592px;
+$icon24-basket:-666px;
+$icon24-tick:-740px;
+$icon24-redo:-814px;
+$icon24-sync:-888px;
+$icon24-refresh:-962px;
+$icon24-undo:-1036px;
+$icon24-edit:-1110px;
+$icon24-cursor:-1184px;
+$icon24-close:-1258px;
+$icon24-cancel:-1332px;
+$icon24-delete:-1406px;
+$icon24-home:-1480px;
+$icon24-user:-1554px;
+$icon24-user-search:-1628px;
+$icon24-user-add:-1702px;
+$icon24-user-delete:-1776px;
+$icon24-user-refresh:-1850px;
+$icon24-user-time:-1924px;
+$icon24-user-info:-1998px;
+$icon24-user-lock:-2072px;
+$icon24-user-new:-2146px;
+$icon24-user-back:-2220px;
+$icon24-user-world:-2294px;
+$icon24-user-mail:-2368px;
+$icon24-user-settings:-2442px;
+$icon24-data:-2516px;
+$icon24-data-edit:-2590px;
+$icon24-data-search:-2664px;
+$icon24-data-replace:-2738px;
+$icon24-data-delete:-2812px;
+$icon24-data-add:-2886px;
+$icon24-data-error:-2960px;
+$icon24-data-warning:-3034px;
+$icon24-data-copy:-3108px;
+$icon24-login:-3182px;
+$icon24-logout:-3256px;
+$icon24-document:-3330px;
+$icon24-document-download:-3404px;
+$icon24-document-add:-3478px;
+$icon24-document-search:-3552px;
+$icon24-document-warning:-3626px;
+$icon24-document-exchange:-3700px;
+$icon24-warning:-3774px;
+$icon24-submit:-3848px;
+$icon24-tick-alt:-3922px;
+$icon24-upload:-3996px;
+$icon24-download:-4070px;
+$icon24-save:-4144px;
+$icon24-error:-4218px;
+$icon24-excel:-4292px;
+$icon24-word:-4366px;
+$icon24-pdf:-4440px;
+$icon24-pdf-export:-4514px;
+$icon24-csv-export:-4588px;
+$icon24-tooltip:-4662px;
+$icon24-info:-4736px;
+$icon24-clock:-4810px;
+$icon24-search-clock:-4884px;
+$icon24-lock-open:-4958px;
+$icon24-lock-closed:-5032px;
+$icon24-print:-5106px;
+$icon24-search:-5180px;
+$icon24-view:-5254px;
+$icon24-search-refresh:-5328px;
+$icon24-search-open:-5402px;
+$icon24-mail:-5476px;
+$icon24-filter:-5550px;
+$icon24-filter-edit:-5624px;
+$icon24-filter-accept:-5698px;
+$icon24-filter-descending:-5772px;
+$icon24-filter-ascending:-5846px;
+$icon24-filter-add:-5920px;
+$icon24-filter-delete:-5994px;
+$icon24-filter-new:-6068px;
+$icon24-flag:-6142px;
+$icon24-critical:-6216px;
+$icon24-menu:-6290px;
+$icon24-star:-6364px;
+$icon24-sticker-free:-6438px;
+$icon24-sticker-new:-6512px;
+$icon24-star-new:-6586px;
+$icon24-power:-6660px;
+$icon24-star-cute:-6734px;
+$icon24-sticker-sale:-6808px;
+$icon24-sticker-discount:-6882px;
+$icon24-collapse:-6956px;
+$icon24-expand:-7030px;
+$icon24-sync-alt:-7104px;
+$icon24-count:-7178px;
+$icon24-grid:-7252px;
+$icon24-bin:-7326px;
+
+
+/* ======== 24px ICON SPRITE LOCATIONS ======== */
+I.icon--24.icon--add						            {@include sprite-icon($xPos24,$icon24-add);}
+.button.icon--24.icon--add,
+.grid-button.icon--24.icon--add					        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-menu);}
+
+I.icon--24.icon--arrowhead-up				            {@include sprite-icon($xPos24,$icon24-arrowhead-up);}
+.button.icon--24.icon--arrowhead-up,
+.grid-button.icon--24.icon--arrowhead-up			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-arrowhead-up);}
+
+I.icon--24.icon--arrowhead-down				            {@include sprite-icon($xPos24,$icon24-arrowhead-down);}
+.button.icon--24.icon--arrowhead-down,
+.grid-button.icon--24.icon--arrowhead-down		        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-arrowhead-down);}
+
+I.icon--24.icon--arrowhead-left				            {@include sprite-icon($xPos24,$icon24-arrowhead-left);}
+.button.icon--24.icon--arrowhead-left,
+.grid-button.icon--24.icon--arrowhead-left		        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-arrowhead-left);}
+
+I.icon--24.icon--arrowhead-right			            {@include sprite-icon($xPos24,$icon24-arrowhead-right);}
+.button.icon--24.icon--arrowhead-right,
+.grid-button.icon--24.icon--arrowhead-right		        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-arrowhead-right);}
+
+I.icon--24.icon--chevron-down				            {@include sprite-icon($xPos24,$icon24-chevron-down);}
+.button.icon--24.icon--chevron-down,
+.grid-button.icon--24.icon--chevron-down			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-chevron-down);}
+
+I.icon--24.icon--chevron-left				            {@include sprite-icon($xPos24,$icon24-chevron-left);}
+.button.icon--24.icon--chevron-left,
+.grid-button.icon--24.icon--chevron-left			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-chevron-left);}
+
+I.icon--24.icon--chevron-right				            {@include sprite-icon($xPos24,$icon24-chevron-right);}
+.button.icon--24.icon--chevron-right,
+.grid-button.icon--24.icon--chevron-right		        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-chevron-right);}
+
+I.icon--24.icon--chevron-up					            {@include sprite-icon($xPos24,$icon24-chevron-up);}
+.button.icon--24.icon--chevron-up,
+.grid-button.icon--24.icon--chevron-up			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-chevron-up);}
+
+I.icon--24.icon--basket						            {@include sprite-icon($xPos24,$icon24-basket);}
+.button.icon--24.icon--basket,
+.grid-button.icon--24.icon--basket				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-basket);}
+
+I.icon--24.icon--tick						            {@include sprite-icon($xPos24,$icon24-tick);}
+.button.icon--24.icon--tick,
+.grid-button.icon--24.icon--tick					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-tick);}
+
+I.icon--24.icon--redo						            {@include sprite-icon($xPos24,$icon24-redo);}
+.button.icon--24.icon--redo,
+.grid-button.icon--24.icon--redo					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-redo);}
+
+I.icon--24.icon--sync						            {@include sprite-icon($xPos24,$icon24-sync);}
+.button.icon--24.icon--sync,
+.grid-button.icon--24.icon--sync					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-sync);}
+
+I.icon--24.icon--refresh					            {@include sprite-icon($xPos24,$icon24-refresh);}
+.button.icon--24.icon--refresh,
+.grid-button.icon--24.icon--refresh				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-refresh);}
+
+I.icon--24.icon--undo						            {@include sprite-icon($xPos24,$icon24-undo);}
+.button.icon--24.icon--undo,
+.grid-button.icon--24.icon--undo					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-undo);}
+
+I.icon--24.icon--edit						            {@include sprite-icon($xPos24,$icon24-edit);}
+.button.icon--24.icon--edit,
+.grid-button.icon--24.icon--edit					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-edit);}
+
+I.icon--24.icon--cursor						            {@include sprite-icon($xPos24,$icon24-cursor);}
+.button.icon--24.icon--cursor,
+.grid-button.icon--24.icon--cursor				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-cursor);}
+
+I.icon--24.icon--close						            {@include sprite-icon($xPos24,$icon24-close);}
+.button.icon--24.icon--close,
+.grid-button.icon--24.icon--close				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-close);}
+
+I.icon--24.icon--cancel						            {@include sprite-icon($xPos24,$icon24-cancel);}
+.button.icon--24.icon--cancel,
+.grid-button.icon--24.icon--cancel				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-cancel);}
+
+I.icon--24.icon--delete						            {@include sprite-icon($xPos24,$icon24-delete);}
+.button.icon--24.icon--delete,
+.grid-button.icon--24.icon--delete				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-delete);}
+
+I.icon--24.icon--home						            {@include sprite-icon($xPos24,$icon24-home);}
+.button.icon--24.icon--home,
+.grid-button.icon--24.icon--home					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-home);}
+
+I.icon--24.icon--user						            {@include sprite-icon($xPos24,$icon24-user);}
+.button.icon--24.icon--user,
+.grid-button.icon--24.icon--user					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user);}
+
+I.icon--24.icon--user-search				            {@include sprite-icon($xPos24,$icon24-user-search);}
+.button.icon--24.icon--user-search,
+.grid-button.icon--24.icon--user-search			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-search);}
+
+I.icon--24.icon--user-add					            {@include sprite-icon($xPos24,$icon24-user-add);}
+.button.icon--24.icon--user-add,
+.grid-button.icon--24.icon--user-add				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-add);}
+
+I.icon--24.icon--user-delete				            {@include sprite-icon($xPos24,$icon24-user-delete);}
+.button.icon--24.icon--user-delete,
+.grid-button.icon--24.icon--user-delete			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-delete);}
+
+I.icon--24.icon--user-refresh				            {@include sprite-icon($xPos24,$icon24-user-refresh);}
+.button.icon--24.icon--user-refresh,
+.grid-button.icon--24.icon--user-refresh			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-refresh);}
+
+I.icon--24.icon--user-time					            {@include sprite-icon($xPos24,$icon24-user-time);}
+.button.icon--24.icon--user-time,
+.grid-button.icon--24.icon--user-time			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-time);}
+
+I.icon--24.icon--user-info					            {@include sprite-icon($xPos24,$icon24-user-info);}
+.button.icon--24.icon--user-info,
+.grid-button.icon--24.icon--user-info			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-info);}
+
+I.icon--24.icon--user-lock					            {@include sprite-icon($xPos24,$icon24-user-lock);}
+.button.icon--24.icon--user-lock,
+.grid-button.icon--24.icon--user-lock			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-lock);}
+
+I.icon--24.icon--user-new					            {@include sprite-icon($xPos24,$icon24-user-new);}
+.button.icon--24.icon--user-new,
+.grid-button.icon--24.icon--user-new				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-new);}
+
+I.icon--24.icon--user-back					            {@include sprite-icon($xPos24,$icon24-user-back);}
+.button.icon--24.icon--user-back,
+.grid-button.icon--24.icon--user-back			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-back);}
+
+I.icon--24.icon--user-world					            {@include sprite-icon($xPos24,$icon24-user-world);}
+.button.icon--24.icon--user-world,
+.grid-button.icon--24.icon--user-world			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-world);}
+
+I.icon--24.icon--user-mail					            {@include sprite-icon($xPos24,$icon24-user-mail);}
+.button.icon--24.icon--user-mail,
+.grid-button.icon--24.icon--user-mail			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-mail);}
+
+I.icon--24.icon--user-settings				            {@include sprite-icon($xPos24,$icon24-user-settings);}
+.button.icon--24.icon--user-settings,
+.grid-button.icon--24.icon--user-settings		        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-user-settings);}
+
+I.icon--24.icon--data						            {@include sprite-icon($xPos24,$icon24-data);}
+.button.icon--24.icon--data,
+.grid-button.icon--24.icon--data					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-data);}
+
+I.icon--24.icon--data-edit					            {@include sprite-icon($xPos24,$icon24-data-edit);}
+.button.icon--24.icon--data-edit,
+.grid-button.icon--24.icon--data-edit			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-data-edit);}
+
+I.icon--24.icon--data-search				            {@include sprite-icon($xPos24,$icon24-data-search);}
+.button.icon--24.icon--data-search,
+.grid-button.icon--24.icon--data-search			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-data-search);}
+
+I.icon--24.icon--data-replace				            {@include sprite-icon($xPos24,$icon24-data-replace);}
+.button.icon--24.icon--data-replace,
+.grid-button.icon--24.icon--data-replace			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-data-replace);}
+
+I.icon--24.icon--data-delete				            {@include sprite-icon($xPos24,$icon24-data-delete);}
+.button.icon--24.icon--data-delete,
+.grid-button.icon--24.icon--data-delete			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-data-delete);}
+
+I.icon--24.icon--data-add					            {@include sprite-icon($xPos24,$icon24-data-add);}
+.button.icon--24.icon--data-add,
+.grid-button.icon--24.icon--data-add				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-data-add);}
+
+I.icon--24.icon--data-error					            {@include sprite-icon($xPos24,$icon24-data-error);}
+.button.icon--24.icon--data-error,
+.grid-button.icon--24.icon--data-error			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-data-error);}
+
+I.icon--24.icon--data-warning				            {@include sprite-icon($xPos24,$icon24-data-warning);}
+.button.icon--24.icon--data-warning,
+.grid-button.icon--24.icon--data-warning			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-data-warning);}
+
+I.icon--24.icon--data-copy					            {@include sprite-icon($xPos24,$icon24-data-copy);}
+.button.icon--24.icon--data-copy,
+.grid-button.icon--24.icon--data-copy			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-data-copy);}
+
+I.icon--24.icon--login						            {@include sprite-icon($xPos24,$icon24-login);}
+.button.icon--24.icon--login,
+.grid-button.icon--24.icon--login				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-login);}
+
+I.icon--24.icon--logout						            {@include sprite-icon($xPos24,$icon24-logout);}
+.button.icon--24.icon--logout,
+.grid-button.icon--24.icon--logout				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-logout);}
+
+I.icon--24.icon--document					            {@include sprite-icon($xPos24,$icon24-document);}
+.button.icon--24.icon--document,
+.grid-button.icon--24.icon--document				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-document);}
+
+I.icon--24.icon--document-download			            {@include sprite-icon($xPos24,$icon24-document-download);}
+.button.icon--24.icon--document-download,
+.grid-button.icon--24.icon--document-download	        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-document-download);}
+
+I.icon--24.icon--document-add				            {@include sprite-icon($xPos24,$icon24-document-add);}
+.button.icon--24.icon--document-add,
+.grid-button.icon--24.icon--document-add			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-document-add);}
+
+I.icon--24.icon--document-search			            {@include sprite-icon($xPos24,$icon24-document-search);}
+.button.icon--24.icon--document-search,
+.grid-button.icon--24.icon--document-search		        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-document-search);}
+
+I.icon--24.icon--document-warning			            {@include sprite-icon($xPos24,$icon24-document-warning);}
+.button.icon--24.icon--document-warning,
+.grid-button.icon--24.icon--document-warning		    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-document-warning);}
+
+I.icon--24.icon--document-exchange			            {@include sprite-icon($xPos24,$icon24-document-exchange);}
+.button.icon--24.icon--document-exchange,
+.grid-button.icon--24.icon--document-exchange	        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-document-exchange);}
+
+I.icon--24.icon--warning					            {@include sprite-icon($xPos24,$icon24-warning);}
+.button.icon--24.icon--warning,
+.grid-button.icon--24.icon--warning				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-warning);}
+
+I.icon--24.icon--submit						            {@include sprite-icon($xPos24,$icon24-submit);}
+.button.icon--24.icon--submit,
+.grid-button.icon--24.icon--submit				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-submit);}
+
+I.icon--24.icon--tick-alt					            {@include sprite-icon($xPos24,$icon24-tick-alt);}
+.button.icon--24.icon--tick-alt,
+.grid-button.icon--24.icon--tick-alt				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-tick-alt);}
+
+I.icon--24.icon--upload						            {@include sprite-icon($xPos24,$icon24-upload);}
+.button.icon--24.icon--upload,
+.grid-button.icon--24.icon--upload				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-upload);}
+
+I.icon--24.icon--download					            {@include sprite-icon($xPos24,$icon24-download);}
+.button.icon--24.icon--download,
+.grid-button.icon--24.icon--download				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-download);}
+
+I.icon--24.icon--save						            {@include sprite-icon($xPos24,$icon24-save);}
+.button.icon--24.icon--save,
+.grid-button.icon--24.icon--save					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-save);}
+
+I.icon--24.icon--error						            {@include sprite-icon($xPos24,$icon24-error);}
+.button.icon--24.icon--error,
+.grid-button.icon--24.icon--error				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-error);}
+
+I.icon--24.icon--excel						            {@include sprite-icon($xPos24,$icon24-excel);}
+.button.icon--24.icon--excel,
+.grid-button.icon--24.icon--excel				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-excel);}
+
+I.icon--24.icon--word						            {@include sprite-icon($xPos24,$icon24-word);}
+.button.icon--24.icon--word,
+.grid-button.icon--24.icon--word					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-word);}
+
+I.icon--24.icon--pdf						            {@include sprite-icon($xPos24,$icon24-pdf);}
+.button.icon--24.icon--pdf,
+.grid-button.icon--24.icon--pdf					        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-pdf);}
+
+I.icon--24.icon--pdf-export					            {@include sprite-icon($xPos24,$icon24-pdf-export);}
+.button.icon--24.icon--pdf-export,
+.grid-button.icon--24.icon--pdf-export			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-pdf-export);}
+
+I.icon--24.icon--csv-export					            {@include sprite-icon($xPos24,$icon24-csv-export);}
+.button.icon--24.icon--csv-export,
+.grid-button.icon--24.icon--csv-export			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-csv-export);}
+
+I.icon--24.icon--tooltip					            {@include sprite-icon($xPos24,$icon24-tooltip);}
+.button.icon--24.icon--tooltip,
+.grid-button.icon--24.icon--tooltip				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-tooltip);}
+
+I.icon--24.icon--info						            {@include sprite-icon($xPos24,$icon24-info);}
+.button.icon--24.icon--info,
+.grid-button.icon--24.icon--info					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-info);}
+
+I.icon--24.icon--clock						            {@include sprite-icon($xPos24,$icon24-clock);}
+.button.icon--24.icon--clock,
+.grid-button.icon--24.icon--clock				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-clock);}
+
+I.icon--24.icon--search-clock				            {@include sprite-icon($xPos24,$icon24-search-clock);}
+.button.icon--24.icon--search-clock,
+.grid-button.icon--24.icon--search-clock			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-search-clock);}
+
+I.icon--24.icon--lock-open					            {@include sprite-icon($xPos24,$icon24-lock-open);}
+.button.icon--24.icon--lock-open,
+.grid-button.icon--24.icon--lock-open			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-lock-open);}
+
+I.icon--24.icon--lock-closed				            {@include sprite-icon($xPos24,$icon24-lock-closed);}
+.button.icon--24.icon--lock-closed,
+.grid-button.icon--24.icon--lock-closed			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-lock-closed);}
+
+I.icon--24.icon--print						            {@include sprite-icon($xPos24,$icon24-print);}
+.button.icon--24.icon--print,
+.grid-button.icon--24.icon--print				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-print);}
+
+I.icon--24.icon--search						            {@include sprite-icon($xPos24,$icon24-search);}
+.button.icon--24.icon--search,
+.grid-button.icon--24.icon--search				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-search);}
+
+I.icon--24.icon--view						            {@include sprite-icon($xPos24,$icon24-view);}
+.button.icon--24.icon--view,
+.grid-button.icon--24.icon--view					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-view);}
+
+I.icon--24.icon--search-refresh			                {@include sprite-icon($xPos24,$icon24-search-refresh);}
+.button.icon--24.icon--search-refresh,
+.grid-button.icon--24.icon--search-refresh		        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-search-refresh);}
+
+I.icon--24.icon--search-open				            {@include sprite-icon($xPos24,$icon24-search-open);}
+.button.icon--24.icon--search-open,
+.grid-button.icon--24.icon--search-open			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-search-open);}
+
+I.icon--24.icon--mail						            {@include sprite-icon($xPos24,$icon24-mail);}
+.button.icon--24.icon--mail,
+.grid-button.icon--24.icon--mail					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-mail);}
+
+I.icon--24.icon--filter						            {@include sprite-icon($xPos24,$icon24-filter);}
+.button.icon--24.icon--filter,
+.grid-button.icon--24.icon--filter				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-filter);}
+
+I.icon--24.icon--filter-edit				            {@include sprite-icon($xPos24,$icon24-edit);}
+.button.icon--24.icon--filter-edit,
+.grid-button.icon--24.icon--filter-edit			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-filter-edit);}
+
+I.icon--24.icon--filter-accept				            {@include sprite-icon($xPos24,$icon24-filter-accept);}
+.button.icon--24.icon--filter-accept,
+.grid-button.icon--24.icon--filter-accept		        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-filter-accept);}
+
+I.icon--24.icon--filter-descending			            {@include sprite-icon($xPos24,$icon24-filter-descending);}
+.button.icon--24.icon--filter-descending,
+.grid-button.icon--24.icon--filter-descending	        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-filter-descending);}
+
+I.icon--24.icon--filter-ascending			            {@include sprite-icon($xPos24,$icon24-filter-ascending);}
+.button.icon--24.icon--filter-ascending,
+.grid-button.icon--24.icon--filter-ascending		    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-filter-ascending);}
+
+I.icon--24.icon--filter-add					            {@include sprite-icon($xPos24,$icon24-filter-add);}
+.button.icon--24.icon--filter-add,
+.grid-button.icon--24.icon--filter-add			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-filter-add);}
+
+I.icon--24.icon--filter-delete				            {@include sprite-icon($xPos24,$icon24-filter-delete);}
+.button.icon--24.icon--filter-delete,
+.grid-button.icon--24.icon--filter-delete		        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-filter-delete);}
+
+I.icon--24.icon--filter-new					            {@include sprite-icon($xPos24,$icon24-filter-new);}
+.button.icon--24.icon--filter-new,
+.grid-button.icon--24.icon--filter-new			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-filter-new);}
+
+I.icon--24.icon--flag						            {@include sprite-icon($xPos24,$icon24-flag);}
+.button.icon--24.icon--flag,
+.grid-button.icon--24.icon--flag					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-flag);}
+
+I.icon--24.icon--critical					            {@include sprite-icon($xPos24,$icon24-critical);}
+.button.icon--24.icon--critical,
+.grid-button.icon--24.icon--critical				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-critical);}
+
+I.icon--24.icon--menu						            {@include sprite-icon($xPos24,$icon24-menu);}
+.button.icon--24.icon--menu,
+.grid-button.icon--24.icon--menu					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-menu);}
+
+I.icon--24.icon--star						            {@include sprite-icon($xPos24,$icon24-star);}
+.button.icon--24.icon--star,
+.grid-button.icon--24.icon--star					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-star);}
+
+I.icon--24.icon--sticker-free				            {@include sprite-icon($xPos24,$icon24-sticker-free);}
+.button.icon--24.icon--sticker-free,
+.grid-button.icon--24.icon--sticker-free			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-sticker-free);}
+
+I.icon--24.icon--sticker-new				            {@include sprite-icon($xPos24,$icon24-sticker-new);}
+.button.icon--24.icon--sticker-new,
+.grid-button.icon--24.icon--sticker-new			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-sticker-new);}
+
+I.icon--24.icon--star-new					            {@include sprite-icon($xPos24,$icon24-star-new);}
+.button.icon--24.icon--star-new,
+.grid-button.icon--24.icon--star-new				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-star-new);}
+
+I.icon--24.icon--power						            {@include sprite-icon($xPos24,$icon24-power);}
+.button.icon--24.icon--power,
+.grid-button.icon--24.icon--power				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-power);}
+
+I.icon--24.icon--star-cute					            {@include sprite-icon($xPos24,$icon24-star-cute);}
+.button.icon--24.icon--star-cute,
+.grid-button.icon--24.icon--star-cute			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-star-cute);}
+
+I.icon--24.icon--sticker-sale				            {@include sprite-icon($xPos24,$icon24-sticker-sale);}
+.button.icon--24.icon--sticker-sale,
+.grid-button.icon--24.icon--sticker-sale			    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-sticker-sale);}
+
+I.icon--24.icon--sticker-discount			            {@include sprite-icon($xPos24,$icon24-sticker-discount);}
+.button.icon--24.icon--sticker-discount,
+.grid-button.icon--24.icon--sticker-discount		    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-sticker-discount);}
+
+I.icon--24.icon--collapse					            {@include sprite-icon($xPos24,$icon24-collapse);}
+.button.icon--24.icon--collapse,
+.grid-button.icon--24.icon--collapse				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-collapse);}
+
+I.icon--24.icon--expand						            {@include sprite-icon($xPos24,$icon24-expand);}
+.button.icon--24.icon--expand,
+.grid-button.icon--24.icon--expand				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-expand);}
+
+I.icon--24.icon--sync-alt					            {@include sprite-icon($xPos24,$icon24-sync-alt);}
+.button.icon--24.icon--sync-alt,
+.grid-button.icon--24.icon--sync-alt				    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-sync-alt);}
+
+I.icon--24.icon--count						            {@include sprite-icon($xPos24,$icon24-count);}
+.button.icon--24.icon--count,
+.grid-button.icon--24.icon--count				        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-count);}
+
+I.icon--24.icon--grid						            {@include sprite-icon($xPos24,$icon24-grid);}
+.button.icon--24.icon--grid,
+.grid-button.icon--24.icon--grid					    {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-grid);}
+
+I.icon--24.icon--bin						            {@include sprite-icon($xPos24,$icon24-bin);}
+.button.icon--24.icon--bin,
+.grid-button.icon--24.icon--bin					        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-bin);}

@@ -1,0 +1,58 @@
+TWO OPERANDS:
+
+1.Binary operators:
++
+
+-
+
+2.Operations on built-in types:
+Object + simple types(int etc)
+
+simple types(int etc) + object
+
+Object - simple types(int etc)
+
+simple types(int etc) - object
+
+3. Logical operators
+&
+
+|
+
+3. relational operators:
+== (pair)
+!= (pair)
+
+< (pair)
+> (pair)
+
+<= (pair)
+>= (pair)
+
+
+
+
+ONE OPERAND:
+1.Unary operators:
+- (unary minus)
+
+++ increment operator
+
+-- decrement operator
+
+2.Overloading: 
+true (pair)
+false (pair)
+
+3. Logical operator:
+!
+
+4.Conversion operators:
+(either implicit or explicit)
+implicit: 
+object(s) to 1 simple types(int etc)
+1 simple types(int etc) to object
+
+explicit:
+object(s) to  1 simple types(int etc)
+1 simple types(int etc) to object

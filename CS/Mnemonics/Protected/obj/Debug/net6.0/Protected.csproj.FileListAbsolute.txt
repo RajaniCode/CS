@@ -1,0 +1,15 @@
+/Users/rajaniapple/Desktop/Mnemonics/Protected/bin/Debug/net6.0/Protected
+/Users/rajaniapple/Desktop/Mnemonics/Protected/bin/Debug/net6.0/Protected.deps.json
+/Users/rajaniapple/Desktop/Mnemonics/Protected/bin/Debug/net6.0/Protected.runtimeconfig.json
+/Users/rajaniapple/Desktop/Mnemonics/Protected/bin/Debug/net6.0/Protected.dll
+/Users/rajaniapple/Desktop/Mnemonics/Protected/bin/Debug/net6.0/ref/Protected.dll
+/Users/rajaniapple/Desktop/Mnemonics/Protected/bin/Debug/net6.0/Protected.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Protected/obj/Debug/net6.0/Protected.csproj.AssemblyReference.cache
+/Users/rajaniapple/Desktop/Mnemonics/Protected/obj/Debug/net6.0/Protected.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rajaniapple/Desktop/Mnemonics/Protected/obj/Debug/net6.0/Protected.AssemblyInfoInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Protected/obj/Debug/net6.0/Protected.AssemblyInfo.cs
+/Users/rajaniapple/Desktop/Mnemonics/Protected/obj/Debug/net6.0/Protected.csproj.CoreCompileInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Protected/obj/Debug/net6.0/Protected.dll
+/Users/rajaniapple/Desktop/Mnemonics/Protected/obj/Debug/net6.0/ref/Protected.dll
+/Users/rajaniapple/Desktop/Mnemonics/Protected/obj/Debug/net6.0/Protected.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Protected/obj/Debug/net6.0/Protected.genruntimeconfig.cache

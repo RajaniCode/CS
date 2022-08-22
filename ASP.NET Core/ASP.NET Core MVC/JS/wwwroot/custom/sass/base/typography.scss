@@ -1,0 +1,105 @@
+/* ===========================================================
+
+	$TYPOGRAPHY
+
+=========================================================== */
+
+
+/* ---- WEB FONT ---- */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800);
+
+
+/* ---- HTML ELEMENTS ---- */
+HTML 							{font-size:62.5%;}
+
+BODY,
+INPUT,
+TEXTAREA,
+SELECT,
+BUTTON 							{font-size:$baseSize; line-height:$baseLineHeight; font-family:$fontSetPrimary; color:$baseColour; 
+						 		 /*font-feature-settings: 'liga', 'kern'; *//* http://elliotjaystocks.com/blog/kerning/ */
+						 		 font-kerning:normal; -webkit-font-smoothing:antialiased;}
+						 
+A 								{color:$anchorColour; transition:color $transitionSpeed ease;
+								 &:hover {color:$anchorColourHover;}
+								 &:focus {}
+								}
+
+SMALL 							{font-size:$iota;}
+STRONG							{font-weight:700;}
+FIGCAPTION 						{font-size:1.6rem; padding-top:$baseLineHeight; text-align:center;}
+
+::selection 					{background:$primaryColour;}
+::-moz-selection 				{background:$primaryColour;}
+
+/* ==== HEADINGS ==== */
+H1,H2,H3,H4,H5,H6               {@include heading-font-style-full($fontSetSecondary,$baseColour,uppercase);}
+
+/* ---- DEFAULT HEADING SIZES ---- */
+H1,.alpha 						{font-size:$alpha;}
+H2,.beta 						{font-size:$beta;}
+H3,.gamma 						{font-size:$gamma;}
+H4,.delta 						{font-size:$delta;}
+H5,.epsilon 					{font-size:$epsilon;}
+H6,.zeta 						{font-size:$zeta;}
+
+/* ---- HEADING META-STYLES ---- */
+H1                              {@include heading-font-size($alpha);}
+H2                              {@include heading-font-size($beta);}
+H3                              {@include heading-font-size($gamma);}
+H4                              {@include heading-font-size($delta);}
+H5                              {@include heading-font-size($epsilon);}
+H6                              {@include heading-font-size($zeta);}
+
+/* ---- EXTRA LARGE HEADING SIZES ---- */
+.tera 							{@include heading-font-size($tera); @include heading-font-style($baseColour);}
+.giga 							{@include heading-font-size($giga); @include heading-font-style($baseColour);}
+.mega 							{@include heading-font-size($mega); @include heading-font-style($baseColour);}
+
+/* ---- SMALL HEADING SIZES ---- */
+H1 SMALL						{font-size:50%;}						
+H2 SMALL						{font-size:60%;}
+H3 SMALL						{font-size:70%;}
+H4 SMALL						{font-size:80%;}
+H5 SMALL						{font-size:85%;}
+H6 SMALL						{font-size:90%;}
+
+/* ---- PARAGRAPH ---- */
+P  								{margin-bottom:15px; font-size:$zeta; color:$baseColour; }
+
+
+
+
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ======== MOBILE ======== */
+@media screen and (max-width: $breakpoint-medium) {
+
+
+}
+
+
+/* ======== TABLET & DESKTOP ======== */
+@media screen and (min-width: $breakpoint-medium) {
+	
+
+}
+
+
+/* ======== LARGE DESKTOP ======== */
+@media screen and (min-width: 1500px) {
+
+	FIGCAPTION 						{position:absolute; top:$baseLineHeight; left:-18rem; width:15rem; padding:0; color:$grey-medium; line-height:1.3rem; text-align:right;}
+
+}
+
+
+/* ======== HIGH PIXEL DENSITY SCREENS ======== */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+
+	P 								{letter-spacing: 0.01em; /* Increase letter-spacing on high pixel density screens as they can appear too close */
+									 word-spacing: 0.01em; /* Word-spacing same as letter-spacing for consistency */}
+
+}

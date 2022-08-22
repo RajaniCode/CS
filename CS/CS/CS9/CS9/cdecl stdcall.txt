@@ -1,0 +1,24 @@
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\gcc\CPP\cdecl stdcall"
+gcc cdecl-main.cpp -o cdecl-main
+./cdecl-main
+
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\gcc\CPP\cdecl stdcall"
+gcc -c cdecl.cpp
+gcc -shared -o cdecl.dll cdecl.o
+
+
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\gcc\CPP\cdecl stdcall"
+gcc stdcall-main.cpp -o stdcall-main
+./stdcall-main
+
+export PATH=$PATH:"/C/msys64/mingw64/bin/"
+gcc --version
+cd "D:\RajaniS Master Folder\gcc\CPP\cdecl stdcall"
+gcc -c stdcall.cpp
+gcc -shared -o stdcall.dll stdcall.o

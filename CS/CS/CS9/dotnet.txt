@@ -1,0 +1,755 @@
+dotnet --version
+/*
+6.0.100
+*/
+
+dotnet --list-sdks
+/*
+2.2.402 [C:\Program Files\dotnet\sdk]
+3.0.100 [C:\Program Files\dotnet\sdk]
+3.1.402 [C:\Program Files\dotnet\sdk]
+3.1.415 [C:\Program Files\dotnet\sdk]
+5.0.400 [C:\Program Files\dotnet\sdk]
+5.0.403 [C:\Program Files\dotnet\sdk]
+6.0.100 [C:\Program Files\dotnet\sdk]
+*/
+
+dotnet new console -o hwapp
+/*
+The template "Console App" was created successfully.
+
+Processing post-creation actions...
+Running 'dotnet restore' on C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj...
+  Determining projects to restore...
+  Restored C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj (in 140 ms).
+Restore succeeded.
+*/
+/*
+// C:\Users\Rajani\.templateengine\dotnetcli\v6.0.100
+hwapp\hwapp.csproj
+hwapp\Program.cs 
+*/
+
+cd hwapp
+dotnet run
+/*
+Hello, World!
+*/
+/*
+C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\*
+C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\*
+*/
+
+dotnet build hwapp.csproj
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj (in 147 ms).
+  hwapp -> C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:05.55
+*/
+
+dotnet build hwapp.csproj --configuration Debug
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj (in 128 ms).
+  hwapp -> C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.02
+*/
+
+dotnet build hwapp.csproj --configuration Release
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj (in 131 ms).
+  hwapp -> C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Release\net6.0\hwapp.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.05
+*/
+
+dotnet clean hwapp.csproj
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 29-11-2021 13:30:42.
+     1>Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" on node 1 (Clean target(s)).
+     1>CoreClean:
+         Creating directory "obj\Debug\net6.0\".
+     1>Done Building Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" (Clean target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.69
+*/
+
+dotnet clean hwapp.csproj --configuration Debug
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 29-11-2021 13:31:03.
+     1>Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" on node 1 (Clean target(s)).
+     1>CoreClean:
+         Creating directory "obj\Debug\net6.0\".
+     1>Done Building Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" (Clean target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.69
+*/
+
+dotnet clean hwapp.csproj --configuration Release
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 29-11-2021 13:31:26.
+     1>Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" on node 1 (Clean target(s)).
+     1>CoreClean:
+         Creating directory "obj\Release\net6.0\".
+     1>Done Building Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" (Clean target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.70
+*/
+
+dotnet run hwapp.csproj
+/*
+Hello, World!
+*/
+
+dotnet run hwapp.csproj --configuration Debug
+/*
+Hello, World!
+*/
+
+dotnet run hwapp.csproj --configuration Release
+/*
+Hello, World!
+*/
+
+dotnet run hwapp.csproj --property:Configuration=Debug
+/*
+Hello, World!
+*/
+
+dotnet run hwapp.csproj --property:Configuration=Release # Requies # dotnet build
+/*
+Hello, World!
+*/
+
+dotnet restore hwapp.csproj
+/*
+  Determining projects to restore...
+  Restored C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj (in 130 ms).
+*/
+
+dotnet new sln -n hwapp
+/*
+The template "Solution File" was created successfully.
+*/
+
+dotnet sln hwapp.sln add hwapp.csproj
+/*
+Project `hwapp.csproj` added to the solution.
+*/
+
+dotnet build hwapp.sln
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  hwapp -> C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.49
+*/
+
+dotnet build hwapp.sln --configuration Debug
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj (in 133 ms).
+  hwapp -> C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.11
+*/
+
+dotnet build hwapp.sln --configuration Release
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj (in 126 ms).
+  hwapp -> C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Release\net6.0\hwapp.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.50
+*/
+
+dotnet clean hwapp.sln
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 29-11-2021 12:44:12.
+     1>Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.sln" on node 1 (Clean target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "Debug|Any CPU".
+     1>Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.sln" (1) is building "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" (2) on node 1 (Clean target(s)).
+     2>CoreClean:
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.exe".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.deps.json".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.runtimeconfig.json".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\ref\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.pdb".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.csproj.AssemblyReference.cache".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.GeneratedMSBuildEditorConfig.editorconfig".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.AssemblyInfoInputs.cache".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.AssemblyInfo.cs".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.csproj.CoreCompileInputs.cache".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\ref\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.pdb".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.genruntimeconfig.cache".
+     2>Done Building Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" (Clean target(s)).
+     1>Done Building Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.sln" (Clean target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.86
+*/
+
+dotnet clean hwapp.sln --configuration Debug
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 29-11-2021 12:55:27.
+     1>Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.sln" on node 1 (Clean target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "Debug|Any CPU".
+     1>Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.sln" (1) is building "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" (2) on node 1 (Clean target(s)).
+     2>CoreClean:
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.exe".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.deps.json".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.runtimeconfig.json".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\ref\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Debug\net6.0\hwapp.pdb".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.csproj.AssemblyReference.cache".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.GeneratedMSBuildEditorConfig.editorconfig".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.AssemblyInfoInputs.cache".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.AssemblyInfo.cs".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.csproj.CoreCompileInputs.cache".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\ref\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.pdb".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Debug\net6.0\hwapp.genruntimeconfig.cache".
+     2>Done Building Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" (Clean target(s)).
+     1>Done Building Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.sln" (Clean target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.89
+*/
+
+dotnet clean hwapp.sln --configuration Release
+/*
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 29-11-2021 12:56:22.
+     1>Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.sln" on node 1 (Clean target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "Release|Any CPU".
+     1>Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.sln" (1) is building "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" (2) on node 1 (Clean target(s)).
+     2>CoreClean:
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Release\net6.0\hwapp.exe".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Release\net6.0\hwapp.deps.json".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Release\net6.0\hwapp.runtimeconfig.json".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Release\net6.0\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Release\net6.0\ref\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\bin\Release\net6.0\hwapp.pdb".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Release\net6.0\hwapp.csproj.AssemblyReference.cache".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Release\net6.0\hwapp.GeneratedMSBuildEditorConfig.editorconfig".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Release\net6.0\hwapp.AssemblyInfoInputs.cache".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Release\net6.0\hwapp.AssemblyInfo.cs".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Release\net6.0\hwapp.csproj.CoreCompileInputs.cache".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Release\net6.0\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Release\net6.0\ref\hwapp.dll".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Release\net6.0\hwapp.pdb".
+         Deleting file "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\obj\Release\net6.0\hwapp.genruntimeconfig.cache".
+     2>Done Building Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj" (Clean target(s)).
+     1>Done Building Project "C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.sln" (Clean target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.91
+*/
+
+
+dotnet run hwapp.sln
+/*
+Hello, World!
+*/
+
+dotnet run hwapp.sln --configuration Debug
+/*
+Hello, World!
+*/
+
+dotnet run hwapp.sln --configuration Release
+/*
+Hello, World!
+*/
+
+dotnet run hwapp.sln --property:Configuration=Debug
+/*
+Hello, World!
+*/
+
+dotnet run hwapp.sln --property:Configuration=Release # Requies # dotnet build
+/*
+Hello, World!
+*/
+
+
+dotnet restore hwapp.sln
+/*
+  Determining projects to restore...
+  Restored C:\Users\Rajani\Downloads\CS.NET\CS\hwapp\hwapp.csproj (in 125 ms).
+*/
+
+
+[
+$ rm -rf obj
+$ rm -rf bin
+
+> rmdir /s /q obj
+> rmdir /s /q bin
+]
+
+
+dotnet new --help
+/*
+Usage: new [options]
+
+Options:
+  -h, --help                     Displays help for this command.
+  -l, --list <PARTIAL_NAME>      Lists templates containing the specified template name. If no name is specified, lists all templates.
+  -n, --name                     The name for the output being created. If no name is specified, the name of the output directory is used.
+  -o, --output                   Location to place the generated output.
+  -i, --install                  Installs a source or a template package.
+  -u, --uninstall                Uninstalls a source or a template package.
+  --interactive                  Allows the internal dotnet restore command to stop and wait for user input or action (for example to complete authentication).
+  --add-source, --nuget-source   Specifies a NuGet source to use during install.
+  --type                         Filters templates based on available types. Predefined values are "project" and "item".
+  --dry-run                      Displays a summary of what would happen if the given command line were run if it would result in a template creation.
+  --force                        Forces content to be generated even if it would change existing files.
+  -lang, --language              Filters templates based on language and specifies the language of the template to create.
+  --update-check                 Check the currently installed template packages for updates.
+  --update-apply                 Check the currently installed template packages for update, and install the updates.
+  --search <PARTIAL_NAME>        Searches for the templates on NuGet.org.
+  --author <AUTHOR>              Filters the templates based on the template author. Applicable only with --search or --list | -l option.
+  --package <PACKAGE>            Filters the templates based on NuGet package ID. Applies to --search.
+  --columns <COLUMNS_LIST>       Comma separated list of columns to display in --list and --search output.
+                                 The supported columns are: language, tags, author, type.
+  --columns-all                  Display all columns in --list and --search output.
+  --tag <TAG>                    Filters the templates based on the tag. Applies to --search and --list.
+  --no-update-check              Disables checking for the template package updates when instantiating a template.
+*/
+
+
+dotnet new --interactive
+/*
+The 'dotnet new' command creates a .NET project based on a template.
+
+Common templates are:
+Template Name         Short Name    Language    Tags
+--------------------  ------------  ----------  -------------------
+ASP.NET Core Web App  razor,webapp  [C#]        Web/MVC/Razor Pages
+Blazor Server App     blazorserver  [C#]        Web/Blazor
+Class Library         classlib      [C#],F#,VB  Common/Library
+Console App           console       [C#],F#,VB  Common/Console
+Windows Forms App     winforms      [C#],VB     Common/WinForms
+WPF Application       wpf           [C#],VB     Common/WPF
+
+An example would be:
+   dotnet new console
+
+Display template options with:
+   dotnet new console -h
+Display all installed templates with:
+   dotnet new --list
+Display templates available on NuGet.org with:
+   dotnet new web --search
+*/
+
+
+dotnet new sln --help
+/*
+Solution File
+Author: Microsoft
+Description: Create an empty solution containing no projects
+    (No Parameters)
+*/
+# Creates solution file with the same name as the current folder
+dotnet new sln
+# Creates solution file with the specified name "App"
+dotnet new sln -n App
+
+
+dotnet sln add --help
+/*
+Description:
+  Add one or more projects to a solution file.
+
+Usage:
+  dotnet [options] sln <SLN_FILE> add [<PROJECT_PATH>...]
+
+Arguments:
+  <SLN_FILE>      The solution file to operate on. If not specified, the command will search the current directory for one. [default: C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\]
+  <PROJECT_PATH>  The paths to the projects to add to the solution.
+
+Options:
+  --in-root                                Place project in root of the solution, rather than creating a solution folder.
+  -s, --solution-folder <solution-folder>  The destination solution folder path to add the projects to.
+  -?, -h, --help                           Show command line help.
+*/
+
+
+dotnet new console --help
+/*
+Console App (C#)
+Author: Microsoft
+Description: A project for creating a command-line application that can run on .NET Core on Windows, Linux and macOS
+Options:
+  -f|--framework  The target framework for the project.
+                      net6.0           - Target net6.0
+                      net5.0           - Target net5.0
+                      netcoreapp3.1    - Target netcoreapp3.1
+                      netcoreapp3.0    - Target netcoreapp3.0
+                      netcoreapp2.1    - Target netcoreapp2.1
+                  Default: net6.0
+
+  --langVersion   Sets the LangVersion property in the created project file
+                  text - Optional
+
+  --no-restore    If specified, skips the automatic restore of the project on create.
+                  bool - Optional
+                  Default: false
+
+
+To see help for other template languages (F#, VB), use --language option:
+   dotnet new console -h --language F#
+*/
+# Creates Console Project with the current folder name
+dotnet new console
+# Creates Console Project with the specified name "ConsoleApp"
+dotnet new console -n ConsoleApp
+# Creates Console Project with the specified output directory name "ConsoleApp"
+dotnet new console -o ConsoleApp
+cd ConsoleApp
+dotnet new sln -n ConsoleApp
+dotnet sln ConsoleApp.sln add ConsoleApp.csproj
+dotnet sln ConsoleApp.sln list
+dotnet sln ConsoleApp.sln remove ConsoleApp.csproj
+dotnet sln ConsoleApp.sln list
+dotnet sln ConsoleApp.sln add ConsoleApp.csproj
+dotnet sln ConsoleApp.sln list
+dotnet run
+
+
+# Build project and its dependencies (default)
+dotnet build
+
+# Build project and its dependencies using Debug configuration
+dotnet build --configuration Debug
+
+# Build project and its dependencies using Release configuration
+dotnet build --configuration Release
+
+
+# Clean default build of the project
+dotnet clean
+
+# Clean project built using the Debug configuration
+dotnet clean --configuration Debug
+
+# Clean project built using the Release configuration
+dotnet clean --configuration Release
+
+
+# Run project (default)
+# Ensure # dotnet clean
+dotnet run
+
+# Run project specifying Debug configuration:
+# Ensure # dotnet clean --configuration Debug
+# dotnet run --property:Configuration=Debug
+dotnet run --configuration Debug
+
+# Run project specifying Release configuration:
+# Ensure # dotnet clean --configuration Release
+# dotnet run --property:Configuration=Release # Requies # dotnet build
+dotnet run --configuration Release
+
+
+# dotnet restore command uses NuGet to restore dependencies as well as project-specific tools that are specified in the project file
+# In most cases, you don't need to explicitly use the dotnet restore command, since a NuGet restore is run implicitly if necessary when you run the following commands
+dotnet new
+dotnet build
+dotnet build-server
+dotnet run
+dotnet test
+dotnet publish
+dotnet pack
+
+
+[
+dotnet sln ConsoleApp.sln add ConsoleApp.csproj MathematicsDotnet/MathematicsDotnet.csproj
+]
+
+[
+dotnet add ConsoleApp.csproj reference MathematicsDotnet/MathematicsDotnet.csproj
+dotnet remove ConsoleApp.csproj reference MathematicsDotnet/MathematicsDotnet.csproj
+]
+
+dotnet new webapp -n WebApp
+# OR
+dotnet new webapp -o WebApp
+cd WebApp
+
+# .sln and .csproject (option of solution and project in the same directory)
+dotnet run
+
+dotnet --version
+dotnet --list-sdks
+# dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+# devenv $ devenv /?
+# export PATH=$PATH:"/C/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/"
+# set path=%path%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\
+dotnet restore
+# devenv <SolutionName>.sln -build
+# cd
+# dotnet run --project <path>/<ProjectName>.csproject
+
+
+dotnet run --help
+/*
+Description:
+  .NET Run Command
+
+Usage:
+  dotnet [options] run [[--] <additional arguments>...]]
+
+Options:
+  -c, --configuration <CONFIGURATION>  The configuration to run for. The default for most projects is 'Debug'.
+  -f, --framework <FRAMEWORK>          The target framework to run for. The target framework must also be specified in the project file.
+  -r, --runtime <RUNTIME_IDENTIFIER>   The target runtime to run for.
+  --project <project>                  The path to the project file to run (defaults to the current directory if there is only one project).
+  -p, --property <property>            Properties to be passed to MSBuild.
+  --launch-profile <launch-profile>    The name of the launch profile (if any) to use when launching the application.
+  --no-launch-profile                  Do not attempt to use launchSettings.json to configure the application.
+  --no-build                           Do not build the project before running. Implies --no-restore.
+  --interactive                        Allows the command to stop and wait for user input or action (for example to complete authentication).
+  --no-restore                         Do not restore the project before building.
+  --sc, --self-contained               Publish the .NET runtime with your application so the runtime doesn't need to be installed on the target machine.
+                                       The default is 'true' if a runtime identifier is specified.
+  --no-self-contained                  Publish your application as a framework dependent application. A compatible .NET runtime must be installed on the tarmachine to run your application.
+  -v, --verbosity <LEVEL>              Set the MSBuild verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic].
+  -a, --arch <arch>                    The target architecture.
+  --os <os>                            The target operating system.
+  -?, -h, --help                       Show command line help.
+
+Additional Arguments:
+  Arguments passed to the application that is being run.
+*/
+
+dotnet build --help
+/*
+Description:
+  .NET Builder
+
+Usage:
+  dotnet [options] build [<PROJECT | SOLUTION>...]
+
+Arguments:
+  <PROJECT | SOLUTION>  The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.
+
+Options:
+  --use-current-runtime                Use current runtime as the target runtime.
+  -f, --framework <FRAMEWORK>          The target framework to build for. The target framework must also be specified in the project file.
+  -c, --configuration <CONFIGURATION>  The configuration to use for building the project. The default for most projects is 'Debug'.
+  -r, --runtime <RUNTIME_IDENTIFIER>   The target runtime to build for.
+  --version-suffix <VERSION_SUFFIX>    Set the value of the $(VersionSuffix) property to use when building the project.
+  --no-restore                         Do not restore the project before building.
+  --interactive                        Allows the command to stop and wait for user input or action (for example to complete authentication).
+  -v, --verbosity <LEVEL>              Set the MSBuild verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic].
+  --debug
+  -o, --output <OUTPUT_DIR>            The output directory to place built artifacts in.
+  --no-incremental                     Do not use incremental building.
+  --no-dependencies                    Do not build project-to-project references and only build the specified project.
+  --nologo                             Do not display the startup banner or the copyright message.
+  --sc, --self-contained               Publish the .NET runtime with your application so the runtime doesn't need to be installed on the target machine.
+                                       The default is 'true' if a runtime identifier is specified.
+  --no-self-contained                  Publish your application as a framework dependent application. A compatible .NET runtime must be installed on the target machine to run your application.
+  -a, --arch <arch>                    The target architecture.
+  --os <os>                            The target operating system.
+  -?, -h, --help                       Show command line help.
+*/
+
+dotnet clean --help
+/*
+Description:
+  .NET Clean Command
+
+Usage:
+  dotnet [options] clean [<PROJECT | SOLUTION>...]
+
+Arguments:
+  <PROJECT | SOLUTION>  The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.
+
+Options:
+  -f, --framework <FRAMEWORK>          The target framework to clean for. The target framework must also be specified in the project file.
+  -r, --runtime <RUNTIME_IDENTIFIER>   The target runtime to clean for.
+  -c, --configuration <CONFIGURATION>  The configuration to clean for. The default for most projects is 'Debug'.
+  --interactive                        Allows the command to stop and wait for user input or action (for example to complete authentication).
+  -v, --verbosity <LEVEL>              Set the MSBuild verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic].
+  -o, --output <OUTPUT_DIR>            The directory containing the build artifacts to clean.
+  --nologo                             Do not display the startup banner or the copyright message.
+  -?, -h, --help                       Show command line help.
+*/
+
+dotnet restore --help
+/*
+Description:
+  .NET dependency restorer
+
+Usage:
+  dotnet [options] restore [<PROJECT | SOLUTION>...]
+
+Arguments:
+  <PROJECT | SOLUTION>  The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.
+
+Options:
+  -s, --source <SOURCE>               The NuGet package source to use for the restore.
+  --packages <PACKAGES_DIR>           The directory to restore packages to.
+  --use-current-runtime               Use current runtime as the target runtime.
+  --disable-parallel                  Prevent restoring multiple projects in parallel.
+  --configfile <FILE>                 The NuGet configuration file to use.
+  --no-cache                          Do not cache packages and http requests.
+  --ignore-failed-sources             Treat package source failures as warnings.
+  -f, --force                         Force all dependencies to be resolved even if the last restore was successful.
+                                      This is equivalent to deleting project.assets.json.
+  -r, --runtime <RUNTIME_IDENTIFIER>  The target runtime to restore packages for.
+  --no-dependencies                   Do not restore project-to-project references and only restore the specified project.
+  -v, --verbosity <LEVEL>             Set the MSBuild verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic].
+  --interactive                       Allows the command to stop and wait for user input or action (for example to complete authentication).
+  --use-lock-file                     Enables project lock file to be generated and used with restore.
+  --locked-mode                       Don't allow updating project lock file.
+  --lock-file-path <LOCK_FILE_PATH>   Output location where project lock file is written. By default, this is 'PROJECT_ROOT\packages.lock.json'.
+  --force-evaluate                    Forces restore to reevaluate all dependencies even if a lock file already exists.
+  -?, -h, --help                      Show command line help.
+*/
+
+
+[
+# dotnet 6+ # dotnet 6 # Exists # C:/Program Files/dotnet/ # Suffix :$PATH $ dotnet --version
+$ export PATH="/C/Users/Rajani/Downloads/CS.NET/Binaries/dotnet-sdk-6+/":$PATH
+]
+# csc # .NET Framework $ csc -version $ csc -langversion:? $ csi -version
+$ export PATH=$PATH:"/C/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/"
+# nuget $ nuget ? # nuget install Microsoft.Net.Compilers.Toolset -Version 4.0.1
+$ export PATH=$PATH:"/C/Users/Rajani/Downloads/CS.NET/NuGet/"
+# csc # .NET Framework $ csc -version $ csc -langversion:? $ csi -version
+$ export PATH=$PATH:"/C/Users/Rajani/Downloads/CS.NET/NuGet/Microsoft.Net.Compilers.Toolset.4.0.1/tasks/net472"
+# devenv $ devenv -?
+$ export PATH=$PATH:"/C/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/"
+# ildasm # sn # xsd # SvcUtil # wsdl $ ildasm -? $ sn -version $ xsd -version $ svcutil -version $ wsdl /?
+$ export PATH=$PATH:"/C/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/"
+# NUnit # $ nunit3-console --version $ nunit3-console $ nunit.engine.tests --version $ nunit.engine.tests $ testhost --version
+$ export PATH=$PATH:"/C/Users/rajanis/Downloads/.NET/NUnit/NUnit.Console-3.12.0/bin/netcoreapp3.1/"
+# NUnit Lite $ nunitlite.tests --version $ nunitlite.tests $ nunitlite-runner --version $ nunitlite-runner
+$ export PATH=$PATH:"/C/Users/rajanis/Downloads/.NET/NUnit/NUnit.Framework-3.13.2/bin/net35/"
+# SQL Server # SqlPackage $ sqlpackage -help
+$ export PATH=$PATH:"/C/Program Files (x86)/Microsoft SQL Server/140/DAC/bin/"
+# SQL Server # SqlPackage # Visual Studio $ SqlPackage -help
+$ export PATH=$PATH:"/C/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/Extensions/Microsoft/SQLDB/DAC/"
+
+
+> set
+[
+# dotnet 6+ # dotnet 6 # Exists # C:/Program Files/dotnet/ # Suffix ;%path% > dotnet --version
+> set path=C:\Users\Rajani\Downloads\CS.NET\Binaries\dotnet-sdk-6+\;%path%
+]
+# csc # .NET Framework > csc -version > csc -langversion:? > csi -version
+> set path=%path%;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\
+# nuget > nuget ? # nuget install Microsoft.Net.Compilers.Toolset -Version 4.0.1
+> set path=%path%;C:\Users\Rajani\Downloads\CS.NET\NuGet\
+# csc # .NET Framework > csc -version > csc -langversion:? > csi -version
+> set path=%path%;C:\Users\Rajani\Downloads\CS.NET\NuGet\Microsoft.Net.Compilers.Toolset.4.0.1\tasks\net472\
+# devenv > devenv /?
+> set path=%path%;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\
+# ildasm # sn # xsd # SvcUtil # wsdl > ildasm -? > sn -version > xsd -version > svcutil -version > wsdl /?
+> set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\
+# NUnit # $ nunit3-console --version $ nunit3-console $ nunit.engine.tests --version $ nunit.engine.tests $ testhost --version
+> set path=%path%;C:\Users\rajanis\Downloads\.NET\NUnit\NUnit.Console-3.12.0\bin\netcoreapp3.1\
+# NUnit Lite $ nunitlite.tests --version $ nunitlite.tests $ nunitlite-runner --version $ nunitlite-runner
+> set path=%path%;C:\Users\rajanis\Downloads\.NET\NUnit\NUnit.Framework-3.13.2\bin\net35\
+# SQL Server # SqlPackage > sqlpackage -help
+> set path=%path%;C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\
+# SQL Server # SqlPackage # Visual Studio > SqlPackage -help
+> set path=%path%;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\

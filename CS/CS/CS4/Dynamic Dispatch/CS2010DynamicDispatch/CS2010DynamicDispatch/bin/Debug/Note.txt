@@ -1,0 +1,5 @@
+>csc /target:library Sample.cs
+
+Or
+
+>csc /t:library Sample.cs

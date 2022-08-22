@@ -1,0 +1,649 @@
+
+Aspire@Acer MINGW64 ~
+$ dotnet --version
+1.0.3
+
+Aspire@Acer MINGW64 ~
+$ cd "E:\Working\CS\TODO\ASP.NET-Core-MVC"
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC
+$ mkdir TodoApi
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC
+$ cd TodoApi
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ dotnet new webapi
+Content generation time: 632.1033 ms
+The template "ASP.NET Core Web API" created successfully.
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat TodoApi.csproj
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+  </ItemGroup>
+
+</Project>
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ "C:\Program Files\Notepad++\notepad++.exe" TodoApi.csproj
+
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat TodoApi.csproj
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.1" />
+  </ItemGroup>
+
+</Project>
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ "C:\Program Files\Notepad++\notepad++.exe" TodoApi.csproj
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat TodoApi.csproj
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.1" />
+  </ItemGroup>
+
+</Project>
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ ll
+total 8
+-rw-r--r-- 1 Aspire 197121  168 May  8 14:16 appsettings.Development.json
+-rw-r--r-- 1 Aspire 197121  105 May  8 14:16 appsettings.json
+drwxr-xr-x 1 Aspire 197121    0 May  8 14:16 Controllers/
+-rw-r--r-- 1 Aspire 197121  582 May  8 14:16 Program.cs
+-rw-r--r-- 1 Aspire 197121 1489 May  8 14:16 Startup.cs
+-rw-r--r-- 1 Aspire 197121  559 May  8 14:18 TodoApi.csproj
+drwxr-xr-x 1 Aspire 197121    0 May  8 14:16 wwwroot/
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ mkdir -p Models
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ touch Models/TodoItem.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ "C:\Program Files\Notepad++\notepad++.exe" Models/TodoItem.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat Models/TodoItem.cs
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TodoApi.Models
+{
+    public class TodoItem
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Key { get; set; }
+        public string Name { get; set; }
+        public bool IsComplete { get; set; }
+    }
+}
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ touch Models/TodoContext.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ "C:\Program Files\Notepad++\notepad++.exe" Models/TodoContext.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat Models/TodoContext.cs
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace TodoApi.Models
+{
+    public class TodoContext : DbContext
+    {
+        public TodoContext(DbContextOptions<TodoContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<TodoItem> TodoItems { get; set; }
+
+    }
+}
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ touch Models/ITodoRepository.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ "C:\Program Files\Notepad++\notepad++.exe" Models/ITodoRepository.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat Models/ITodoRepository.cs
+using System.Collections.Generic;
+
+namespace TodoApi.Models
+{
+    public interface ITodoRepository
+    {
+        void Add(TodoItem item);
+        IEnumerable<TodoItem> GetAll();
+        TodoItem Find(long key);
+        void Remove(long key);
+        void Update(TodoItem item);
+    }
+}
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ touch Models/TodoRepository.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ "C:\Program Files\Notepad++\notepad++.exe" Models/TodoRepository.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat Models/TodoRepository.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace TodoApi.Models
+{
+    public class TodoRepository : ITodoRepository
+    {
+        private readonly TodoContext _context;
+
+        public TodoRepository(TodoContext context)
+        {
+            _context = context;
+
+            if( _context.TodoItems.Count() == 0)
+                Add(new TodoItem { Name = "Item1" });
+        }
+
+        public IEnumerable<TodoItem> GetAll()
+        {
+            return _context.TodoItems.ToList();
+        }
+
+        public void Add(TodoItem item)
+        {
+            _context.TodoItems.Add(item);
+            _context.SaveChanges();
+        }
+
+        public TodoItem Find(long key)
+        {
+            return _context.TodoItems.FirstOrDefault(t => t.Key == key);
+        }
+
+        public void Remove(long key)
+        {
+            var entity = _context.TodoItems.First(t => t.Key == key);
+            _context.TodoItems.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public void Update(TodoItem item)
+        {
+            _context.TodoItems.Update(item);
+            _context.SaveChanges();
+        }
+    }
+}
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ dotnet restore
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj...
+  Installing Microsoft.EntityFrameworkCore.InMemory 1.1.1.
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\TodoApi.csproj.nuget.g.props.
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\TodoApi.csproj.nuget.g.targets.
+  Writing lock file to disk. Path: E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\project.assets.json
+  Restore completed in 10.38 sec for E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj.
+
+  NuGet Config files used:
+      C:\Users\Aspire\AppData\Roaming\NuGet\NuGet.Config
+
+  Feeds used:
+      https://api.nuget.org/v3/index.json
+
+  Installed:
+      1 package(s) to E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat Startup.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+namespace TodoApi
+{
+    public class Startup
+    {
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+        public IConfigurationRoot Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // Add framework services.
+            services.AddMvc();
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
+            app.UseMvc();
+        }
+    }
+}
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ "C:\Program Files\Notepad++\notepad++.exe" Startup.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat Startup.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+namespace TodoApi
+{
+    public class Startup
+    {
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+        public IConfigurationRoot Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        // requires using TodoApi.Models; and
+        // using Microsoft.EntityFrameworkCore;
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase());
+
+            // Add framework services.
+            services.AddMvc();
+
+            services.AddScoped<ITodoRepository, TodoRepository>();
+            //services.AddSingleton<ITodoRepository, TodoRepository>();
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
+            app.UseMvc();
+        }
+    }
+}
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ touch Controllers/TodoController.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ "C:\Program Files\Notepad++\notepad++.exe" Controllers/TodoController.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ CAT Controllers/TodoController.cs
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using TodoApi.Models;
+
+namespace TodoApi.Controllers
+{
+    [Route("api/[controller]")]
+    public class TodoController : Controller
+    {
+        private readonly ITodoRepository _todoRepository;
+
+        public TodoController(ITodoRepository todoRepository)
+        {
+            _todoRepository = todoRepository;
+        }
+
+        [HttpGet]
+        public IEnumerable<TodoItem> GetAll()
+        {
+            return _todoRepository.GetAll();
+        }
+
+        [HttpGet("{id}", Name = "GetTodo")]
+        public IActionResult GetById(long id)
+        {
+            var item = _todoRepository.Find(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(item);
+        }
+    }
+}
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat Controllers/TodoController.cs
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using TodoApi.Models;
+
+namespace TodoApi.Controllers
+{
+    [Route("api/[controller]")]
+    public class TodoController : Controller
+    {
+        private readonly ITodoRepository _todoRepository;
+
+        public TodoController(ITodoRepository todoRepository)
+        {
+            _todoRepository = todoRepository;
+        }
+
+        [HttpGet]
+        public IEnumerable<TodoItem> GetAll()
+        {
+            return _todoRepository.GetAll();
+        }
+
+        [HttpGet("{id}", Name = "GetTodo")]
+        public IActionResult GetById(long id)
+        {
+            var item = _todoRepository.Find(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(item);
+        }
+    }
+}
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ dotnet restore
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj...
+  Lock file has not changed. Skipping lock file write. Path: E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\project.assets.json
+  Restore completed in 3.07 sec for E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj.
+
+  NuGet Config files used:
+      C:\Users\Aspire\AppData\Roaming\NuGet\NuGet.Config
+
+  Feeds used:
+      https://api.nuget.org/v3/index.json
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat TodoApi.csproj
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.1" />
+  </ItemGroup>
+
+</Project>
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat TodoApi.csproj
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ dotnet restore
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj...
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj...
+  Restore completed in 3.41 sec for E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj.
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\TodoApi.csproj.nuget.g.props.
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\TodoApi.csproj.nuget.g.targets.
+  Writing lock file to disk. Path: E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\obj\project.assets.json
+  Restore completed in 4.51 sec for E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj.
+
+  NuGet Config files used:
+      C:\Users\Aspire\AppData\Roaming\NuGet\NuGet.Config
+
+  Feeds used:
+      https://api.nuget.org/v3/index.json
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ dotnet watch run
+watch : Started
+Startup.cs(32,35): error CS0246: The type or namespace name 'TodoContext' could not be found (are you missing a using directive or an assembly reference?) [E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj]
+Startup.cs(32,59): error CS1061: 'DbContextOptionsBuilder' does not contain a definition for 'UseInMemoryDatabase' and no extension method 'UseInMemoryDatabase' accepting a first argument of type 'DbContextOptionsBuilder' could be found (are you missing a using directive or an assembly reference?) [E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj]
+Startup.cs(37,32): error CS0246: The type or namespace name 'ITodoRepository' could not be found (are you missing a using directive or an assembly reference?) [E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj]
+Startup.cs(37,49): error CS0246: The type or namespace name 'TodoRepository' could not be found (are you missing a using directive or an assembly reference?) [E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi\TodoApi.csproj]
+
+The build failed. Please fix the build errors and run again.
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...
+watch : Started
+Hosting environment: Production
+Content root path: E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat Controllers/TodoController.cs
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using TodoApi.Models;
+
+namespace TodoApi.Controllers
+{
+    [Route("api/[controller]")]
+    public class TodoController : Controller
+    {
+        private readonly ITodoRepository _todoRepository;
+
+        public TodoController(ITodoRepository todoRepository)
+        {
+            _todoRepository = todoRepository;
+        }
+
+        [HttpGet]
+        public IEnumerable<TodoItem> GetAll()
+        {
+            return _todoRepository.GetAll();
+        }
+
+        [HttpGet("{id}", Name = "GetTodo")]
+        public IActionResult GetById(long id)
+        {
+            var item = _todoRepository.Find(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(item);
+        }
+    }
+}
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ "C:\Program Files\Notepad++\notepad++.exe" Controllers/TodoController.cs
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ cat Controllers/TodoController.cs
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using TodoApi.Models;
+
+namespace TodoApi.Controllers
+{
+    [Route("api/[controller]")]
+    public class TodoController : Controller
+    {
+        private readonly ITodoRepository _todoRepository;
+
+        public TodoController(ITodoRepository todoRepository)
+        {
+            _todoRepository = todoRepository;
+        }
+
+        [HttpGet]
+        public IEnumerable<TodoItem> GetAll()
+        {
+            return _todoRepository.GetAll();
+        }
+
+        [HttpGet("{id}", Name = "GetTodo")]
+        public IActionResult GetById(long id)
+        {
+            var item = _todoRepository.Find(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(item);
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] TodoItem item)
+        {
+            if (item == null)
+            {
+                return BadRequest();
+            }
+
+            _todoRepository.Add(item);
+
+            return CreatedAtRoute("GetTodo", new { id = item.Key }, item);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(long id, [FromBody] TodoItem item)
+        {
+            if (item == null || item.Key != id)
+            {
+                return BadRequest();
+            }
+
+            var todo = _todoRepository.Find(id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            todo.IsComplete = item.IsComplete;
+            todo.Name = item.Name;
+
+            _todoRepository.Update(todo);
+            return new NoContentResult();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var todo = _todoRepository.Find(id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            _todoRepository.Remove(id);
+            return new NoContentResult();
+        }
+    }
+}
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core-MVC/TodoApi
+$ dotnet watch run
+watch : Started
+Hosting environment: Production
+Content root path: E:\Working\CS\TODO\ASP.NET-Core-MVC\TodoApi
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+

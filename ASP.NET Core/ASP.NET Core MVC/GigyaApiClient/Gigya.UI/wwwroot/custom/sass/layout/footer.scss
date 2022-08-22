@@ -1,0 +1,47 @@
+/* ===========================================================
+
+	$FOOTER
+
+=========================================================== */
+
+
+FOOTER.site-footer				                    {clear:both; width:100%; min-height:200px; padding-top:50px; background-color:$white;}
+
+.sub-footer                                         {clear:both; width:100%; background:$grey-dark; padding:16px 20px; color:$white;}
+.sub-footer P                                       {color:$white;}
+
+.footer-widget                                      {float:left; width:20%; padding:0 5px 0px 15px; min-height:215px; border-right:1px solid $grey-light;}
+.footer-widget P                                    {margin-bottom:12px}
+.footer-widget H6                                   {padding-bottom:15px; color:$blue-medium;}
+
+.footer-widget-wrap                                 {float:left; width:100%; padding:20px 0px;}
+.footer-widget-wrap LI.footer-widget:nth-of-type(1) {border:none;}
+.footer-widget-wrap LI.footer-widget:last-child     {border:none;}
+
+.sub-footer P                                       {font-size:11px;}
+.sub-footer UL                                      {float:left; width:100%; margin-bottom:20px;}
+.sub-footer LI                                      {float:left; margin-right:30px;}
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+
+/* ---- ALL MOBILE (0 - 600px) ---- */
+@media only screen and (max-width: $breakpoint-medium-small) {
+
+    .footer-widget                                  {width:100%; min-height:0px; padding:5px 20px 20px 20px; border-right:none;}
+}
+
+/* ---- ALL TABLET (600px - 1024px) ---- */
+@media only screen and (min-width: $breakpoint-medium-small) and (max-width: $breakpoint-large){
+
+    FOOTER.site-footer                              {padding-top:20px;}
+
+    .sub-footer LI                                  {float:left; width:100%; padding:2px 0px; margin-right:0px;}
+
+    .footer-widget                                  {float:left; width:20%; padding:5px; min-height:0; border-right:none;}
+}
+
+
+
+
+

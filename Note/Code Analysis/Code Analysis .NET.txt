@@ -1,0 +1,75 @@
+Code Analysis
+.NET
+
+
+.NET Compiler Platform ("Roslyn") Code Analyzers inspect code for style, quality and maintainability, design, and other issues.
+
+Visual Studio built-in Analyzers inspect code style and quality, and have configurable preferences.
+
+Analyzers installable as a NuGet package or a Visual Studio extension include:
+FxCop analyzers
+StyleCop
+Roslynator
+XUnit Analyzers
+Sonar Analyzer
+
+Analyzers report rule violations in the code editor as a squiggle, and in the Error List window.
+
+Analyzer rules, or diagnostics, have associated code fixes that can be applied to correct the problem. 
+
+Code fixes are shown in the light bulb icon menu along with other types of Quick Actions.
+
+
+Code Metrics is a set of software measures that provide developers better insight into the code being developed.
+
+Maintainability Index - Calculates an index value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability. 
+
+Cyclomatic Complexity - Measures the structural complexity of the code, created by calculating the number of different code paths in the flow of the program. A program that has complex control flow requires more tests to achieve good code coverage and is less maintainable. 
+
+Depth of Inheritance - Indicates the number of different classes that inherit from one another, all the way back to the base class. A low value is good and a high value is bad.
+
+Class Coupling - Measures the coupling to unique classes through parameters, local variables, return types, method calls, generic or template instantiations, base classes, interface implementations, fields defined on external types, and attribute decoration. 
+
+High coupling indicates a design that is difficult to reuse and maintain because of its many interdependencies on other types.
+
+Lines of Source code - Indicates the exact number of source code lines that are present in your source file, including blank lines. 
+
+Lines of Executable code - Indicates the approximate number of executable code lines or operations.
+
+
+Code Analysis Warnings: CA Example
+
+CA1303: Do not pass literals as localized parameters
+Cause
+This warning is raised when a literal string is passed as a value to a parameter or property and one or more of the following situations is true:
+The LocalizableAttribute attribute of the parameter or property is set to true.
+The literal string is passed to the string value or string format parameter of a Console.Write or Console.WriteLine method overload.
+Rule CA1303 is configured to use the naming heuristic, and a parameter or property name contains the phrase Text, Message, or Caption.
+
+How to fix violations
+To fix a violation of this rule, replace the string literal with a string retrieved through an instance of the ResourceManager class.
+For methods that don't require localized strings, you can eliminate unnecessary CA1303 warnings in the following ways:
+If the naming heuristic option is enabled, rename the parameter or property.
+Remove the LocalizableAttribute attribute on the parameter or property, or set it to false ([Localizable(false)]).
+
+
+Code Analysis Summary
+
+Code analysis versus EditorConfig: When you define code styles in an EditorConfig file or on the text editor Options page, you're actually configuring the code analyzers that are built into Visual Studio.
+
+EditorConfig versus rule sets: Rule sets and EditorConfig files can coexist and can both be used to configure analyzers.
+
+Code analysis in CI builds: For analyzers that are installed from a NuGet package, those rules are enforced at build time, including during a CI build.
+
+IDE analyzers versus StyleCop: The Visual Studio IDE includes built-in analyzers that look for both code style and quality issues. StyleCop analyzers are third-party analyzers installed as a NuGet package that check for style consistency in your code. 
+
+Code analyzers versus legacy analysis: .NET Compiler Platform-based code analysis analyzes source code in real time and during compilation, whereas legacy analysis analyzes binary files after build has completed.
+
+Code analysis solution property page: The Code Analysis property page at the solution level was removed in favor of the more reliable shared property group. For managing Code Analysis at the project level, the Code Analysis property page is still available.
+
+
+References
+
+https://docs.microsoft.com
+
+https://github.com/dotnet/roslyn-analyzers

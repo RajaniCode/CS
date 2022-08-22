@@ -1,0 +1,41 @@
+﻿<html><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" /><META NAME="save" CONTENT="history" /><title xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">Task Pane Demo Sample</title><META NAME="Description" CONTENT="This sample runs only in Microsoft Office Word 2007."></META><META NAME="MS.LOCALE" CONTENT="en-us" /><style>
+body
+{font-family:Verdana;font-size:medium;}
+div#mainSection, div#header
+{font-size:70%;width: 100%;}
+div#mainBody
+{font-size:90%;}
+div#mainSection div table
+{font-size: 100%;text-align: left;}
+span#nsrTitle
+{color:#003399;font-size:90%;font-weight:600;}
+div#header
+{background-color:#D4DFFF;}
+.heading
+{font-size:120%;color:#003399;}
+.subHeading
+{font-size:100%;margin-bottom:4;}
+li
+{margin-top:-2;margin-bottom:3;}
+p
+{margin-top:10;margin-bottom:5;}
+div.tableSection p
+{margin-top:1;margin-bottom:4;}	
+div#mainSection table th
+{background-color:#EFEFF7;color:#000066;text-align:left;}
+div#mainSection table td
+{background-color:#F7F7FF;}
+div#mainSection table
+{margin-top:5px;margin-bottom: px;}
+.style1{color: Green;}
+			</style></head><body><div id="header"><table width="100%" id="topTable"></table></div><div id="mainSection"><div id="mainBody"><p><span class="style1">&#39; Copyright © Microsoft Corporation. All Rights Reserved.
+    </span>
+    <br class="style1" />
+    <span class="style1">&#39; This code released under the terms of the </span>
+    <br class="style1" />
+    <span class="style1">&#39; Microsoft Public License (MS-PL,
+    <a href="http://opensource.org/licenses/ms-pl.html">
+    http://opensource.org/licenses/ms-pl.html</a>.)</span></p><br /><div class="introduction"><div class="alert"><table width="100%" cellspacing="0" cellpadding="0" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><tr><th align="left"><b>Note:</b></th></tr><tr><td><p>This sample runs in Microsoft Office Word 2007 and higher.</p></td></tr></table></div><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">This sample demonstrates how to create a custom task pane for Microsoft Office Word. The task pane contains a text box and a button. When the user types in the text box and clicks the button, the string in the text box is added to the beginning of the active document. </p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">This sample automatically displays the task pane when the add-in loads. However, this sample does not provide a way for the user to display or hide the task pane. Typically, your add-in should provide a UI element, such as a button on the Ribbon, that users can click to display or hide your task pane. For a walkthrough that demonstrates how to do this, see Walkthrough: Synchronizing a Custom Task Pane with a Ribbon Button.</p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">To create the custom task pane, this sample uses the CustomTaskPane and CustomTaskPaneCollection classes provided by Visual Studio Tools for Office. For more information about using these classes to create custom task panes, see Custom Task Panes Overview. </p><div class="alert"><table width="100%" cellspacing="0" cellpadding="0" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><tr><th align="left"><b>Security Note:</b></th></tr><tr><td><p>This sample code is intended to illustrate a concept, and it shows only the code that is relevant to that concept. It may not meet the security requirements for a specific environment, and it should not be used exactly as shown. We recommend that you add security and error-handling code to make your projects more secure and robust. Microsoft provides this sample code "AS IS" with no warranties.</p></td></tr></table></div><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">For information about how to install the sample project on your computer, see How to: Install and Use Sample Files Found in Help.</p></div><h3 class="procedureSubHeading" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">To run this sample</h3><div class="subSection"><ol xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Press F5.</p></li><li><p>In the <span class="ui">Contoso</span> task pane, type some text in the text box.</p></li><li><p>Click the <span class="ui">Insert</span> button.</p><p>Verify that the text that you typed in the text box is inserted at the beginning of the active document.</p></li></ol></div><h1 class="heading" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><span onclick="ExpandCollapse(requirementsTitleToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(requirementsTitleToggle, event)" tabindex="0">Requirements</span></h1><div id="requirementsTitleSection" class="section"><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">This sample requires the following applications:</p><ul xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>
+            Visual Studio Tools for Office.</p></li><li><p>Microsoft Office Word 2007.</p></li></ul></div><h1 class="heading" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><span onclick="ExpandCollapse(demonstratesToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(demonstratesToggle, event)" tabindex="0">Demonstrates</span></h1><div id="demonstratesSection" class="section"><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">This sample demonstrates the following concepts:</p><ul xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Creating and displaying a custom task pane in a Word add-in.</p></li><li><p>Inserting text entered in the custom task pane into the active Word document.</p></li></ul></div></div>
+    </div>
+</body></html>

@@ -1,0 +1,16 @@
+/* ===========================================================
+
+	$MEDIA
+
+=========================================================== */
+
+
+/* ---- VIDEO ---- */
+.video-content                                      {clear:both;}
+.video-wrap                                         {clear:both; padding:20px; border:$borderWidth solid $grey-medium; margin-bottom:12px;}
+.video-block                                        {width:100%; background-color:$black-pure; color:$white;}
+.video__title                                       {padding-bottom:5px; font-size:$delta;}
+.video__title-link                                  {}
+.video__intro                                       {margin-bottom:$baseLineHeight /3;}
+.video__intro P                                     {&:last-of-type{margin-bottom:0;}}
+.video__link:after                                  {content:"\0020 \00BB"; font-size:130%;}

@@ -1,0 +1,266 @@
+/* ===========================================================
+
+	$DASHBOARD
+
+=========================================================== */
+
+/* ==== ENROLMENT NOTIFICATIONS TABLE ==== */
+
+/* ---- ENROLMENT NOTIFICATIONS FEED ---- */
+TABLE.feed-table--notifications TBODY TD	                        {border-top:5px solid $white; border-bottom:3px solid $grey-dark;}
+TABLE.feed-table--notifications TH:nth-child(2),
+TABLE.feed-table--notifications TD:nth-child(2),
+TABLE.feed-table--notifications TH:nth-child(5),	
+TABLE.feed-table--notifications TD:nth-child(5)		                {text-align:left}
+TABLE.feed-table--notifications TD:nth-child(1)		                {padding:10px 8px; background-color:$grey-dark;}
+
+/* ---- ENROLMENT NOTIFICATIONS COL WIDTHS ---- */
+TABLE.feed-table--notifications COL:nth-child(1)	                {width:40px;}
+TABLE.feed-table--notifications COL:nth-child(2)	                {width:30%;}
+
+/* ---- ENROLMENT FEED COLOURS ---- */
+TABLE.feed-table--notifications TR.draft TD:nth-child(1)            {background-color:$amber-medium;}
+TABLE.feed-table--notifications TR.pending TD:nth-child(1)          {background-color:$orange-medium;}
+TABLE.feed-table--notifications TR.rejected TD:nth-child(1)         {background-color:$ruby-dark;}
+TABLE.feed-table--notifications TR.approved TD:nth-child(1)         {background-color:$green-medium;}
+TABLE.feed-table--notifications TR.archived TD:nth-child(1)         {background-color:$midnight-dark;}
+TABLE.feed-table--notifications TBODY TR.draft TD	                {border-bottom-color:$amber-medium;}
+TABLE.feed-table--notifications TBODY TR.pending TD	                {border-bottom-color:$orange-medium;}
+TABLE.feed-table--notifications TBODY TR.rejected TD	            {border-bottom-color:$ruby-dark;}
+TABLE.feed-table--notifications TBODY TR.approved TD	            {border-bottom-color:$green-medium;}
+TABLE.feed-table--notifications TBODY TR.archived TD	            {border-bottom-color:$midnight-dark;}
+
+/* ---- ENROLMENT FEED ICONS ---- */
+TABLE.feed-table--notifications TR TD:nth-child(1) I.icon           {width:24px; height:24px; background-image:url("../assets/icons/white/24/sprite-enrolments-24_white.png");}
+TABLE.feed-table--notifications TR.draft TD:nth-child(1) I.icon     {@include sprite-icon($xPos24, $icon24-draft);}
+TABLE.feed-table--notifications TR.pending TD:nth-child(1) I.icon   {@include sprite-icon($xPos24, $icon24-pending);}
+TABLE.feed-table--notifications TR.rejected TD:nth-child(1) I.icon  {@include sprite-icon($xPos24, $icon24-rejected);}
+TABLE.feed-table--notifications TR.approved TD:nth-child(1) I.icon  {@include sprite-icon($xPos24, $icon24-approved);}
+TABLE.feed-table--notifications TR.archived TD:nth-child(1) I.icon  {@include sprite-icon($xPos24, $icon24-archived);}
+
+
+/* ==== ENROLMENT DATA TABLE ==== */
+
+/* ---- ENROLMENT TAB ICONS ---- */
+SECTION.enrolments .tab-panel__tab I.icon                           {background-image:url("../assets/icons/white/32/sprite-enrolments-32_white.png");}
+SECTION.enrolments .tab-panel__tab.active I.icon                    {background-image:url("../assets/icons/grey/32/sprite-enrolments-32_grey-dark.png");}
+SECTION.enrolments .tab-panel__tab--draft I.icon                    {@include sprite-icon($xPos32, $icon32-draft);}
+SECTION.enrolments .tab-panel__tab--pending I.icon                  {@include sprite-icon($xPos32, $icon32-pending);}
+SECTION.enrolments .tab-panel__tab--rejected I.icon                 {@include sprite-icon($xPos32, $icon32-rejected);}
+SECTION.enrolments .tab-panel__tab--approved I.icon                 {@include sprite-icon($xPos32, $icon32-approved);}
+SECTION.enrolments .tab-panel__tab--archived I.icon                 {@include sprite-icon($xPos32, $icon32-archived);}
+
+/* ---- ENROLMENT FILTER PANEL ---- */
+.enrolments .section-header--alt					                {border-left:$borderWidth solid $grey-light; border-right:$borderWidth solid $grey-light;}
+.enrolments .panel--enrol-filter					                {border-top:none; border-bottom:none;}
+/*.enrolments .panel--showing                                         {max-height:$screen-small;}*/
+
+/* ---- ENROLMENT GRID ICONS ---- */
+TABLE.feed-table--notifications TD I.icon.icon--view                {background-image:url("../assets/icons/single/view-grey-dark-48.png");}
+TABLE.feed-table--notifications TR.draft TD I.icon.icon--view       {background-image:url("../assets/icons/single/view-amber-mid-48.png");}
+TABLE.feed-table--notifications TR.pending TD I.icon.icon--view     {background-image:url("../assets/icons/single/view-orange-mid-48.png");}
+TABLE.feed-table--notifications TR.rejected TD I.icon.icon--view    {background-image:url("../assets/icons/single/view-ruby-dark-48.png");}
+TABLE.feed-table--notifications TR.approved TD I.icon.icon--view    {background-image:url("../assets/icons/single/view-green-mid-48.png");}
+TABLE.feed-table--notifications TR.archived TD I.icon.icon--view    {background-image:url("../assets/icons/single/view-midnight-dark-48.png");}
+
+
+/* MARK'S ORIGINAL
+.article__body #dashboard LI:before         {content:none;}
+#dashboard .top-columns                     {float:left; width:33%; padding:0 5px 0px 15px; min-height:215px; border-right:1px solid $grey-light;}
+#dashboard .top-columns P                   {margin-bottom:12px}
+#dashboard .top-columns H6                  {padding-bottom:15px; color:$blue-medium;}
+#dashboard .top-columns-wrap                {margin:0;} */
+/*#dashboard .top-columns-wrap li.top-columns:nth-of-type(1){
+    border:none;
+}*/
+/*#dashboard .top-columns-wrap LI.top-columns:last-child {border:none;}
+#dashboard .top-columns-wrap                {float:left; width:100%; padding:20px 0px;}
+*/
+
+
+
+/*ENROLLMENT TABLE STAUS ICONS*/
+
+
+td span i {
+    height: 30px;
+    width: 100%;
+    display: block;
+}
+
+td span.Draft i {
+    background:url("../assets/icons/dashboard/sprite-enrolments-32_gold.png") no-repeat 50% 2px;
+        background-size: 23px;
+}
+
+td span.Pending i {
+    background:url("../assets/icons/dashboard/sprite-enrolments-32_blue.png") no-repeat 50% -70px;
+        background-size: 23px;
+}
+
+td span.Rejected i {
+    background:url("../assets/icons/dashboard/sprite-enrolments-32_ruby.png") no-repeat 50% -140px;
+        background-size: 23px;
+}
+
+td span.Verified i {
+    background:url("../assets/icons/dashboard/sprite-enrolments-32_green.png") no-repeat 50% -214px;
+        background-size: 23px;
+}
+
+td span.Archived i {
+    background:url("../assets/icons/dashboard/sprite-enrolments-32_grey.png") no-repeat 50% -284px;
+        background-size: 23px;
+}
+
+
+/*Notificatiion TABLE TYPE ICONS*/
+
+td span.complete i {
+    background:url("../assets/icons/dashboard/sprite-enrolments-32_gold.png") no-repeat 50% 2px;
+        background-size: 23px;
+}
+
+td span.submitted i {
+    background:url("../assets/icons/dashboard/sprite-enrolments-32_blue.png") no-repeat 50% -70px;
+        background-size: 23px;
+}
+
+td span.rejected i {
+    background:url("../assets/icons/dashboard/sprite-enrolments-32_ruby.png") no-repeat 50% -140px;
+        background-size: 23px;
+}
+
+td span.approved i {
+    background:url("../assets/icons/dashboard/sprite-enrolments-32_green.png") no-repeat 50% -214px;
+        background-size: 23px;
+}
+
+
+
+.arrow {
+    float: right;
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 0;
+    border: 10px solid transparent;
+    margin-top: -18px;
+    border-top-color: #F3F3F3;
+}
+
+
+a.open .arrow {
+    margin-top: -30px;
+    border-bottom-color: #F3F3F3;
+    border-top-color: transparent;
+}
+
+
+.header-column a{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+
+form .header-column a {
+    position: relative;
+    float: left;
+    width: auto;
+    margin-right: 12px;
+    padding: 10px 0;
+}
+
+
+.header-column a.notifications{
+    position: relative;
+    float: left;
+    width: 100%;
+    padding:0px;
+    margin-right: 0px;
+}
+
+.filter-wrap a {
+    display: block;
+    float: left;
+    width: auto;
+    padding: 10px 0;
+}
+
+
+.filter-wrap a.closed:after {
+    content: url("../assets/icons/dashboard/arrow-dwn.png");
+    margin-left: 5px;
+    margin-top: 0px;
+    float: right;
+}
+
+.filter-wrap a.open:after {
+    content: url("../assets/icons/dashboard/arrow-up.png");
+    margin-left: 5px;
+    margin-top: 0px;
+    float: right;
+}
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- ALL MOBILE & TABLET (0 - 768px) ---- */
+@media only screen and (max-width: $breakpoint-medium) {
+
+
+}
+
+
+/* ---- TABLET (portrait 600px - 768px) ---- */
+@media only screen and (min-width:$breakpoint-medium-small) and (max-width: $breakpoint-medium) {
+
+
+}
+
+/* ---- TABLET (landscape 768px - 960px) ---- */
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-medium-large) {
+
+    /* ==== ENROLMENT DATA TABLE ==== */
+
+    /* ---- ENROLMENT TAB ICONS ---- */
+    SECTION.enrolments .tab-panel__tab I.icon                           {background-image:url("../assets/icons/white/24/sprite-enrolments-24_white.png");}
+    SECTION.enrolments .tab-panel__tab.active I.icon                    {background-image:url("../assets/icons/grey/24/sprite-enrolments-24_grey-dark.png");}
+    SECTION.enrolments .tab-panel__tab--draft I.icon                    {@include sprite-icon($xPos24, $icon24-draft);}
+    SECTION.enrolments .tab-panel__tab--pending I.icon                  {@include sprite-icon($xPos24, $icon24-pending);}
+    SECTION.enrolments .tab-panel__tab--rejected I.icon                 {@include sprite-icon($xPos24, $icon24-rejected);}
+    SECTION.enrolments .tab-panel__tab--approved I.icon                 {@include sprite-icon($xPos24, $icon24-approved);}
+    SECTION.enrolments .tab-panel__tab--archived I.icon                 {@include sprite-icon($xPos24, $icon24-archived);}
+
+}
+
+/* ---- SMALL DESKTOP (960px - 1024px) ---- */
+@media only screen and (min-width:$breakpoint-medium-large) and (max-width: $breakpoint-large) {
+
+    /* ==== ENROLMENT DATA TABLE ==== */
+
+    /* ---- ENROLMENT TAB ICONS ---- */
+    SECTION.enrolments .tab-panel__tab I.icon                           {background-image:url("../assets/icons/white/24/sprite-enrolments-24_white.png");}
+    SECTION.enrolments .tab-panel__tab.active I.icon                    {background-image:url("../assets/icons/grey/24/sprite-enrolments-24_grey-dark.png");}
+    SECTION.enrolments .tab-panel__tab--draft I.icon                    {@include sprite-icon($xPos24, $icon24-draft);}
+    SECTION.enrolments .tab-panel__tab--pending I.icon                  {@include sprite-icon($xPos24, $icon24-pending);}
+    SECTION.enrolments .tab-panel__tab--rejected I.icon                 {@include sprite-icon($xPos24, $icon24-rejected);}
+    SECTION.enrolments .tab-panel__tab--approved I.icon                 {@include sprite-icon($xPos24, $icon24-approved);}
+    SECTION.enrolments .tab-panel__tab--archived I.icon                 {@include sprite-icon($xPos24, $icon24-archived);}
+
+}
+
+/* ---- MEDIUM DESKTOP (1024px - 1280px) ---- */
+@media only screen and (min-width:$breakpoint-large) and (max-width: $breakpoint-extra-large) {
+
+
+}
+
+/* ---- LARGE DESKTOP (1280px +) ---- */
+@media only screen and (min-width:$breakpoint-extra-large) {
+
+
+}
+
+

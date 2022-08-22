@@ -1,0 +1,988 @@
+1. 
+// static members are associated with class
+
+
+
+
+2. 
+// instance members are associated with objects 
+
+
+
+
+3.
+/*
+
+class member accessibility:
+
+private(default): 
+1. accessible only in the class in which it is declared
+
+< 
+
+protected: 
+(private(default): 1) and
+2. accessible ONLY INSIDE *derived classes[including further derived] of the same/different/friend assembly
+[#especially for instance member] via a qualifier of type derived class [$via qualifier of further derived in further derived] 
+[Note: The class where it is protected should be public for accessing from derived class in different assembly]
+[But the class where it is protected can be internal for accessing from derived class in friend assembly]
+
+<
+
+internal:
+(internal: 1, 2) and
+3. accessible in all the classes/derived classes of the same assembly and friend assembly
+
+<
+
+protected internal:
+(protected internal: 1, 2, 3)
+[Note: The class where it is protected internal should be public for accessing from derived class in different assembly]
+[But the class where it is protected internal can be internal for accessing from derived class in friend assembly]
+
+
+
+
+public:
+accessible in all the classes/derived classes, of the same/different/friend assembly
+[Note: The class where it is public should be public for accessing from different assembly]
+[But the class where it is public can be internal for accessing from friend assembly]
+
+*/
+
+
+
+
+4.
+/*
+
+struct member accessibility:
+
+private(default): 
+1. accessed only in the struct in which it is declared
+
+<
+
+internal:
+(internal: 1) and
+2. accessed in all the structs of the same assembly
+
+<
+
+public:
+accessed in all the structs of the same/different assembly
+
+*/
+
+
+
+
+
+5. 
+// 'new' must precede the member type and name // new public int number // public new int number;
+
+// 'new' must precede the method return type // new public void myMethod() // public new void myMethod()
+
+
+
+
+6. 
+// 'static' must precede the member type and name eg. public static int number;
+
+
+
+
+7. 
+// 'this' is used for uncoverint instance variables; 
+
+// Also: 'this' is used 'for one constructor to invoke another; for constructor with implied default arguments, which are not explicitly specified
+
+// Also: 'this' is used for indexers
+
+// this() can be used in struct constructor overloading
+
+// static cannot be used with 'this'
+
+
+// *Note: 'this' cannot be used in a static method 
+
+
+
+
+
+8. 
+// static cannot be used with override, virtual, or abstract (but static can be used with new)
+
+
+
+
+9.
+// #Note: to call virtualMethod() that is in abstract BaseClass
+// use "base.virtualMethod()" inside an instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]  
+// or use "base.virtualMethod()" inside the overridden method of virtual (if overridden) 
+// or use "base.virtualMethod()" inside the overridden method of abstract (if any)
+// using dot and argument for the parameter(if any) 
+
+// *Note: 'base' cannot be used in a static method 
+
+// @Note: 'base' ONLY for new (instance method that is in BaseClass) AND virtual (method that is in BaseClass) 
+// BUT NOT for abstract method (method that is in BaseClass) 
+
+// $Note:  use BaseClass for new (static method that is in BaseClass) 
+// inside static or instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]
+// using dot and argument for the parameter (if any)
+
+
+
+
+10.
+// 'base' can ONLY be used with new (non-static and non-private) and that too in inheritance
+
+// abstract, virtual CANNOT be private (default) in base class
+// and when overridden in derived class, the access modifier, return type and parameter(if any) should be same
+
+// abstract, virtual CAN be protected in base class BUT:
+// accessed ONLY INSIDE *derived class (or derived from it) 
+// accessed ONLY INSIDE *derived classes[including further derived] of the same/different assembly
+// [#especially for instance member] via a qualifier of type derived class [$via qualifier of further derived in further derived] 
+// [*derived class should NOT be thought of Main()'s class]
+// [Note: class should be public for accessing from derived class in different assembly]
+
+
+
+
+11.
+abstract - override:
+
+access modifiers should be same
+[Note: NO member modifier 'static']
+[override cannot be marked as new or virtual or abstract]
+return types should be same
+parameters should be same
+
+Note:
+'base' CANNOT be used with 'abstract' abstractMethod()
+'sealed' can be used only with override, talking about methods
+'sealed' means cannot be further overridden in a further derived class
+[But abstractMethod() can be used with 'new' in a derived class or a further derived class 
+and that means "hiding" 
+and that means access modifier, member modifier['static'] and retun type can be changed
+(and parameter can be changed which means it an entirely different method and does not mean "hiding")]
+
+
+virtual - override:
+access modifiers should be same
+[Note: No member modifier 'static']
+[override cannot be marked as new or virtual or abstract]
+return types should be same
+parameters should be same
+
+Note:
+'base.' CAN be used with 'virtual' virtualMethod()
+'sealed' can be used only with override, talking about methods
+'sealed' means cannot be further overridden in a further derived class
+[But abstractMethod() can be used with 'new' in a derived class or a further derived class 
+and that means "hiding" 
+and that means access modifier, member modifier['static'] and retun type can be changed
+(and parameter can be changed which means it an entirely different method and does not mean "hiding")]
+
+
+new (used when hiding was intended) in inheritance:
+access modifiers, [ALSO member modifier 'static'], return types CAN BE DIFFERENT
+BUT PARAMETERS SHOULD BE SAME
+[In case parameters are different, it will be an entirely different method 
+and hiding WON'T be intended]
+
+
+
+
+
+12. 
+// Dynamic Polymorphism // No wonder static methods are NOT allowed // Runtime Polymorphism // Method Overriding  
+// Method Overriding: Capability of a DERIVED CLASS to override the characteristics of the parent class. 
+// Provides different implementation of an inherited member (Method) in the DERIVED CLASS
+// Always create reference variable
+access specifiers, [NO member modifier 'static'], return types, parameters SHOULD BE SAME
+
+
+
+
+13. 
+// Static Polymorphism // static methods are ALLOWED// Compile time Polymorphism // Method Overloading
+// Method Overloading: Two or more methods within the same class can share the same name, as long as their parameter delarations are different 
+// Within the same class and Nothing to do with inheritance unlike Overriding
+access modifiers, [ALSO member modifier 'static'], return types CAN BE DIFFERENT
+PARAMETER number, type and order SHOULD BE DIFFERENT
+
+
+
+
+14.
+// instance [methods/indexers/properties/events]  (only when override) can be sealed, 
+// so as to prevent further overridding (further different implementation) in a further derived class
+// [BUT can be called using 'base' in an instance method in a further derived class, and that instance method can be called from Main() method] 
+
+
+// You can call base class instance fields (including instance volatile and instance readonly) and instance [methods/indexers/properties/events] 
+// in a derived class instance method using 'base', and then call the instance method from Main()
+
+
+// [Only assignment, call, increment, decrement, and new object expressions can be used as a statement]
+
+
+
+
+15.
+// Constructor Overloading:
+// ?Note: parameterless constructor [NEEDED if there is constructor overloading AND parameterless constructor call] 
+
+// Method Overloading:
+// ?Note: parameterless Method [NEEDED if there is method overloading AND parameterless method call] 
+
+
+
+
+16.
+// 1. base() corresponds parameterless BaseClass constructor
+
+// 2. explicit base() NEED NOT have the corresponding explicit parameterless BaseClass constructor
+
+// 3. 'parameterized base(<parameter*>)' MUST have the corresponding parameterized BaseClass constructor
+
+// 4. Hence 'parameterized base(<parameter*>)' assigns BaseClass variables [even private (default)]
+
+
+// 5. parameterless constructor [NEEDED if there is constructor overloading AND parameterless constructor call] 
+// 6. parameterless constructor [NEEDED if there is BaseClass constructor overloading AND DerivedClass constructor overloading] BUT
+//    7. parameterless constructor [NOT NEEDED ONLY if 'parameterized base(<parameter*>)' extends 
+//       EVERY DerivedClass parameterized constructor AND if there is NO explicit DerivedClass parameterless constructor] THEREFORE
+//       8. parameterless constructor [NEEDED if 'parameterized base(<parameter*>)' extends 
+//          EVERY DerivedClass parameterized constructor BUT if there is EXPLICIT DerivedClass parameterless constructor]
+//       9. parameterless constructor [NEEDED if 'parameterless base()' OR NOTHING extends EVERY DerivedClass parameterized constructor 
+//          EVEN if there is NO EXPLICIT DerivedClass parameterless constructor]
+// [EXPLICIT DerivedClass parameterless constructor may be prompted by DerivedClass constructor overloading AND 
+//  DerivedClass parameterless constructor call, OR
+//  if there is FurtherDerivedClass AND DerivedClass parameterless constructor call and so on] 
+// 10. Note: parameter* is any variable(s) from the extended DerivedClass parameterized constructor's signature
+
+
+// [INHERITANCE: CANNOT Call PROTECTED INSTANCE FROM DERIVED via a qualifier of type 'BaseClass']
+
+
+
+
+17. 
+/*
+
+static variable can be used in instance method*
+1. and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+2. and assigned value from OUTSIDE the method USING CLASS in Main() in the same, or different class in which case it should be public
+3. and assigned value from OUTSIDE the method USING METHOD CALL in Main() in the same or different class
+4. and assigned value INSIDE THE METHOD DIRECTLY
+
+*static variable can be used in instance method [in different class] ONLY by USING CLASS and should be PUBLIC
+
+
+
+static variable can be used in static method*
+1. and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+2. and assigned value from OUTSIDE the method USING CLASS in Main() in the same, or different class in which case it should be public
+3. and assigned value from OUTSIDE the method USING METHOD CALL in Main() in the same or different class
+4. and assigned value INSIDE THE METHOD DIRECTLY
+
+*static variable can be used in static method [in different class] ONLY by USING CLASS and should be PUBLIC
+
+
+
+instance variable can be used in instance method*
+1. and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+2. and assigned value from OUTSIDE the method USING INSTANCE in Main() in the same, or different class in which case it should be public
+3. and assigned value from OUTSIDE the method USING METHOD CALL in Main() in the same or different class
+4. and assigned value INSIDE THE METHOD DIRECT
+
+*instance variable can be used in instance method [in different class] 
+ONLY by USING REFERENCE PASSED IN PARAMETER that allows OBJECT PASSED IN ARGUMENT from Main() and should be PUBLIC
+[Note: also in same class as one of the ways]
+
+
+instance variable can be used in static method* 
+ONLY by USING REFERENCE PASSED IN PARAMETER that allows OBJECT PASSED IN ARGUMENT from Main()
+1. and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+2. and assigned value from OUTSIDE the method USING INSTANCE in Main() in the same, or different class in which case it should be public
+3. and assigned value from OUTSIDE the method USING METHOD CALL in Main() in the same or different class
+4. and assigned value INSIDE THE METHOD DIRECT
+
+*instance variable can be used in static method [in different class]
+ONLY by USING REFERENCE PASSED IN PARAMETER that allows OBJECT PASSED IN ARGUMENT from Main() and should be PUBLIC
+
+
+[INHERITANCE: CANNOT Call PROTECTED INSTANCE FROM DERIVED via a qualifier of type 'BaseClass']
+
+
+// *Note:
+// In case static variable is used either in instance method or static method, 
+// and assigned value from OUTSIDE the method USING CONSTRUCTOR CALL in Main() in the same or different class
+// UNLIKE THE CASE OF INSTANCE VARIABLE, the STATIC VARIABLE should be called/used immediately after assigned using CONSTRUCTOR CALL, 
+// otherwise if called or used after subsequent assignment using CONSTRUCTOR CALL(S)
+// ONLY THE LAST ASSIGNMENT VALUE will be its value 
+    
+// [ALSO IN CASE OF assignments USING CLASS, the STATIC VARIABLE should be called/used immediately after assigned using CLASS, 
+// otherwise if called or used after subsequent assignment using CLASS(ES)
+// ONLY THE LAST ASSIGNMENT VALUE will be its value 
+
+// [BUT NOT IN CASE OF assignments USING METHOD CALLS in Main() in the same or different class]
+
+
+*/
+
+
+
+
+18.
+// Even though in the same class, instance member cannot be used directly in Main() but using instance 
+
+
+
+
+19. 
+// member names cannot be the same as their enclosing type
+
+// A class [including static and abstract](at namespace level) containing class(es)[including static and abstract]/struct(s) can only be 1. public 2. internal 3. default
+
+// A struct (at namespace level) containing class(es)[including static and abstract]/struct(s) can only be 1. public 2. internal 3. default
+
+
+
+
+
+20.
+
+// (Class/Struct (outer) in namespace) cannot be declared as private, protected, or protected internal
+
+// member names cannot be the same as their enclosing type
+
+// A namespace member contained in a class [including static and abstract] (at namespace level) can be public, private (default), protected, internal, protected internal
+// (accessibility as same as class member) 
+
+// A namespace member contained in a struct (at namespace level) can be public, private (default), internal 
+// (accessibility as same as struct member) 
+
+
+
+
+21.
+// member names cannot be the same as their enclosing type
+
+// A namespace member contained in a class [including static and abstract] (at namespace level) 
+// is accessed using the class [including static and abstract] (at namespace level) that contains it 
+
+// A namespace member contained in a struct (at namespace level) is accessed using the struct(at namespace level) that contains it 
+
+
+
+
+22.
+// A static constructor (which must be parameterless) can be in class/struct
+// A static constructor has no access modifier 
+// A static constructor must be parameterless therefore cannot be overloaded
+// A static constructor initializes static variables (attributes of a class rather than an instance)
+// A static constructor is called automatically before instance constructor
+// A static constructor is executed before instance constructor
+// A staic constructor can also access instance variable (BUT NOT readonly) using: static MyClass mc = new MyClass(); 
+
+
+
+
+23.
+/* 
+
+A base class cannot be less accessible than the derived class:
+
+class A {}
+public class B : A { } // Not possible because base class is less accessible than the derived class
+
+internal class A {}
+internal class B { public class C : A {} } // Possible as long as B is as accessible as A
+
+*/
+
+
+
+
+24. 
+/*
+
+If a method's return type is a class, then return type (class) cannot be less accessible than the method 
+
+class A {}
+class B 
+{  A H() // public not possible, because return type (class) cannot be less accessible than the method 
+   {
+      
+   }
+}
+
+*/
+
+
+
+
+25.
+/* 
+
+A class/struct can be MORE or LESS accessible than the interface implemented by it:
+
+interface I {}
+public class C : I {}
+
+or
+
+public interface I {}
+class C : I {}
+
+*/
+
+
+
+26.
+/*
+
+// accessors' access modifier must be more restrictive than the [property or indexer] 
+
+
+public string PetName
+{
+    get { return carName.ToUpperInvariant(); }
+    internal  set { carName = value; }
+}
+
+// The default access modifier for accessors is the  access modifier of the [property or indexer] and NOT private
+
+
+// Cannot specify accessibility modifiers for both accessors of the [property or indexer] 
+[can only specify either for get or for set accessor]
+
+
+//Read-Only Standard property
+public string PetName
+{
+    get { return carName.ToUpperInvariant(); }
+    private set { carName = value; }
+}
+
+//Write-Only Standard property
+public string PetName
+{
+    private get { return carName.ToUpperInvariant(); }
+    set { carName = value; }
+}
+
+*/
+
+
+
+
+27.
+// volatile (nullable type CANNOT be volatile):
+
+// The volatile keyword indicates that a field might be modified by multiple concurrently executing threads
+// Fields that are declared volatile are not subject to compiler optimizations that assume access by a single thread
+// This ensures that the most up-to-date value is present in the field at all times
+
+// volatile modifier is usually used for a field (static/instance) (BUT NOT const/readonly) that is accessed by multiple threads 
+// without using the lock statement to serialize access.
+
+// The volatile keyword can be applied to these types:
+
+// 1. Reference types viz., array, string etc
+
+// 2. Pointer types (in an unsafe context)
+
+// 3. Built-in structs such as sbyte, byte, short, ushort, int, uint, char, float, and bool [cannot be long, ulong, double, decimal]
+
+// 4. An enum type with an integral base type
+
+// 5. Generic type parameters known to be reference types
+
+// 6. IntPtr and UIntPtr
+
+// 7. The type in question must be the field of a class or struct. Local variables cannot be declared volatile
+
+
+// readonly (nullable type can be readonly):
+// 1. can be static or instance 
+// 2. static readonly can be Initialized ONLY in declaration OR in its class'[BUT NOT derived] static constructor(which cannot be overloaded)
+// 3. instance readonly can be Initialized ONLY in declaration OR in its class'[BUT NOT derived] instance constructor(including overloading) 
+// 4. static readonly is accessed with its class, like static member (in instance/static method) 
+// 5. instance readonly is accessed with instance reference, like instance member (in instance/static method) 
+// 6. Assignment not a MUST, but warning will occur if not assigned
+// 7. Local variables cannot be declared readonly
+
+
+// const (nullable type CANNOT be const): 
+// 1. Assigned ONLY AND 2. MUST in declaration 
+// 3. Accessed with class like static member (in instance/static method)
+// 4. const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+// 5.  A const field of a reference type other than string can only be initialized with null viz., const MyClass _myClass = null;
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+
+
+
+
+28.
+ 
+/* 
+
+A statement such as: array[i]; is not possible; But x = array[i]; is possible in a for loop with i iterations with x and array being same types and array[i] already assigned vaules
+int x; // 
+int i;
+int[] array = new int[10];
+
+for(i=0; i < 10; i++)
+    array[i] += i; // Check for array[i] = i;
+
+for(i=0; i < 10; i++)
+{
+    x = array[i];
+    Console.WriteLine("x = " + x);
+}
+// Console.WriteLine("x = " + x); // x should be assigned such as int x = 0;
+
+*/
+
+// Also: number[i] = i;  is possible in a for loop with i iterations 
+// Also: temp += a[i]; temp being string (character array), a[i] being character array ('a' being string)   
+// Also: temp += parts[i]; temp and parts being string arrays 
+
+
+
+
+29. 
+// || and && Short-Circuit Logical Operators evaluate the second operand only when necessary, otherwise as same as normal versions : | and &
+
+
+
+
+30. 
+// Console.Write() is INVALID
+// Console.Write("print string") Returns cursor on the same line
+// Console.Write(" ") Returns cursor on the same line with one space (" " can be appended with string and can be more than once)
+// Console.Write("\n") Returns cursor on the next line ("\n" can be appended with string and can be more than once)
+
+// Console.WriteLine() Returns cursor on the next line
+// Console.WriteLine("\n") Returns cursor on the line next to the next line ("\n" can be appended with string and can be more than once)
+
+/* 
+
+Note: 
+If Console.WriteLine()  or Console.Write("print string")  is preceded by Console.Write(" ")
+Console.WriteLine()  or Console.Write("print string") cursor starts from where Console.Write(" ") returns the cursor that is on the previous line
+As a result in this case, Console.WriteLine(); will not create a line of space
+so only Console.WriteLine("\n") Console.Write("\n\n") create a line of space
+
+*/
+
+
+
+
+31. 
+// "", null, string.Empty, String.Empty for string
+// ' ' means one space and only for char
+// '' is INVALID
+
+
+
+
+32.
+/*
+
+{event} in [struct]:
+
+add:
+1. assign the event handler method without parenthesis (using class for static and using object for instance) to the delegate instance
+2. add the assigned delegate instance to the event list
+
+remove:
+1. remove the assigned delegate instance 
+
+*/  
+
+
+
+
+33.
+/*
+
+A private and explicit [interface] implementation of an {event} (by class/struct) must use property syntax
+
+For a private and explicit [interface] implementation of an {event} (by struct) must use property syntax:
+
+use: delegate array
+
+or
+
+use: OnEvent() in [interface]
+
+*/
+
+
+
+
+34.
+// {}; for anonymous method, do while, while(not complusory), array assignment
+
+
+
+
+35. 
+/*
+
+While using access modifiers with (property / indexer) accessors:
+accessors' access modifier must be more restrictive (less accessible) than the property or the indexer
+
+*/
+
+
+
+
+36.
+/*
+
+[interface] {property or indexer} must have at least one accessor 
+[interface] {property or indexer} must have either get/set whichever is public
+
+*/
+
+
+
+
+37.
+/*
+
+class to struct:
+1. cannot have instance field initializers
+2. cannot contain EXPLICIT parameterless instance constructors but can have EXPLICIT parameterless static constructors
+3. must be fully assigned before control leaves the constructor OR use this()
+4. {event} in [struct]:
+add:
+1. assign the event handler method without parenthesis (using class for static and using object for instance) to the delegate instance
+2. add the assigned delegate instance to the event list
+remove:
+1. remove the assigned delegate instance
+
+*/
+
+
+
+
+38.
+// enum // named constants can only be alphanumeric (should start with alphabet), should be unique and should not be in quotation
+
+
+
+
+39. 
+// 'this' is the argument for the corresponding object reference parameter
+
+// method without parenthesis is the argument for the corresponding delegate reference parameter
+
+
+
+
+40.
+// Inside Console.WriteLine()/Console.Write(), you can call only the method that returns (even if the method contains Console.WriteLine())
+// AND the returning method (even if the method contains Console.WriteLine()) can be copied to a variable of type same as the return type of the method, and the variable can be printed
+// i.e., a void method cannot be called inside Console.WriteLine()/Console.Write()
+
+// NOTE: 'return;' in a void method means exit and doesn't mean returning value
+
+// NOTE: char method can return (char)0;
+
+
+
+
+41.
+/*
+
+In a method:
+return x/2; ( x is unassigned)
+is different from:
+x = x/2; ( x is assigned)
+return x;
+
+*/
+
+
+
+
+42. 
+/*
+
+An assembly (exe/dll) can be generated using several .cs files (but entry point[static void Main()] in only one of the files):
+
+//>csc 1.cs 1a.cs 1b.cs
+
+//>1
+
+// (1.cs containing entry point[static void Main()])
+
+*/
+
+
+
+
+43. 
+/*
+
+Different Assembly:
+
+//>csc 1.cs
+//>csc 1a.cs /reference:1.exe
+
+
+//OR
+
+
+//>csc /target:library 1.cs
+//>csc 1a.cs /reference:1.dll 
+
+
+//OR
+
+
+//>csc 1.cs
+//>csc 1a.cs /r:1.exe
+
+
+//OR
+
+
+//>csc /t:library 1.cs
+//>csc 1a.cs /r:1.dll 
+
+
+
+
+Friend Assembly:
+using System.Runtime.CompilerServices; // in 1a.cs
+[assembly:InternalsVisibleTo("1")]     // declaring 1.cs as friend assembly in 1a.cs // declare for one class, all classes will be shared
+
+
+//>csc /t:library 1a.cs
+
+//>csc 1.cs /r:1a.dll
+
+
+//OR
+
+
+//>csc 1a.cs
+
+//>csc 1.cs /r:1a.exe
+
+*/
+
+
+
+
+44.
+/*
+
+From console:
+To create exe:
+csc 1.cs
+
+To create dll:
+csc /t:library 1.cs
+
+(exe/dll will be created in the same folder that you are creating from)
+
+*/
+
+
+
+
+45.
+/*
+
+In case of IDE:
+1. exe (executable) is created (automatically when you compile) in bin/Debug folder(default) of the application folder 
+
+2. dll (class library) can be created by Selecting File->New->Project->Visual C# Projects->Class Library. 
+type the code in Class1.css
+build the dll is created (automatically whe you BUILD) in bin/Debug folder(default) of the application folder 
+
+*/
+
+
+
+
+46.
+/*
+
+For REFLECTION:
+1. Copy dll/exe:
+bin/Debug folder(default) of the REFLECTION application folder 
+
+OR
+
+2. Add Reference (for the REFLECTION application) by browsing to the folder where the dll/exe is present
+
+*/
+
+
+
+
+
+47.
+/*
+
+// Visual C# 2005 Compiler Options:
+// >csc /?
+
+
+// Compiling unsafe:
+
+// >csc 1.cs /unsafe
+
+// >1
+
+
+// Visual Studio:
+
+// Open the project's Properties page. For details, see How to: Set Project Properties (C#, J#).
+
+// Click the Build property page.
+
+// Select the Allow Unsafe Code check box.
+
+*/
+
+
+
+
+48.
+// The extern modifier is used to declare a method that is implemented externally. 
+// A common use of the extern modifier is with the DllImport attribute when using System.Runtime.InteropServices to call into unmanaged code;
+
+// It is an error to use the abstract and extern modifiers together to modify the same member. 
+// Using the extern modifier means that the method is implemented outside the C# code, 
+// while using the abstract modifier means that the method implementation is not provided in the class.
+
+
+// The extern keyword also can define an external assembly alias, 
+// making it possible to reference different versions of the same component from within a single assembly. 
+
+// It can sometimes be necessary to reference two versions of assemblies that have the same fully-qualified type names, 
+// for example when you need to use two or more versions of an assembly in the same application. 
+// By using an external assembly alias, the namespaces from each assembly can be wrapped inside root-level namespaces named by the alias,
+// allowing them to be used in the same file.
+
+// To reference two assemblies with the same fully-qualified type names, an alias must be specified on the command line, as follows:
+
+// /r:GridV1=grid.dll
+
+// /r:GridV2=grid20.dll
+
+// This creates the external aliases GridV1 and GridV2. To use these aliases from within a program, 
+
+// reference them using the extern keyword. For example:
+
+// extern alias GridV1;
+
+// extern alias GridV2;
+
+ 
+// Each extern alias declaration introduces an additional root-level namespace that parallels (but does not lie within) the global namespace. 
+// Thus types from each assembly can be referred to without ambiguity using their fully qualified name, rooted in the appropriate namespace-alias
+
+
+// extern alias X; in 1.cs
+
+
+// csc /t:library 1a.cs
+
+// >csc 1.cs 1b.cs /r:X=1a.dll
+
+// OR
+
+//>csc 1a.cs
+
+//>csc 1.cs 1b.cs /r:X=1a.exe
+
+
+
+
+
+49.
+/*
+
+Generics:
+
+1. indexers, properties, events, operators cannot be generic, 
+   but can be used in a generic class and make use of the generic type parameters of that class
+
+2. extern modifier cannot be applied to the generic method
+
+3. pointer types cannot be used as type arguments
+
+4. If a generic class contains a static field, then each constructed type has its own copy of that field. 
+   This means that each instance of the same constructed type shares the same static field. 
+   However, a different constructed type shares a different copy of that field. 
+   Thus a static field is not shared by all constructed types."
+
+5. object can be used as type argument and this can be parameter [but not in static cases]
+
+
+*/
+
+
+
+
+50.
+/*
+
+C# 2.0:
+
+1. Generics
+2. Nullable types
+3. Iterators
+4. Partial Classes/Structs/Interfaces
+5. Anonymous methods
+6. The :: operator (Namespace Alias Qualifier)
+7. Static Classes
+8. Covariance and contravariance
+9. Fixed-size buffers [Note: Available only in an unsafe context], sizeof(type)
+10. Friend assemblies
+11. Extern Aliases [Note: extern Methods has been available since the creation of C#]
+12. Delegate Method Group Conversion
+13. Access Modifiers with Accessors [Note: For properties and indexers]
+14. #pragma directives
+15. ?? Operator or Null-Coalesce Operator
+16. System.Predicate
+17. System.Action
+
+
+51.
+/*
+var (Implicitly-typed local variables):
+
+Implicitly-typed local variables cannot be constant          
+
+The contextual keyword 'var' may only appear within a local variable declaration              
+
+dynamic:
+
+readonly member variable
+
+static readonly member variable
+
+const member variable = null*
+
+local variable
+
+const local variable = null*
+
+A const field of a reference type other than string can only be initialized with null. (Member/Local Variable)    
+*/

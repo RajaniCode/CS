@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class FibonacciSequence
+{
+    IEnumerable<long> Fibonacci()
+    {
+        long current = 0L;
+        long next = 1L;
+        while (true)
+        {
+            yield return current;
+            long temp = next;
+            next = current + next;
+            current = temp;
+        }
+    }
+
+    public void Print()
+    {
+        Fibonacci().TakeWhile(x => x < Int32.MaxValue).ToList().ForEach(Console.WriteLine);
+        Console.WriteLine();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        FibonacciSequence fibSequence = new FibonacciSequence();
+        fibSequence.Print();
+    }
+}

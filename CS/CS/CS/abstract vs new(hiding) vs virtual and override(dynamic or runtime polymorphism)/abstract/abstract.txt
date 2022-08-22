@@ -1,0 +1,86 @@
+// abstract class:
+// (can extend built-in object)
+// <can be generic>
+// (cannot be sealed, static)
+
+
+data members 
+1. consts
+
+2. static fields (including static volatile and static readonly) 
+
+3. instance fields (including instance volatile and instance readonly) 
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+
+
+// members of a class are also members of an abstract class
+
+// abstract class have const, readonly [which can be assigned ONLY in BaseClass constructor via DerivedClass constructor using base()] 
+
+// abstract class can have constructors(instance/static (which must be parameterless)) and destructor
+ 
+// abstract class constructors can be overloaded using derived class constructor [using base()]
+
+// method/indexer/properties/events[except accessor based] can be abstract and that too only in abstract class  
+
+// method/indexer/properties/events[including accessor based] can be virtual and can be in abstract class
+
+// abstract class can do without abstract members (method/indexer/properties/events[except accessor based])
+
+// abstract method has only stubs with semicolon, can have parameter, but no body 
+
+
+// abstract method (ONLY is abstract class) must be implemented (overridden and can be 'sealed' when overridden) in all the top most levels of derived non-abstract classes
+// NOT A MUST if the top most level class is abstract
+// BUT MUST in the next level of derived non-abstract class (or the level til derived non-abstract class)
+// IF the next level derived classes are abstract then MUST in the further next level derived non-abstract classes (til non-abstract class)
+
+
+// abstract method cannot be static, as static cannot be used with abstract, virtual or override
+
+// abstract class cannot be instantiated but you can have reference variable of abstract class
+
+// abstract class can have concrete methods (both instance and static)
+
+// abstract class can have virtual methods 
+
+// abstract class can inherit from abstract or non-abstract class (including multilevel & excluding multiple)
+
+// non-abstract class can be inherited from an abstract class (including multilevel & excluding multiple)
+
+
+// instance methods in abstract class Can be be invoked using 
+// 1. [BASE CLASS REFERENCE that refers DERIVED CLASS OBJECT]
+// 2. [DERIVED CLASS OBJECT] 
+
+// static methods in abstract class can access instance variables by
+// 1. USING BASE CLASS REFERENCE PASSED IN PARAMETER that allows [BASE CLASS REFERENCE that refers DERIVED CLASS OBJECT] PASSED IN ARGUMENT from Main()
+// 2. USING BASE CLASS REFERENCE PASSED IN PARAMETER that allows [DERIVED CLASS OBJECT] PASSED IN ARGUMENT from Main()
+
+
+
+// abstract, virtual CANNOT be private (default) in base class
+// and when overridden in derived class, the access modifier, return type and parameter(if any) should be same
+
+// abstract, virtual CAN be protected in base class BUT:
+// accessed ONLY INSIDE *derived class (or derived from it) 
+// accessed ONLY INSIDE *derived classes[including further derived] of the same/different assembly
+// [#especially for instance member] via a qualifier of type derived class [$via qualifier of further derived in further derived] 
+// [*derived class should NOT be thought of Main()'s class]
+// [Note: class should be public for accessing from derived class in different assembly]
+
+
+// #Note: to call virtualMethod() that is in abstract BaseClass
+// use 'base' inside an instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]  
+// or inside the overridden method of virtual (if overridden) or inside the overridden method of abstract (if any)
+// using dot and argument for the parameter(if any) 
+
+// *Note: 'base' cannot be used in a static method 
+
+// @Note: 'base' ONLY for new (instance method that is in BaseClass) AND virtual (method that is in BaseClass) 
+// BUT NOT for abstract method (method that is in BaseClass) 
+
+// $Note:  use BaseClass for new (static method that is in BaseClass) 
+// inside static or instance method [Also: parameter for the method to receive and pass to the argument (if any) inside the method]
+// using dot and argument for the parameter (if any)

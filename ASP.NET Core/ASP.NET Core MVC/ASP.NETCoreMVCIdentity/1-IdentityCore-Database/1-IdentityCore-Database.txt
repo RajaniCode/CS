@@ -1,0 +1,64 @@
+ASP.NET Core MVC Individual User Accounts
+
+
+[
+https://localhost:44309/Identity/Account/Register
+https://localhost:44309/Identity/Account/Login
+email@example.com
+Hola!123
+]
+
+
+# 1-IdentityCore-Database
+// Add
+Add New Folder: App_Data
+
+// Edit
+// IdentityCore\IdentityCore\appsettings.json
+// "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-IdentityCore-FBAE5492-2CAA-4FEE-A381-8EC1A3FD61BC;Trusted_Connection=True;MultipleActiveResultSets=true"
+"DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-IdentityCore;AttachDbFilename=|DataDirectory|\\aspnet-IdentityCore.mdf;Trusted_Connection=True;MultipleActiveResultSets=true"
+
+// Edit
+// IdentityCore\IdentityCore\Startup.cs
+// public void ConfigureServices(IServiceCollection services)
+string dataDirectory = Configuration.GetValue<string>(WebHostDefaults.ContentRootKey) + "\\App_Data";
+
+services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        Configuration.GetConnectionString("DefaultConnection").Replace("|DataDirectory|", dataDirectory)));
+
+https://localhost:44309/Identity/Account/Register
+email@example.com
+Hola!123
+
+Apply Migrations
+[
+A database operation failed while processing the request.
+SqlException: Cannot attach the file 'C:\Users\rajanis\source\repos\IdentityCore\IdentityCore\App_Data\aspnet-IdentityCore.mdf' as database 'aspnet-IdentityCore'.
+Applying existing migrations may resolve this issue
+There are migrations that have not been applied to the following database(s):
+
+ApplicationDbContext
+00000000000000_CreateIdentitySchema
+Apply Migrations
+
+In Visual Studio, you can use the Package Manager Console to apply pending migrations to the database:
+
+PM> Update-Database
+Alternatively, you can apply pending migrations from a command prompt at your project directory:
+
+> dotnet ef database update
+]
+Try refreshing the page
+
+[
+Register confirmation
+This app does not currently have a real email sender registered, see these docs for how to configure a real email sender. Normally this would be emailed: 
+]
+Click here to confirm your account
+
+https://localhost:44309/Identity/Account/Login
+email@example.com
+Hola!123
+
+Backup App_Data

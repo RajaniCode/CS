@@ -1,0 +1,19 @@
+/* ===========================================================
+
+	$IMAGES
+
+=========================================================== */
+
+/* ---- DEFAULT ---- */
+IMG 				                                {max-width:100%; vertical-align:top;}
+FIGURE							                    {margin-bottom:30px;}
+
+
+/* ---- ADVANCED ---- */
+.viewport                                           {position:relative; clear:both; width:100%; height:500px;}
+.viewport IMG.viewport-image                        {@include viewport-image;}
+
+
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */

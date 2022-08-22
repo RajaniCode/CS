@@ -1,0 +1,46 @@
+﻿@model Gigya.UI.Areas.Account.ViewModels.Login
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    var gigya_screen_id = "@Model.ViewName";
+</script>
+
+@Html.HiddenFor(m => m.RedirectProfile)
+@Html.HiddenFor(m => m.DisplayNotification)
+@Html.HiddenFor(m => m.EnrolmentId)
+@Html.HiddenFor(m => m.BarnCardId)
+
+
+@await Html.PartialAsync("~/Views/Shared/_MessagePartial.cshtml")
+
+<div class="container content-area" style="clear:both;">
+    <div id="gigyaWidget">
+        <div id="gigya-screensetcontainer"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="//cdn.gigya-ext.com/gy.js"></script>
+<script src="~/gigya/gigya-cp.js" asp-append-version="true"></script>
+
+<script>
+    @{
+        <text>
+            error = "@TempData["Error"]?.ToString().Trim()";
+        </text>
+    }
+</script>
+
+@if (TempData["Error"] != null)
+{
+    @section Scripts
+    {
+        <script type="text/javascript"> 
+            $(document).ready(showMessage("@TempData["Error"]", "error") );
+        </script>
+    }
+}
+

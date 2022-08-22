@@ -1,0 +1,134 @@
+@using Kendo.Mvc.UI
+
+<!-- KENDO CSS -->
+@Styles.Render("~/Content/kendo/kendo")
+
+<span id="spanNotification" style="display:none;"></span>
+<div id="notification-messages"></div>
+
+<!-- KENDO JS -->
+@Scripts.Render("~/bundles/kendo")
+
+@if (TempData["Error"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            return $("#spanNotification").kendoNotification({
+                stacking: "up",
+                show: onNotificationShow,
+                button: true,
+                autoHideAfter: 10000,
+                appendTo: "#notification-messages",
+            }).data("kendoNotification").show("@TempData["Error"]", "error");
+        });
+    </script>
+}
+
+@if (TempData["Error"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            (name => {
+                return $("#spanNotification").kendoNotification({
+                    stacking: "up",
+                    show: onNotificationShow,
+                    button: true,
+                    autoHideAfter: 10000,
+                    appendTo: name,
+                }).data("kendoNotification");
+            })("#notification-messages").show("@TempData["Error"]", "error");
+        });
+    </script>
+}
+
+@if (TempData["Error"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            var notification = function (name) {
+                return $("#spanNotification").kendoNotification({
+                    stacking: "up",
+                    show: onNotificationShow,
+                    button: true,
+                    autoHideAfter: 10000,
+                    appendTo: name,
+                }).data("kendoNotification");
+            };
+            notification("#notification-messages").show("@TempData["Error"]", "error");
+        });
+    </script>
+}
+
+@if (TempData["Error"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            var notification = (name) => {
+                return $("#spanNotification").kendoNotification({
+                    stacking: "up",
+                    show: onNotificationShow,
+                    button: true,
+                    autoHideAfter: 10000,
+                    appendTo: name,
+                }).data("kendoNotification");
+            };
+            notification("#notification-messages").show("@TempData["Error"]", "error");
+        });
+    </script>
+}
+
+@if (TempData["Error"] != null)
+{
+    <script>
+        /*
+        function getSpanNotificationInstance() {
+            return getNotificationInstance("#notification-messages");
+        }
+        */
+
+        function getNotificationInstance(name) {
+            return $("#spanNotification").kendoNotification({
+                stacking: "up",
+                show: onNotificationShow,
+                button: true,
+                autoHideAfter: 10000,
+                appendTo: name,
+            }).data("kendoNotification");
+        }
+
+        $(document).ready(function () {
+            // var notification = getSpanNotificationInstance();
+            var notification = getNotificationInstance("#notification-messages");
+            notification.show("@TempData["Error"]", "error");
+        });
+    </script>
+}
+
+
+@if (TempData["Error"] != null)
+{
+    <script type="text/javascript">
+        /*
+        function getSpanNotificationInstance() {
+            return getNotificationInstance("#notification-messages");
+        }
+        */
+
+        function getNotificationInstance(name) {
+            return $("#spanNotification").kendoNotification({
+                stacking: "up",
+                show: onNotificationShow,
+                button: true,
+                autoHideAfter: 5000,
+                appendTo: name,
+            }).data("kendoNotification");
+        }
+
+        window.onload = function () {
+	    // var notification = getSpanNotificationInstance();
+            var notification = getNotificationInstance("#notification-messages");
+            notification.show("@TempData["Error"]", "error");
+            @*alert("@TempData["Error"]");*@
+        };
+    </script>
+}

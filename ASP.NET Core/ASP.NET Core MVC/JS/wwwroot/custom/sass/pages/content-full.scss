@@ -1,0 +1,342 @@
+/* ===========================================================
+
+	$FULL WIDTH PAGES
+
+=========================================================== */
+
+.full-width h1{
+    font-size:40px;
+}
+
+.article__body {
+    float: left;
+    width: 100%;
+    max-width: 670px;
+    padding: 10px 20px;
+    margin-right: 20px;
+}
+
+
+.full{
+    max-width:100% !important;
+    margin-right:0px !important;
+}
+
+
+
+/*
+.page-heading {
+    float: left;
+    width: 100%;
+    background: #157fbf;
+    color: #fff !important;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}*/
+
+.page-wrap{
+    /*float:left;*/
+    overflow:auto;
+    padding: 5px;
+    margin-top: -160px;
+    background:#fff;
+}
+
+.page .over-text{
+        max-width: 600px;
+}
+
+.page .over-text h1{
+    color:#fff !important;
+    padding-bottom: 10px;
+}
+
+.page .over-text p{
+    color:#fff !important;
+}
+
+.page-sub {
+    padding: 20px 20px;
+    float: left;
+    width: 100%;
+    background: #E8E8E8;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.page-sub p {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000;
+}
+
+.page-sub span {
+    font-size: 17px;
+    font-weight: bold;
+    text-transform:uppercase;
+    color: #000;
+}
+
+.page {
+    min-height: 300px;
+}
+
+
+
+
+/*ICONS*/
+
+.ranch {
+    background: url("../Assets/images/icons.png") no-repeat 0px 0px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.vet {
+    background: url("../Assets/images/icons.png") no-repeat 0px -52px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.date {
+    background: url("../Assets/images/icons.png") no-repeat 0px -102px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.more {
+    background: url("../Assets/images/icons.png") no-repeat 0 -143px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.less {
+    background: url("../Assets/images/icons.png") no-repeat 0 -182px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.right-arrow {
+    background: url("../Assets/images/icons.png") no-repeat 0 -221px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.left-arrow {
+    background: url("../Assets/images/icons.png") no-repeat 0 -261px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.save {
+    background: url("../Assets/images/icons.png") no-repeat 0 -299px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.clock {
+    background: url("../Assets/images/icons.png") no-repeat 0 -335px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.cross {
+    background: url("../Assets/images/icons.png") no-repeat 0 -369px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.tick {
+    background: url("../Assets/images/icons.png") no-repeat 0 -404px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.location {
+    background: url("../Assets/images/icons.png") no-repeat 0 -447px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+.cow {
+    background: url("../Assets/images/icons.png") no-repeat 0px -490px;
+    width: 50px;
+    height: 40px;
+    display: block;
+    background-size: 100%;
+}
+
+/*END ICONS*/
+
+
+.cattle-treatment ul    {padding:0px; margin:0px;}
+
+.cattle-treatment li {
+    float: left;
+    width: 32%;
+    margin-right: 8px;
+    background: #e7f2f9;
+}
+
+.cattle-treatment li span {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.cattle-treatment li .li-heading {
+    font-weight: bold;
+    padding: 5px 20px 5px 20px;
+    background: #d3e6f4;
+    text-transform: uppercase;
+}
+
+.cattle-treatment li:nth-child(2n+2) .li-heading{
+    background: #eaf3fa;
+}
+
+.cattle-treatment li:nth-child(2n+2) {background:#f3f8fc;}
+
+.cattle-treatment li hr {
+    margin: 18px 0px;
+}
+
+.cattle-treatment li INPUT[type="text"] {
+    width: 100%;
+}
+
+.cattle-treatment li select {
+    width: 100%;
+}
+
+INPUT[type="radio"]{
+    margin-left: 0px;
+}
+
+
+.cattle-treatment li:before {content:none !important;}
+
+
+
+
+/*REGISTER FORM*/
+
+.form-row {
+    float: left;
+    width: 100%;
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.lower-form-row {
+    float: left;
+    margin-left: 31%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#searchPractice .lower-form-row {
+    float: none;
+    margin-left: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#WindowSearchVetPractice .lower-form-row{padding-top: 0px;}
+
+.register {
+    float: left;
+    width: 91%;
+}
+
+
+
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+
+
+
+/* ---- MOBILE landscape---- *//* 768px */
+@media only screen and (max-width: $breakpoint-medium) {
+
+    .article__body {
+    padding: 10px 0px !important;
+    margin-right: 0px !important;
+    }
+    
+    /*
+    INPUT{
+    width: 100% !important;
+    }
+
+    INPUT[type="radio"], INPUT[type="checkbox"] {
+    width: auto !important;
+    }
+
+    SELECT {
+    width: 100% !important;
+    }
+    */
+
+    .key-text {
+    float: left;
+    padding: 20px 0px !important;
+    font-size: 11px;
+    max-width: 790px;
+    }
+
+    .lower-form-row {
+    float: left;
+    margin-left: 0px !important;
+    padding-top: 15px !important;
+    }
+}
+
+
+/* ---- MOBILE ---- *//* 360px */
+@media only screen and (max-width: 360px) {
+
+
+}
+
+
+
+/* ---- MOBILE ---- *//* 768px */
+@media only screen and (max-width: $breakpoint-medium) {
+
+}
+
+/* ---- TABLET ---- *//* 768px *//* 1024px */
+@media only screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
+
+}

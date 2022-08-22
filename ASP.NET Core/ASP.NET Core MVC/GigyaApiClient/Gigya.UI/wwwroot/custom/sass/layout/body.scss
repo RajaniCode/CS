@@ -1,0 +1,343 @@
+/* ===========================================================
+
+	$BODY
+
+=========================================================== */
+
+
+HTML,BODY                                           {height:100%;}
+BODY 					                            {background-color:$white;}
+.page-limits                                        {clear:both; width:$screen-extra-large; padding:0 20px; margin:0 auto; @include clearfix;}
+
+// To Remove when all references replaced
+.wrap                                               {margin: 0 auto;max-width: 1040px;padding: 0px 20px;}
+
+//PUBLIC LAYOUT EDITS
+
+.public-view .page-limits                           {max-width: 1040px;width:100%;padding: 0px;}
+
+.public-view                                        {font-family: "proxima-nova-condensed", 'Open Sans', sans-serif;}
+
+.public-view .button--secondary {
+    background: #fff url(../assets/images/lock.png) no-repeat 7px 8px;
+    text-decoration: none;
+    color: #157fbf;
+    border: 1px solid #ddd;
+    font-weight: 600;
+    padding-left: 30px;
+    font-size: 15px;
+    margin-right:10px;
+    height: 37px;
+    font-family: proxima-nova-condensed;
+}
+
+.public-view .button--primary {
+    float: left;
+    text-decoration: none;
+    border: 0;
+    background: #ff6400;
+    padding: 9px 15px;
+    color: #fff;
+    border-radius: 0;
+    transition: all 0.5s ease;
+    font-size: 15px;
+    height: 37px;
+    margin-right: 10px;
+    -webkit-appearance: none;
+    font-family: proxima-nova-condensed;
+    border: 1px solid #ff6400;
+        font-weight: normal;
+}
+
+.public-view .header-nav .nav__item {
+    font-size: 14px;
+        margin-bottom: 7px;
+}
+
+.public-view .main-nav {
+    padding: 0px;
+}
+
+.public-view .top-menu {
+    float: right;
+    margin-bottom: 18px;
+    width: 100%;
+    padding-left: 0px;
+    margin-top: 12px;
+}
+
+.public-view .site-header .login-buttons {
+    margin-bottom: 12px;
+
+}
+
+
+.public-view .top-menu li {
+    float: left;
+    border-right: 1px solid #585858;
+    padding: 0px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    list-style: none;
+    padding-left: 14px;
+}
+.public-view .top-menu li:last-child {
+    border-right: none;
+}
+.public-view .top-menu a {
+    color: #016DA9;
+    transition: color .4s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.public-view .main-nav .nav__link {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    padding: 6px 25px 6px 6px;
+    border: 0;
+    margin: 0;
+    font-size: 20px;
+    color: #575757;
+    letter-spacing: 0px;
+    font-weight: bold;
+    transition: color .4s ease;
+    background: url("../assets/images/nav-arrow.png") no-repeat 103% 0px;
+}
+
+.public-view .main-nav .nav__item {
+    display: inline-block;
+    margin-right: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font-family: "proxima-nova-extra-condensed","Arial Narrow",Arial,Helvetica,sans-serif;
+    vertical-align: bottom;
+    transition: color .4s ease;
+}
+
+.public-view .main-nav .nav__item:last-of-type {
+    margin-right: 0px!important;
+}
+
+.public-view .main-nav .subnav__list {
+    float: left;
+    position: absolute;
+    z-index: 10000;
+    width: 206px;
+    padding: 10px 0px;
+    padding-bottom: 0px;
+    background: #fff;
+    padding-top: 0;
+    border: none;
+    margin: 0px;
+}
+
+.public-view .main-nav .subnav__link {
+    color: #585858;
+    font-family: proxima-nova-condensed;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.public-view .promo.promo--login {
+    border: none;
+}
+
+
+.public-view .site-header .logo img {
+    width: 183px;
+    margin-top: 10px;
+}
+
+.public-view .site-header {
+    padding: 20px 0 0 0;
+}
+
+.public-view .header-nav {
+    float: right;
+    margin-bottom: 18px;
+    width: 100%;
+    padding-left: 0px;
+    margin-top: 10px;
+    height: auto;
+}
+
+.public-view .over-text{
+    position: absolute;
+    padding-left: 25px;
+    padding-top: 35px;
+    max-width: 670px;
+}
+
+.public-view .over-text p {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0;
+    font-weight: 300;
+    color: #484848;
+    max-width: 378px;
+}
+
+.footer-grey {
+    width: 100%;
+    background: #585858;
+    padding: 16px 20px;
+    color: #fff;
+    clear: both;
+}
+.footer-grey ul {
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding-left: 0;
+    margin-top: 10px;
+}
+.footer-grey li {
+    float: left;
+    margin-right: 30px;
+    list-style-type: none;
+    font-size: 16px;
+}
+.footer-grey li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.footer-grey p {
+    font-size: 13px;
+    color: #fff;
+}
+
+.footer-widget H6 {
+    padding-bottom: 15px;
+    color: #157fbf;
+    font-size: 19px;
+    margin: 0px 0px 0px 0px;
+}
+
+.footer-widget P {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: proxima-nova-condensed;
+}
+
+.footer-widget a {
+    color: #585858;
+}
+
+.footer-widget-wrap li.footer-widget:last-child p:nth-of-type(1){
+    font-size: 19px;
+    font-weight: bold;
+    cursor:default;
+}
+
+
+/*LOGGED IN HEADER STYLE OVERRIDES*/
+
+header .site-header .logo img {
+    width: 183px;
+    margin-top: 10px;
+}
+
+header .site-header {
+    padding: 20px 0 0 0;
+}
+
+header.header-nav {
+    float: right;
+    margin-bottom: 18px;
+    width: 100%;
+    padding-left: 0px;
+    margin-top: 10px;
+    height: auto;
+}
+
+
+header .main-nav .subnav__list {
+    float: left;
+    position: absolute;
+    z-index: 10000;
+    width: 206px;
+    padding: 10px 0;
+    padding-bottom: 0;
+    background: #fff;
+    padding-top: 0;
+    border: 0;
+    margin: 0;
+}
+
+
+header .main-nav .subnav__list .nav__link__noicon{
+    font-family: proxima-nova-condensed;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+
+.site-header {
+    padding: 20px 0 0 0 !important;
+}
+
+header .main-nav .nav__item {
+    padding: 10px;
+}
+
+.main-nav .nav__link {
+    padding: 6px 25px 6px 6px;
+}
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- MOBILE (portrait 0 - 480px) ---- */
+@media only screen and (max-width:$breakpoint-small) {
+
+    .page-limits                                        {width: $screen-extra-small;}
+}
+
+/* ---- MOBILE (landscape 480px - 600px) ---- */
+@media only screen and (min-width:$breakpoint-small) and (max-width: $breakpoint-medium-small) {
+
+    .page-limits                                        {width:$screen-small;}
+}
+
+/* ---- TABLET (portrait 600px - 768px) ---- */
+@media only screen and (min-width:$breakpoint-medium-small) and (max-width: $breakpoint-medium) {
+
+    .page-limits                                        {width:$breakpoint-medium-small;}
+}
+
+/* ---- TABLET (landscape 768px - 960px) ---- */
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-medium-large) {
+
+    .page-limits                                        {width:$screen-medium;}
+}
+
+/* ---- SMALL DESKTOP (960px - 1024px) ---- */
+@media only screen and (min-width:$breakpoint-medium-large) and (max-width: $breakpoint-large) {
+
+    .page-limits                                        {width:$screen-medium-large;}
+}
+
+/* ---- MEDIUM DESKTOP (1024px - 1280px) ---- */
+@media only screen and (min-width:$breakpoint-large) and (max-width: $breakpoint-extra-large) {
+
+    .page-limits                                        {width:$screen-large;}
+}
+
+/* ---- LARGE DESKTOP (1280px +) ---- */
+@media only screen and (min-width:$breakpoint-extra-large) {
+
+    .page-limits                                        {width:$screen-extra-large;}
+}
+
+
+
+
+
+

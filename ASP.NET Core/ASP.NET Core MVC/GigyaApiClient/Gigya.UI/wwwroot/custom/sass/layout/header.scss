@@ -1,0 +1,45 @@
+/* ===========================================================
+
+	$HEADER
+
+=========================================================== */
+
+
+
+.site-header 					                    {clear:both; padding:10px 0px 0px 0px; margin-left:auto; margin-right:auto; background-color:$white;}
+
+.site-header .top-header                            {clear:both; padding-bottom:0px; @include clearfix;}
+.site-header .logo                                  {float:left;margin-bottom: 0;margin-top: 0;}
+
+/* ---- SUB NAV CONTAINER ---- */
+.site-header .right-details                         {float:right;}
+.site-header .login-buttons                         {float:right; clear:both; margin-bottom:9px;}
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- MOBILE ---- */
+@media only screen and (max-width: $breakpoint-medium) {
+
+    .site-header .logo                                  {clear:both; float:left; width:auto; margin-bottom:20px;}
+
+    /* ---- SUB NAV CONTAINER ---- */
+    
+    .site-header .login-buttons                         {width:auto;}
+
+}
+
+/* ---- TABLET ---- */
+@media only screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
+
+}
+
+/* ---- DESKTOP ---- */
+@media only screen and (min-width: $breakpoint-large) {
+
+}
+
+/* ---- LARGE DESKTOP ---- */
+@media only screen and (min-width: $breakpoint-extra-large) { 
+
+}

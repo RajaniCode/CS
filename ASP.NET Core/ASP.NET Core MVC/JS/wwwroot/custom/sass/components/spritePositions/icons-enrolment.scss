@@ -1,0 +1,59 @@
+/* ======== ICON (ENROLMENTS) SPRITE LOCATIONS VARIABLES ======== */
+
+/* 24px */
+$icon24-draft:0;
+$icon24-pending:-100px;
+$icon24-rejected:-200px;
+$icon24-approved:-300px;
+$icon24-archived:-400px;
+
+/* 32px */
+$icon32-draft:0;
+$icon32-pending:-100px;
+$icon32-rejected:-200px;
+$icon32-approved:-300px;
+$icon32-archived:-400px;
+
+
+/* ======== 24px ICON SPRITE LOCATIONS ======== */
+I.icon--24.icon--en-draft						        {@include sprite-icon($xPos32, $icon24-draft);}
+.button.icon--24.icon--en-draft,
+.grid-button.icon--24.icon--en-draft					{@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-draft);}
+
+I.icon--24.icon--en-pending				                {@include sprite-icon($xPos24,$icon24-pending);}
+.button.icon--24.icon--en-pending,
+.grid-button.icon--24.icon--en-pending			        {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-pending);}
+
+I.icon--24.icon--en-rejected				            {@include sprite-icon($xPos24,$icon24-rejected);}
+.button.icon--24.icon--en-rejected,
+.grid-button.icon--24.icon--en-rejected		            {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-rejected);}
+
+I.icon--24.icon--en-approved				            {@include sprite-icon($xPos24,$icon24-approved);}
+.button.icon--24.icon--en-approved,
+.grid-button.icon--24.icon--en-approved		            {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-approved);}
+
+I.icon--24.icon--en-archived			                {@include sprite-icon($xPos24,$icon24-archived);}
+.button.icon--24.icon--en-archived,
+.grid-button.icon--24.icon--en-archived		            {@include button-sprite-icon($xPos24-offset1,$yPos24-offset1,$icon24-archived);}
+
+
+/* ======== 32px ICON SPRITE LOCATIONS ======== */
+I.icon--32.icon--en-draft						        {@include sprite-icon($xPos32, $icon32-draft);}
+.button.icon--32.icon--en-draft,
+.grid-button.icon--32.icon--en-draft					{@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-draft);}
+
+I.icon--32.icon--en-pending				                {@include sprite-icon($xPos32,$icon32-pending);}
+.button.icon--32.icon--en-pending,
+.grid-button.icon--32.icon--en-pending			        {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-pending);}
+
+I.icon--32.icon--en-rejected				            {@include sprite-icon($xPos32,$icon32-rejected);}
+.button.icon--32.icon--en-rejected,
+.grid-button.icon--32.icon--en-rejected		            {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-rejected);}
+
+I.icon--32.icon--en-approved				            {@include sprite-icon($xPos32,$icon32-approved);}
+.button.icon--32.icon--en-approved,
+.grid-button.icon--32.icon--en-approved		            {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-approved);}
+
+I.icon--32.icon--en-archived			                {@include sprite-icon($xPos32,$icon32-archived);}
+.button.icon--32.icon--en-archived,
+.grid-button.icon--32.icon--en-archived		            {@include button-sprite-icon($xPos32-offset1,$yPos32-offset1,$icon32-archived);}

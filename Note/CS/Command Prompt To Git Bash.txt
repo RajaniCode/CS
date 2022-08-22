@@ -1,0 +1,33 @@
+# > To $
+> start "" "C:\Users\rajanis\AppData\Local\Programs\Git\git-bash.exe" -c "command dotnet --version && /usr/bin/bash"
+
+# $ To $
+"C:\Users\rajanis\AppData\Local\Programs\Git\git-bash.exe" -c "command dotnet --version && /usr/bin/bash"
+
+
+# > To >
+> start "Command Prompt: dotnet version" "C:\Windows\System32\cmd.exe" /k "dotnet --version"
+
+> start "" "C:\Windows\System32\cmd.exe" /k "dotnet --version"
+
+> start "Command Prompt: dotnet version" cmd /k "dotnet --version"
+
+> start cmd /k "dotnet --version"
+
+
+#  $ To >
+$ cmd
+> start cmd /k "dotnet --version"
+[
+$ start "" "C:\Windows\System32\cmd.exe" -k "dotnet --version"
+
+$ start "Command Prompt: dotnet version" "C:\Windows\System32\cmd.exe" -k "dotnet --version"
+
+$ start "" cmd -k "echo dotnet --version"
+
+$ start "Command Prompt: dotnet version" cmd -k "dotnet --version"
+]
+
+
+# For tht given executable in D:\Rajani\Technical2021\CS\CS\Environment\DotnetEnvironment\DotnetEnvironment
+./FrameworkEnvironment | tee /D/T/t.txt

@@ -1,0 +1,504 @@
+
+/* ======== 12px ICON SPRITE LOCATIONS VARIABLES ======== */
+$icon12-add:0; 
+$icon12-arrowhead-up:-66px; 
+$icon12-arrowhead-down:-132px; 
+$icon12-arrowhead-left:-198px; 
+$icon12-arrowhead-right:-264px; 
+$icon12-chevron-down:-330px; 
+$icon12-chevron-left:-396px; 
+$icon12-chevron-right:-462px; 
+$icon12-chevron-up:-528px; 
+$icon12-basket:-594px; 
+$icon12-tick:-660px; 
+$icon12-redo:-726px; 
+$icon12-sync:-792px; 
+$icon12-refresh:-858px; 
+$icon12-undo:-912px; 
+$icon12-edit:-990px; 
+$icon12-cursor:-1056px; 
+$icon12-close:-1122px; 
+$icon12-cancel:-1188px; 
+$icon12-delete:-1254px; 
+$icon12-home:-1320px; 
+$icon12-user:-1386px; 
+$icon12-user-search:-1452px; 
+$icon12-user-add:-1518px; 
+$icon12-user-delete:-1584px; 
+$icon12-user-refresh:-1650px; 
+$icon12-user-time:-1716px; 
+$icon12-user-info:-1782px; 
+$icon12-user-lock:-1848px; 
+$icon12-user-new:-1914px; 
+$icon12-user-back:-1980px; 
+$icon12-user-world:-2046px; 
+$icon12-user-mail:-2112px; 
+$icon12-user-settings:-2178px; 
+$icon12-data:-2124px; 
+$icon12-data-edit:-2310px; 
+$icon12-data-search:-2376px; 
+$icon12-data-replace:-1242px; 
+$icon12-data-delete:-2508px; 
+$icon12-data-add:-2574px; 
+$icon12-data-error:-2640px; 
+$icon12-data-warning:-2706px; 
+$icon12-data-copy:-2772px; 
+$icon12-login:-2838px; 
+$icon12-logout:-2904px; 
+$icon12-document:-2970px; 
+$icon12-document-download:-3036px; 
+$icon12-document-add:-3102px; 
+$icon12-document-search:-3168px; 
+$icon12-document-warning:-3234px; 
+$icon12-document-exchange:-3300px; 
+$icon12-warning:-3366px; 
+$icon12-submit:-3432px; 
+$icon12-tick-alt:-3498px; 
+$icon12-upload:-3564px; 
+$icon12-download:-3630px; 
+$icon12-save:-3696px; 
+$icon12-error:-3762px; 
+$icon12-excel:-3828px; 
+$icon12-word:-3894px; 
+$icon12-pdf:-3960px; 
+$icon12-pdf-export:-4026px; 
+$icon12-csv-export:-4092px; 
+$icon12-tooltip:-4158px; 
+$icon12-info:-4212px; 
+$icon12-clock:-4290px; 
+$icon12-search-clock:-4356px; 
+$icon12-lock-open:-4422px; 
+$icon12-lock-closed:-4488px; 
+$icon12-print:-4554px; 
+$icon12-search:-4620px; 
+$icon12-view:-4686px; 
+$icon12-search-refresh:-4752px; 
+$icon12-search-open:-4818px; 
+$icon12-mail:-4884px; 
+$icon12-filter:-4950px; 
+$icon12-filter-edit:-5016px; 
+$icon12-filter-accept:-5082px; 
+$icon12-filter-descending:-5148px; 
+$icon12-filter-ascending:-5214px; 
+$icon12-filter-add:-5280px; 
+$icon12-filter-delete:-5346px; 
+$icon12-filter-new:-5412px; 
+$icon12-flag:-5478px; 
+$icon12-critical:-5544px; 
+$icon12-menu:-5610px; 
+$icon12-star:-5676px; 
+$icon12-sticker-free:-5742px; 
+$icon12-sticker-new:-5808px; 
+$icon12-star-new:-5874px; 
+$icon12-power:-5940px; 
+$icon12-star-cute:-6006px; 
+$icon12-sticker-sale:-6072px; 
+$icon12-sticker-discount:-6138px; 
+$icon12-collapse:-6204px; 
+$icon12-expand:-6270px; 
+$icon12-sync-alt:-6336px; 
+$icon12-count:-6402px; 
+$icon12-grid:-6468px; 
+$icon12-bin:-6534px;
+
+
+/* ======== 12px ICON SPRITE LOCATIONS ======== */
+I.icon--12.icon--add						            {@include sprite-icon($xPos12,$icon12-add);}
+.button.icon--12.icon--add,
+.grid-button.icon--12.icon--add					        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-menu);}
+
+I.icon--12.icon--arrowhead-up				            {@include sprite-icon($xPos12,$icon12-arrowhead-up);}
+.button.icon--12.icon--arrowhead-up,
+.grid-button.icon--12.icon--arrowhead-up			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-arrowhead-up);}
+
+I.icon--12.icon--arrowhead-down				            {@include sprite-icon($xPos12,$icon12-arrowhead-down);}
+.button.icon--12.icon--arrowhead-down,
+.grid-button.icon--12.icon--arrowhead-down		        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-arrowhead-down);}
+
+I.icon--12.icon--arrowhead-left				            {@include sprite-icon($xPos12,$icon12-arrowhead-left);}
+.button.icon--12.icon--arrowhead-left,
+.grid-button.icon--12.icon--arrowhead-left		        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-arrowhead-left);}
+
+I.icon--12.icon--arrowhead-right			            {@include sprite-icon($xPos12,$icon12-arrowhead-right);}
+.button.icon--12.icon--arrowhead-right,
+.grid-button.icon--12.icon--arrowhead-right		        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-arrowhead-right);}
+
+I.icon--12.icon--chevron-down				            {@include sprite-icon($xPos12,$icon12-chevron-down);}
+.button.icon--12.icon--chevron-down,
+.grid-button.icon--12.icon--chevron-down			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-chevron-down);}
+
+I.icon--12.icon--chevron-left				            {@include sprite-icon($xPos12,$icon12-chevron-left);}
+.button.icon--12.icon--chevron-left,
+.grid-button.icon--12.icon--chevron-left			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-chevron-left);}
+
+I.icon--12.icon--chevron-right				            {@include sprite-icon($xPos12,$icon12-chevron-right);}
+.button.icon--12.icon--chevron-right,
+.grid-button.icon--12.icon--chevron-right		        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-chevron-right);}
+
+I.icon--12.icon--chevron-up					            {@include sprite-icon($xPos12,$icon12-chevron-up);}
+.button.icon--12.icon--chevron-up,
+.grid-button.icon--12.icon--chevron-up			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-chevron-up);}
+
+I.icon--12.icon--basket						            {@include sprite-icon($xPos12,$icon12-basket);}
+.button.icon--12.icon--basket,
+.grid-button.icon--12.icon--basket				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-basket);}
+
+I.icon--12.icon--tick						            {@include sprite-icon($xPos12,$icon12-tick);}
+.button.icon--12.icon--tick,
+.grid-button.icon--12.icon--tick					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-tick);}
+
+I.icon--12.icon--redo						            {@include sprite-icon($xPos12,$icon12-redo);}
+.button.icon--12.icon--redo,
+.grid-button.icon--12.icon--redo					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-redo);}
+
+I.icon--12.icon--sync						            {@include sprite-icon($xPos12,$icon12-sync);}
+.button.icon--12.icon--sync,
+.grid-button.icon--12.icon--sync					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-sync);}
+
+I.icon--12.icon--refresh					            {@include sprite-icon($xPos12,$icon12-refresh);}
+.button.icon--12.icon--refresh,
+.grid-button.icon--12.icon--refresh				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-refresh);}
+
+I.icon--12.icon--undo						            {@include sprite-icon($xPos12,$icon12-undo);}
+.button.icon--12.icon--undo,
+.grid-button.icon--12.icon--undo					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-undo);}
+
+I.icon--12.icon--edit						            {@include sprite-icon($xPos12,$icon12-edit);}
+.button.icon--12.icon--edit,
+.grid-button.icon--12.icon--edit					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-edit);}
+
+I.icon--12.icon--cursor						            {@include sprite-icon($xPos12,$icon12-cursor);}
+.button.icon--12.icon--cursor,
+.grid-button.icon--12.icon--cursor				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-cursor);}
+
+I.icon--12.icon--close						            {@include sprite-icon($xPos12,$icon12-close);}
+.button.icon--12.icon--close,
+.grid-button.icon--12.icon--close				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-close);}
+
+I.icon--12.icon--cancel						            {@include sprite-icon($xPos12,$icon12-cancel);}
+.button.icon--12.icon--cancel,
+.grid-button.icon--12.icon--cancel				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-cancel);}
+
+I.icon--12.icon--delete						            {@include sprite-icon($xPos12,$icon12-delete);}
+.button.icon--12.icon--delete,
+.grid-button.icon--12.icon--delete				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-delete);}
+
+I.icon--12.icon--home						            {@include sprite-icon($xPos12,$icon12-home);}
+.button.icon--12.icon--home,
+.grid-button.icon--12.icon--home					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-home);}
+
+I.icon--12.icon--user						            {@include sprite-icon($xPos12,$icon12-user);}
+.button.icon--12.icon--user,
+.grid-button.icon--12.icon--user					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user);}
+
+I.icon--12.icon--user-search				            {@include sprite-icon($xPos12,$icon12-user-search);}
+.button.icon--12.icon--user-search,
+.grid-button.icon--12.icon--user-search			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-search);}
+
+I.icon--12.icon--user-add					            {@include sprite-icon($xPos12,$icon12-user-add);}
+.button.icon--12.icon--user-add,
+.grid-button.icon--12.icon--user-add				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-add);}
+
+I.icon--12.icon--user-delete				            {@include sprite-icon($xPos12,$icon12-user-delete);}
+.button.icon--12.icon--user-delete,
+.grid-button.icon--12.icon--user-delete			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-delete);}
+
+I.icon--12.icon--user-refresh				            {@include sprite-icon($xPos12,$icon12-user-refresh);}
+.button.icon--12.icon--user-refresh,
+.grid-button.icon--12.icon--user-refresh			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-refresh);}
+
+I.icon--12.icon--user-time					            {@include sprite-icon($xPos12,$icon12-user-time);}
+.button.icon--12.icon--user-time,
+.grid-button.icon--12.icon--user-time			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-time);}
+
+I.icon--12.icon--user-info					            {@include sprite-icon($xPos12,$icon12-user-info);}
+.button.icon--12.icon--user-info,
+.grid-button.icon--12.icon--user-info			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-info);}
+
+I.icon--12.icon--user-lock					            {@include sprite-icon($xPos12,$icon12-user-lock);}
+.button.icon--12.icon--user-lock,
+.grid-button.icon--12.icon--user-lock			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-lock);}
+
+I.icon--12.icon--user-new					            {@include sprite-icon($xPos12,$icon12-user-new);}
+.button.icon--12.icon--user-new,
+.grid-button.icon--12.icon--user-new				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-new);}
+
+I.icon--12.icon--user-back					            {@include sprite-icon($xPos12,$icon12-user-back);}
+.button.icon--12.icon--user-back,
+.grid-button.icon--12.icon--user-back			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-back);}
+
+I.icon--12.icon--user-world					            {@include sprite-icon($xPos12,$icon12-user-world);}
+.button.icon--12.icon--user-world,
+.grid-button.icon--12.icon--user-world			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-world);}
+
+I.icon--12.icon--user-mail					            {@include sprite-icon($xPos12,$icon12-user-mail);}
+.button.icon--12.icon--user-mail,
+.grid-button.icon--12.icon--user-mail			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-mail);}
+
+I.icon--12.icon--user-settings				            {@include sprite-icon($xPos12,$icon12-user-settings);}
+.button.icon--12.icon--user-settings,
+.grid-button.icon--12.icon--user-settings		        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-user-settings);}
+
+I.icon--12.icon--data						            {@include sprite-icon($xPos12,$icon12-data);}
+.button.icon--12.icon--data,
+.grid-button.icon--12.icon--data					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-data);}
+
+I.icon--12.icon--data-edit					            {@include sprite-icon($xPos12,$icon12-data-edit);}
+.button.icon--12.icon--data-edit,
+.grid-button.icon--12.icon--data-edit			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-data-edit);}
+
+I.icon--12.icon--data-search				            {@include sprite-icon($xPos12,$icon12-data-search);}
+.button.icon--12.icon--data-search,
+.grid-button.icon--12.icon--data-search			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-data-search);}
+
+I.icon--12.icon--data-replace				            {@include sprite-icon($xPos12,$icon12-data-replace);}
+.button.icon--12.icon--data-replace,
+.grid-button.icon--12.icon--data-replace			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-data-replace);}
+
+I.icon--12.icon--data-delete				            {@include sprite-icon($xPos12,$icon12-data-delete);}
+.button.icon--12.icon--data-delete,
+.grid-button.icon--12.icon--data-delete			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-data-delete);}
+
+I.icon--12.icon--data-add					            {@include sprite-icon($xPos12,$icon12-data-add);}
+.button.icon--12.icon--data-add,
+.grid-button.icon--12.icon--data-add				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-data-add);}
+
+I.icon--12.icon--data-error					            {@include sprite-icon($xPos12,$icon12-data-error);}
+.button.icon--12.icon--data-error,
+.grid-button.icon--12.icon--data-error			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-data-error);}
+
+I.icon--12.icon--data-warning				            {@include sprite-icon($xPos12,$icon12-data-warning);}
+.button.icon--12.icon--data-warning,
+.grid-button.icon--12.icon--data-warning			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-data-warning);}
+
+I.icon--12.icon--data-copy					            {@include sprite-icon($xPos12,$icon12-data-copy);}
+.button.icon--12.icon--data-copy,
+.grid-button.icon--12.icon--data-copy			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-data-copy);}
+
+I.icon--12.icon--login						            {@include sprite-icon($xPos12,$icon12-login);}
+.button.icon--12.icon--login,
+.grid-button.icon--12.icon--login				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-login);}
+
+I.icon--12.icon--logout						            {@include sprite-icon($xPos12,$icon12-logout);}
+.button.icon--12.icon--logout,
+.grid-button.icon--12.icon--logout				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-logout);}
+
+I.icon--12.icon--document					            {@include sprite-icon($xPos12,$icon12-document);}
+.button.icon--12.icon--document,
+.grid-button.icon--12.icon--document				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-document);}
+
+I.icon--12.icon--document-download			            {@include sprite-icon($xPos12,$icon12-document-download);}
+.button.icon--12.icon--document-download,
+.grid-button.icon--12.icon--document-download	        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-document-download);}
+
+I.icon--12.icon--document-add				            {@include sprite-icon($xPos12,$icon12-document-add);}
+.button.icon--12.icon--document-add,
+.grid-button.icon--12.icon--document-add			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-document-add);}
+
+I.icon--12.icon--document-search			            {@include sprite-icon($xPos12,$icon12-document-search);}
+.button.icon--12.icon--document-search,
+.grid-button.icon--12.icon--document-search		        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-document-search);}
+
+I.icon--12.icon--document-warning			            {@include sprite-icon($xPos12,$icon12-document-warning);}
+.button.icon--12.icon--document-warning,
+.grid-button.icon--12.icon--document-warning		    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-document-warning);}
+
+I.icon--12.icon--document-exchange			            {@include sprite-icon($xPos12,$icon12-document-exchange);}
+.button.icon--12.icon--document-exchange,
+.grid-button.icon--12.icon--document-exchange	        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-document-exchange);}
+
+I.icon--12.icon--warning					            {@include sprite-icon($xPos12,$icon12-warning);}
+.button.icon--12.icon--warning,
+.grid-button.icon--12.icon--warning				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-warning);}
+
+I.icon--12.icon--submit						            {@include sprite-icon($xPos12,$icon12-submit);}
+.button.icon--12.icon--submit,
+.grid-button.icon--12.icon--submit				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-submit);}
+
+I.icon--12.icon--tick-alt					            {@include sprite-icon($xPos12,$icon12-tick-alt);}
+.button.icon--12.icon--tick-alt,
+.grid-button.icon--12.icon--tick-alt				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-tick-alt);}
+
+I.icon--12.icon--upload						            {@include sprite-icon($xPos12,$icon12-upload);}
+.button.icon--12.icon--upload,
+.grid-button.icon--12.icon--upload				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-upload);}
+
+I.icon--12.icon--download					            {@include sprite-icon($xPos12,$icon12-download);}
+.button.icon--12.icon--download,
+.grid-button.icon--12.icon--download				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-download);}
+
+I.icon--12.icon--save						            {@include sprite-icon($xPos12,$icon12-save);}
+.button.icon--12.icon--save,
+.grid-button.icon--12.icon--save					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-save);}
+
+I.icon--12.icon--error						            {@include sprite-icon($xPos12,$icon12-error);}
+.button.icon--12.icon--error,
+.grid-button.icon--12.icon--error				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-error);}
+
+I.icon--12.icon--excel						            {@include sprite-icon($xPos12,$icon12-excel);}
+.button.icon--12.icon--excel,
+.grid-button.icon--12.icon--excel				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-excel);}
+
+I.icon--12.icon--word						            {@include sprite-icon($xPos12,$icon12-word);}
+.button.icon--12.icon--word,
+.grid-button.icon--12.icon--word					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-word);}
+
+I.icon--12.icon--pdf						            {@include sprite-icon($xPos12,$icon12-pdf);}
+.button.icon--12.icon--pdf,
+.grid-button.icon--12.icon--pdf					        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-pdf);}
+
+I.icon--12.icon--pdf-export					            {@include sprite-icon($xPos12,$icon12-pdf-export);}
+.button.icon--12.icon--pdf-export,
+.grid-button.icon--12.icon--pdf-export			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-pdf-export);}
+
+I.icon--12.icon--csv-export					            {@include sprite-icon($xPos12,$icon12-csv-export);}
+.button.icon--12.icon--csv-export,
+.grid-button.icon--12.icon--csv-export			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-csv-export);}
+
+I.icon--12.icon--tooltip					            {@include sprite-icon($xPos12,$icon12-tooltip);}
+.button.icon--12.icon--tooltip,
+.grid-button.icon--12.icon--tooltip				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-tooltip);}
+
+I.icon--12.icon--info						            {@include sprite-icon($xPos12,$icon12-info);}
+.button.icon--12.icon--info,
+.grid-button.icon--12.icon--info					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-info);}
+
+I.icon--12.icon--clock						            {@include sprite-icon($xPos12,$icon12-clock);}
+.button.icon--12.icon--clock,
+.grid-button.icon--12.icon--clock				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-clock);}
+
+I.icon--12.icon--search-clock				            {@include sprite-icon($xPos12,$icon12-search-clock);}
+.button.icon--12.icon--search-clock,
+.grid-button.icon--12.icon--search-clock			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-search-clock);}
+
+I.icon--12.icon--lock-open					            {@include sprite-icon($xPos12,$icon12-lock-open);}
+.button.icon--12.icon--lock-open,
+.grid-button.icon--12.icon--lock-open			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-lock-open);}
+
+I.icon--12.icon--lock-closed				            {@include sprite-icon($xPos12,$icon12-lock-closed);}
+.button.icon--12.icon--lock-closed,
+.grid-button.icon--12.icon--lock-closed			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-lock-closed);}
+
+I.icon--12.icon--print						            {@include sprite-icon($xPos12,$icon12-print);}
+.button.icon--12.icon--print,
+.grid-button.icon--12.icon--print				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-print);}
+
+I.icon--12.icon--search						            {@include sprite-icon($xPos12,$icon12-search);}
+.button.icon--12.icon--search,
+.grid-button.icon--12.icon--search				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-search);}
+
+I.icon--12.icon--view						            {@include sprite-icon($xPos12,$icon12-view);}
+.button.icon--12.icon--view,
+.grid-button.icon--12.icon--view					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-view);}
+
+I.icon--12.icon--search-refresh			                {@include sprite-icon($xPos12,$icon12-search-refresh);}
+.button.icon--12.icon--search-refresh,
+.grid-button.icon--12.icon--search-refresh		        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-search-refresh);}
+
+I.icon--12.icon--search-open				            {@include sprite-icon($xPos12,$icon12-search-open);}
+.button.icon--12.icon--search-open,
+.grid-button.icon--12.icon--search-open			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-search-open);}
+
+I.icon--12.icon--mail						            {@include sprite-icon($xPos12,$icon12-mail);}
+.button.icon--12.icon--mail,
+.grid-button.icon--12.icon--mail					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-mail);}
+
+I.icon--12.icon--filter						            {@include sprite-icon($xPos12,$icon12-filter);}
+.button.icon--12.icon--filter,
+.grid-button.icon--12.icon--filter				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-filter);}
+
+I.icon--12.icon--filter-edit				            {@include sprite-icon($xPos12,$icon12-edit);}
+.button.icon--12.icon--filter-edit,
+.grid-button.icon--12.icon--filter-edit			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-filter-edit);}
+
+I.icon--12.icon--filter-accept				            {@include sprite-icon($xPos12,$icon12-filter-accept);}
+.button.icon--12.icon--filter-accept,
+.grid-button.icon--12.icon--filter-accept		        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-filter-accept);}
+
+I.icon--12.icon--filter-descending			            {@include sprite-icon($xPos12,$icon12-filter-descending);}
+.button.icon--12.icon--filter-descending,
+.grid-button.icon--12.icon--filter-descending	        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-filter-descending);}
+
+I.icon--12.icon--filter-ascending			            {@include sprite-icon($xPos12,$icon12-filter-ascending);}
+.button.icon--12.icon--filter-ascending,
+.grid-button.icon--12.icon--filter-ascending		    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-filter-ascending);}
+
+I.icon--12.icon--filter-add					            {@include sprite-icon($xPos12,$icon12-filter-add);}
+.button.icon--12.icon--filter-add,
+.grid-button.icon--12.icon--filter-add			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-filter-add);}
+
+I.icon--12.icon--filter-delete				            {@include sprite-icon($xPos12,$icon12-filter-delete);}
+.button.icon--12.icon--filter-delete,
+.grid-button.icon--12.icon--filter-delete		        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-filter-delete);}
+
+I.icon--12.icon--filter-new					            {@include sprite-icon($xPos12,$icon12-filter-new);}
+.button.icon--12.icon--filter-new,
+.grid-button.icon--12.icon--filter-new			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-filter-new);}
+
+I.icon--12.icon--flag						            {@include sprite-icon($xPos12,$icon12-flag);}
+.button.icon--12.icon--flag,
+.grid-button.icon--12.icon--flag					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-flag);}
+
+I.icon--12.icon--critical					            {@include sprite-icon($xPos12,$icon12-critical);}
+.button.icon--12.icon--critical,
+.grid-button.icon--12.icon--critical				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-critical);}
+
+I.icon--12.icon--menu						            {@include sprite-icon($xPos12,$icon12-menu);}
+.button.icon--12.icon--menu,
+.grid-button.icon--12.icon--menu					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-menu);}
+
+I.icon--12.icon--star						            {@include sprite-icon($xPos12,$icon12-star);}
+.button.icon--12.icon--star,
+.grid-button.icon--12.icon--star					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-star);}
+
+I.icon--12.icon--sticker-free				            {@include sprite-icon($xPos12,$icon12-sticker-free);}
+.button.icon--12.icon--sticker-free,
+.grid-button.icon--12.icon--sticker-free			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-sticker-free);}
+
+I.icon--12.icon--sticker-new				            {@include sprite-icon($xPos12,$icon12-sticker-new);}
+.button.icon--12.icon--sticker-new,
+.grid-button.icon--12.icon--sticker-new			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-sticker-new);}
+
+I.icon--12.icon--star-new					            {@include sprite-icon($xPos12,$icon12-star-new);}
+.button.icon--12.icon--star-new,
+.grid-button.icon--12.icon--star-new				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-star-new);}
+
+I.icon--12.icon--power						            {@include sprite-icon($xPos12,$icon12-power);}
+.button.icon--12.icon--power,
+.grid-button.icon--12.icon--power				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-power);}
+
+I.icon--12.icon--star-cute					            {@include sprite-icon($xPos12,$icon12-star-cute);}
+.button.icon--12.icon--star-cute,
+.grid-button.icon--12.icon--star-cute			        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-star-cute);}
+
+I.icon--12.icon--sticker-sale				            {@include sprite-icon($xPos12,$icon12-sticker-sale);}
+.button.icon--12.icon--sticker-sale,
+.grid-button.icon--12.icon--sticker-sale			    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-sticker-sale);}
+
+I.icon--12.icon--sticker-discount			            {@include sprite-icon($xPos12,$icon12-sticker-discount);}
+.button.icon--12.icon--sticker-discount,
+.grid-button.icon--12.icon--sticker-discount		    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-sticker-discount);}
+
+I.icon--12.icon--collapse					            {@include sprite-icon($xPos12,$icon12-collapse);}
+.button.icon--12.icon--collapse,
+.grid-button.icon--12.icon--collapse				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-collapse);}
+
+I.icon--12.icon--expand						            {@include sprite-icon($xPos12,$icon12-expand);}
+.button.icon--12.icon--expand,
+.grid-button.icon--12.icon--expand				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-expand);}
+
+I.icon--12.icon--sync-alt					            {@include sprite-icon($xPos12,$icon12-sync-alt);}
+.button.icon--12.icon--sync-alt,
+.grid-button.icon--12.icon--sync-alt				    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-sync-alt);}
+
+I.icon--12.icon--count						            {@include sprite-icon($xPos12,$icon12-count);}
+.button.icon--12.icon--count,
+.grid-button.icon--12.icon--count				        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-count);}
+
+I.icon--12.icon--grid						            {@include sprite-icon($xPos12,$icon12-grid);}
+.button.icon--12.icon--grid,
+.grid-button.icon--12.icon--grid					    {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-grid);}
+
+I.icon--12.icon--bin						            {@include sprite-icon($xPos12,$icon12-bin);}
+.button.icon--12.icon--bin,
+.grid-button.icon--12.icon--bin					        {@include button-sprite-icon($xPos12-offset1,$yPos12-offset1,$icon12-bin);}

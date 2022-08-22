@@ -1,0 +1,52 @@
+/* ===========================================================
+                                                              
+                        MASTER SASS FILE                    
+
+=========================================================== */
+
+
+@import "helpers/variables.scss";
+@import "helpers/mixins.scss";
+@import "helpers/helpers.scss";
+
+@import "layout/grid.scss";
+
+@import "base/reset.scss";
+@import "base/generics.scss";
+@import "base/typography.scss";
+@import "base/images.scss";
+
+
+@import "components/buttons.scss";
+@import "components/forms.scss";
+@import "components/tables.scss";
+@import "components/sprites.scss";
+@import "components/icons.scss";
+@import "components/lists.scss";
+@import "components/slider.scss";
+//@import "components/widgets.scss";
+@import "components/tabs.scss";
+//@import "components/tabbs.scss";
+
+@import "layout/body.scss";
+@import "layout/nav.scss";
+@import "layout/header.scss";
+@import "layout/main.scss";
+@import "layout/aside.scss";
+@import "layout/articles.scss";
+@import "layout/media.scss";
+@import "layout/search.scss";
+@import "layout/footer.scss";
+
+
+
+
+@import "pages/home.scss";
+@import "pages/content-full.scss";
+@import "pages/content-sidebar.scss";
+@import "pages/product info.scss";
+@import "pages/enrolment.scss";
+@import "pages/dashboard.scss";
+@import "pages/login.scss";
+
+@import "layout/kendo-override.scss";

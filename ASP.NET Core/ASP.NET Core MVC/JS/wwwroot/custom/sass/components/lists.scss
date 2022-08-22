@@ -1,0 +1,107 @@
+/* ===========================================================
+
+	$LISTS
+
+=========================================================== */
+
+
+/* ---- UNORDERED LIST  ---- */
+MAIN UL							                    {display:block; padding:0 0 0 10px; margin:0 0 40px;}
+MAIN UL LI						                    {display:list-item; padding:0; margin:0 0 5px 0;}
+MAIN UL > LI					                    {list-style:disc;}
+MAIN UL > LI > UL				                    {margin:10px 0 0;}
+MAIN UL > LI > UL > LI			                    {margin:0 0 5px 0; list-style:circle;}
+/* -- With ordered list inside -- */
+MAIN UL > LI OL					                    {margin:10px 0 0;}
+MAIN UL > LI OL LI				                    {margin:0 0 5px 0; list-style:decimal;}
+
+
+/* ---- ORDERED LIST  ---- */
+MAIN OL							                    {display:block; padding:0 0 0 40px; margin:0 0 40px;}
+MAIN OL LI						                    {display:list-item; padding:0; margin:0 0 5px 0;}
+MAIN OL > LI					                    {list-style:decimal;}
+MAIN OL > LI > OL				                    {margin:10px 0 0;}
+MAIN OL > LI > OL > LI			                    {margin:0 0 5px 0; list-style:lower-roman;}
+/* -- With unordered list inside -- */
+MAIN OL > LI UL					                    {margin:10px 0 0;}
+MAIN OL > LI UL LI				                    {margin:0 0 5px 0; list-style:disc;}
+
+
+/* ---- DESCRIPTION LIST ---- */
+/* Initial style */
+MAIN DL							                    {display:block; margin:0 0 40px;}
+MAIN DL DT						                    {font-weight:700; margin-bottom:10px;}
+MAIN DL DD						                    {margin-bottom:15px;}
+/* Lined-up style */
+MAIN DL.lined-up				                    {}
+MAIN DL.lined-up DT				                    {display:block; float:left; min-width:100px; margin-right:5px;}
+MAIN DL.lined-up DT:after		                    {content:' : ';}
+MAIN DL.lined-up DD				                    {display:block; overflow:hidden;}
+/*MAIN DL.lined-up DD:after		                    {content:"\A\A"; white-space:pre;} --- (If using inline elements instead of block)*/
+
+
+/* ---- IMAGE LIST ---- */
+.image-list                                         {display:block; padding:0; @include clearfix();}
+.image-list__item                                   {display:block; clear:both; padding:15px; border:$borderWidth solid $green-faint; background-color:$white; @include clearfix();}
+.image-list__img-wrap                               {display:block; @include column(3); text-align:left;}
+.image-list__img-link                               {}
+.image-list__img                                    {max-width:100%; transition:opacity $transitionSpeed ease; &:hover{opacity:$opacityMedium;}}
+.image-list__body-text                              {padding-left:15px; overflow:hidden;}
+.image-list__link                                   {}
+
+
+/* ---- ICON LIST ---- */
+.icon-list                                          {display:block; padding:0; margin-bottom:0; @include clearfix();}
+.icon-list__item                                    {display:block; clear:both; padding:0; margin-bottom:15px; @include clearfix();}
+.icon-list__img-wrap                                {float:left; width:72px;}
+.icon-list__img                                     {width:72px; height:72px; transition:opacity $transitionSpeed ease; &:hover{opacity:$opacityMedium;}}
+.icon-list__body-text                               {padding-left:15px; overflow:hidden;}
+.icon-list__body-text UL                            {padding-left:20px; margin-bottom:0;}
+.icon-list__body-text UL LI                         {margin-bottom:0;}
+
+
+/* ---- SUPPORT LIST ---- */
+.support						                    {clear:both; padding:0 5px; font-size:1.2rem;}
+.support__caption				                    {display:inline-block; margin-right:10px;}
+.support__caption:after			                    {content:' : ';}
+.support__list					                    {display:inline-block; clear:both; padding:0; margin:0;}
+.support__list LI				                    {display:inline-block; margin-right:10px; list-style:none;}
+.support__list LI.ie-colour		                    {color:$blue-medium;}
+.support__list LI.firefox-colour                    {color:$orange-dark;}
+.support__list LI.chrome-colour	                    {color:$teal-dark;}
+.support__list LI.safari-colour	                    {color:$green-medium;}
+.support__list LI.opera-colour	                    {color:$red-dark;}
+
+.footer-grey li                                     {display:inline; margin-right:10px;}
+
+
+
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- SMALL MOBILE ---- */
+@media only screen and (max-width: $breakpoint-small) {
+
+    /* ---- UNORDERED LIST  ---- */
+    MAIN UL,
+    MAIN OL							                {padding-left:20px;}
+	
+}
+
+/* ---- TABLET & DESKTOP ---- */
+@media only screen and (min-width: $breakpoint-medium) {
+
+	/* ---- SUPPORT LIST ---- */
+	.support						                {padding-right:30px; text-align:right;}	
+	
+}
+
+/* ---- LARGE DESKTOP ---- */
+@media only screen and (min-width: $breakpoint-extra-large) {
+
+    /* ---- IMAGE LIST ---- */
+    .image-list__img                                {max-width:180px;}
+
+	
+}

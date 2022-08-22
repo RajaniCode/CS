@@ -1,0 +1,34 @@
+/*
+// msys64-mingw64-gcc.c
+#include <stdio.h>
+
+// int
+void
+c_code(void) {
+  printf("C!\n");
+}
+
+/*
+int main() {
+  c_code();
+}
+*/
+
+// "_main"
+// gcc msys64-mingw64-gcc.c -o msys64-mingw64-gcc
+// ./msys64-mingw64-gcc
+
+
+// D:\RajaniS Master Folder\.NET\CS\CS.NET-Core\CS9\CS9\msys64-mingw64-gcc.dll
+
+// $ gcc -c msys64-mingw64-gcc.c
+
+// $ gcc -shared -o msys64-mingw64-gcc.dll msys64-mingw64-gcc.o
+
+
+// /Users/rajaniapple/Desktop/GitHub/CSUpdate/CS/CS/CS9/dotnet6/CS9/msys64-mingw64-gcc.so
+
+% gcc -c -fPIC msys64-mingw64-gcc.c
+
+% gcc -shared -o msys64-mingw64-gcc.so msys64-mingw64-gcc.o
+*/

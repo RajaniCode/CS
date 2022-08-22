@@ -1,0 +1,78 @@
+// Armstrong Number
+
+using System;
+using System.Collections.Generic; 
+using System.Linq;
+
+class ArmstrongSeries
+{
+    private void Armstrong(int x, int y, double power)
+    {
+        IEnumerable<int> numbers = Enumerable.Range(x, y);
+        numbers.ToList().ForEach(number => 
+        {
+            double d = 0D, a = 0D;
+            int t = number;
+            while (t != 0)
+            {
+                d = t % 10D;
+                a += Math.Pow(d, power);
+                t = t / 10;
+            }
+            if (number == a)
+            {
+                Console.WriteLine(number);
+            }
+       });
+       Console.WriteLine();
+    }
+
+    public void Print()
+    {
+        Console.WriteLine("3 Digit Armstrong Numbers");
+        Armstrong(100, 999, 3D);
+        Console.WriteLine("4 Digit Armstrong Numbers");
+        Armstrong(1000, 9999, 4D);
+        Console.WriteLine("5 Digit Armstrong Numbers");
+        Armstrong(10000, 99999, 5D);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        ArmstrongSeries armstrong = new ArmstrongSeries();
+        armstrong.Print();
+    }
+}
+
+/*
+// int[] armstrong = { 1, 153, 370, 371, 407, 1634, 8208, 9474, 54748, 92727, 93084 };
+
+// 3 Digit Armstrong Numbers
+
+1 + 125 + 27 = 153
+
+27 + 343 + 0 = 370
+
+27 + 343 + 1 = 371
+
+64 + 0 + 343 = 407
+
+// 4 Digit Armstrong Numbers
+
+1 + 1296 + 81 + 256 = 1634
+
+4096 + 16 + 0 + 4096 = 8208
+
+6561 + 256 + 2401 + 256 = 9474
+
+// 5 Digit Armstrong Numbers
+
+3125 + 1024 + 16807 + 1024 + 32768 = 54748
+
+59049 + 32 + 16807 + 32 + 16807 = 92727
+
+59049 + 243 + 0 + 32768 + 1024 = 93084
+*/

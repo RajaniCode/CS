@@ -1,0 +1,579 @@
+ASP.NET Core MVC Individual User Accounts
+
+
+[
+https://localhost:44309/Identity/Account/Register
+https://localhost:44309/Identity/Account/Login
+email@example.com
+Hola!123
+]
+
+
+# 5-IdentityCore-External-Logins-Twitter
+[Copy # 4-IdentityCore-External-Logins-Google]
+// Ensure aspnet-Identity database points to the current application App_Data folder mdf file by running the application and logging in
+// May have to delete aspnet-IdentityCore database if it does not point to the current application App_Data folder mdf file
+https://localhost:44309/Identity/Account/Login
+email@example.com
+Hola!123
+
+// Edit
+// IdentityCore\Startup.cs
+// Add
+// https://developer.twitter.com
+// https://localhost:44309/signin-twitter
+// https://example.com
+// Install-Package Microsoft.AspNetCore.Authentication.Twitter -Version 5.0.4
+services.AddAuthentication().AddTwitter(twitterOptions =>
+{
+    twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerAPIKey"];
+    twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
+    twitterOptions.RetrieveUserDetails = true;
+});
+
+// Edit
+// IdentityCore\appsettings.json
+  "Authentication": {
+    "Twitter": {
+      "ConsumerAPIKey": "*************************",
+      "ConsumerSecret": "**************************************************"
+    }
+  }
+
+https://localhost:44309/Identity/Account/Login
+Twitter
+
+https://localhost:44309/Identity/Account/ExternalLogin?returnUrl=%2F&handler=Callback
+twitter@example.com
+Register
+[
+Register
+Associate your Twitter account.
+You've successfully authenticated with Twitter. Please enter an email address for this site below and click the Register button to finish logging in.
+
+Email
+twitter@example.com
+]
+
+[
+Register confirmation
+This app does not currently have a real email sender registered, see these docs for how to configure a real email sender. Normally this would be emailed:
+]
+Click here to confirm your account
+
+https://localhost:44309/Identity/Account/Login
+Twitter
+
+// Edit
+// IdentityCore\Startup.cs
+// public void ConfigureServices(IServiceCollection services)
+options.AddPolicy("RequireUserNames", policy => policy.Requirements.Add(new RequireUserNames("email@example.com", "e.mail@example.com", "mail@example.com", "admin@example.com", "facebook@example.com", "google@example.com", "twitter@example.com")));
+
+https://localhost:44309/Identity/Account/Login
+Twitter
+
+Backup App_Data
+
+
+# 4-IdentityCore-External-Logins-Google
+[Copy # 3-IdentityCore-External-Logins-Facebook]
+// Ensure aspnet-Identity database points to the current application App_Data folder mdf file by running the application and logging in
+// May have to delete aspnet-IdentityCore database if it does not point to the current application App_Data folder mdf file
+https://localhost:44309/Identity/Account/Login
+email@example.com
+Hola!123
+
+// Edit
+// IdentityCore\Startup.cs
+// Add
+// https://console.developers.google.com
+// https://localhost:44309
+// https://localhost:44309/signin-google
+// Install-Package Microsoft.AspNetCore.Authentication.Google -Version 5.0.4
+services.AddAuthentication().AddGoogle(options =>
+{
+    IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
+    options.ClientId = googleAuthNSection["ClientId"];
+    options.ClientSecret = googleAuthNSection["ClientSecret"];
+});
+
+// Edit
+// IdentityCore\appsettings.json
+  "Authentication": {
+    "Google": {
+      "ClientId": "*************************************************************************",
+      "ClientSecret": "************************"
+    }
+  }
+
+https://localhost:44309/Identity/Account/Login
+Google
+
+https://localhost:44309/Identity/Account/ExternalLogin?returnUrl=%2F&handler=Callback#
+google@example.com
+Register
+[
+Register
+Associate your Google account.
+You've successfully authenticated with Google. Please enter an email address for this site below and click the Register button to finish logging in.
+
+Email
+google@example.com
+]
+
+[
+Register confirmation
+This app does not currently have a real email sender registered, see these docs for how to configure a real email sender. Normally this would be emailed:
+]
+Click here to confirm your account
+
+https://localhost:44309/Identity/Account/Login
+Google
+
+// Edit
+// IdentityCore\Startup.cs
+// public void ConfigureServices(IServiceCollection services)
+options.AddPolicy("RequireUserNames", policy => policy.Requirements.Add(new RequireUserNames("email@example.com", "e.mail@example.com", "mail@example.com", "admin@example.com", "facebook@example.com", "google@example.com")));
+
+https://localhost:44309/Identity/Account/Login
+Google
+
+Backup App_Data
+
+
+# 3-IdentityCore-External-Logins-Facebook
+[Copy # 2-IdentiryCore-Migrating-Seeding]
+// Ensure aspnet-Identity database points to the current application App_Data folder mdf file by running the application and logging in
+// May have to delete aspnet-IdentityCore database if it does not point to the current application App_Data folder mdf file
+https://localhost:44309/Identity/Account/Login
+email@example.com
+Hola!123
+
+// Edit
+// IdentityCore\Startup.cs
+// Add
+// https://developers.facebook.com
+// Install-Package Microsoft.AspNetCore.Authentication.Facebook -Version 5.0.4
+services.AddAuthentication().AddFacebook(facebookOptions =>
+{
+    facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+    facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+});
+
+// Edit
+// IdentityCore\appsettings.json
+  "Authentication": {
+    "Facebook": {
+      "AppId": "****************",
+      "AppSecret": "********************************"
+    }
+  }
+
+https://localhost:44309/Identity/Account/Login
+Facebook
+
+https://localhost:44309/Identity/Account/ExternalLogin?returnUrl=%2F&handler=Callback#_=_
+facebook@example.com
+Register
+[
+Register
+Associate your Facebook account.
+You've successfully authenticated with Facebook. Please enter an email address for this site below and click the Register button to finish logging in.
+
+Email
+facebook@example.com
+Register
+]
+
+[
+Register confirmation
+This app does not currently have a real email sender registered, see these docs for how to configure a real email sender. Normally this would be emailed:
+]
+Click here to confirm your account
+
+// Edit
+// IdentityCore\Startup.cs
+// public void ConfigureServices(IServiceCollection services)
+options.AddPolicy("RequireUserNames", policy => policy.Requirements.Add(new RequireUserNames("email@example.com", "e.mail@example.com", "mail@example.com", "admin@example.com", "facebook@example.com")));
+
+https://localhost:44309/Identity/Account/Login
+Facebook
+
+Backup App_Data
+
+
+# 2-IdentiryCore-Migrating-Seeding
+[Copy # 1-IdentityCore-Database]
+// Ensure aspnet-Identity database points to the current application App_Data folder mdf file by running the application and logging in
+// May have to delete aspnet-IdentityCore database if it does not point to the current application App_Data folder mdf file
+https://localhost:44309/Identity/Account/Login
+email@example.com
+Hola!123
+
+PM> Get-Package Microsoft.EntityFrameworkCore
+PM> Update-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.4
+PM> Update-Package Microsoft.EntityFrameworkCore.Tools -Version 5.0.4
+PM> Get-Package Microsoft.EntityFrameworkCore
+
+// Edit
+// IdentityCore\Data\ApplicationDbContext.cs
+using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace IdentityCore.Data
+{
+    public class ApplicationDbContext : IdentityDbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            var roleId = Guid.NewGuid().ToString();
+            // Seeding Administrator role to AspNetRoles table
+            builder.Entity<IdentityRole>().HasData(new IdentityRole { Id = roleId, Name = "Admin", NormalizedName = "ADMIN" }); // Id // PRIMARY KEY
+
+            // Hasher to hash password before seeding user to database
+            var hasher = new PasswordHasher<IdentityUser>();
+
+            var userId = Guid.NewGuid().ToString();
+
+            // Seeding user to AspNetUsers table
+            builder.Entity<IdentityUser>().HasData(
+                    new IdentityUser
+                    {
+                        UserName = "e.mail@example.com",
+                        NormalizedUserName = "E.MAIL@EXAMPLE.COM",
+                        Email = "e.mail@example.com",
+                        EmailConfirmed = true,
+                        PasswordHash = hasher.HashPassword(null, "Hola!123")
+                    },
+                    new IdentityUser
+                    {
+                        UserName = "mail@example.com",
+                        NormalizedUserName = "MAIL@EXAMPLE.COM",
+                        Email = "mail@example.com",
+                        EmailConfirmed = true,
+                        PasswordHash = hasher.HashPassword(null, "Hola!123")
+                    },
+                    new IdentityUser
+                    {
+                        Id = userId, // PRIMARY KEY
+                        UserName = "admin@example.com",
+                        NormalizedUserName = "ADMIN@EXAMPLE.COM",
+                        Email = "admin@example.com",
+                        NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                        EmailConfirmed = true,
+                        PasswordHash = hasher.HashPassword(null, "Hola!123")
+                    }
+            );
+
+            // Seeding relation between user and role to AspNetUserRoles table
+            builder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>
+                {
+                    RoleId = roleId, // FOREIGN KEY([RoleId]) REFERENCES[dbo].[AspNetRoles]([Id])
+                    UserId = userId
+                }
+            );
+        }
+    }
+}
+// 1
+// PM> Add-Migration InitialCreate
+// 2
+// PM> Update-Database
+// OR
+// PM> Update-Database -Verbose
+
+// Edit
+// IdentityCore\Controllers\SecretController.cs
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc;
+
+namespace IdentityCore.Controllers
+{
+    // [Authorize]
+    // [Authorize(Policy = "RequireAdminRole")] // Only for // "admin@example.com"
+    // [Authorize(Policy = "RequireUserName")]
+    [Authorize(Policy = "RequireUserNames")]
+    // [Authorize(Roles = "Admin")] // Only for // "admin@example.com"
+    public class SecretController : Controller
+    {
+        /*
+        // GET: Secret
+        public ActionResult Index()
+        {
+            return View();
+        }
+        */
+
+        public ContentResult Secret()
+        {
+            // string html = "<a onclick='javascript: window.history.back();' style=\"color: #0000FF; text-decoration: underline; font-size: 15px; font-family: Arial; cursor: pointer;\">This is a secret!</a>";
+            string html = "<a href='/Home/Index' style=\"color: #0000FF; text-decoration: underline; font-size: 15px; font-family: Arial; cursor: pointer;\">This is secret - Go Home</a>";
+
+            HtmlString htmlString = new HtmlString(html);
+
+            return Content(htmlString.ToString(), "text/html");
+            // return new ContentResult { ContentType = "text/html", Content = html };
+        }
+
+        [AllowAnonymous]
+        public ContentResult Overt()
+        {
+            HtmlString htmlString = null;
+            string html = null;
+
+            if (this.User.Identity.IsAuthenticated)
+            {
+                html = "<a href='/Secret/Secret' style =\"color: #0000FF; text-decoration: underline; font-size: 15px; font-family: Arial; cursor: pointer;\">Go to secret</a>";
+                htmlString = new HtmlString(html);
+            }
+            else
+            {
+                html = "<a href='/Identity/Account/Login' style =\"color: #0000FF; text-decoration: underline; font-size: 15px; font-family: Arial; cursor: pointer;\">Login for secret</a>";
+                htmlString = new HtmlString(html);
+            }
+
+            return Content(htmlString.ToString(), "text/html");
+            // return new ContentResult { ContentType = "text/html", Content = html };
+        }
+    }
+}
+
+// Edit
+// IdentityCore\Views\Shared\_Layout.cshtml
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Secret" asp-action="Secret">Secret</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Secret" asp-action="Overt">Overt</a>
+</li>
+
+// Edit
+// IdentityCore\Startup.cs
+// public void ConfigureServices(IServiceCollection services)
+/*
+services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+*/
+
+services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+
+    options.AddPolicy("RequireUserName", policy => policy.RequireUserName("admin@example.com" ));
+    options.AddPolicy("RequireUserNames", policy => policy.Requirements.Add(new RequireUserNames("email@example.com", "e.mail@example.com", "mail@example.com", "admin@example.com")));
+});
+
+// using Microsoft.AspNetCore.Authorization;
+services.AddSingleton<IAuthorizationHandler, RequireUserNamesHandler>();
+
+// Add 
+// IdentityCore\RequireUserNames.cs
+using Microsoft.AspNetCore.Authorization;
+
+namespace IdentityCore
+{
+    public class RequireUserNames : IAuthorizationRequirement
+    {
+        public RequireUserNames(params string[] userNames)
+        {
+            UserNames = userNames;
+        }
+
+        public string[] UserNames { get; set; }
+    }
+}
+
+// Add
+// IdentityCore\RequireUserNamesHandler.cs
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+
+namespace IdentityCore
+{
+    public class RequireUserNamesHandler : AuthorizationHandler<RequireUserNames>
+    {
+        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, RequireUserNames requirement)
+        {
+            var userName = context.User.Identity.Name;
+
+            if (requirement.UserNames.ToList().Contains(userName))
+            {
+                context.Succeed(requirement);
+            }
+            else
+            {
+                context.Fail();
+            }
+            return Task.CompletedTask;
+        }
+    }
+}
+
+https://localhost:44309/Identity/Account/Login
+mail@example.com
+Hola!123
+
+Backup App_Data
+
+
+# 1-IdentityCore-Database
+// Add
+Add New Folder: App_Data
+
+// Edit
+// IdentityCore\IdentityCore\appsettings.json
+// "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-IdentityCore-FBAE5492-2CAA-4FEE-A381-8EC1A3FD61BC;Trusted_Connection=True;MultipleActiveResultSets=true"
+"DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-IdentityCore;AttachDbFilename=|DataDirectory|\\aspnet-IdentityCore.mdf;Trusted_Connection=True;MultipleActiveResultSets=true"
+
+// Edit
+// IdentityCore\IdentityCore\Startup.cs
+// public void ConfigureServices(IServiceCollection services)
+string dataDirectory = Configuration.GetValue<string>(WebHostDefaults.ContentRootKey) + "\\App_Data";
+
+services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        Configuration.GetConnectionString("DefaultConnection").Replace("|DataDirectory|", dataDirectory)));
+
+https://localhost:44309/Identity/Account/Register
+email@example.com
+Hola!123
+
+Apply Migrations
+[
+A database operation failed while processing the request.
+SqlException: Cannot attach the file 'C:\Users\rajanis\source\repos\IdentityCore\IdentityCore\App_Data\aspnet-IdentityCore.mdf' as database 'aspnet-IdentityCore'.
+Applying existing migrations may resolve this issue
+There are migrations that have not been applied to the following database(s):
+
+ApplicationDbContext
+00000000000000_CreateIdentitySchema
+Apply Migrations
+
+In Visual Studio, you can use the Package Manager Console to apply pending migrations to the database:
+
+PM> Update-Database
+Alternatively, you can apply pending migrations from a command prompt at your project directory:
+
+> dotnet ef database update
+]
+Try refreshing the page
+
+[
+Register confirmation
+This app does not currently have a real email sender registered, see these docs for how to configure a real email sender. Normally this would be emailed: 
+]
+Click here to confirm your account
+
+https://localhost:44309/Identity/Account/Login
+email@example.com
+Hola!123
+
+Backup App_Data
+
+
+# Package Manager Console # 2-IdentiryCore-Migrating-Seeding
+[
+Each package is licensed to you by its owner. NuGet is not responsible for, nor does it grant any licenses to, third-party packages. Some packages may include dependencies which are governed by additional licenses. Follow the package source (feed) URL to determine any dependencies.
+
+Package Manager Console Host Version 5.8.1.7021
+
+Type 'get-help NuGet' to see all available NuGet commands.
+
+PM> Get-Package Microsoft.EntityFrameworkCore
+
+Id                                  Versions                                 ProjectName                                                  
+--                                  --------                                 -----------                                                  
+Microsoft.EntityFrameworkCore.Tools {5.0.3}                                  IdentityCore                                                 
+Microsoft.EntityFrameworkCore.Sq... {5.0.3}                                  IdentityCore                                                 
+
+
+PM> Update-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.4
+Restoring packages for C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\IdentityCore.csproj...
+Installing NuGet package Microsoft.EntityFrameworkCore.SqlServer 5.0.4.
+Committing restore...
+Writing assets file to disk. Path: C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\obj\project.assets.json
+Restored C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\IdentityCore.csproj (in 205 ms).
+Successfully uninstalled 'Microsoft.EntityFrameworkCore 5.0.3' from IdentityCore
+Successfully uninstalled 'Microsoft.EntityFrameworkCore.Abstractions 5.0.3' from IdentityCore
+Successfully uninstalled 'Microsoft.EntityFrameworkCore.Analyzers 5.0.3' from IdentityCore
+Successfully uninstalled 'Microsoft.EntityFrameworkCore.Relational 5.0.3' from IdentityCore
+Successfully uninstalled 'Microsoft.EntityFrameworkCore.SqlServer 5.0.3' from IdentityCore
+Successfully installed 'Microsoft.EntityFrameworkCore 5.0.4' to IdentityCore
+Successfully installed 'Microsoft.EntityFrameworkCore.Abstractions 5.0.4' to IdentityCore
+Successfully installed 'Microsoft.EntityFrameworkCore.Analyzers 5.0.4' to IdentityCore
+Successfully installed 'Microsoft.EntityFrameworkCore.Relational 5.0.4' to IdentityCore
+Successfully installed 'Microsoft.EntityFrameworkCore.SqlServer 5.0.4' to IdentityCore
+Executing nuget actions took 226 ms
+Time Elapsed: 00:00:00.8061417
+PM> Update-Package Microsoft.EntityFrameworkCore.Tools -Version 5.0.4
+Restoring packages for C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\IdentityCore.csproj...
+Installing NuGet package Microsoft.EntityFrameworkCore.Tools 5.0.4.
+Committing restore...
+Generating MSBuild file C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\obj\IdentityCore.csproj.nuget.g.props.
+Writing assets file to disk. Path: C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\obj\project.assets.json
+Restored C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\IdentityCore.csproj (in 200 ms).
+Successfully uninstalled 'Microsoft.EntityFrameworkCore.Design 5.0.3' from IdentityCore
+Successfully uninstalled 'Microsoft.EntityFrameworkCore.Tools 5.0.3' from IdentityCore
+Successfully installed 'Microsoft.EntityFrameworkCore.Design 5.0.4' to IdentityCore
+Successfully installed 'Microsoft.EntityFrameworkCore.Tools 5.0.4' to IdentityCore
+Executing script file 'C:\Users\rajanis\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.4\tools\init.ps1'
+Executing nuget actions took 528 ms
+Time Elapsed: 00:00:00.7498787
+PM> Get-Package Microsoft.EntityFrameworkCore
+
+Id                                  Versions                                 ProjectName                                                  
+--                                  --------                                 -----------                                                  
+Microsoft.EntityFrameworkCore.Tools {5.0.4}                                  IdentityCore                                                 
+Microsoft.EntityFrameworkCore.Sq... {5.0.4}                                  IdentityCore                                                 
+
+
+PM> Add-Migration InitialCreate
+Build started...
+Build succeeded.
+To undo this action, use Remove-Migration.
+PM> Update-Database -Verbose
+Using project 'IdentityCore'.
+Using startup project 'IdentityCore'.
+Build started...
+Build succeeded.
+C:\Program Files\dotnet\dotnet.exe exec --depsfile C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\bin\Debug\net5.0\IdentityCore.deps.json --additionalprobingpath C:\Users\rajanis\.nuget\packages --additionalprobingpath "C:\Program Files\dotnet\sdk\NuGetFallbackFolder" --runtimeconfig C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\bin\Debug\net5.0\IdentityCore.runtimeconfig.json C:\Users\rajanis\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.4\tools\netcoreapp2.0\any\ef.dll database update --verbose --no-color --prefix-output --assembly C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\bin\Debug\net5.0\IdentityCore.dll --startup-assembly C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\bin\Debug\net5.0\IdentityCore.dll --project-dir C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\ --language C# --working-dir C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding --root-namespace IdentityCore
+Using assembly 'IdentityCore'.
+Using startup assembly 'IdentityCore'.
+Using application base 'C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\bin\Debug\net5.0'.
+Using working directory 'C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore'.
+Using root namespace 'IdentityCore'.
+Using project directory 'C:\Users\rajanis\source\repos\IdentityCore\2-IdentiryCore-Migrating-Seeding\IdentityCore\'.
+Remaining arguments: .
+Finding DbContext classes...
+Finding IDesignTimeDbContextFactory implementations...
+Finding application service provider in assembly 'IdentityCore'...
+Finding Microsoft.Extensions.Hosting service provider...
+Using environment 'Development'.
+Using application service provider from Microsoft.Extensions.Hosting.
+Found DbContext 'ApplicationDbContext'.
+Finding DbContext classes in the project...
+Using context 'ApplicationDbContext'.
+Finding design-time services for provider 'Microsoft.EntityFrameworkCore.SqlServer'...
+Using design-time services from provider 'Microsoft.EntityFrameworkCore.SqlServer'.
+Finding design-time services referenced by assembly 'IdentityCore'...
+Finding design-time services referenced by assembly 'IdentityCore'...
+No referenced design-time services were found.
+Finding IDesignTimeServices implementations in assembly 'IdentityCore'...
+No design-time services were found.
+Done.
+PM> 
+]

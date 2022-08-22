@@ -1,0 +1,61 @@
+abstract - override:
+
+access modifiers should be same
+[Note: NO member modifier 'static']
+[override cannot be marked as new or virtual or abstract]
+return types should be same
+parameters should be same
+
+Note:
+'base' CANNOT be used with 'abstract' abstractMethod()
+'sealed' can be used only with override, talking about methods
+'sealed' means cannot be further overridden in a further derived class
+[But abstractMethod() can be used with 'new' in a derived class or a further derived class 
+and that means "hiding" 
+and that means access modifier, member modifier['static'] and retun type can be changed
+(and parameter can be changed which means it an entirely different method and does not mean "hiding")]
+
+
+virtual - override:
+access modifiers should be same
+[Note: No member modifier 'static']
+[override cannot be marked as new or virtual or abstract]
+return types should be same
+parameters should be same
+
+Note:
+'base.' cAN be used with 'virtual' virtualMethod()
+'sealed' can be used only with override, talking about methods
+'sealed' means cannot be further overridden in a further derived class
+[But abstractMethod() can be used with 'new' in a derived class or a further derived class 
+and that means "hiding" 
+and that means access modifier, member modifier['static'] and retun type can be changed
+(and parameter can be changed which means it an entirely different method and does not mean "hiding")]
+
+
+new (used when hiding was intended) in inheritance:
+access modifiers, [ALSO member modifier 'static'], return types CAN BE DIFFERENT
+BUT PARAMETERS SHOULD BE SAME
+[In case parameters are different, it will be an entirely different method 
+and hiding WON'T be intended]
+
+
+
+
+
+1. 
+// Dynamic Polymorphism // No wonder static methods are NOT allowed // Runtime Polymorphism // Method Overriding  
+// Method Overriding: Capability of a DERIVED CLASS to override the characteristics of the parent class. 
+// Provides different implementation of an inherited member (Method) in the DERIVED CLASS
+// Always create reference variable
+access specifiers, [NO member modifier 'static'], return types, parameters SHOULD BE SAME
+
+
+
+
+2. 
+// Static Polymorphism // static methods are ALLOWED// Compile time Polymorphism // Method Overloading
+// Method Overloading: Two or more methods within the same class can share the same name, as long as their parameter delarations are different 
+// Within the same class and Nothing to do with inheritance unlike Overriding
+access modifiers, [ALSO member modifier 'static'], return types CAN BE DIFFERENT
+PARAMETER number, type or order SHOULD BE DIFFERENT

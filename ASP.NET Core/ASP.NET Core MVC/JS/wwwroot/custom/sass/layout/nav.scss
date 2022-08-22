@@ -1,0 +1,182 @@
+/* ===========================================================
+
+	$NAV
+
+=========================================================== */
+
+
+/* ---- MAIN NAV ---- */
+.main-nav 					                        {clear:both; width:100%; height:auto; padding:5px 0px; overflow:hidden;}
+
+/* - ICON BUTTONS - */
+.main-nav .button.button--icon-only                 {display:none; width:32px; height:32px; margin-right:10px;}
+.main-nav .button .icon                             {display:block; width:100%; height:100%;}
+.main-nav .button .icon.icon--menu                  {background-image:url("../assets/icons/grey/32/sprite-32_grey-dark.png"); @include sprite-icon($xPos32,$icon32-menu);}
+/* - NAV LIST - */
+.main-nav .nav__list		                        {display:block; clear:both; width:auto; height:100%; padding:0; margin:0 auto; text-align:left;}
+.main-nav .nav__item		                        {display:inline-block; width:auto; height:100%; padding:0 10px; margin:0; vertical-align:bottom; transition:background-color $transitionSpeed ease;
+													 @include heading-font-size-full($epsilon*1.2, 600, 1, 6px); @include heading-font-style-full($fontSetSecondary, $grey-dark, uppercase);}
+.main-nav .nav__item:hover	                        {}
+.main-nav .nav__item.mobile--only	                {display:none;}
+.main-nav .nav__item.mobile--off 	                {display:inline-block;}							
+.main-nav .nav__link		                        {display:block; width:100%; height:100%; padding:6px 15px 6px 6px; border:0; margin:0; background:url("../assets/images/nav-arrow.png") no-repeat 103% 3px; color:$grey-dark;}
+.main-nav .nav__link__noicon                        {display:block; width:100%; height:100%; padding:6px 15px 6px 6px; border:0; margin:0; color:$grey-dark;}
+.main-nav .nav__link:hover		                    {color:$orange-medium;}
+.main-nav .nav__link__noicon:hover		            {color:$orange-medium;}
+
+/* ---- MAIN NAV DROPDOWNS ---- */
+.main-nav .subnav__list                             {display:block; visibility:hidden; position:absolute; z-index:-1; width:204px; padding:0 10px 10px; border:$borderWidth solid $grey-light; margin:10px 0 0; background-color:$white; 
+													 opacity:$opacityNone; transition:visibility $transitionSpeed linear $transitionSpeed, opacity $transitionSpeed ease-in-out 0s, z-index $transitionSpeed linear $transitionSpeed;}
+.main-nav .nav__item:hover .subnav__list,            
+.main-nav .subnav__list:hover                       {/*display:block;*/ visibility:visible; z-index:10000; opacity:$opacityFull; transition:visibility $transitionSpeed linear 0s, opacity $transitionSpeed ease-in-out 0.2s, z-index $transitionSpeed linear 0s;}
+.main-nav .subnav__item                             {display:block; clear:both; width:100%; padding:10px; font-size:$epsilon; font-weight:600;}
+.main-nav .subnav__link                             {color:$baseColour; &:hover{color:$secondaryColour;}}
+
+/* ---- SECONDARY HEADER NAV ---- */
+.header-nav                                         {clear:both; width:100%; height:32px;}
+.header-nav .nav__list                              {display:block; width:100%; height:100%; padding:0; margin:0;}
+.header-nav .nav__item                              {display:inline-block; border-right:$borderWidth solid $baseColour; padding:0px 10px; font-size:$zeta; font-weight:600; color:$baseColour; &:last-of-type{border-right:none;}}
+.header-nav .nav__link                              {color:$primaryColour; &:hover{color:$blue-light;}}
+
+
+/* ---- MOBILE NAV ---- 
+.mobile-nav 				                        {clear:both; width:auto; padding:0; transition:height $transitionSpeed ease-in-out 0.1s;}
+.mobile-nav.fixed 			                        {top:61px; left:0; z-index:950; width:100%;}
+.mobile-nav .nav__list		                        {display:block; clear:both; width:auto; height:auto; padding:0 10px 10px; margin:0; background-color:$black-dark;}
+.mobile-nav .nav__item		                        {display:block; clear:both; width:auto; height:40px; padding:0; border:$borderWidth solid $black-dark; margin:0; background-color:lighten($black-dark, 2%); transition:background-color $transitionSpeed ease;}
+.mobile-nav .nav__item:hover                        {background-color:$grey-darker;}						
+.mobile-nav .nav__link		                        {display:block; width:100%; height:100%; padding:6px; border:0; margin:0; color:$red-light;}*/
+
+
+/* ==== WIZARD NAV ==== */
+.wizard-nav                                         {clear:both; width:100%; margin-bottom:20px;}
+.wizard-nav__list                                   {display:block; clear:both; width:100%; padding:0; margin:0; list-style:none;}
+.wizard-nav__item                                   {display:block; clear:both; width:100%; height:50px; margin:0 0 15px; background-color:$grey-light; font-weight:600; color:$grey-dark; transition:background-color $transitionSpeed ease-in-out;
+													 &:hover{background-color:$grey-lighter;}}
+.wizard-nav__item.current                           {background-color:$baseColour; color:$white;}
+.wizard-nav__item.viewed,
+.wizard-nav__item.valid                             {background-color:$blue-medium; color:$white;}
+.wizard-nav__item.not-valid                         {background-color:$ruby-dark; color:$white;}
+.wizard-nav__item.warning                           {background-color:#e5a32a; color:$white;}
+.wizard-nav__item.current.viewed,
+.wizard-nav__item.current.valid                     {background-color:$baseColour; border:3px solid $primaryColour;}
+.wizard-nav__item.current.not-valid                 {background-color:$baseColour; border:3px solid $ruby-dark;}
+.wizard-nav__item.current.warning                   {background-color:$baseColour; border:3px solid #e5a32a;}
+
+/* ---- STEP NUMBER ---- */
+.wizard-nav__number                                 {display:none; position:relative; width:32px; margin-right:5px; text-align:center; font-size:$epsilon; 
+													 &:before{content:''; display:inline-block; position:absolute; top:-7px; left:-1px; width:28px; height:28px; border:2px solid lighten($grey-dark, 5%); border-radius:16px; transition:border-color $transitionSpeed ease-in-out;}}
+.wizard-nav__item:hover .wizard-nav__number         {&:before{border-color:$blue-light;}}
+.wizard-nav__item.viewed .wizard-nav__number,
+.wizard-nav__item.viewed:hover .wizard-nav__number,
+.wizard-nav__item.valid .wizard-nav__number,
+.wizard-nav__item.valid:hover .wizard-nav__number,
+.wizard-nav__item.not-valid .wizard-nav__number,
+.wizard-nav__item.not-valid:hover .wizard-nav__number,
+.wizard-nav__item.warning .wizard-nav__number,
+.wizard-nav__item.warning:hover .wizard-nav__number,
+.wizard-nav__item.current .wizard-nav__number,
+.wizard-nav__item.current:hover .wizard-nav__number {color:$white; &:before{border-color:$white;}}
+
+/* ---- STEP LINK ---- */
+.wizard-nav__link                                   {display:block; position:relative; width:100%; height:100%; padding:15px 20px 15px 10px; color:$grey-dark;}
+.wizard-nav__item.viewed .wizard-nav__link,
+.wizard-nav__item.viewed:hover .wizard-nav__link,
+.wizard-nav__item.valid .wizard-nav__link,
+.wizard-nav__item.valid:hover .wizard-nav__link,
+.wizard-nav__item.not-valid .wizard-nav__link,
+.wizard-nav__item.not-valid:hover .wizard-nav__link,
+.wizard-nav__item.warning .wizard-nav__link,
+.wizard-nav__item.warning:hover .wizard-nav__link,
+.wizard-nav__item.current .wizard-nav__link,
+.wizard-nav__item.current:hover .wizard-nav__link   {color:$white;}
+
+/* ---- STEP NAME ---- */
+.wizard-nav__name                                   {}
+
+/* ---- STEP ICON ---- */
+.wizard-nav__icon                                   {display:block; position:absolute; z-index:100; top:0; bottom:0; right:10px; width:24px; height:24px; margin:auto 0; background:url("../assets/icons/white/24/sprite-24_white.png") 0px 100px no-repeat;}
+.wizard-nav__item.viewed .wizard-nav__icon          {@include sprite-icon($xPos24,$icon24-data-edit);}
+.wizard-nav__item.not-valid .wizard-nav__icon       {@include sprite-icon($xPos24,$icon24-warning);}
+.wizard-nav__item.warning .wizard-nav__icon       {@include sprite-icon($xPos24,$icon24-warning);}
+.wizard-nav__item.valid .wizard-nav__icon           {@include sprite-icon($xPos24,$icon24-tick);}
+.wizard-nav__item.current .wizard-nav__icon         {@include sprite-icon($xPos24,$icon24-view);}
+
+.wizard-vet__icon                                   { display: inline-block; float: right; width:24px; height:24px; margin:5px; background:url("../assets/icons/green/24/sprite-24_green-medium.png") 0px 100px no-repeat;}
+.wizard-vet__item.valid .wizard-vet__icon            {@include sprite-icon($xPos24,$icon24-tick);}
+.wizard-vet__item.new .wizard-vet__icon            {@include sprite-icon($xPos24,$icon24-add);}
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- ALL MOBILE (0 - 768px) ---- */
+@media only screen and (max-width:$breakpoint-medium) {
+
+	/* ---- MAIN NAV ---- */
+	.main-nav                                           {height:auto; min-height:32px;}
+	/* - ICON BUTTONS - */
+	.main-nav .button.button--icon-only                 {display:inline-block;}
+	/* - NAV LIST - */
+	.main-nav .nav__list		                        {display:block; clear:both; width:100%; height:100%; padding:0; transition:max-height $transitionSpeed ease-in-out, padding $transitionSpeed ease-in-out;}
+	.mobile-nav--closed	.main-nav .nav__list			{max-height:0; padding:0;}
+	.mobile-nav--open .main-nav .nav__list				{max-height:600px; padding:10px 0;}
+	.main-nav .nav__item		                        {display:block; clear:both; width:100%; height:40px; padding:0; margin:0 0 10px; text-align:center; vertical-align:bottom;}
+	.main-nav .nav__item.mobile--only	                {display:block;}
+	.main-nav .nav__item.mobile--off 	                {display:none;}	
+	.main-nav .nav__link                                {width:100%; height:100%; padding:10px; border:$borderWidth solid $grey-lighter; background-image:none; background-color:$white; transition:all $transitionSpeed ease-in;  
+														 &:hover{background-color:$grey-faint;}}
+
+	/* ---- MAIN NAV DROPDOWNS ---- */
+	.main-nav .subnav__list                             {display:none;}
+
+	/* ---- SECONDARY HEADER NAV ---- */
+	.header-nav                                         {height:auto;}
+	.header-nav .nav__list                              {text-align:center; margin-top:10px;}
+	.header-nav .nav__item                              {width:100%; height:32px; padding:0; border-right:none; margin-bottom:5px; background-color:$white; font-size:$zeta;}
+	.header-nav .nav__link,                              
+	.header-nav .nav__text                              {display:block; width:100%; height:100%; padding:6px 12px;}
+	.header-nav .nav__link                              {border:$borderWidth solid $grey-lighter; transition:all $transitionSpeed ease-in; &:hover{background-color:$grey-faint;}}
+
+	/* ---- MOBILE NAV ---- 
+	.mobile-nav							                {display:block; height:0px; overflow:hidden;}
+	.mobile-nav--closed .mobile-nav		                {height:0px;}
+	.mobile-nav--open .mobile-nav		                {height:400px;}
+	*/
+
+
+
+}
+
+/* ---- TABLET + (768px +) ---- */
+@media screen and (min-width: $breakpoint-medium) {
+
+	/* ---- MOBILE NAV ---- 
+	.mobile-nav							                {display:none;}	
+	*/
+}
+
+/* ---- TABLET (landscape 768px - 960px) ---- */
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-medium-large) {
+
+
+}
+
+/* ---- SMALL DESKTOP (960px - 1024px) ---- */
+@media only screen and (min-width:$breakpoint-medium-large) and (max-width: $breakpoint-large) {
+
+
+}
+
+/* ---- MEDIUM DESKTOP (1024px - 1280px) ---- */
+@media only screen and (min-width:$breakpoint-large) and (max-width: $breakpoint-extra-large) {
+
+
+}
+
+/* ---- LARGE DESKTOP (1280px +) ---- */
+@media only screen and (min-width:$breakpoint-extra-large) {
+
+
+}
+
+

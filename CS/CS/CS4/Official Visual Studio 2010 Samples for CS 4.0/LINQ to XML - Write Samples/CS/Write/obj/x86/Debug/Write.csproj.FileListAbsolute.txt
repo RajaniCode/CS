@@ -1,0 +1,5 @@
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\Write\Write\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\Write\Write\bin\Debug\Write.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\Write\Write\bin\Debug\Write.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\Write\Write\obj\x86\Debug\Write.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\Grouped LINQ Samples\LINQ to XML Query Samples\Write\Write\obj\x86\Debug\Write.pdb

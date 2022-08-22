@@ -1,0 +1,182 @@
+// CS 4
+/*
+Dynamic Member Overload Resolution
+*/
+
+/*
+// Dynamic Member Overload Resolution
+Calling a statically known method with dynamically typed arguments defers mem￾ber overload resolution from compile time to runtime. This is useful in simplifying
+certain programming tasks—such as simplifying the Visitor design pattern. It’s also
+useful in working around limitations imposed by C#’s static typing.
+Simplifying the Visitor Pattern
+In essence, the Visitor pattern allows you to “add” a method to a class hierarchy
+without altering existing classes. Although useful, this pattern in its static incarna￾tion is subtle and unintuitive compared to most other design patterns. It also requires
+that visited classes be made “Visitor-friendly” by exposing an Accept method, which
+can be impossible if the classes are not under your control.
+With dynamic binding, you can achieve the same goal more easily—and without
+needing to modify existing classes. To illustrate, consider the following class
+hierarchy:
+class Person
+{
+ public string FirstName { get; set; }
+ public string LastName { get; set; }
+ // The Friends collection may contain Customers & Employees:
+ public readonly IList<Person> Friends = new Collection<Person> ();
+}
+class Customer : Person { public decimal CreditLimit { get; set; } }
+class Employee : Person { public decimal Salary { get; set; } }
+Suppose we want to write a method that programmatically exports a Person’s details
+to an XML XElement. The most obvious solution is to write a virtual method called
+ToXElement() in the Person class that returns an XElement populated with a Person’s
+properties. We would then override it in Customer and Employee classes such that the
+XElement was also populated with CreditLimit and Salary. This pattern can be
+problematic, however, for two reasons:
+• You might not own the Person, Customer, and Employee classes, making it im￾possible to add methods to them. (And extension methods wouldn’t give
+polymorphic behavior.)
+• The Person, Customer, and Employee classes might already be quite big. A fre￾quent antipattern is the “God Object,” where a class such as Person attracts so
+much functionality that it becomes a nightmare to maintain. A good antidote
+is to avoid adding functions to Person that don’t need to access Person’s private
+state. A ToXElement method might be an excellent candidate.
+With dynamic member overload resolution, we can write the ToXElement function￾ality in a separate class, without resorting to ugly switches based on type:
+class ToXElementPersonVisitor
+{
+ public XElement DynamicVisit (Person p)
+ {
+ return Visit ((dynamic)p);
+ }
+ XElement Visit (Person p)
+ {
+ return new XElement ("Person",
+ new XAttribute ("Type", p.GetType().Name),
+ new XElement ("FirstName", p.FirstName),
+ new XElement ("LastName", p.LastName),
+ p.Friends.Select (f => DynamicVisit (f))
+ );
+ }
+ XElement Visit (Customer c) // Specialized logic for customers
+ {
+ XElement xe = Visit ((Person)c); // Call "base" method
+ xe.Add (new XElement ("CreditLimit", c.CreditLimit));
+ return xe;
+ }
+ XElement Visit (Employee e) // Specialized logic for employees
+ {
+ XElement xe = Visit ((Person)e); // Call "base" method
+ xe.Add (new XElement ("Salary", e.Salary));
+ return xe;
+ }
+}
+The DynamicVisit method performs a dynamic dispatch—calling the most specific
+version of Visit as determined at runtime. Notice the line in boldface, where we call
+
+DynamicVisit on each person in the Friends collection. This ensures that if a friend
+is a Customer or Employee, the correct overload is called.
+We can demonstrate this class as follows:
+var cust = new Customer
+{
+ FirstName = "Joe", LastName = "Bloggs", CreditLimit = 123
+};
+cust.Friends.Add (
+ new Employee { FirstName = "Sue", LastName = "Brown", Salary = 50000 }
+);
+Console.WriteLine (new ToXElementPersonVisitor().DynamicVisit (cust));
+Here’s the result:
+<Person Type="Customer">
+ <FirstName>Joe</FirstName>
+ <LastName>Bloggs</LastName>
+ <Person Type="Employee">
+ <FirstName>Sue</FirstName>
+ <LastName>Brown</LastName>
+ <Salary>50000</Salary>
+ </Person>
+ <CreditLimit>123</CreditLimit>
+</Person>
+
+*/
+
+﻿using System;
+using System.Collections.Generic;
+// /reference:System.Xml.dll
+using System.Xml;
+
+class Person
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+
+    // The Friends collection may contain Customers & Employees:
+    public readonly IList<Person> Friends = new List<Person> ();
+}
+
+class Customer : Person
+{
+    public decimal CreditLimit { get; set; } 
+}
+
+class Employee : Person
+{
+    public decimal Salary { get; set; }
+}
+
+class ToXElementPersonVisitor
+{
+    public XElement DynamicVisit(Person p)
+    {
+        return Visit((dynamic)p);
+    }
+
+    XElement Visit(Person p)
+    {
+        return new XElement ("Person", new XAttribute ("Type", p.GetType().Name), new XElement ("FirstName", p.FirstName), new XElement ("LastName", p.LastName), p.Friends.Select (f => DynamicVisit (f)));
+    }
+
+    XElement Visit(Customer c) // Specialized logic for customers
+    {
+        XElement xe = Visit((Person)c); // Call "base" method
+        xe.Add (new XElement ("CreditLimit", c.CreditLimit));
+        return xe;
+    }
+
+    XElement Visit (Employee e) // Specialized logic for employees
+    {
+        XElement xe = Visit ((Person)e); // Call "base" method
+        xe.Add (new XElement ("Salary", e.Salary));
+        return xe;
+    }
+    
+   public void Print()
+   {
+        var cust = new Customer
+        {
+            FirstName = "Joe", LastName = "Bloggs", CreditLimit = 123
+        };
+
+        cust.Friends.Add(new Employee
+        {
+            FirstName = "Sue", LastName = "Brown", Salary = 50000 
+        });
+       
+        Console.WriteLine (new ToXElementPersonVisitor().DynamicVisit(cust));
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        ToXElementPersonVisitor xElementPersonVisitor = new ToXElementPersonVisitor();
+        xElementPersonVisitor.Print();
+        Console.WriteLine("Hello, World!");
+    }
+}
+
+/*
+// Note
+// Overload resolution with dynamic arguments
+// Even if the receiver of a method call is of a static type, overload resolution can still happen at runtime
+// This will happen if one or more of the arguments have the type dynamic:
+// Foo foo = new Foo();
+// dynamic d = new Bar();
+// var result = foo.M(d);
+// The C# runtime binder will choose between the statically known overloads of M on Foo, based on the runtime type of d, namely Bar
+// The result is again of type dynamic

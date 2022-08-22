@@ -1,0 +1,298 @@
+
+Aspire@Acer MINGW64 ~
+$ dotnet --version
+1.0.3
+
+Aspire@Acer MINGW64 ~
+$ cd "E:\Working\CS\TODO\ASP.NET-Core"
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core
+$ git clone https://github.com/aspnet/Docs.git
+Cloning into 'Docs'...
+remote: Counting objects: 65943, done.
+remote: Compressing objects: 100% (70/70), done.
+remote: Total 65943 (delta 31), reused 0 (delta 0), pack-reused 65873
+Receiving objects: 100% (65943/65943), 488.57 MiB | 2.20 MiB/s, done.
+Resolving deltas: 100% (25667/25667), done.
+Checking out files: 100% (26666/26666), done.
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core
+$ cd Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp (master)
+$ dotnet restore
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj...
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj...
+  Installing Microsoft.NETCore.Jit 1.0.2.
+  Installing Microsoft.NETCore.Runtime.CoreCLR 1.0.2.
+  Installing Microsoft.NETCore.DotNetHostPolicy 1.0.1.
+  Installing Microsoft.NETCore.App 1.0.0.
+  Installing Microsoft.DotNet.Watcher.Tools 1.0.0-msbuild3-final.
+  Restore completed in 30.49 sec for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj.
+  Installing Microsoft.AspNetCore.DataProtection.Abstractions 1.1.0.
+  Installing Microsoft.AspNetCore.Cryptography.Internal 1.1.0.
+  Installing Microsoft.DotNet.PlatformAbstractions 1.1.0.
+  Installing Microsoft.AspNetCore.Razor 1.1.0.
+  Installing Microsoft.AspNetCore.DataProtection 1.1.0.
+  Installing Microsoft.AspNetCore.Authorization 1.1.0.
+  Installing Microsoft.Extensions.DependencyModel 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.Abstractions 1.1.0.
+  Installing Microsoft.AspNetCore.ResponseCaching.Abstractions 1.1.0.
+  Installing Microsoft.AspNetCore.Razor.Runtime 1.1.0.
+  Installing Microsoft.Extensions.Localization.Abstractions 1.1.0.
+  Installing Microsoft.Extensions.Globalization.CultureInfoCache 1.1.0.
+  Installing Microsoft.AspNetCore.Antiforgery 1.1.0.
+  Installing Microsoft.Extensions.WebEncoders 1.1.0.
+  Installing Microsoft.AspNetCore.Html.Abstractions 1.1.0.
+  Installing Microsoft.AspNetCore.JsonPatch 1.1.0.
+  Installing Microsoft.AspNetCore 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc 1.1.0.
+  Installing Microsoft.Extensions.Logging 1.1.0.
+  Installing Microsoft.AspNetCore.Server.Kestrel 1.1.0.
+  Installing Microsoft.Extensions.Logging.Console 1.1.0.
+  Installing Microsoft.AspNetCore.Routing 1.1.0.
+  Installing Microsoft.Extensions.Configuration.Json 1.1.0.
+  Installing Microsoft.Extensions.Configuration.EnvironmentVariables 1.1.0.
+  Installing Microsoft.Extensions.Configuration.FileExtensions 1.1.0.
+  Installing Microsoft.Extensions.Options.ConfigurationExtensions 1.1.0.
+  Installing Microsoft.AspNetCore.Diagnostics 1.1.0.
+  Installing Microsoft.AspNetCore.Server.IISIntegration 1.1.0.
+  Installing Microsoft.AspNetCore.Hosting 1.1.0.
+  Installing Microsoft.Extensions.Caching.Memory 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.TagHelpers 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.Localization 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.Razor 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.Cors 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.ApiExplorer 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.Formatters.Json 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.DataAnnotations 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.ViewFeatures 1.1.0.
+  Installing Microsoft.Extensions.Options 1.1.0.
+  Installing Microsoft.AspNetCore.Routing.Abstractions 1.1.0.
+  Installing Microsoft.Extensions.Configuration 1.1.0.
+  Installing Microsoft.Extensions.Configuration.Binder 1.1.0.
+  Installing Microsoft.AspNetCore.Diagnostics.Abstractions 1.1.0.
+  Installing Microsoft.AspNetCore.WebUtilities 1.1.0.
+  Installing Microsoft.AspNetCore.HttpOverrides 1.1.0.
+  Installing Microsoft.AspNetCore.Http 1.1.0.
+  Installing Microsoft.Extensions.Caching.Abstractions 1.1.0.
+  Installing Microsoft.AspNetCore.Localization 1.1.0.
+  Installing Microsoft.Extensions.Localization 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.Razor.Host 1.1.0.
+  Installing Microsoft.AspNetCore.Cors 1.1.0.
+  Installing Microsoft.AspNetCore.Mvc.Core 1.1.0.
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\obj\WebApp.csproj.nuget.g.props.
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\obj\WebApp.csproj.nuget.g.targets.
+  Writing lock file to disk. Path: E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\obj\project.assets.json
+  Restore completed in 1.08 min for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj.
+
+  NuGet Config files used:
+      C:\Users\Aspire\AppData\Roaming\NuGet\NuGet.Config
+
+  Feeds used:
+      https://api.nuget.org/v3/index.json
+
+  Installed:
+      57 package(s) to E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp (master)
+$ dotnet run
+Hosting environment: Production
+Content root path: E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp (master)
+$ cat WebApp.csproj
+<Project ToolsVersion="15.0" Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0-msbuild3-final" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp (master)
+$ "C:\Program Files\Notepad++\notepad++.exe" WebApp.csproj
+
+[
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp (master)
+$ vim WebApp.csproj
+]
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp (master)
+$ cat WebApp.csproj
+<Project ToolsVersion="15.0" Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0-msbuild3-final" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp (master)
+$ dotnet restore
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj...
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj...
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj...
+  Installing Microsoft.DotNet.Watcher.Tools 1.0.0.
+  Restore completed in 6.33 sec for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj.
+  Restore completed in 6.33 sec for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj.
+  Lock file has not changed. Skipping lock file write. Path: E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\obj\project.assets.json
+  Restore completed in 12.53 sec for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj.
+
+  NuGet Config files used:
+      C:\Users\Aspire\AppData\Roaming\NuGet\NuGet.Config
+
+  Feeds used:
+      https://api.nuget.org/v3/index.json
+
+  Installed:
+      1 package(s) to E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp (master)
+$ dotnet watch run
+watch : Started
+Hosting environment: Production
+Content root path: E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+watch : Exited with error code 1
+watch : File changed: E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\Controllers\MathController.cs
+watch : Started
+Hosting environment: Production
+Content root path: E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebApp (master)
+$ cd ..
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample (master)
+$ cd WebAppTests
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebAppTests (master)
+$ dotnet restore
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\WebAppTests.csproj...
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\WebAppTests.csproj...
+  Restoring packages for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj...
+  Restore completed in 4.94 sec for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\WebAppTests.csproj.
+  Lock file has not changed. Skipping lock file write. Path: E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\obj\project.assets.json
+  Restore completed in 8.51 sec for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebApp\WebApp.csproj.
+  Installing System.Xml.XmlSerializer 4.0.11.
+  Installing System.Private.DataContractSerialization 4.1.1.
+  Installing System.Runtime.Serialization.Json 4.0.2.
+  Installing System.Diagnostics.TextWriterTraceListener 4.0.0.
+  Installing System.Xml.XPath.XmlDocument 4.0.1.
+  Installing System.Diagnostics.TraceSource 4.0.0.
+  Installing System.ComponentModel.EventBasedAsync 4.0.11.
+  Installing xunit.abstractions 2.0.1.
+  Installing Microsoft.TestPlatform.ObjectModel 15.0.0.
+  Installing xunit.extensibility.core 2.2.0.
+  Installing xunit.extensibility.execution 2.2.0.
+  Installing Microsoft.TestPlatform.TestHost 15.0.0.
+  Installing xunit.core 2.2.0.
+  Installing xunit.assert 2.2.0.
+  Installing Microsoft.TestPlatform.ObjectModel 11.0.0.
+  Installing Microsoft.NET.Test.Sdk 15.0.0.
+  Installing xunit.runner.visualstudio 2.2.0.
+  Installing xunit 2.2.0.
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\obj\WebAppTests.csproj.nuget.g.props.
+  Generating MSBuild file E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\obj\WebAppTests.csproj.nuget.g.targets.
+  Writing lock file to disk. Path: E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\obj\project.assets.json
+  Restore completed in 31.1 sec for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\WebAppTests.csproj.
+
+  NuGet Config files used:
+      C:\Users\Aspire\AppData\Roaming\NuGet\NuGet.Config
+
+  Feeds used:
+      https://api.nuget.org/v3/index.json
+
+  Installed:
+      18 package(s) to E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\WebAppTests.csproj
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebAppTests (master)
+$ dotnet watch test
+watch : Started
+Build started, please wait...
+Build completed.
+
+Test run for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\bin\Debug\netcoreapp1.1\WebAppTests.dll(.NETCoreApp,Version=v1.1)
+Microsoft (R) Test Execution Command Line Tool Version 15.0.0.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+[xUnit.net 00:00:03.8756230]   Discovering: WebAppTests
+[xUnit.net 00:00:04.1864243]   Discovered:  WebAppTests
+[xUnit.net 00:00:04.3032240]   Starting:    WebAppTests
+[xUnit.net 00:00:05.8295013]     WebAppTests.CalculatorTests.TestProduct [FAIL]
+[xUnit.net 00:00:05.8342539]       Assert.Equal() Failure
+[xUnit.net 00:00:05.8345970]       Expected: 20
+[xUnit.net 00:00:05.8347510]       Actual:   9
+[xUnit.net 00:00:05.8385432]       Stack Trace:
+[xUnit.net 00:00:05.8427314]         E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\CalculatorTests.cs(21,0): at WebAppTests.CalculatorTests.TestProduct()
+[xUnit.net 00:00:05.8534536]   Finished:    WebAppTests
+Failed   WebAppTests.CalculatorTests.TestProduct
+Error Message:
+ Assert.Equal() Failure
+Expected: 20
+Actual:   9
+Stack Trace:
+   at WebAppTests.CalculatorTests.TestProduct() in E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\CalculatorTests.cs:line 21
+
+Total tests: 2. Passed: 1. Failed: 1. Skipped: 0.
+Test Run Failed.
+Test execution time: 7.5477 Seconds
+
+
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...
+watch : Started
+Build started, please wait...
+Build completed.
+
+Test run for E:\Working\CS\TODO\ASP.NET-Core\Docs\aspnetcore\tutorials\dotnet-watch\sample\WebAppTests\bin\Debug\netcoreapp1.1\WebAppTests.dll(.NETCoreApp,Version=v1.1)
+Microsoft (R) Test Execution Command Line Tool Version 15.0.0.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+[xUnit.net 00:00:01.4517101]   Discovering: WebAppTests
+[xUnit.net 00:00:01.7010938]   Discovered:  WebAppTests
+[xUnit.net 00:00:01.8075496]   Starting:    WebAppTests
+[xUnit.net 00:00:02.1541096]   Finished:    WebAppTests
+
+Total tests: 2. Passed: 2. Failed: 0. Skipped: 0.
+Test Run Successful.
+Test execution time: 3.6467 Seconds
+
+
+watch : Exited
+watch : Waiting for a file to change before restarting dotnet...
+
+
+Aspire@Acer MINGW64 /e/Working/CS/TODO/ASP.NET-Core/Docs/aspnetcore/tutorials/dotnet-watch/sample/WebAppTests (master)
+$

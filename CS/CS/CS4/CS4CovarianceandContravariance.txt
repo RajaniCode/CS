@@ -1,0 +1,126 @@
+// CS 4
+/*
+Variance - Covariance and Contravariance
+*/
+
+﻿using System;
+using System.Collections.Generic;
+using System. Linq;
+
+// Variance
+// CS 4 Covariance and Contravariance
+class CovarianceContravarianceCS4
+{
+    object GetObject() { return null; }
+    void SetObject(object obj) { Console.WriteLine(obj); }
+
+    string GetString() { return ""; }
+    static void SetString(string str) { Console.WriteLine(str); }
+
+    public void Print()
+    {
+        // Difference between assignment compatibility, covariance, and contravariance.
+
+        // Assignment compatibility
+        string str = "Covariance and Contravariance";
+        // An object of a more derived type is assigned to an object of a less derived type
+        object obj = str;
+        Console.WriteLine(obj);
+        
+        // Covariance and contravariance in generic interfaces and delegates allow for implicit conversion of generic type parameters
+        // The following code example shows implicit reference conversion for generic interfaces
+        // A generic interface or delegate is called variant if its generic parameters are declared covariant or contravariant
+        // And enable you to create your own variant interfaces and delegates
+
+        // Covariance
+        IEnumerable<string> strings = new List<string>();
+        // An object that is instantiated with a more derived type argument is assigned to an object instantiated with a less derived type argument
+        // Assignment compatibility is preserved
+        IEnumerable<object> objects = strings;
+        // objects = new List<string>() {"Alpha", "Beta", "Gamma", "Delta", "Epsilon" };
+        objects = new[] {"Alpha", "Beta", "Gamma", "Delta", "Epsilon" };
+        // objects.ToList().ForEach(Console.WriteLine);
+        foreach(string s in objects)
+        {
+            Console.WriteLine(s);
+        }
+
+        // Contravariance
+        Action<object> actObject = SetObject;
+        // An object that is instantiated with a less derived type argument is assigned to an object instantiated with a more derived type argument
+        // SetObject("Hello, World!");
+        // Assignment compatibility is reversed
+        Action<string> actString = actObject;
+        actString ("Hello, World!");
+
+        // Covariance for arrays enables implicit conversion of an array of a more derived type to an array of a less derived type
+        // However this operations is not type safe, as shown in the following code example
+        #pragma warning disable 0219
+        object[] array = new String[10]; // warning 0219
+        // The following statement produces a run-time exception
+        // array[0] = 10;
+
+        // Covariance and contravariance support for method groups allows for matching method signatures with delegate types
+        // This enables you to assign to delegates not only methods that have matching signatures, but also methods that return more derived types (covariance) or that accept parameters that have less derived types (contravariance) than that specified by the delegate type
+        // The following code example shows covariance and contravariance support for method groups
+
+        // Covariance
+        // A delegate specifies a return type as object, however you can assign a method that returns a string
+        Func<object> delegateReturnType = GetString;
+        Console.WriteLine("Return type: {0}", delegateReturnType().GetType());
+
+        // Contravariance
+        // A delegate specifies a parameter type as string, however you can assign a method that takes an object.
+    Action<string> delegateParameterType = SetObject;
+        delegateParameterType("Parameter type as string");
+    }
+}
+
+class BaseClass { }
+
+class DerivedClass : BaseClass { }
+
+// CS 2 Covariance and Contravariance
+delegate BaseClass Covariance();
+delegate void Contravariance(DerivedClass dc);
+
+class CovarianceContravarianceCS2
+{
+    DerivedClass CovarianceMethod()
+    {
+        DerivedClass dc = new DerivedClass();
+        Console.WriteLine("Covariance Method: {0}", dc.GetType());
+        return dc;
+    }
+
+    void ContravarianceMethod(BaseClass bc)
+    {
+        Console.WriteLine("Contravariance Method: {0}", bc.GetType());
+    }
+
+    public void Print()
+    {
+        // Delegate Method Group Conversion
+        Covariance co = CovarianceMethod; // Covariance co = new Covariance(CovarianceMethod);
+        co += CovarianceMethod; // Note
+        co -= CovarianceMethod; // Note
+        Contravariance contra = ContravarianceMethod; // Contravariance contra = new Contravariance(ContravarianceMethod);
+        co();
+        DerivedClass dc = new DerivedClass();
+        contra(dc); // Note
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // CS 4 Covariance and Contravariance
+        CovarianceContravarianceCS4 cs4 = new CovarianceContravarianceCS4();
+        cs4.Print();
+        
+        // CS 2 Covariance and Contravariance
+        CovarianceContravarianceCS2 cs2 = new CovarianceContravarianceCS2();
+        cs2.Print();
+    }
+}

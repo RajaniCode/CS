@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PurchaseOrders>
+  <PurchaseOrder>
+    <Item price="100">Motor</Item>
+  </PurchaseOrder>
+  <PurchaseOrder>
+    <Item price="10">Switch</Item>
+  </PurchaseOrder>
+  <PurchaseOrder>
+    <Item price="10">Cable</Item>
+  </PurchaseOrder>
+</PurchaseOrders>

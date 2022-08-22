@@ -1,0 +1,283 @@
+Blank Solution [Books] + ASP.NET MVC (.NET Framework 4.8) Individual User Accounts [Books.Web] (Entity Framework 6.4.4) + Class Library (.NET Framework 4.8) [Books.Entities]
+
+
+[
+https://localhost:44368/Account/Register
+https://localhost:44389/Account/Login
+email@example.com
+Hola!123
+]
+
+
+# 3-Books-Scaffolding-Async From # 1-Books-Migrations
+Note: 
+--SQL Server Delete Database: aspnet-Books.Web 
+IF EXISTS(SELECT name FROM sys.databases WHERE name = N'aspnet-Books.Web')
+--IF DB_ID (N'aspnet-Books.Web') IS NOT NULL
+DROP DATABASE [aspnet-Books.Web];
+GO
+--Copy Books.Web\App_Data_Backup To Books.Web\App_Data
+aspnet-Books.Web.mdf
+aspnet-Books.Web_log.ldf
+
+Verify: Run the project copied from 1-Books-Migrations
+https://localhost:44389/Account/Login
+
+--Copy Books.Web\App_Data To Books.Web\App_Data_Backup
+
+aspnet-Books.Web.mdf
+aspnet-Books.Web_log.ldf
+
+Scaffolding Async: Add Controller: MVC 5 Controller with views, using Entity Framework
+// Books\Books.Web\Controllers\BooksController.cs
+[Authorize]
+public class BooksController : Controller
+
+// Books\Books.Web\Views\Shared\_Layout.cshtml
+<li>@Html.ActionLink("Books", "Index", "Books")</li>
+
+
+[
+# 2-Books-Scaffolding From # 1-Books-Migrations
+Note: 
+--SQL Server Delete Database: aspnet-Books.Web 
+IF EXISTS(SELECT name FROM sys.databases WHERE name = N'aspnet-Books.Web')
+--IF DB_ID (N'aspnet-Books.Web') IS NOT NULL
+DROP DATABASE [aspnet-Books.Web];
+GO
+--Copy Books.Web\App_Data_Backup To Books.Web\App_Data
+aspnet-Books.Web.mdf
+aspnet-Books.Web_log.ldf
+
+Verify: Run the project copied from 1-Books-Migrations
+https://localhost:44389/Account/Login
+
+--Copy Books.Web\App_Data To Books.Web\App_Data_Backup
+aspnet-Books.Web.mdf
+aspnet-Books.Web_log.ldf
+
+Scaffolding: Add Controller: MVC 5 Controller with views, using Entity Framework
+// Books\Books.Web\Controllers\BooksController.cs
+[Authorize]
+public class BooksController : Controller
+
+// Books\Books.Web\Views\Shared\_Layout.cshtml
+<li>@Html.ActionLink("Books", "Index", "Books")</li>
+]
+
+
+# 1-Books-Migrations
+// [Books.Entities]
+// Add
+// Books\Books.Entities\Genre.cs
+// Add Reference to C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.ComponentModel.DataAnnotations.dll
+using System.ComponentModel.DataAnnotations;
+
+namespace Books.Entities
+{
+    public enum Genre
+    {
+        [Display(Name = "Non Fiction")]
+        NonFiction,
+        Romance,
+        Action,
+        [Display(Name = "Science Fiction")]
+        ScienceFiction
+    }
+}
+
+// Add
+// Books\Books.Entities\Genre.cs
+// Add Reference to C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.ComponentModel.DataAnnotations.dll
+using System.ComponentModel.DataAnnotations;
+
+namespace Books.Entities
+{
+    public enum Genre
+    {
+        [Display(Name = "Non Fiction")]
+        NonFiction,
+        Romance,
+        Action,
+        [Display(Name = "Science Fiction")]
+        ScienceFiction
+    }
+}
+
+// [Books.Web]
+// Add
+// Books.Web\DataContexts\IdentityDb.cs
+// Install-Package EntityFramework -Version 6.4.4
+using Microsoft.AspNet.Identity.EntityFramework;
+using Books.Web.Models;
+
+namespace Books.Web.DataContexts
+{
+    public class IdentityDb : IdentityDbContext<ApplicationUser>
+    {
+        public IdentityDb()
+            : base("DefaultConnection", throwIfV1Schema: false)
+        {
+        }
+
+        public static IdentityDb Create()
+        {
+            return new IdentityDb();
+        }
+    }
+}
+// 1
+// PM> Enable-Migrations -ContextTypeName IdentityDb -MigrationsDirectory DataContexts\IdentityMigrations
+
+// 2
+// Books.Web\DataContexts\IdentityMigrations\Configuration.cs
+// PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration "InitialCreate"
+
+// 3
+// Books.Web\DataContexts\IdentityMigrations\202103060522248_InitialCreate.cs
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration
+// OR
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration -Verbose
+
+// Add
+// Books.Web\DataContexts\BooksDb.cs
+// Install-Package EntityFramework -Version 6.4.4
+using System.Data.Entity;
+// Add Reference to Books.Entities project
+using Books.Entities;
+
+namespace Books.Web.DataContexts
+{
+    public class BooksDb : DbContext
+    {
+        public BooksDb()
+            : base("DefaultConnection")
+        {
+
+        }
+        public DbSet<Book> Books { get; set; }
+    }
+}
+// 4
+// PM> Enable-Migrations -ContextTypeName BooksDb -MigrationsDirectory DataContexts\BooksMigrations
+
+// 5
+// Books.Web\DataContexts\BooksMigrations\Configuration.cs
+// PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration "InitialCreate" 
+
+// 6
+// Books.Web\DataContexts\BooksMigrations\202103060526569_InitialCreate.cs
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration
+// OR
+// PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration -Verbose
+
+// Books\Books.Web\Web.config
+<!--<add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-Books.Web-20210306044140.mdf;Initial Catalog=aspnet-Books.Web-20210306044140;Integrated Security=True" providerName="System.Data.SqlClient" />-->
+<add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-Books.Web.mdf;Initial Catalog=aspnet-Books.Web;Integrated Security=True" providerName="System.Data.SqlClient" />
+
+https://localhost:44368/Account/Register
+
+Copy Books.Web\App_Data To Books.Web\App_Data_Backup
+aspnet-Books.Web.mdf
+aspnet-Books.Web_log.ldf
+
+SQL Server Delete Database: aspnet-Books.Web
+
+
+
+
+# Package Manager Console # 1-Books-Migrations
+[
+PM> Enable-Migrations -ContextTypeName IdentityDb -MigrationsDirectory DataContexts\IdentityMigrations
+Checking if the context targets an existing database...
+PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration "InitialCreate"
+Scaffolding migration 'InitialCreate'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration InitialCreate' again.
+PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.IdentityMigrations.Configuration -Verbose
+C:\Users\EXT-SomaskandanR\source\repos\Books\packages\EntityFramework.6.4.4\tools\net45\any\ef6.exe database update --migrations-config Books.Web.DataContexts.IdentityMigrations.Configuration --verbose --no-color --prefix-output --assembly C:\Users\EXT-SomaskandanR\source\repos\Books\Books.Web\bin\Books.Web.dll --project-dir C:\Users\EXT-SomaskandanR\source\repos\Books\Books.Web\ --language C# --data-dir C:\Users\EXT-SomaskandanR\source\repos\Books\Books.Web\App_Data --root-namespace Books.Web --config C:\Users\EXT-SomaskandanR\source\repos\Books\Books.Web\Web.config
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Target database is: 'aspnet-Books.Web' (DataSource: (LocalDb)\MSSQLLocalDB, Provider: System.Data.SqlClient, Origin: Configuration).
+Applying explicit migrations: [202103060522248_InitialCreate].
+Applying explicit migration: 202103060522248_InitialCreate.
+CREATE TABLE [dbo].[AspNetRoles] (
+    [Id] [nvarchar](128) NOT NULL,
+    [Name] [nvarchar](256) NOT NULL,
+    CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY ([Id])
+)
+CREATE UNIQUE INDEX [RoleNameIndex] ON [dbo].[AspNetRoles]([Name])
+CREATE TABLE [dbo].[AspNetUserRoles] (
+    [UserId] [nvarchar](128) NOT NULL,
+    [RoleId] [nvarchar](128) NOT NULL,
+    CONSTRAINT [PK_dbo.AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId])
+)
+CREATE INDEX [IX_UserId] ON [dbo].[AspNetUserRoles]([UserId])
+CREATE INDEX [IX_RoleId] ON [dbo].[AspNetUserRoles]([RoleId])
+CREATE TABLE [dbo].[AspNetUsers] (
+    [Id] [nvarchar](128) NOT NULL,
+    [Email] [nvarchar](256),
+    [EmailConfirmed] [bit] NOT NULL,
+    [PasswordHash] [nvarchar](max),
+    [SecurityStamp] [nvarchar](max),
+    [PhoneNumber] [nvarchar](max),
+    [PhoneNumberConfirmed] [bit] NOT NULL,
+    [TwoFactorEnabled] [bit] NOT NULL,
+    [LockoutEndDateUtc] [datetime],
+    [LockoutEnabled] [bit] NOT NULL,
+    [AccessFailedCount] [int] NOT NULL,
+    [UserName] [nvarchar](256) NOT NULL,
+    CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY ([Id])
+)
+CREATE UNIQUE INDEX [UserNameIndex] ON [dbo].[AspNetUsers]([UserName])
+CREATE TABLE [dbo].[AspNetUserClaims] (
+    [Id] [int] NOT NULL IDENTITY,
+    [UserId] [nvarchar](128) NOT NULL,
+    [ClaimType] [nvarchar](max),
+    [ClaimValue] [nvarchar](max),
+    CONSTRAINT [PK_dbo.AspNetUserClaims] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_UserId] ON [dbo].[AspNetUserClaims]([UserId])
+CREATE TABLE [dbo].[AspNetUserLogins] (
+    [LoginProvider] [nvarchar](128) NOT NULL,
+    [ProviderKey] [nvarchar](128) NOT NULL,
+    [UserId] [nvarchar](128) NOT NULL,
+    CONSTRAINT [PK_dbo.AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey], [UserId])
+)
+CREATE INDEX [IX_UserId] ON [dbo].[AspNetUserLogins]([UserId])
+ALTER TABLE [dbo].[AspNetUserRoles] ADD CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[AspNetRoles] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[AspNetUserRoles] ADD CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[AspNetUserClaims] ADD CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[AspNetUserLogins] ADD CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+CREATE TABLE [dbo].[__MigrationHistory] (
+    [MigrationId] [nvarchar](150) NOT NULL,
+    [ContextKey] [nvarchar](300) NOT NULL,
+    [Model] [varbinary](max) NOT NULL,
+    [ProductVersion] [nvarchar](32) NOT NULL,
+    CONSTRAINT [PK_dbo.__MigrationHistory] PRIMARY KEY ([MigrationId], [ContextKey])
+)
+INSERT [dbo].[__MigrationHistory]([MigrationId], [ContextKey], [Model], [ProductVersion])
+VALUES (N'202103060522248_InitialCreate', N'Books.Web.DataContexts.IdentityMigrations.Configuration',  0x1F8B0800000000000400DD5CDB6EE436127D5F20FF20E82959382D5F7606B3463B81D3B6B3C68E2F98F664F336604BECB63012A588946363912FDB87FDA4FD852D4AD48D175DBAE5EE7630C0C0228BA78AC522592C16FB7FFFF9EFF4C7E730B09E7042FD889CD9479343DBC2C48D3C9FACCEEC942DBFFF60FFF8C3377F995E7AE1B3F54B4177C2E9A025A167F62363F1A9E350F71187884E42DF4D221A2DD9C48D42077991737C78F877E7E8C8C100610396654D3FA584F921CE3EE073161117C72C45C14DE4E1808A72A89967A8D62D0A318D918BCFEC9FA2E82B9DFC0B2F2617882168C9F033A3B6751EF808A499E360695B8890882106B29E7EA678CE9288ACE63114A0E0E125C640B74401C5A20FA71579DFEE1C1EF3EE3855C302CA4D298BC281804727423F8EDC7C2D2DDBA5FE408397A069F6C27B9D69F1CCBEF67056F4290A400132C3D3599070E233FBA664714EE35BCC2645C3490E799500DCEF51F27552473CB07AB73B28EDE97872C8FF1D58B334606982CF084E59828203EB3E5D04BEFB4FFCF2107DC5E4ECE468B13CF9F0EE3DF24EDEFF0D9FBCABF714FA0A748D0228BA4FA21827201B5E96FDB72DA7D9CE911B96CD6A6D72AD802DC1D4B0AD1BF4FC1193157B844973FCC1B6AEFC67EC1525C2B83E131F66123462490A9FB76910A04580CB7AA79527FFBF85EBF1BBF7A370BD454FFE2A1B7A893F4C9C04E6D5271C64B5F4D18FF3E9D518EF2F82EC2A8942FEDDB4AFBCF6CB3C4A1397772632923CA064855953BAA953196F2F93E650E39B7581BAFFA6CD2555CD5B4BCA3BB4CE4C28586C7B3614F2BE2EDFDE16771EC730789969718DB4195CB561E59BDB446A7B60951495D91CF5351B02DDF933AF829721F2831196C11E5CC09758FA4988CB5EC2B8041891C132DF234A6115F0FE81E8638BE8F0E708A2CFB19B26609C7386C2F8D5B9DD3F4604DFA6E182DBFCF6788D36340FBF4757C86551724978AB8DF13E46EED7286597C4036F147F666E01C83F1FFCB03FC028E29CBB2EA6F40A8C197BB3089CEC02F09AB093E3C1707C79DAB51B320B901FEAFD106921FD529056BE889E42F1470C643A9FA44DD48FD1CA27FD442D48CDA2E6149DA20AB2A1A272B07E920A4AB3A01941A79C39D5685E5E3642E3BB7919ECFEFB799B6DDEA6B5A0A6C639AC90F8674C7002CB98778F18C309A946A0CFBAB10B67211B3ECEF4D5F7A68CD32F2848C766B5D66CC81681F1674306BBFFB32113138A9F7C8F7B253D0E3F0531C0F7A2D79FABBAE79C24D9B6A743A39BDB66BE9D35C0345DCE298D5C3F9B059AB097085A34E5071FCEEA8E60E4BD91A320D03130749F6F7950027DB365A3BA231738C00C5BE76E1E169C21EA224F552374C81B2058B1A36A04ABA2214DE1FEAAF0044BC7096F84F82188C24CF50953A7854F5C3F4641A796A4963DB730DEF792875C7381634C38C34E4DF461AE0F7E70014A3ED2A0746968EAD42CAEDD100D5EAB69CCBB5CD86ADC9598C4566CB2C37736D8A5F0DF5EC530DB35B605E36C57491F018C81BC5D18A838ABF43500F9E0B26F062A9D980C062A5CAAAD186853633B30D0A64ADE9C81E647D4BEE32F9D57F7CD3C9B07E5ED6FEBADEADA816D36F4B167A699FB9EFC0E1A5AE044F2342F169A231948274E655438B8B261F0A673CC9A819ACACBD57A9F4E3B886C3A6D80957975808A8B3F0548994603842B2278ADD209DF61006C116D6B85152BBE045B1B7915BB7E015A23345F93CA26D9EBCC51F6ACB406C5B47B1D116A381A839097AC66C77B28C5148D5515D3C7031EE203D73A2606A345411DFEAA4149456746D752619ADD5AD2B961431CB18DB424394D062D159D195D4BC246BB95A471050638031BA9A8B9718F34D98AF846B9C794755327CF8D120553C7904435BD4171EC93552DA94A9458F33CA36AF6FD7C789A519863382ED5641B95D2969C5894A015966A8135487AE52794F15CAE05E2D19D99172A64B51DD5B0E8178CEA9BA63A74C5EA5F50F3BFF316FAACB2E62EAB3A1F02E70AFA16720F260B9B6B465EDFDCE2E96D28408926523F8B8234246687CADC3ABFAFABB7CF4B5484A923C9AF384C8AC614B7B6A9FE5E83A34E871107AAF45ED61F2C338449E585C75957BAC90B35A31441A93A8A2950B5B3C133B93183074CF612878F5727C2EBCC2F91905207104503316A390D0A58ADAE3F6A33EDA48ED9ACE98F28E596D421A5AA0152D633481A42D62BD6C23368544FD19F839A335247576BFB236BB247EAD09AEA35B03532CB75FD5135092675604D757FEC2ADB445E48F77807339E5D36DAC2F223EE667B9801E37556C571B6C0DAFD7D1DA8563C104BDCD02B60A27C2F2DCA78CEDBC8A2F2E8C6661665C030AF408DDBEFE602D47A656FC66C5C693716F9B62B7D33DE30BB7D55EB508E7A3249C9BD3CF24947BBA93866753FA251CE5D39896D156A840DFE85321C66063599FF16CC021FF3E5BC20B841C45F62CAF2340EFBF8F0E8587A83B33FEF611C4ABD40734C353D8A698ED91632B2C8134ADC4794A8F9111BBC19A9409520F435F1F0F399FDEFACD56916CFE07F65C507D635FD4CFCDF52A87848526CFDA1E67B8E9343DFE3D54629E81F6FE239447F955FFFFA256F7A60DD25309D4EAD4349D1EB0C7FF391C42069F2A61B48B3F6D389B73BDB1A6F13B4A8D26C59FF29C2C267A33C4328A4FC3644CFDF0D154DFBD4602344CD7382B1F04651A1E9B9C03A58C6A7021E7CB2ECA9C0B0CEEA9F0EAC239AF1D9804F8683C98F06FA2F4345CB1DEE439A43D33696A44CCF9D49D71B6560EE7A6F5272B3379AE86AFEF500B85173AC377351DE58EEF2685BA726357934EC5DDAFDABE723EF4B0A72E5B4EF36F3789BC9C62D974B7FAA1CE33DC88AD3E4FBEC3E9378DBB6668A02EF793AE6B07CE13D3336B1CDEF3E2B78DBC6660A10EFB9B10DCAFDDD335BDBD5FEB9634BEBBD85EE3C93574D4F32DCE6E8A2C85D39BB79C81D8EFF8B088C20F728F30796FA24B1B604D70E86158999A9393B4D66AC4C1C85AF42D1CE76585FC586DFDA5941D3CED690D3D9C65BACFFADBC054D3B6F43A6E42EB28DB5B98ABA0CF08E75AC2D95EA2D6517377AD291CCDEE5B3B65ECDBFA564E25194D2983D86DBE5B7933B3C8A4AC69C3A037285D58B62D83B6BBFC908FB37F5571504FF854682DDC6AE59D25C9365546CDE9244058914A1B9C10C79B0A59E27CC5F229741350F40672FC4B3A01EBF065960EF9ADCA52C4E197419878BA011F0E24E401BFF2C21BA29F3F42ECE7EEC648C2E80983E0FDCDF919F523FF04AB9AF3431210304F72E44B8978F25E361DFD54B89741B919E40427DA553F480C33800307A47E6E809AF231B98DF47BC42EE4B15013481740F4453EDD30B1FAD1214528151B5874FB0612F7CFEE1FFFA2BAA539A540000 , N'6.4.4')
+
+Running Seed method.
+PM> Enable-Migrations -ContextTypeName BooksDb -MigrationsDirectory DataContexts\BooksMigrations
+Checking if the context targets an existing database...
+PM> Add-Migration -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration "InitialCreate"
+Scaffolding migration 'InitialCreate'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration InitialCreate' again.
+PM> Update-Database -ConfigurationTypeName Books.Web.DataContexts.BooksMigrations.Configuration -Verbose
+C:\Users\EXT-SomaskandanR\source\repos\Books\packages\EntityFramework.6.4.4\tools\net45\any\ef6.exe database update --migrations-config Books.Web.DataContexts.BooksMigrations.Configuration --verbose --no-color --prefix-output --assembly C:\Users\EXT-SomaskandanR\source\repos\Books\Books.Web\bin\Books.Web.dll --project-dir C:\Users\EXT-SomaskandanR\source\repos\Books\Books.Web\ --language C# --data-dir C:\Users\EXT-SomaskandanR\source\repos\Books\Books.Web\App_Data --root-namespace Books.Web --config C:\Users\EXT-SomaskandanR\source\repos\Books\Books.Web\Web.config
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Target database is: 'aspnet-Books.Web' (DataSource: (LocalDb)\MSSQLLocalDB, Provider: System.Data.SqlClient, Origin: Configuration).
+Applying explicit migrations: [202103060526569_InitialCreate].
+Applying explicit migration: 202103060526569_InitialCreate.
+CREATE TABLE [dbo].[Books] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Title] [nvarchar](255) NOT NULL,
+    [Category] [int] NOT NULL,
+    CONSTRAINT [PK_dbo.Books] PRIMARY KEY ([Id])
+)
+INSERT [dbo].[__MigrationHistory]([MigrationId], [ContextKey], [Model], [ProductVersion])
+VALUES (N'202103060526569_InitialCreate', N'Books.Web.DataContexts.BooksMigrations.Configuration',  0x1F8B0800000000000400CD57DB6EE336107D2FD07F10F89C3563070BB481BC8BAC1D1746D7491065B7CFB4347688A54895A482F8DBF6A19FD45FE850A2EEBE24E9A228FC6251338733878733A3BFBFFF157E7C4E45F004DA7025A7643C3A2701C858255C6EA724B79B77BF908F1F7EFE29BC4ED2E7E06B6577E1ECD0539A2979B436BBA4D4C48F9032334A79AC95511B3B8A554A59A2E8E4FCFC573A1E53400882584110DEE7D2F2148A077C9C291943667326562A0161FC3ABE890AD4E086A5603216C3947C52EA9B19FD01EBD19C59869E169EAD21C195E00CA389406C48C0A45496598CF5F28B81C86A25B751860B4C3CEC3240BB0D13067C0E978DF94BD3399FB87468E35841C5B9B12A7D25E0F8C2F343FBEE6F6299D4FC2183D7C8B4DDB9AC0B164B0249D0DFE87226B433AA082EDC3898917B3C0BBA8B67B5125030EE7716CC7261730D5309B9D54C9C0577F95AF0F877D83DA86F20A73217A21D174686EF3A0BB874A75506DAEEEE61E3A35D2624A05D3FDA77ACDD5A3E652E4B692F2624B8C1CDD95A407DECADBC23AB34FC061234B390DC316B414B8701057183DD7B7B3D702BA0DA0E8586F786042BF6FC19E4D63E4EC9E4FD7B122CF83324D58A0FE18BE478CDD0C9EA1CF684787CDB1906BB557A57EF8CB21F6116FA1454481B41746592A72D9178A8A55908B66DAECB8B5553F8FF28D920570968B1436EDBC7DA256805E91AB40FFF46C9058FCB0BF495891C97CE0794763CEE5D5A31D4E6E3E3E6575DF0C971EB28E65854A11FD2C5F068CA4318DE5F57E71897356241EC7CBDE744B0DEF943315E5BDDC04ABC086C1B89048D2ABC98CA32B14F3A752C4D99A6659DAEEA393D50D0C315CB323CC55681F72B415456F7D9BBE8F5252F2D31686CF654BE3ADA7A27BCF06C0BBDB7B83546BAE0DA58D757D6CCC97D96A403B38AF903AC56BBB4C9ED57B986EBCADAFD6F790CDA5B791A3D9C86BD05269462BD2A72833A165FEB076E455F6582E93D7573A6449ECA43B5F798B7AF846D00BFF4728CA6ACB5619AD52152487B1CF4C9A603B67BDDA47F74C714DF37A977AF95DF5378E8D5767AAE19C8AF34210152F4C41327BD68672CA4853046D19F6226B0AAD8C660C524DF80B165E52438564C7A63D1FF6744A1C624E20573CA7F3E3170C7E8C999E095DDBA3324C827A6E347A68763C2BF9C018AD0DFD8FCF7F59861413CDD490E369252CD5392AC15C65B46E85BCF1B7BCCF06685B4FD5D11CEC1F06D03E1BE3224141DB801AD6C9672A32A7A31A3764495498FFD155896203157DAF20D8B2DBE8EC19862FEF3FDFD1A478064296F739BE5F6CA181C0944A78885F4F8FE4523EDC61CDE66EEC9FC8814304C8E29C0ADFC947391D4712FF628E70084D388BF281815CEBF4E93BB1A09E7B0170279FAE6908174D7EC01D24C2098B995117B82B7C48693D067D8B2785715C8C320A70FA24B7B38E76CAB596A3C46E3EFBE95A9FB58FEF00F544751775E0F0000 , N'6.4.4')
+
+Running Seed method.
+PM>
+]

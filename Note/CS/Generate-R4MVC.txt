@@ -1,0 +1,3 @@
+﻿R4MVC command (generated helpers for views and controllers e.g. MVC.Reports.InvoicesAndStatements.Index()):
+Generate-R4MVC
+Run this on the UI project

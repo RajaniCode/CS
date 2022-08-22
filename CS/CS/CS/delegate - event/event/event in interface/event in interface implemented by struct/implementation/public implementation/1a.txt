@@ -1,0 +1,1 @@
+// events in interface cannot be static or mapped onto static

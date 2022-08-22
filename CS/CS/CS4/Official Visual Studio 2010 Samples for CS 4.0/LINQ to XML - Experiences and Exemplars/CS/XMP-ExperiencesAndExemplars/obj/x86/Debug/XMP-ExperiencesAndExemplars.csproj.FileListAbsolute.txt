@@ -1,0 +1,9 @@
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\XQuery\XMP-ExperiencesAndExemplars\XMP-ExperiencesAndExemplars\bin\Debug\bib.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\XQuery\XMP-ExperiencesAndExemplars\XMP-ExperiencesAndExemplars\bin\Debug\books.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\XQuery\XMP-ExperiencesAndExemplars\XMP-ExperiencesAndExemplars\bin\Debug\prices.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\XQuery\XMP-ExperiencesAndExemplars\XMP-ExperiencesAndExemplars\bin\Debug\reviews.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\XQuery\XMP-ExperiencesAndExemplars\XMP-ExperiencesAndExemplars\bin\Debug\XMP-ExperiencesAndExemplars.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\XQuery\XMP-ExperiencesAndExemplars\XMP-ExperiencesAndExemplars\bin\Debug\XMP-ExperiencesAndExemplars.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\XQuery\XMP-ExperiencesAndExemplars\XMP-ExperiencesAndExemplars\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\XQuery\XMP-ExperiencesAndExemplars\XMP-ExperiencesAndExemplars\obj\x86\Debug\XMP-ExperiencesAndExemplars.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\Grouped LINQ Samples\XQuery\XMP-ExperiencesAndExemplars\XMP-ExperiencesAndExemplars\obj\x86\Debug\XMP-ExperiencesAndExemplars.pdb

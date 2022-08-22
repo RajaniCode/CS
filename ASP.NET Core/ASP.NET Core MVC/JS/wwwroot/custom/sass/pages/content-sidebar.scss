@@ -1,0 +1,107 @@
+/* ===========================================================
+
+	$PAGES WITH SIDEBAR
+
+=========================================================== */
+
+.article-header {
+    font-size: 26px;
+    padding-bottom: 15px;
+}
+
+.callout-header {
+    font-size: 21px;
+    padding-bottom: 15px;
+}
+
+/*SIDEBAR*/
+
+.sidebar {
+    float: right;
+    width: 100%;
+    max-width: 255px;
+}
+
+
+blockquote {
+    float: left;
+    width: 100%;
+    background: $blue-medium;
+    padding: 20px 40px;
+    color: #fff;
+    padding-bottom: 51px;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+cite {
+    float: left;
+    width: 100%;
+    padding-top: 27px;
+    text-align: right;
+    background: url(../assets/images/quote.png) no-repeat 164px -9px;
+}
+
+.sidebar-promo {
+    float: left;
+    width: 100%;
+    margin: 40px 0;
+    text-align:center;
+}
+
+.sidebar-promo span {
+    font-size: 19px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.sidebar-promo .primary {
+    width: 100%;
+    margin-top: 17px;
+}
+
+
+/*ELEMENTS*/
+
+.article__body li {
+    list-style:none;
+    font-size: 12px;
+}
+
+.article__body li:before {
+    content: "";
+    position: relative;
+    left: -9px;
+    background-color: #FF6400;
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+}
+
+.numbers {
+    border: 2px solid $blue-medium;
+    padding: 5px 10px;
+    border-radius: 100%;
+    font-weight: bold;
+    color:$blue-medium;
+}
+
+table .read-more{float:none;}
+
+.li-content {
+    padding: 10px 20px;
+}
+
+
+/* ---- MOBILE landscape---- *//* 480px */
+@media only screen and (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+
+    .sidebar {
+        float: left;
+        width: 100%;
+        max-width: 100% !important;
+    }
+
+}

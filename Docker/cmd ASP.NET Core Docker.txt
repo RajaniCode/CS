@@ -1,0 +1,401 @@
+# Commad Prompt 1
+
+Microsoft Windows [Version 10.0.18363.1016]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\rajanis>cd C:\Users\rajanis\Desktop\Docker
+
+C:\Users\rajanis\Desktop\Docker>git clone https://github.com/dotnet/dotnet-docker
+Cloning into 'dotnet-docker'...
+remote: Enumerating objects: 326, done.
+remote: Counting objects: 100% (326/326), done.
+remote: Compressing objects: 100% (97/97), done.
+remote: Total 25068 (delta 127), reused 261 (delta 96), pack-reused 24742
+Receiving objects: 100% (25068/25068), 5.18 MiB | 27.00 KiB/s, done.
+Resolving deltas: 100% (11357/11357), done.
+
+C:\Users\rajanis\Desktop\Docker>cd dotnet-docker/samples/aspnetapp/aspnetapp
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>dotnet run
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]
+      User profile is available. Using 'C:\Users\rajanis\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: https://localhost:5001
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://localhost:5000
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 34.6665ms 307
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint '/Index'
+info: Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker[3]
+      Route matched with {page = "/Index"}. Executing page /Index
+info: Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker[101]
+      Executing handler method aspnetapp.Pages.IndexModel.OnGet - ModelState is Valid
+info: Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker[102]
+      Executed handler method OnGet, returned result .
+info: Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker[103]
+      Executing an implicit handler method - ModelState is Valid
+info: Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker[104]
+      Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+info: Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker[4]
+      Executed page /Index in 84.9479ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint '/Index'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 167.3273ms 200 text/html; charset=utf-8
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/css/site.css
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/lib/jquery/dist/jquery.min.js
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.bundle.min.js
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:5001/js/site.js?v=dLGP40S79Xnx6GqUthRF6NWvjvhQ1nOvdVSwaNcgG18
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp\wwwroot\js\site.js'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 6.8225ms 200 application/javascript
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp\wwwroot\css\site.css'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 21.712ms 200 text/css
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+info: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[2]
+      Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp\wwwroot\lib\jquery\dist\jquery.min.js'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 46.1811ms 200 application/javascript
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 52.096ms 200 text/css
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished in 46.4957ms 200 application/javascript
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>cd ..
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>docker build -t aspnetapp .
+error during connect: Post http://%2F%2F.%2Fpipe%2Fdocker_engine/v1.40/build?buildargs=%7B%7D&cachefrom=%5B%5D&cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&labels=%7B%7D&memory=0&memswap=0&networkmode=default&rm=1&session=5crk3y4xolrdc6kq7iq4s6x6a&shmsize=0&t=aspnetapp&target=&ulimits=null&version=1: open //./pipe/docker_engine: The system cannot find the file specified. In the default daemon configuration on Windows, the docker client must be run elevated to connect. This error may also indicate that the docker daemon is not running.
+
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>docker build -t aspnetapp .
+Sending build context to Docker daemon  4.396MB
+Step 1/12 : FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+3.1: Pulling from dotnet/core/sdk
+57df1a1f1ad8: Pull complete                                                                                                                                     71e126169501: Pull complete                                                                                                                                     1af28a55c3f3: Pull complete                                                                                                                                     03f1c9932170: Pull complete                                                                                                                                     1e9f61add744: Pull complete                                                                                                                                     8bc534dd6017: Pull complete                                                                                                                                     7b0d6e95dc2c: Pull complete                                                                                                                                     Digest: sha256:95f46b6614f7fb759cdad3b38286e6d9a25422113a07b5862dec1400379e796b
+Status: Downloaded newer image for mcr.microsoft.com/dotnet/core/sdk:3.1
+ ---> c4155a9104a8
+Step 2/12 : WORKDIR /source
+ ---> Running in 9d4634a87190
+Removing intermediate container 9d4634a87190
+ ---> 17381b65dc81
+Step 3/12 : COPY *.sln .
+ ---> f62b90f24e65
+Step 4/12 : COPY aspnetapp/*.csproj ./aspnetapp/
+ ---> 7175325daff0
+Step 5/12 : RUN dotnet restore
+ ---> Running in 709c34ed0a54
+  Determining projects to restore...
+  Restored /source/aspnetapp/aspnetapp.csproj (in 136 ms).
+6de7a0eb2598: Pull complete                                                                                                                                     6d9bf7184ec4: Pull complete                                                                                                                                     Digest: sha256:adeb306016cb11425faad95b59f138c58910023f5754caeecd815b403330c7a4  31.11MB/31.29MB
+Status: Downloaded newer image for mcr.microsoft.com/dotnet/core/aspnet:3.1
+ ---> 28de0d96c539R /source/aspnetapp
+Step 10/12 : WORKDIR /app8d6e
+ ---> Running in 33a69ce8beb6er 6c4e20468d6e
+Removing intermediate container 33a69ce8beb6
+ ---> 54857bc90e3atnet publish -c release -o /app --no-restore
+Step 11/12 : COPY --from=build /app ./
+ ---> a7e2b0153b07d Engine version 16.7.0+7fb82e5b2 for .NET
+Step 12/12 : ENTRYPOINT ["dotnet", "aspnetapp.dll"]erved.
+ ---> Running in 9351fc5eb34d
+Removing intermediate container 9351fc5eb34d/netcoreapp3.1/aspnetapp.dll
+ ---> 86fd49931c0burce/aspnetapp/bin/release/netcoreapp3.1/aspnetapp.Views.dll
+Successfully built 86fd49931c0b
+Successfully tagged aspnetapp:latest650dc725
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
+3.1: Pulling from dotnet/core/aspnet
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>docker run -it --rm -p 5000:80 --name aspnetcore_sample aspnetapp
+warn: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[60]
+      Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+warn: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[35]
+      No XML encryptor configured. Key {14840aad-076e-4e66-b969-86b355e348ee} may be persisted to storage in unencrypted form.
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://[::]:80
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /app
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+^Cinfo: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>C:\Users\rajanis>"C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchDaemon
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>docker build -t aspnetapp .
+Sending build context to Docker daemon  4.396MB
+Step 1/12 : FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+3.1: Pulling from dotnet/core/sdk
+17e0c587bdd6: Pull complete                                                                                                                                     53bc7f023606: Pull complete                                                                                                                                     ed17742b01bb: Pull complete                                                                                                                                     d9f257914006: Pull complete                                                                                                                                     30b0a045397a: Pull complete                                                                                                                                     e9461a7e6bfc: Pull complete                                                                                                                                     c2aded019b4a: Pull complete                                                                                                                                     8b41517bec06: Pull complete                                                                                                                                     c72aad55fa2a: Pull complete                                                                                                                                     6af45ffad16c: Pull complete                                                                                                                                     5b4eba15b263: Pull complete                                                                                                                                     db0f5ac97825: Pull complete                                                                                                                                     eacbedd7b8fb: Pull complete                                                                                                                                     24a03472d32e: Pull complete                                                                                                                                     Digest: sha256:95f46b6614f7fb759cdad3b38286e6d9a25422113a07b5862dec1400379e796b
+Status: Downloaded newer image for mcr.microsoft.com/dotnet/core/sdk:3.1
+ ---> 300ca993f08a
+Step 2/12 : WORKDIR /source
+ ---> Running in 752be8297299
+Removing intermediate container 752be8297299
+ ---> bdc7462cdc77
+Step 3/12 : COPY *.sln .
+ ---> 2f1b02e36d94
+Step 4/12 : COPY aspnetapp/*.csproj ./aspnetapp/
+ ---> 9d69393749f9
+Step 5/12 : RUN dotnet restore
+ ---> Running in f52b6dcc6f88
+  Determining projects to restore...
+  Restored C:\source\aspnetapp\aspnetapp.csproj (in 144 ms).
+Removing intermediate container f52b6dcc6f88
+ ---> c688b548402d
+Step 6/12 : COPY aspnetapp/. ./aspnetapp/
+ ---> c8b1ba6665a3
+Step 7/12 : WORKDIR /source/aspnetapp
+ ---> Running in 7ddb8b1afeb6
+Removing intermediate container 7ddb8b1afeb6
+ ---> 0fc3ecb3c6c3
+Step 8/12 : RUN dotnet publish -c release -o /app --no-restore
+ ---> Running in 731e0114b3d6
+Microsoft (R) Build Engine version 16.7.0+7fb82e5b2 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  aspnetapp -> C:\source\aspnetapp\bin\release\netcoreapp3.1\aspnetapp.dll
+  aspnetapp -> C:\source\aspnetapp\bin\release\netcoreapp3.1\aspnetapp.Views.dll
+  aspnetapp -> C:\app\
+Removing intermediate container 731e0114b3d6
+ ---> 02459e5e87cc
+Step 9/12 : FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+3.1: Pulling from dotnet/core/aspnet
+17e0c587bdd6: Already exists                                                                                                                                    53bc7f023606: Already exists                                                                                                                                    ed17742b01bb: Already exists                                                                                                                                    d9f257914006: Already exists                                                                                                                                    30b0a045397a: Already exists                                                                                                                                    e9461a7e6bfc: Already exists                                                                                                                                    c2aded019b4a: Already exists                                                                                                                                    Digest: sha256:adeb306016cb11425faad95b59f138c58910023f5754caeecd815b403330c7a4
+Status: Downloaded newer image for mcr.microsoft.com/dotnet/core/aspnet:3.1
+ ---> f8b6a7ef2cb8
+Step 10/12 : WORKDIR /app
+ ---> Running in 9775da12f37c
+Removing intermediate container 9775da12f37c
+ ---> 299c6eb870d2
+Step 11/12 : COPY --from=build /app ./
+ ---> 5259c61d998b
+Step 12/12 : ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+ ---> Running in 13af8100e7b7
+Removing intermediate container 13af8100e7b7
+ ---> cd42ca8109a7
+Successfully built cd42ca8109a7
+Successfully tagged aspnetapp:latest
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>docker build -t aspnetapp .
+'C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>Sending build context to Docker daemon  4.396MB
+'Sending' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>Step 1/12 : FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+'Step' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>3.1: Pulling from dotnet/core/sdk
+'3.1:' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>docker run -it --rm --name aspnetcore_sample aspnetapp
+warn: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[60]
+      Storing keys in a directory 'C:\Users\ContainerUser\AppData\Local\ASP.NET\DataProtection-Keys' that may not be persisted outside of the container. Protect
+ed data will be unavailable when container is destroyed.
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://[::]:80
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\app
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+
+
+# Commad Prompt 2
+
+Microsoft Windows [Version 10.0.18363.1016]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\rajanis>docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+259ee783c57d        aspnetapp           "dotnet aspnetapp.dll"   58 seconds ago      Up 56 seconds                           aspnetcore_sample
+
+C:\Users\rajanis>docker exec aspnetcore_sample ipconfig
+
+Windows IP Configuration
+
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . :
+   Link-local IPv6 Address . . . . . : fe80::ccbc:b069:1b0b:e505%4
+   IPv4 Address. . . . . . . . . . . : 172.30.8.203
+   Subnet Mask . . . . . . . . . . . : 255.255.240.0
+   Default Gateway . . . . . . . . . : 172.30.0.1
+
+C:\Users\rajanis>start http://172.30.8.203
+
+
+# Commad Prompt 1
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>docker run -it --rm --name aspnetcore_sample aspnetapp
+warn: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[60]
+      Storing keys in a directory 'C:\Users\ContainerUser\AppData\Local\ASP.NET\DataProtection-Keys' that may not be persisted outside of the container. Protect
+ed data will be unavailable when container is destroyed.
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://[::]:80
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\app
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp>cd aspnetapp
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>dotnet publish -c Release -o published
+Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  aspnetapp -> C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp\bin\Release\netcoreapp3.1\aspnetapp.dll
+  aspnetapp -> C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp\bin\Release\netcoreapp3.1\aspnetapp.Views.dll
+  aspnetapp -> C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp\published\
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>dotnet published\aspnetapp.dll
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://localhost:5000
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: https://localhost:5001
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>copy NUL Dockerfile
+        1 file(s) copied.
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>notepad Dockerfile.
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>type Dockerfile
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+WORKDIR /app
+COPY published/aspnetapp.dll ./
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>docker build .
+Sending build context to Docker daemon  11.75MB
+Step 1/4 : FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+3.0: Pulling from dotnet/core/aspnet
+68ced04f60ab: Pull complete                                                                                                                                     e936bd534ffb: Pull complete                                                                                                                                     caf64655bcbb: Pull complete                                                                                                                                     d1927dbcbcab: Pull complete                                                                                                                                     641667054481: Pull complete                                                                                                                                     Digest: sha256:559b6a8efaff85116a01db6047cd91aaf1b5d6d425c575f87224a6c3d9ff9d23
+Status: Downloaded newer image for mcr.microsoft.com/dotnet/core/aspnet:3.0
+ ---> 579be85d9bf6
+Step 2/4 : WORKDIR /app
+ ---> Running in 212217361cf1
+Removing intermediate container 212217361cf1
+ ---> 93e9d322180e
+Step 3/4 : COPY published/aspnetapp.dll ./
+ ---> 0f618be8e78d
+Step 4/4 : ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+ ---> Running in f23a99ae35fd
+Removing intermediate container f23a99ae35fd
+ ---> 3dcf7ac6156b
+Successfully built 3dcf7ac6156b
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>
+
+
+# Git Bah
+
+rajanis@MSSPLLAP165 MINGW64 /
+$ docker rmi $(docker images -f "dangling=true" -q)
+Deleted: sha256:3dcf7ac6156b53ab7a426133fc3268f5944be4fe81ba8496343789c7baa74107
+Deleted: sha256:0f618be8e78d5b61f0f14269d52533a7508373c9f5797e1b271d6ec54d64302d
+Deleted: sha256:e4737bf486d21246b31727bd4aaefc87339a68e4d73d50169ade2bb8b27c96b7
+Deleted: sha256:93e9d322180e888e08075b31c9dfb193952d221827f1fe56f778924e6398a152
+Deleted: sha256:5353df9cc88a3e357091c28b339d23009f7b840393d6c2b4c9b57d3d828442c5
+Deleted: sha256:241fcd4ca07e18b57e40678bcc646ab49409b1a70fbee32e13facb2156969634
+Deleted: sha256:6ccf81fc66c781cf4331bc6131ce79c840c6b0d6773ed7b6e48690415058efca
+Deleted: sha256:6406b4996482e5308c79f97cf8d7bdd1131dc0239197ea0c7aec5f5b6c01041d
+Deleted: sha256:2c146f26e32918f64c4056a831e520b5d32b0ae50cb826efbf8c7d29a214500b
+Deleted: sha256:fc4e77ff1e33ee4f0629e3c13160d65345e09caa2f22c6a349c3dd3dff0366c5
+Deleted: sha256:238b8fbced44171e7d6dc77313282cc689b7d022c149e9997e86a03754a5a56f
+Deleted: sha256:75ff26c0234945f9beafdb8b07981f8a330e1f3c07785a3d1cf92b5ed993e9b2
+Deleted: sha256:7175325daff02b5fc425f79c4fcff07eee5851321ae4a2033638b20cde37a4e4
+Deleted: sha256:42504f55674c8dc0e8b1443db337a7b39a79dcd35bdf4fc1a012562eba3e6771
+Deleted: sha256:f62b90f24e6570089937b849ee5af274bfcba1e4138f5dee3439a1227b51f25e
+Deleted: sha256:97289c3550955f6ff6bd78d0a70d20162d62333afb1a9ed0ef877d9c00b75481
+Deleted: sha256:17381b65dc81fec4f0841b1359457976e416bbbc8997f2deb952a80f920bc070
+Deleted: sha256:8ae4689f55440c266a8be3e2de19ded1d2b843c52f76d8f5b29002f95ffea082
+
+rajanis@MSSPLLAP165 MINGW64 /
+$
+
+
+# Command Prompt 1
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>docker image ls
+REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+aspnetapp                              latest              86fd49931c0b        18 hours ago        212MB
+mcr.microsoft.com/dotnet/core/sdk      3.1                 c4155a9104a8        29 hours ago        708MB
+mcr.microsoft.com/dotnet/core/aspnet   3.1                 28de0d96c539        29 hours ago        207MB
+nginx                                  latest              4bb46517cac3        4 weeks ago         133MB
+wwwthoughtworks/build-your-own-radar   latest              757ba61dfd44        3 months ago        110MB
+mcr.microsoft.com/dotnet/core/aspnet   3.0                 579be85d9bf6        6 months ago        207MB
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+02c613e3f36c        aspnetapp:latest    "dotnet aspnetapp.dll"   27 minutes ago      Up 27 minutes                           agitated_mahavira
+633da820df2d        aspnetapp:latest    "dotnet aspnetapp.dll"   32 minutes ago      Up 26 minutes                           lucid_bohr
+fad32da6da6c        aspnetapp:latest    "dotnet aspnetapp.dll"   52 minutes ago      Up 26 minutes                           heuristic_curie
+c78c59ed3f5c        aspnetapp           "dotnet aspnetapp.dll"   58 minutes ago      Up 58 minutes                           optimistic_fermi
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>docker ps -a
+CONTAINER ID        IMAGE                                         COMMAND                  CREATED             STATUS                    PORTS               NAMES
+02c613e3f36c        aspnetapp:latest                              "dotnet aspnetapp.dll"   30 minutes ago      Up 30 minutes                                 agitated_mahavira
+633da820df2d        aspnetapp:latest                              "dotnet aspnetapp.dll"   34 minutes ago      Up 29 minutes                                 lucid_bohr
+fad32da6da6c        aspnetapp:latest                              "dotnet aspnetapp.dll"   54 minutes ago      Up 29 minutes                                 heuristic_curie
+c78c59ed3f5c        aspnetapp                                     "dotnet aspnetapp.dll"   About an hour ago   Up About an hour                              optimistic_fermi
+5ff7372aad9e        nginx:latest                                  "/docker-entrypoint.…"   2 days ago          Exited (137) 2 days ago                       project-radar-content
+688386efe547        wwwthoughtworks/build-your-own-radar:latest   "nginx -g 'daemon of…"   2 days ago          Exited (137) 2 days ago                       project-radar-app
+9ffa063e506a        nginx:latest                                  "/docker-entrypoint.…"   3 days ago          Exited (0) 3 days ago                         sre-radar-content
+94363e279cbe        wwwthoughtworks/build-your-own-radar:latest   "nginx -g 'daemon of…"   3 days ago          Exited (0) 3 days ago                         sre-radar-app
+
+C:\Users\rajanis\Desktop\Docker\dotnet-docker\samples\aspnetapp\aspnetapp>

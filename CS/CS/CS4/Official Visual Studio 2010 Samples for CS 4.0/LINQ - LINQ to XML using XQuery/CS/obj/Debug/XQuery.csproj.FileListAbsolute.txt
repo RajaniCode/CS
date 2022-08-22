@@ -1,0 +1,18 @@
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\XQuery\bin\Debug\Data\bib.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\XQuery\bin\Debug\XQuery.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\XQuery\bin\Debug\XQuery.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\XQuery\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\XQuery\obj\Debug\XQuery.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\CSharpSamples\LinqSamples\XQuery\obj\Debug\XQuery.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\XQuery\bin\Debug\Data\bib.xml
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\XQuery\bin\Debug\XQuery.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\XQuery\bin\Debug\XQuery.pdb
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\XQuery\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\XQuery\obj\Debug\XQuery.exe
+C:\Users\v-damdec\Downloads\Archived Samples Gallery\CSharpSamples\LinqSamples\XQuery\obj\Debug\XQuery.pdb
+C:\CSharpSamples\LinqSamples\XQuery\bin\Debug\Data\bib.xml
+C:\CSharpSamples\LinqSamples\XQuery\bin\Debug\XQuery.exe
+C:\CSharpSamples\LinqSamples\XQuery\bin\Debug\XQuery.pdb
+C:\CSharpSamples\LinqSamples\XQuery\obj\Debug\ResolveAssemblyReference.cache
+C:\CSharpSamples\LinqSamples\XQuery\obj\Debug\XQuery.exe
+C:\CSharpSamples\LinqSamples\XQuery\obj\Debug\XQuery.pdb

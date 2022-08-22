@@ -1,0 +1,306 @@
+ASP.NET MVC Individual User Accounts
+
+
+[
+https://localhost:44392/Account/Register
+https://localhost:44392/Account/Login
+email@example.com
+Hola!123
+]
+
+
+# 3-Identity-External-Logins-Facebook
+[Copy # 2-Identity-Migrating-Seeding]
+// Ensure aspnet-Identity database points to the current application App_Data folder mdf file by running the application and logging in
+// May have to delete aspnet-Identity database if it does not point to the current application App_Data folder mdf file
+https://localhost:44392/Account/Login
+email@example.com
+Hola!123
+
+// Edit
+// Identity\App_Start\Startup.Auth.cs
+// Edit
+// https://developers.facebook.com
+app.UseFacebookAuthentication(
+    appId: "***************",
+    appSecret: "********************************");
+
+https://localhost:44392/Account/Login
+Facebook
+
+https://localhost:44392/Account/ExternalLoginCallback#_=_
+facebook@example.com
+Register
+[
+Register.
+Associate your Facebook account.
+Association Form
+You've successfully authenticated with Facebook. Please enter a user name for this site below and click the Register button to finish logging in.
+
+Email
+facebook@example.com
+Register
+© 2021 - My ASP.NET Application
+]
+
+// Edit
+Identity\Controllers\SecretController.cs
+[Authorize(Users = "email@example.com, e.mail@example.com, mail@example.com, admin@example.com, facebook@example.com")]
+
+https://localhost:44392/Account/Login
+Facebook
+
+Backup App_Data
+
+
+# 2-Identity-Migrating-Seeding 
+[Copy # 1-Identity-Database]
+// Ensure aspnet-Identity database points to the current application App_Data folder mdf file by running the application and logging in
+// May have to delete aspnet-Identity database if it does not point to the current application App_Data folder mdf file
+https://localhost:44392/Account/Login
+email@example.com
+Hola!123
+
+PM> Get-Package EntityFramework
+[
+PM> Install-Package EntityFramework -Version 6.4.4
+]
+PM> Update-Package EntityFramework -Version 6.4.4
+PM> Get-Package EntityFramework
+PM> Enable-Migrations -EnableAutomaticMigrations
+# Note
+[
+PM> Enable-Migrations -EnableAutomaticMigrations
+A version of Entity Framework older than 6.3 is also installed. The newer tools are running. Use 'EntityFramework\Enable-Migrations' for the older version.
+Checking if the context targets an existing database...
+Enable-Migrations : Cannot find file 
+"C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\Identity\Migrations\202103091429019_InitialCreate.cs".
+At line:1 char:1
++ Enable-Migrations -EnableAutomaticMigrations
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [Enable-Migrations], COMException
+    + FullyQualifiedErrorId : System.Runtime.InteropServices.COMException,Enable-Migrations
+]
+[
+PM> Enable-Migrations
+A version of Entity Framework older than 6.3 is also installed. The newer tools are running. Use 'EntityFramework\Enable-Migrations' for the older version.
+Checking if the context targets an existing database...
+Detected database created with a database initializer. Scaffolded migration '202103091429019_InitialCreate' corresponding to existing database. To use an automatic migration instead, delete the Migrations folder and re-run Enable-Migrations specifying the -EnableAutomaticMigrations parameter.
+]
+
+// Edit
+// Identity\Migrations\Configuration.cs
+using System;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using Identity.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+namespace Identity.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<Identity.Models.ApplicationDbContext>
+    {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = true;
+            ContextKey = "Identity.Models.ApplicationDbContext";
+        }
+
+        protected override void Seed(Identity.Models.ApplicationDbContext context)
+        {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
+
+            // Edit
+            // Traditional EntityFramework approach to seed the database // using Identity.Models; // ApplicationUser // using Microsoft.AspNet.Identity; // PasswordHasher
+            var hasher = new PasswordHasher();
+            context.Users.AddOrUpdate
+            (
+                u => u.Email,
+                new ApplicationUser { Email = "e.mail@example.com", PasswordHash = hasher.HashPassword("Hola!123"), UserName = "e.mail@example.com", SecurityStamp = Guid.NewGuid().ToString() }
+            );
+
+            // Alternate EntityFramework approach to seed the database
+            if (!context.Users.Any(u => u.Email == "mail@example.com"))
+            {
+                // using Microsoft.AspNet.Identity.EntityFramework; // UserStore
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser { Email = "mail@example.com", UserName = "mail@example.com", };
+                manager.Create(user, "Hola!123");
+            }
+            
+            // Add User and Role
+            IdentityUserAndRole(context);
+        }
+      
+        public void IdentityUserAndRole(ApplicationDbContext context)
+        {
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            var roleStore = new RoleStore<IdentityRole>(context);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+            // Add role
+            var role = roleManager.FindByName("Admin");
+            if (role == null)
+            {
+                role = new IdentityRole("Admin");
+                roleManager.Create(role);
+            }
+
+            // Create user
+            var user = userManager.FindByName("admin@example.com");
+            if (user == null)
+            {
+                var newUser = new ApplicationUser()
+                {
+                    UserName = "admin@example.com",
+                    Email = "admin@example.com",
+                };
+                userManager.Create(newUser, "Hola!123");
+                userManager.AddToRole(newUser.Id, "Admin"); // Add role
+            }                       
+        }        
+    }
+}
+// 2
+// PM> Update-Database
+// OR
+// PM> Update-Database -Verbose
+
+// Add
+// Identity\Controllers\SecretController.cs
+using System.Web;
+using System.Web.Mvc;
+
+namespace Identity.Controllers
+{
+    [Authorize(Users = "email@example.com, e.mail@example.com, mail@example.com, admin@example.com")]
+    // [Authorize(Roles = "Admin")] // Only for // [Authorize(Users = "admin@example.com")]
+
+    public class SecretController : Controller
+    {
+        /*
+        // GET: Secret
+        public ActionResult Index()
+        {
+            return View();
+        }
+        */
+
+        public ContentResult Secret()
+        {
+            // IHtmlString htmlString = new HtmlString("<a onclick='javascript: window.history.back();' style=\"color: #0000FF; text-decoration: underline; font-size: 15px; font-family: Arial; cursor: pointer;\">This is a secret!</a>");
+            IHtmlString htmlString = new HtmlString("<a href='/Home/Index' style=\"color: #0000FF; text-decoration: underline; font-size: 15px; font-family: Arial; cursor: pointer;\">This is secret - Go Home</a>");
+            return Content(htmlString.ToString());
+        }
+
+        [AllowAnonymous]
+        public ContentResult Overt()
+        {
+            IHtmlString htmlString = null;
+            if (this.User.Identity.IsAuthenticated)
+            {
+                htmlString = new HtmlString("<a href='/Secret/Secret' style =\"color: #0000FF; text-decoration: underline; font-size: 15px; font-family: Arial; cursor: pointer;\">Go to secret</a>");
+            }
+            else
+            {
+                htmlString = new HtmlString("<a href='/Account/Login' style =\"color: #0000FF; text-decoration: underline; font-size: 15px; font-family: Arial; cursor: pointer;\">Login for secret</a>");
+
+            }
+            return Content(htmlString.ToString());
+        }
+    }
+}
+
+// Edit
+// Identity\Views\Shared\_Layout.cshtml
+<li>@Html.ActionLink("Secret", "Secret", "Secret")</li>
+<li>@Html.ActionLink("Overt", "Overt", "Secret")</li>
+
+https://localhost:44392/Secret/Secret
+email@example.com
+e.mail@example.com
+mail@example.com
+admin@example.com
+Hola!123
+
+Backup App_Data
+
+
+# 1-Identity-Database
+https://localhost:44392/Account/Register
+https://localhost:44392/Account/Login
+email@example.com
+Hola!123
+
+Backup App_Data
+
+
+# Package Manager Console # 2-Identity-Migrating-Seeding
+[
+Each package is licensed to you by its owner. NuGet is not responsible for, nor does it grant any licenses to, third-party packages. Some packages may include dependencies which are governed by additional licenses. Follow the package source (feed) URL to determine any dependencies.
+
+Package Manager Console Host Version 5.8.1.7021
+
+Type 'get-help NuGet' to see all available NuGet commands.
+
+PM> Get-Package EntityFramework
+
+Id                                  Versions                                 ProjectName                                             
+--                                  --------                                 -----------                                             
+EntityFramework                     {6.2.0}                                  Identity                                                
+
+
+PM> Update-Package EntityFramework -Version 6.4.4
+
+
+Attempting to gather dependency information for multiple packages with respect to project 'Identity', targeting '.NETFramework,Version=v4.8'
+Gathering dependency information took 36.34 sec
+Attempting to resolve dependencies for multiple packages.
+Resolving dependency information took 0 ms
+Resolving actions install multiple packages
+Retrieving package 'EntityFramework 6.4.4' from 'nuget.org'.
+Removed package 'EntityFramework 6.2.0' from 'packages.config'
+Successfully uninstalled 'EntityFramework 6.2.0' from Identity
+Adding package 'EntityFramework.6.4.4' to folder 'C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\packages'
+Added package 'EntityFramework.6.4.4' to folder 'C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\packages'
+Added package 'EntityFramework.6.4.4' to 'packages.config'
+Executing script file 'C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\packages\EntityFramework.6.4.4\tools\init.ps1'
+Successfully installed 'EntityFramework 6.4.4' to Identity
+Removing package 'EntityFramework 6.2.0' from folder 'C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\packages'
+Removed package 'EntityFramework 6.2.0' from folder 'C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\packages'
+Executing nuget actions took 3.96 sec
+Time Elapsed: 00:00:40.6156301
+PM> Get-Package EntityFramework
+
+Id                                  Versions                                 ProjectName                                             
+--                                  --------                                 -----------                                             
+EntityFramework                     {6.4.4}                                  Identity                                                
+
+
+PM> Enable-Migrations -EnableAutomaticMigrations
+A version of Entity Framework older than 6.3 is also installed. The newer tools are running. Use 'EntityFramework\Enable-Migrations' for the older version.
+Checking if the context targets an existing database...
+Enable-Migrations : Cannot find file 
+"C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\Identity\Migrations\202103091429019_InitialCreate.cs".
+At line:1 char:1
++ Enable-Migrations -EnableAutomaticMigrations
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [Enable-Migrations], COMException
+    + FullyQualifiedErrorId : System.Runtime.InteropServices.COMException,Enable-Migrations
+ 
+PM> Update-Database -Verbose
+A version of Entity Framework older than 6.3 is also installed. The newer tools are running. Use 'EntityFramework\Update-Database' for the older version.
+C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\packages\EntityFramework.6.4.4\tools\net45\any\ef6.exe database update --verbose --no-color --prefix-output --assembly C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\Identity\bin\Identity.dll --project-dir C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\Identity\ --language C# --data-dir C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\Identity\App_Data --root-namespace Identity --config C:\Users\EXT-SomaskandanR\source\repos\Identity\2-Identiry-Migrating-Seeding\Identity\Web.config
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Target database is: 'aspnet-Identity' (DataSource: (LocalDb)\MSSQLLocalDB, Provider: System.Data.SqlClient, Origin: Configuration).
+No pending explicit migrations.
+Running Seed method.
+PM>
+]

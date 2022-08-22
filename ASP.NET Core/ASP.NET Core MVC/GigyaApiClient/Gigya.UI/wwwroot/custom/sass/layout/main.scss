@@ -1,0 +1,136 @@
+/* ===========================================================
+
+	$MAIN
+
+=========================================================== */
+
+
+/* ---- MAIN STRUCTURE ---- */
+MAIN.page-main				                        {clear:both; width:100%; min-height:400px; padding:0px; transition:width $transitionSpeed ease-out;}
+MAIN.page-main .page-limits	                        {} 
+
+/* ---- PAGE HEADER ---- */
+HEADER.page-header                                  {clear:both; width:100%; height:75px; padding:20px; margin-bottom:15px; background-color:$baseColour;}
+HEADER.page-header H1.page-heading                  {@include heading-font-size-full($alpha,600,1,10px); @include heading-font-style($white); float: left; text-align: left; margin-right: 10px;}
+HEADER.page-header P.page-summary                   {font-size:16px; font-weight:400; color:$white;}
+
+/* ---- PAGE CONTENT ---- */
+.page-content                                       {@include column(9); padding-left:15px;}
+
+/* ---- SECTIONS ---- */
+SECTION						                        {clear:both; margin-bottom:15px;}
+SECTION HEADER.section-header                       {clear:both; width:100%; height:50px; padding:13px 20px; background-color:$primaryColour; @include clearfix;}
+SECTION HEADER.section-header.section-header--alt   {height:auto; background-color:$grey-faint;}
+
+HEADER.section-header .header-column				{@include column(12);}
+HEADER.section-header .header-column--right			{text-align:right;}
+
+SECTION .section-heading                            {@include heading-font-size-full($gamma,600,1,0); color:$white;}
+SECTION .section-header--alt .section-heading       {color:$baseColour;}
+
+/* ---- PANELS ---- */
+.panel                                              {clear:both; width:auto; height:auto; padding:15px; border-width:$borderWidth; border-style:solid; overflow:hidden; transition:all $transitionSpeed ease-in-out;}
+.panel--light                                       {border-color:$grey-light; background-color:$grey-faint;}
+.panel--medium                                      {border-color:$grey-medium; background-color:$grey-light;}
+.panel--dark                                        {border-color:$grey-dark; background-color:$grey-medium;}
+.panel--internal                                    {border:none;}
+.panel--external                                    {margin-bottom:20px;}
+.panel--hidden                                      {max-height:0; padding:0; opacity:$opacityNone;}
+.panel--showing                                     {max-height:$screen-large; opacity:$opacityFull;}
+.panel .panel__heading                              {padding-bottom:20px; color:$baseColour;} 
+
+
+
+/* ---- WIZARD STEPS ---- */
+.wizard                                             {}
+.wizard-step                                        {}
+.wizard-step__header                                {clear:both; width:100%; height:50px; padding:10px 15px; background-color:$primaryColour; color:$white;}
+.wizard-step__heading                               {font-size: 32px;font-weight: 600;line-height: 1;padding-bottom: 0; @include heading-font-style($white);}
+.wizard-step__body                                  {clear:both; width:100%; padding:0 0 20px 0;}
+.wizard-step__question                              {}
+.wizard-step__buttons                               {}
+
+
+
+
+
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- MOBILE (portrait 0 - 480px) ---- */
+@media only screen and (max-width:$breakpoint-small) {
+	
+	/* ---- MAIN STRUCTURE ---- */
+	HEADER.page-header                                  {padding:20px;}
+	HEADER.page-header H1.page-heading                  {font-size:$alpha;}
+}
+
+/* ---- MOBILE (landscape 480px - 600px) ---- */
+@media only screen and (min-width:$breakpoint-small) and (max-width: $breakpoint-medium-small) {
+
+	/* ---- MAIN STRUCTURE ---- */
+	HEADER.page-header                                  {padding:40px;}
+	HEADER.page-header H1.page-heading                  {font-size:$alpha;}
+}
+
+/* ---- TABLET (portrait 600px - 768px) ---- */
+@media only screen and (min-width:$breakpoint-medium-small) and (max-width: $breakpoint-medium) {
+
+	/* ---- MAIN STRUCTURE ---- */
+	HEADER.page-header                                  {padding:40px;}
+	HEADER.page-header H1.page-heading                  {font-size:$kilo;}
+}
+
+/* ---- ALL MOBILE (0 - 768px) ---- */
+@media only screen and (max-width:$breakpoint-medium) {
+
+	/* ---- MAIN STRUCTURE ---- */
+	HEADER.page-header                                  {height:auto;}
+	HEADER.page-header P.page-summary                   {font-size:$baseSize;}
+
+	/* ---- PAGE CONTENT ---- */
+	.page-content                                       {float:none; clear:both; width:100%; padding-left:0;}
+
+	/* ---- SECTION ---- */
+	HEADER.section-header .header-column				{float:none; clear:both; width:100%;}
+	HEADER.section-header .header-column:last-of-type	{padding-top:20px;}
+}
+
+/* ---- TABLET (landscape 768px - 960px) ---- */
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-medium-large) {
+
+	/* ---- PAGE CONTENT ---- */
+	.page-content                                       {@include column(8);}
+}
+
+/* ---- TABLET + (768px +) ---- */
+@media only screen and (min-width:$breakpoint-medium) {
+
+	/* ---- WIZARD STEPS ---- */
+	.wizard                                             {}
+	.wizard-step                                        {}
+	.wizard-step__heading                               {}
+	.wizard-step__body                                  {}
+	.wizard-step__question                              {}
+	.wizard-step__buttons                               {}
+}
+
+/* ---- SMALL DESKTOP (960px - 1024px) ---- */
+@media only screen and (min-width:$breakpoint-medium-large) and (max-width: $breakpoint-large) {
+
+
+}
+
+/* ---- MEDIUM DESKTOP (1024px - 1280px) ---- */
+@media only screen and (min-width:$breakpoint-large) and (max-width: $breakpoint-extra-large) {
+
+
+}
+
+/* ---- LARGE DESKTOP (1280px +) ---- */
+@media only screen and (min-width:$breakpoint-extra-large) {
+
+
+}
+

@@ -1,0 +1,21 @@
+/* ===========================================================
+
+	$PRODUCT INFO PAGE
+
+=========================================================== */
+
+
+.product-info-wrap                                  {padding-left:0px; float:left; width:100%;}
+.product-info-wrap > LI:before                      {content:none !important;}
+
+.product-info                                       {float:left; width:100%; padding:50px 0px;}
+LI.product-info:nth-child(odd) .product-info-inner  {background:$white;}
+
+.product-info-inner                                 {float:left; width:100%; padding:10px 20px; background:#efefef; position:relative;}
+
+.product-heading                                    {font-size:15px; font-weight:bold; color:$blue-medium; text-transform:uppercase;}
+
+.product-info-left                                  {float:left; width:49%;}
+.product-info-left IMG                              {@include translate-centralize-left; max-width:345px;}
+.product-info-right                                 {float:right; width:49%;}
+.product-info-right IMG                             {@include translate-centralize-right; max-width:345px;}

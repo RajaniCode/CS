@@ -1,0 +1,77 @@
+// CS 3
+/*
+ Func Generic Delegate
+*/
+
+using System;
+
+class FuncGeneric
+{
+   private string Uppercase(string s)
+   {
+      return s.ToUpper();
+   }
+
+   public void Print()
+   {
+      Func<string, string> fun = Uppercase;
+      string message = "Hello, World!";
+      Console.WriteLine(fun(message));
+   }
+}
+
+class FuncAnonymous
+{
+   public void Print()
+   {
+      Func<string, string> fun = delegate(string s) { return s.ToUpper(); }; 
+      string message = "Hello, World!";
+      Console.WriteLine(fun(message));   
+   }
+}
+
+class FuncLambda
+{
+   public void Print()
+   {
+      Func<string, string> fun = s => s.ToUpper();
+      string message = "Hello, World!";
+      Console.WriteLine(fun(message));   
+   }
+}
+
+// < CS 3
+delegate string DelegateSignature(string s);
+
+public class Delegates
+{
+   private string Uppercase(string s)
+   {
+      return s.ToUpper();
+   }
+
+   public void Print()
+   {
+      DelegateSignature del = Uppercase;
+      string message = "Hello, World!";
+      Console.WriteLine(del(message));
+   }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        FuncGeneric generic = new FuncGeneric();
+        generic.Print();
+        
+        FuncAnonymous anonymous = new FuncAnonymous();
+        anonymous.Print();
+
+        FuncLambda lambda = new FuncLambda();
+        lambda.Print();
+
+        Delegates del = new Delegates();
+        del.Print();
+    }
+}

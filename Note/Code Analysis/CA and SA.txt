@@ -1,0 +1,46 @@
+CA1052: Static holder types should be Static or NotInheritable
+https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1052?view=vs-2019
+// ASP.NET Templating Issue
+https://github.com/aspnet/templating/issues/361
+
+
+CA1822: Mark members as static
+https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1822?view=vs-2019
+// .NET Roslyn Analyzers Issue
+// CA1822 triggers on default ASP.NET Core API project #3546
+https://github.com/dotnet/roslyn-analyzers/issues/3546
+
+
+CA1303: Do not pass literals as localized parameters
+https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1303?view=vs-2019
+// When to suppress warnings
+// It is safe to suppress a warning from this rule if the code library will not be localized or if the string is not exposed to the end user or a developer using the code library.
+
+
+CA2234: Pass System.Uri objects instead of strings
+https://docs.microsoft.com/en-us/visualstudio/code-quality/ca2234?view=vs-2019
+// When to suppress warnings
+// It is safe to suppress a warning from this rule if the string parameter does not represent a URI.
+
+
+
+
+SA0001: XML comment analysis is disabled due to project configuration
+https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md
+In some cases, enabling XML documentation output will produce a large number of warnings CS1573, CS1591, and/or CS1712 to be reported. To improve the ability of teams to resolve SA0001 before CS1573, CS1591, and CS1712, consider disabling these warnings by one of the following methods.
+
+
+SA1649: File Name Must Match Type Name
+https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1649.md
+SA1649 conflicts with default Razor Pages file/class naming #2590
+https://github.com/DotNetAnalyzers/StyleCopAnalyzers/issues/2590
+
+
+
+
+
+
+
+
+
+

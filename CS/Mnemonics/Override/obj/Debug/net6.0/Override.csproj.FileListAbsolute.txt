@@ -1,0 +1,15 @@
+/Users/rajaniapple/Desktop/Mnemonics/Override/bin/Debug/net6.0/Override
+/Users/rajaniapple/Desktop/Mnemonics/Override/bin/Debug/net6.0/Override.deps.json
+/Users/rajaniapple/Desktop/Mnemonics/Override/bin/Debug/net6.0/Override.runtimeconfig.json
+/Users/rajaniapple/Desktop/Mnemonics/Override/bin/Debug/net6.0/Override.dll
+/Users/rajaniapple/Desktop/Mnemonics/Override/bin/Debug/net6.0/ref/Override.dll
+/Users/rajaniapple/Desktop/Mnemonics/Override/bin/Debug/net6.0/Override.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Override/obj/Debug/net6.0/Override.csproj.AssemblyReference.cache
+/Users/rajaniapple/Desktop/Mnemonics/Override/obj/Debug/net6.0/Override.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rajaniapple/Desktop/Mnemonics/Override/obj/Debug/net6.0/Override.AssemblyInfoInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Override/obj/Debug/net6.0/Override.AssemblyInfo.cs
+/Users/rajaniapple/Desktop/Mnemonics/Override/obj/Debug/net6.0/Override.csproj.CoreCompileInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Override/obj/Debug/net6.0/Override.dll
+/Users/rajaniapple/Desktop/Mnemonics/Override/obj/Debug/net6.0/ref/Override.dll
+/Users/rajaniapple/Desktop/Mnemonics/Override/obj/Debug/net6.0/Override.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Override/obj/Debug/net6.0/Override.genruntimeconfig.cache

@@ -1,0 +1,82 @@
+﻿@using Gigya.Common
+@using Microsoft.Extensions.Options
+@inject IOptions<AppSettings> appSetting
+
+@{ var gigyaApi = $"https://cdns.us1.gigya.com/js/gigya.js?apikey=" + appSetting.Value.GigyaSettings.GigyaApiKey; }
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gigya.UI</title>
+
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <!-- TYPEKIT (Unique per domain, update when deploying) -->
+    <script src="https://use.typekit.net/owy6fxs.js"></script>
+    <script>try { Typekit.load({ async: true }); } catch (e) { }</script>
+    <script type="text/javascript" src="@gigyaApi"></script>
+
+</head>
+<body>
+    <header>
+        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">*@
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light">
+            <div class="container">
+                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Gigya.UI</a>*@
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav">
+                        &nbsp; &nbsp;
+                        <li class="nav-item">
+                            <a class="btn btn-primary"
+                               style="background-color: #FF6400; border-color: #FF6400; border-radius: 0px; text-transform: uppercase;
+                               height: 37px; font-family: proxima-nova-condensed;"
+                               href="@Url.Action("Index", new { Area = "Account", Controller = "Login", viewName = "gigya-signup-screen" })">Register</a>
+                        </li>
+                        &nbsp; &nbsp;
+                        <li class="nav-item">
+                            <a class="btn btn-secondary"
+                               style="color: #157FBF; background-color: #FFFFFF; border-radius: 0px; border-color: #DDDDDD; text-transform: uppercase; 
+                               height: 37px; font-family: proxima-nova-condensed; font-weight: 600; padding-left: 20px; 
+                               background: url(/custom/images/lock.png) no-repeat left;"
+                               href="@Url.Action("Index", new { Area = "Account", Controller = "Login" })">Log In</a>
+                        </li>
+                    </ul>
+                    @*<ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>*@
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Gigya.UI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\bin\Debug\net6.0\CS10.exe
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\bin\Debug\net6.0\CS10.deps.json
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\bin\Debug\net6.0\CS10.runtimeconfig.json
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\bin\Debug\net6.0\CS10.dll
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\bin\Debug\net6.0\ref\CS10.dll
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\bin\Debug\net6.0\CS10.pdb
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\obj\Debug\net6.0\CS10.csproj.AssemblyReference.cache
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\obj\Debug\net6.0\CS10.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\obj\Debug\net6.0\CS10.AssemblyInfoInputs.cache
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\obj\Debug\net6.0\CS10.AssemblyInfo.cs
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\obj\Debug\net6.0\CS10.csproj.CoreCompileInputs.cache
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\obj\Debug\net6.0\CS10.dll
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\obj\Debug\net6.0\ref\CS10.dll
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\obj\Debug\net6.0\CS10.pdb
+C:\Users\Rajani\Downloads\CS.NET\CS\CS10\CS10\obj\Debug\net6.0\CS10.genruntimeconfig.cache

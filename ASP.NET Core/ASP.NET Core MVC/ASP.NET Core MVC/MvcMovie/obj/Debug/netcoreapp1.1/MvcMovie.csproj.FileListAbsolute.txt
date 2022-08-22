@@ -1,0 +1,9 @@
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\bin\Debug\netcoreapp1.1\MvcMovie.deps.json
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\bin\Debug\netcoreapp1.1\MvcMovie.runtimeconfig.json
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\bin\Debug\netcoreapp1.1\MvcMovie.runtimeconfig.dev.json
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\bin\Debug\netcoreapp1.1\MvcMovie.dll
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\bin\Debug\netcoreapp1.1\MvcMovie.pdb
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\obj\Debug\netcoreapp1.1\MvcMovie.csproj.CoreCompileInputs.cache
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\obj\Debug\netcoreapp1.1\MvcMovie.AssemblyInfo.cs
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\obj\Debug\netcoreapp1.1\MvcMovie.dll
+C:\Users\Rajani\Desktop\2018\Working\CS\ASP.NET-Core-MVC\MvcMovie\obj\Debug\netcoreapp1.1\MvcMovie.pdb

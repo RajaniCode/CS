@@ -1,0 +1,238 @@
+/* ===========================================================
+
+	$HOME
+
+=========================================================== */
+
+.promo                                      {position:relative; overflow:hidden;}
+.promo .promo__viewport                     {position:relative; width:100%; height:100%; overflow:inherit;}
+.promo IMG.promo__img                       {z-index:200; @include viewport-image;}
+
+.promo.promo--large                         {clear:both; width:100%; height:400px; margin-bottom:20px;}
+.promo.promo--small                         {@include column(4); height:190px; padding-right:20px;}
+.promo.promo--last                          {padding-right:0px;}
+
+.over-text                                  {position:absolute; z-index:500; padding-left:50px; padding-top:35px; max-width:530px;}
+.over-text H1                               {padding-bottom:6px; padding-bottom:0px; letter-spacing:-1px; font-size:55px; color:$primaryColour;}
+.over-text H2                               {padding-bottom:10px; letter-spacing:-1px; font-size:26px; color:$primaryColour; text-transform:uppercase;}
+
+.promo-over-text                            {position:absolute; z-index:500; padding-left:28px; padding-top:114px; max-width:318px;}
+.promo-over-text H1                         {padding-bottom:6px; padding-bottom:0px; letter-spacing:-1px; font-size:59px; color:$primaryColour;}
+.promo-over-text H2                         {padding-bottom:4px; letter-spacing:0px; font-size:18px; color:$white; text-transform:uppercase;}
+
+.key-text                                   {float:left; padding:35px; font-size:11px; max-width:790px;}
+
+.main-nav .nav_item.mobile--only {
+    display: none;
+}
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+
+/* ---- ALL MOBILE (0 - 600px) ---- */
+@media only screen and (max-width: $breakpoint-medium-small) {
+
+    .promo.promo--large                         {height:268px;}
+    .promo.promo--small                         {float:none; clear:both; width:100%; height:268px; padding-right:0px; margin-bottom:20px;}
+
+    .over-text                                  {padding-left:10px; padding-top:10px; max-width:360px;}
+    .over-text p                                {display:none;}
+
+    .promo-over-text                            {padding:15px; max-width:none;}
+
+    .main-nav .nav_item.mobile--only {
+    display: inline-block;
+    width: 98%;
+    border: 1px solid #C7C7C7;
+    padding: 6px 8px;
+    font-size: 18px;
+    color: #575757;
+    background: url(/Assets/images/nav-arrow.PNG) no-repeat 99% 3px;
+    }
+
+    .main-nav .nav_item.mobile--only a{
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    padding: 0px;
+    border: 0;
+    margin: 0;
+    font-size: 20px;
+    font-weight:bold;
+    color: #575757;
+    letter-spacing: 0px;
+    font-family: "proxima-nova-extra-condensed","Arial Narrow",Arial,Helvetica,sans-serif;
+    transition: color .4s ease;
+    padding-top: 5px;
+    }
+
+
+    .mobile-nav--open .main-nav .nav__list {
+    max-height: 600px;
+    padding: 10px 0;
+    background: #157FBF;
+    margin-top: 7px;
+    }
+
+    .public-view .main-nav .nav__item {
+    display: inline-block;
+    margin-right: 0px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: left;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-bottom: 1px solid #5398C1;
+    font-family: "proxima-nova-extra-condensed","Arial Narrow",Arial,Helvetica,sans-serif;
+    vertical-align: bottom;
+    transition: color .4s ease;
+    }
+
+    .public-view .main-nav .nav__link {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    border: 0;
+    margin: 0;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: normal;
+    transition: color .4s ease;
+    background: none;
+    }
+}
+
+/* ---- TABLET (portrait 600px - 768px) ---- */
+@media only screen and (min-width: $breakpoint-medium-small) and (max-width: $breakpoint-medium){
+
+    .promo.promo--small                         {height:142px;}
+}
+
+/* ---- TABLET (landscape 600px - 1024px) ---- */
+@media only screen and (min-width: $breakpoint-medium-small) and (max-width: $breakpoint-large){
+
+    .promo.promo--large                         {height:300px;}
+    .promo.promo--small                         {height:142px;}
+
+    .over-text                                  {padding-left:10px; padding-top:10px; max-width:576px;}
+
+    .promo-over-text                            {padding-left:5px; padding-top:50px; max-width:212px;}
+    .promo-over-text H2                         {padding-bottom:4px; letter-spacing:0; font-size:15px !important;}
+}
+
+
+/* ---- SMALL DESKTOP (1024px - 1280px) ---- */
+@media only screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-extra-large){
+
+    .promo.promo--large                         {height:360px;}
+}
+
+
+
+/* ---- MOBILE (landscape 320px - 600px) ---- */
+@media only screen and (min-width: $screen-extra-small) and (max-width: $breakpoint-medium-small) {
+
+    //.promo-over-text                            {padding-top:174px; max-width:419px;}
+}
+
+
+
+/* ---- MOBILE (portrait 0 - 320px) ---- */
+@media only screen and (max-width: $breakpoint-small) {
+
+    .over-text H1                               {font-size:48px !important;}
+
+    .top-menu li {
+        float: left;
+        border-right: none!important;
+        padding: 0px;
+        width: 100%!important;
+    }
+    .top-menu a {
+        float: left;
+        border-right: none!important;
+        padding: 0px;
+        font-size: 13px;
+        font-weight: 600;
+        width: 100%!important;
+    }
+
+    .top-menu {
+        text-align: center;
+        margin-top: 10px;
+        padding-left: 0px;
+        width: 100%;
+    }
+
+    .site-header .login-buttons {
+    width: 88%!important;
+    margin-bottom: 17px;
+    }
+
+    .login-buttons .button {
+    width: 39%;
+    text-align: center;
+    margin-top: 0px;
+    }
+
+    .site-header .logo {
+    margin-bottom: 0px;
+    }
+
+    .over-text {
+    position: relative !important;
+    padding-left: 0px!important;
+    padding-top: 0px!important;
+    max-width: 100%!important;
+    }
+
+    .large-promo {
+    height: auto!important;
+    }
+
+    .promo .promo__viewport {
+    display:none;
+    }
+
+    .promo.promo--login {
+    height: auto !important;
+    margin: 10px 0px 0px 0px;
+    }
+
+    FOOTER.site-footer {
+    padding-top: 0px;
+    }
+
+    MAIN.page-main {
+    min-height: 0px;
+    }
+
+    FIELDSET {
+    padding: 0px;
+    }
+
+    .public-view .site-header {
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+    }
+
+    .footer-grey li {
+    width: 100%;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    }
+
+    .site-header .logo                                  {clear:both; float:none; width:100%; text-align:center;}
+
+    .footer-widget {
+    padding-left:0px;
+    }
+    //.promo-over-text                            {padding-top:126px; max-width:292px;}
+}
+
+

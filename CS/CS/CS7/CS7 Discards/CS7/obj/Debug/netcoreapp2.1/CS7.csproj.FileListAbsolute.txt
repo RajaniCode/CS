@@ -1,0 +1,11 @@
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\bin\Debug\netcoreapp2.1\CS7.deps.json
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\bin\Debug\netcoreapp2.1\CS7.runtimeconfig.json
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\bin\Debug\netcoreapp2.1\CS7.runtimeconfig.dev.json
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\bin\Debug\netcoreapp2.1\CS7.dll
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\bin\Debug\netcoreapp2.1\CS7.pdb
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\obj\Debug\netcoreapp2.1\CS7.csprojAssemblyReference.cache
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\obj\Debug\netcoreapp2.1\CS7.csproj.CoreCompileInputs.cache
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\obj\Debug\netcoreapp2.1\CS7.AssemblyInfoInputs.cache
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\obj\Debug\netcoreapp2.1\CS7.AssemblyInfo.cs
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\obj\Debug\netcoreapp2.1\CS7.dll
+C:\Users\Rajani\Desktop\2018\Working\CS\CS\CS.NET-Core\CS7\CS7 Discards\CS7\obj\Debug\netcoreapp2.1\CS7.pdb

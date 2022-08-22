@@ -1,0 +1,212 @@
+﻿// CS 4
+/*
+Named Arguments
+*/
+
+// Named Arguments
+/*
+// Named arguments identify an argument by name rather than identifying an argument by position
+// Named arguments can occur in any order
+// A subtle difference is that argument expressions are evaluated in the order in which they appear at the calling site
+// In general, this makes a difference only with interdependent side-effecting expressions such as the following, which writes 0, 1: int i = 0; Foo(k: ++i, j: --i); // ++i is evaluated first though not recommended
+//  Named and positional arguments can be mixed however, there is a restriction: positional arguments must come before named arguments otherwise it will result in compile-time error
+// Named arguments are particularly useful in conjunction with optional parameters
+// Named argument specifications must appear after all fixed arguments have been specified
+*/
+
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Container
+{
+    int a;
+    int b;
+    int c;
+    int[] integerArray;
+    int[] parameterIntegerArray;
+    string[ , ] arr = new string[100, 100];
+
+    public Container() 
+    {
+        Console.WriteLine("Explicit default constructor");
+    }
+
+    public Container(int a, int b = 2, int c = 3, int[] integerArray = null, params int[] parameterIntegerArray)
+    {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.integerArray = integerArray;
+        this.parameterIntegerArray = parameterIntegerArray;
+    }
+
+    public void PrintMemberVariables()
+    {
+        Console.WriteLine("a = {0}, b = {1}, c = {2}", a, b, c);
+
+        if(integerArray != null && integerArray.Length > 0)
+        {
+            Console.WriteLine("Integer Array:");
+            integerArray.ToList().ForEach(Console.WriteLine);
+        }
+        else
+        {
+            Console.WriteLine("Integer Array is null or empty");
+        }
+
+        if(parameterIntegerArray != null && parameterIntegerArray.Length > 0) 
+        {
+            Console.WriteLine("Parameter Integer Array:");
+            parameterIntegerArray.ToList().ForEach(Console.WriteLine);
+        }
+        else
+        {
+            Console.WriteLine("Parameter Integer Array is null or empty");
+        }
+        Console.WriteLine();
+    }
+
+    public void ContainerMethod(string a, string b = "B", string c = "C", string[] stringArray = null, params string[] parameterStringArray)
+    {
+        Console.WriteLine("a = {0}, b = {1}, c = {2}", a, b, c);
+
+        if(stringArray != null && stringArray.Length > 0)
+        {
+            Console.WriteLine("String Array:");
+            stringArray.ToList().ForEach(Console.WriteLine);
+        }
+        else
+        {
+            Console.WriteLine("String Array is null or empty");
+        }
+
+        if(parameterStringArray != null && parameterStringArray.Length > 0) 
+        {
+            Console.WriteLine("Parameter String Array:");
+            parameterStringArray.ToList().ForEach(Console.WriteLine);
+        }
+        else
+        {
+            Console.WriteLine("Parameter String Array is null or empty");
+        }
+        Console.WriteLine();
+    }
+
+    // Indexer to allow client code to use [ , ] notation
+    public string this[int i, int j = 5]
+    {
+       get { return arr[i, j]; }
+       set { arr[i, j] = value; }
+    }
+}
+
+class NamedArguments
+{
+    public void CallContainerConstructor()
+    {
+        Console.WriteLine("()");
+        Container caller = new Container();
+        // Explicit Default Constructor
+        caller.PrintMemberVariables();
+        Console.WriteLine("Passing Named Arguments to Constructor");
+
+        Console.WriteLine("(b:22, c:33, a:11, null, 55, 66) will not compile");
+        /*
+        caller = new Container(b:22, c:33, a:11, null, 55, 66);
+        caller.PrintMemberVariables();
+        */
+        Console.WriteLine("(b:22, c:33, a:11, integerArray: null, parameterIntegerArray: 55, 66) will not compile");
+        /*
+        caller = new Container(b:22, c:33, a:11, integerArray: null, parameterIntegerArray: 55, 66);
+        caller.PrintMemberVariables();
+        */
+        Console.WriteLine("(null, b:22, c:33, a:11, parameterIntegerArray: new[] { 55, 66 }) will not compile");
+        /*
+        caller = new Container(null, b:22, c:33, a:11, parameterIntegerArray: new[] { 55, 66 });
+        caller.PrintMemberVariables();
+        */
+        Console.WriteLine("(11, 22, null, c:33, parameterIntegerArray: new[] { 55, 66 }) will not compile");
+        /*
+        caller = new Container(11, 22, null, c:33, parameterIntegerArray: new[] { 55, 66 });
+        caller.PrintMemberVariables();
+        */
+
+        Console.WriteLine("(b:22, c:33, a:11, integerArray: null, parameterIntegerArray: new[] { 55, 66 })");
+        Container caller1 = new Container(b:22, c:33, a:11, integerArray: null, parameterIntegerArray: new[] { 55, 66 });
+        caller1.PrintMemberVariables();
+
+        Console.WriteLine("(111, 222, integerArray: null, c:333, parameterIntegerArray: new[] { 555, 666 })");
+        Container caller2 = new Container(111, 222, integerArray: null, c:333, parameterIntegerArray: new[] { 555, 666 });
+        caller2.PrintMemberVariables();
+        
+        Console.WriteLine("(1)");
+        Container caller3 = new Container(1);
+        caller3.PrintMemberVariables();
+    }
+
+    public void CallContainerMethod()
+    {
+        Container caller = new Container();
+        Console.WriteLine("Passing Named Arguments to Method");
+
+        Console.WriteLine("(b:\"BB\", c:\"CC\", a:\"AA\", null, \"EE\", \"FF\") will not compile");
+        // caller.ContainerMethod(b:"BB", c:"CC", a:"AA", null, "EE", "FF");
+        Console.WriteLine("(b:\"BB\", c:\"CC\", a:\"AA\", stringArray: null, stringParameterArray: \"EE\", \"FF\") will not compile");
+        // caller.ContainerMethod(b:"BB", c:"CC", a:-"AA", stringArray: null, stringParameterArray: "EE", "FF");
+        Console.WriteLine("(null, b:\"BB\", c:\"CC\", a:\"AA\", parameterStringArray: new[] { \"EE\", \"FF\" }) will not compile");
+        // caller.ContainerMethod(null, b:"BB", c:"CC", a: "AA", parameterStringArray: new[] { "EE", "FF" });
+         Console.WriteLine("(\"AA\", \"BB\", null, c:\"CC\", stringParameterArray: new[] { \"EE\", \"FF\" }) will not compile");
+        // caller.ContainerMethod("AA", "BB", null, c:"CC", parameterStringArray: new[] { "EE", "FF" });
+        Console.WriteLine("(b:\"BB\", c:\"CC\", a:\"AA\", stringArray: null, stringParameterArray: new[] { \"EE\", \"FF\" })");
+        caller.ContainerMethod(b:"BB", c:"CC", a: "AA", stringArray: null, parameterStringArray: new[] { "EE", "FF" });
+
+        Console.WriteLine("(\"AAA\", \"BBB\", stringArray: null, c:\"CCC\", stringParameterArray: new[] { \"EEE\", \"FFF\" })");
+        caller.ContainerMethod("AAA", "BBB", stringArray: null, c:"CCC", parameterStringArray: new[] { "EEE", "FFF" });
+
+        Console.WriteLine("(\"A\")");
+        caller.ContainerMethod("A");
+    }
+
+    public void CallContainerIndexer()
+    {
+        Console.WriteLine("Passing Named Arguments to Indexers");
+        Container stringArrayLike = new Container();
+        stringArrayLike[0,0] = "Hello, World!";
+        Console.WriteLine(stringArrayLike[0, 0]);
+        stringArrayLike[0, 5] = "Indexer Named Arguments [j:5, i:0]";
+        Console.WriteLine(stringArrayLike[j:5, i:0]);
+        Console.WriteLine();
+    }
+
+    private void Foo(int j, int k)
+    {
+        Console.WriteLine("j = {0}, k = {1}", j, k);
+        Console.WriteLine();
+    }
+
+    private void Bar()
+    {
+        int i = 0;
+        Console.WriteLine("Interdependent side-effecting expression");
+        Foo(k: ++i, j: --i); // ++i is evaluated first though not recommended
+        Console.WriteLine();
+    }
+
+    public void Print() 
+    {
+        CallContainerConstructor();
+        CallContainerMethod();
+        CallContainerIndexer();
+        Bar();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        NamedArguments namedArgs = new NamedArguments();
+        namedArgs.Print();
+    }
+}

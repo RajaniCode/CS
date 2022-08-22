@@ -1,0 +1,53 @@
+// Armstrong Number
+
+using System;
+using System.Collections.Generic; 
+using System.Linq;
+
+class ArmstrongSeries
+{
+    private bool IsArmstrong3Digit(int n)
+    {
+        int d = 0;
+        int a = 0;
+        int t = 0;
+        t = n;
+        while (t != 0)
+        {
+            d = t % 10;
+            a += d * d * d;
+            t = t / 10;
+        }
+        if (n == a)
+        {
+            return true;
+        }
+        return false; 
+    }
+
+    public void Print()
+    {
+        // int[] armstrong3Digit = { 153, 370, 371, 407 };
+        
+        IEnumerable<int> numbers = Enumerable.Range(100, 999);
+        
+        // numbers.ToList().ForEach(x => { Console.WriteLine(x); });
+        
+        numbers.ToList().ForEach(number => 
+        { 
+            if(IsArmstrong3Digit(number))
+            {
+                Console.WriteLine("{0} is Armstrong Number", number);
+            } 
+       });
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        ArmstrongSeries armstrong = new ArmstrongSeries();
+        armstrong.Print();
+    }
+}

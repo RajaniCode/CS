@@ -1,0 +1,39 @@
+/* ===========================================================
+
+	$HELPERS
+
+=========================================================== */
+
+
+/* -------- CLEARFIX (Clears floating child elements) -------- */
+@mixin clearfix				    {&:before,
+							     &:after {content:""; display:table;}
+							     &:after {clear:both;}
+}
+
+.clearfix 					    {@include clearfix;}
+
+
+/* -------- Legacy Clearfix -------- */
+@mixin legacy-clearfix(){
+	*zoom: 1;
+
+	:after {
+	  content: "\0020";
+	  display: block;
+	  height: 0;
+	  clear: both;
+	  overflow: hidden;
+	  visibility: hidden;
+	}
+}
+
+
+/* -------- Alternative Clear fixes -------- */
+/*
+@mixin clearfix(){
+	overflow: hidden;
+	*zoom: 1;
+}
+*/
+

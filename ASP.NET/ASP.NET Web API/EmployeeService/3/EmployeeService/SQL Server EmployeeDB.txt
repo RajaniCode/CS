@@ -1,0 +1,43 @@
+USE [master];
+GO
+
+--IF EXISTS(SELECT name FROM sys.databases WHERE name = N'EmployeeDB')
+IF DB_ID (N'EmployeeDB') IS NOT NULL
+DROP DATABASE [EmployeeDB];
+Go
+
+CREATE DATABASE EmployeeDB;
+Go
+
+Use [EmployeeDB];
+Go
+
+--IF EXISTS(SELECT name FROM sys.tables WHERE name = N'Employees')
+IF OBJECT_ID(N'Employees', N'U') IS NOT NULL
+DROP TABLE [Employees];
+GO
+
+CREATE TABLE Employees
+(
+     ID int primary key identity,
+     FirstName nvarchar(50),
+     LastName nvarchar(50),
+     Gender nvarchar(50),
+     Salary int
+)
+Go
+
+SELECT * FROM Employees;
+GO
+
+INSERT INTO Employees VALUES ('Mark', 'Hastings', 'Male', 60000);
+INSERT INTO Employees VALUES ('Steve', 'Pound', 'Male', 45000);
+INSERT INTO Employees VALUES ('Ben', 'Hoskins', 'Male', 70000);
+INSERT INTO Employees VALUES ('Philip', 'Hastings', 'Male', 45000);
+INSERT INTO Employees VALUES ('Mary', 'Lambeth', 'Female', 30000);
+INSERT INTO Employees VALUES ('Valarie', 'Vikings', 'Female', 35000);
+INSERT INTO Employees VALUES ('John', 'Stanmore', 'Male', 80000);
+Go
+
+SELECT * FROM Employees;
+GO

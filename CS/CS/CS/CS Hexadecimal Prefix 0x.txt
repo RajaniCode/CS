@@ -1,0 +1,17 @@
+C# Hexadecimal Prefix 0x
+
+http://stackoverflow.com/questions/594720/c-sharp-binary-literals
+
+C# 6.0 will be including support for binary literals [http://www.codeproject.com/Articles/699708/A-glance-at-Csharp-vNext#binary-literals-and-separators] (and optional digit separators).
+
+Usage will look something like this:
+
+Int32 myValue = 0b0010_0110_0000_0011;
+
+You can also find more information on the Roslyn homepage [http://roslyn.codeplex.com/wikipage?title=Language%20Feature%20Status&referringTitle=Documentation].
+
+//0x for Hexadecimal
+int i = 100;
+string str = Convert.ToString(i, 16); //base = 2, 8,10 or 16
+Console.WriteLine(str);
+Console.WriteLine(0x64);

@@ -1,0 +1,44 @@
+// volatile (nullable type CANNOT be volatile):
+
+// The volatile keyword indicates that a field might be modified by multiple concurrently executing threads
+// Fields that are declared volatile are not subject to compiler optimizations that assume access by a single thread
+// This ensures that the most up-to-date value is present in the field at all times
+
+// volatile modifier is usually used for a field (static/instance) (BUT NOT const/readonly) that is accessed by multiple threads 
+// without using the lock statement to serialize access.
+
+// The volatile keyword can be applied to these types:
+
+// 1. Reference types viz., array, string etc
+
+// 2. Pointer types (in an unsafe context)
+
+// 3. Built-in structs such as sbyte, byte, short, ushort, int, uint, char, float, and bool [cannot be long, ulong, double, decimal]
+
+// 4. An enum type with an integral base type
+
+// 5. Generic type parameters known to be reference types
+
+// 6. IntPtr and UIntPtr
+
+// 7. The type in question must be the field of a class or struct. Local variables cannot be declared volatile
+
+
+// readonly (nullable type can be readonly):
+// 1. can be static or instance 
+// 2. static readonly can be Initialized ONLY in declaration OR in its class'[BUT NOT derived] static constructor(which cannot be overloaded)
+// 3. instance readonly can be Initialized ONLY in declaration OR in its class'[BUT NOT derived] instance constructor(including overloading) 
+// 4. static readonly is accessed with its class, like static member (in instance/static method) 
+// 5. instance readonly is accessed with instance reference, like instance member (in instance/static method) 
+// 6. Assignment not a MUST, but warning will occur if not assigned
+// 7. Local variables cannot be declared readonly
+
+
+// const (nullable type CANNOT be const): 
+// 1. Assigned ONLY AND 2. MUST in declaration 
+// 3. Accessed with class 
+// 4. Hence accessed like static member (in instance/static method)
+// 5. const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)
+     
+
+// Variable AND const can be LOCAL (without access specifiers and member modifiers) [inside static/instance method] (ASSIGNMENT AT DECLARATION MUST)

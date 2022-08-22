@@ -1,0 +1,12 @@
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ClassStructStorage\CSC2008ClassStructStorage\bin\Debug\CSC2008ClassStructStorage.exe
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ClassStructStorage\CSC2008ClassStructStorage\bin\Debug\CSC2008ClassStructStorage.pdb
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ClassStructStorage\CSC2008ClassStructStorage\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ClassStructStorage\CSC2008ClassStructStorage\obj\Debug\CSC2008ClassStructStorage.exe
+C:\Documents and Settings\RAJANI\Desktop\CSC2008ClassStructStorage\CSC2008ClassStructStorage\obj\Debug\CSC2008ClassStructStorage.pdb
+C:\Documents and Settings\RAJANI\Desktop\Note\Note\CSC2008ClassStructStorage\CSC2008ClassStructStorage\obj\Debug\CSC2008ClassStructStorage.exe
+C:\Documents and Settings\RAJANI\Desktop\Note\Note\CSC2008ClassStructStorage\CSC2008ClassStructStorage\obj\Debug\CSC2008ClassStructStorage.pdb
+C:\Documents and Settings\RAJANI\Desktop\Note\Note\CSC2008ClassStructStorage\CSC2008ClassStructStorage\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\RAJANI\Desktop\Note\Note\CSC2008ClassStructStorage\CSC2008ClassStructStorage\bin\Debug\CSC2008ClassStructStorage.exe
+C:\Documents and Settings\RAJANI\Desktop\Note\Note\CSC2008ClassStructStorage\CSC2008ClassStructStorage\bin\Debug\CSC2008ClassStructStorage.pdb
+C:\Users\Rajani\Desktop\Rajani\CS\Note\CSC2008ClassStructStorage\CSC2008ClassStructStorage\obj\Debug\CSC2008ClassStructStorage.exe
+C:\Users\Rajani\Desktop\Rajani\CS\Note\CSC2008ClassStructStorage\CSC2008ClassStructStorage\obj\Debug\CSC2008ClassStructStorage.pdb

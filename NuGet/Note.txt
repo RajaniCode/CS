@@ -1,0 +1,42 @@
+% dotnet --version
+% dotnet --help
+% dotnet --list-runtimes
+% dotnet --list-sdks    
+% csc -version
+% csc -help
+% csc Program.cs
+% mono --version
+% mono --help
+% mono Program.exe
+# mcs # C# Version is not the latest # new()
+% mcs --version
+% mcs --help
+% mcs Program.cs
+% mono Program.exe
+% nuget help
+% nuget install Microsoft.Net.Compilers -Version 4.2.0
+% mono Microsoft.Net.Compilers.4.2.0/tools/csc.exe -version
+% mono Microsoft.Net.Compilers.4.2.0/tools/csc.exe -help 
+% mono Program.exe
+% csi -version
+% csi -help
+% csi 
+csi> #help
+csi> using System.Runtime.InteropServices;
+csi> Console.WriteLine($"Environment.Version: {Environment.Version}");
+csi> Console.WriteLine($"RuntimeInformation.FrameworkDescription: {RuntimeInformation.FrameworkDescription}");
+csi> class Sandbox { public void Print() { Console.WriteLine("Hello World!"); } }
+csi> Sandbox box = new(); // mono // mcs // Sandbox box = new Sandbox();
+Ctrl-C
+
+
+
+# csc # .NET Framework $ csc -version $ csc -langversion:? $ csi -version
+$ export PATH=$PATH:"/D/Rajani/Technical2021/Downloads/NuGet/Microsoft.Net.Compilers.Toolset.3.10.0/tasks/net472/"
+
+
+# csc # .NET Framework > csc -version > csc -langversion:? > csi -version
+> set path=%path%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\Roslyn\
+
+
+

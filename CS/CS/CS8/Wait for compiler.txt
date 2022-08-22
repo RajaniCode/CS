@@ -1,0 +1,2 @@
+# csc # csi # .NET Core $ csc -version $ csc -langversion:? $ csi -version
+$ export PATH=$PATH:"/D/Rajani/Technical2021/Downloads/NuGet/Microsoft.Net.Compilers.Toolset.3.10.0/tasks/net472/"

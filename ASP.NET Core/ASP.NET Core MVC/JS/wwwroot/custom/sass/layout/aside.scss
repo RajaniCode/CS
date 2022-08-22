@@ -1,0 +1,60 @@
+/* ===========================================================
+
+	$ASIDE
+
+=========================================================== */
+
+
+/* ---- MAIN SIDEBAR ---- */
+ASIDE.page-sidebar                                  {@include column(3);}
+
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- MOBILE (portrait 0 - 480px) ---- */
+@media only screen and (max-width:$breakpoint-small) {
+  
+
+}
+
+/* ---- MOBILE (landscape 480px - 600px) ---- */
+@media only screen and (min-width:$breakpoint-small) and (max-width: $breakpoint-medium-small) {
+
+
+}
+
+/* ---- TABLET (portrait 600px - 768px) ---- */
+@media only screen and (min-width:$breakpoint-medium-small) and (max-width: $breakpoint-medium) {
+
+
+}
+
+/* ---- ALL MOBILE (0 - 768px) ---- */
+@media only screen and (max-width:$breakpoint-medium) {
+
+    /* ---- MAIN SIDEBAR ---- */
+    ASIDE.page-sidebar                                  {float:none; clear:both; width:100%;}
+
+}
+
+/* ---- TABLET (landscape 768px - 960px) ---- */
+@media only screen and (min-width:$breakpoint-medium) and (max-width: $breakpoint-medium-large) {
+
+
+}
+
+/* ---- SMALL DESKTOP (960px - 1024px) ---- */
+@media only screen and (min-width:$breakpoint-medium-large) and (max-width: $breakpoint-large) {
+
+}
+
+/* ---- MEDIUM DESKTOP (1024px - 1280px) ---- */
+@media only screen and (min-width:$breakpoint-large) and (max-width: $breakpoint-extra-large) {
+
+}
+
+/* ---- LARGE DESKTOP (1280px +) ---- */
+@media only screen and (min-width:$breakpoint-extra-large) {
+
+}

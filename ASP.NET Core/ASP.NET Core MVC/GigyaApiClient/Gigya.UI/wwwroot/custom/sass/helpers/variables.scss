@@ -1,0 +1,233 @@
+/* ===========================================================
+
+	$VARIABLES
+
+=========================================================== */
+
+/* ================ COLOURS  ================ */
+
+
+/* ---- COLOUR VALUES ---- */
+
+/* WHITE */
+$white:#FFF;
+
+/* BLACK */
+$black-pure:#000;
+$black-dark:#1E1E1E;
+$black-medium:#262626;
+$black-light:#373737;
+
+/* GREY */
+$grey-faint:#F9F9F9;
+$grey-lighter:#EAEAEA;
+$grey-light:#DDDDDD;
+$grey-medium:#969696;
+$grey-dark:#585858;
+$grey-darker:#484848;
+
+/* RUBY */
+$ruby-light:#FF808B;
+$ruby-medium:#E03E52;
+$ruby-dark:#BF0D3E;
+
+/* RED */
+$red-faint:#FEE7E7;
+$red-light:darken($red-faint, 15%);
+$red-medium:#FA4A4A;
+$red-dark:#CC0000;
+
+/* ORANGE */
+$orange-light:#ED8B00;
+$orange-faint:lighten($orange-light, 40%);
+//$orange-medium:#E46F00;
+$orange-medium:#FF6400;
+$orange-dark:#D87816;
+
+/* AMBER */
+$amber-light:#FFBB33;
+$amber-medium:#FFC600;
+$amber-medium-dark:#FFAA00;
+$amber-dark:#DCA928;
+
+/* YELLOW */
+$yellow-faint:#F0F0A0;
+$yellow-light:#DADA4A;
+$yellow-medium:#CABA00;
+$yellow-dark:darken($yellow-medium, 10%);
+
+/* GREEN */
+$green-faint:#B6F2B1; 
+$green-light:#8CCF87;
+$green-medium:#00AC28;
+$green-dark:#228B22;
+$green-darker:#025C3B;
+
+/* TEAL */
+$teal-light:#008878;
+$teal-medium:#00554B;
+$teal-dark:#00463E;
+
+/* BLUE */
+$blue-fainter:#DFE9F4;
+$blue-faint:#CAE1ED;
+$blue-light:#5CB5EE;
+$blue-medium:#157FBF;
+$blue-dark:darken($blue-medium, 15%);
+$blue-darker:#093248;
+
+/* MIDNIGHT */
+$midnight-light:#7BA4DB;
+$midnight-medium:#407EC9;
+$midnight-dark:#171C8F;
+
+
+
+/* ---- BASE COLOURS ---- */
+$baseColour: $grey-dark;
+$primaryColour: $blue-medium;
+$secondaryColour: $orange-medium;
+$tertiaryColour: $amber-dark;
+
+/* ---- LINK COLOURS ---- */
+$anchorColour: $blue-medium;
+$anchorColourHover: lighten($blue-medium, 10%);
+
+/* ---- BUTTON COLOURS  ---- */
+$buttonBackgroundPrimary: $orange-medium;
+$buttonBackgroundPrimaryHover: lighten($orange-medium, 10%);
+$buttonTextColourPrimary: $white;
+$buttonTextColourPrimaryHover: $white;
+
+$buttonBackgroundDisabled: $grey-light;
+
+$buttonBackgroundSecondary: $white;
+$buttonBackgroundSecondaryHover: darken($white, 10%);
+$buttonTextColourSecondary: $blue-medium;
+$buttonTextColourSecondaryHover: darken($blue-medium, 10%);
+
+
+
+/* ================ MEDIA QUERY BREAK-POINTS ================ */
+$breakpoint-extra-small:    20em;       /* 320px */
+$breakpoint-small: 			30em;		/* 480px */
+$breakpoint-medium-small:   37.5em;     /* 600px */
+$breakpoint-medium: 		48em; 		/* 768px */
+$breakpoint-medium-large:   60em;       /* 960px */
+$breakpoint-large: 			64em; 	    /* 1024px */
+$breakpoint-extra-large: 	80em; 		/* 1280px */
+
+$screen-extra-small:        320px;
+$screen-small: 			    480px;
+$screen-medium-small:       600px;
+$screen-medium: 		    768px; 
+$screen-medium-large:       960px;
+$screen-large: 			    1024px; 
+$screen-extra-large: 	    1280px;
+
+
+/* ================ BORDERS ================ */
+$borderWidth: 1px;
+$borderRadius-small: 4px;
+$borderRadius-medium: 6px;
+$borderRadius-large: 8px;
+
+/* ================ OPACITY ================ */
+$opacityNone: 0;
+$opacityLow: 0.25;
+$opacityMedium: 0.5;
+$opacityHigh: 0.75;
+$opacityFull: 1;
+/* IE Legacy Opacity */
+$opacityNone-ie: alpha(opacity=0);
+$opacityLow-ie: alpha(opacity=25);
+$opacityMedium-ie: alpha(opacity=50);
+$opacityHigh-ie: alpha(opacity=75);
+$opacityFull-ie: alpha(opacity=100);
+
+
+/* ================ TRANSITIONS ================ */
+$transitionSpeed: 0.4s; 
+
+
+/* ================ FONT SIZES ================ */
+$baseSize: 1.5rem;
+$baseLineHeight: 2.0rem;
+$typeScale: 1.25; /* (Perfect Fifth = 1.33)  (Perfect Forth = 1.25)*/
+
+/* ---- CALCULATED FONT SIZES ----
+$zeta:	$baseSize;
+$iota:      $zeta     /  $typeScale;
+$epsilon:	$zeta     *  $typeScale;
+$delta:		$epsilon  *	 $typeScale;
+$gamma:		$delta	  *	 $typeScale;
+$beta:		$gamma	  *	 $typeScale;
+$alpha:		$beta	  *	 $typeScale;
+$kilo:		$alpha	  *	 $typeScale;
+$mega:		$kilo	  *	 $typeScale;
+$giga:		$mega	  *	 $typeScale;
+$tera:		$giga	  *	 $typeScale;
+$peta:		$tera	  *	 $typeScale;
+$exa:		$peta	  *	 $typeScale;
+$zetta:		$exa	  *	 $typeScale;
+*/
+
+/* ---- STATIC FONT SIZES ---- */
+// Small sizes
+$omega:     10px;
+$iota:      11px;
+$theta:     12px;
+$eta:       13px;
+
+// Base size (Default text size)
+$zeta:      14px;
+
+// Standard sizes 
+$epsilon:	18px;
+$delta:		22px;
+$gamma:		28px;
+$beta:		34px;
+$alpha:		42px;
+
+// Larger sizes
+$kilo:		48px;
+$mega:		60px;
+$giga:		72px;
+$tera:		84px;
+
+// Super sizes 
+$peta:		96px;
+$exa:		108px;
+$zetta:		116px;
+
+
+/* ================ FONT FAMILYS  ================ */
+$fontSetPrimary: 'proxima-nova', 'Open Sans', Arial, Helvetica, sans-serif;
+$fontSetSecondary: 'proxima-nova-extra-condensed', 'Arial Narrow', Arial, Helvetica, sans-serif;
+$fontSetTertiary: 'proxima-nova-condensed', 'Myriad Pro', Arial, Helvetica, sans-serif;
+$fontSetQuarternary: 'Myriad Pro', 'proxima-nova-condensed', Arial, Helvetica, sans-serif;
+
+
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ======== MOBILE ======== */
+@media screen and (max-width: $breakpoint-medium) {
+
+    /* ======== FONT SIZES  ======== */
+	$baseSize: 1.4rem !global;
+    $baseLineHeight: 1.9rem !global;
+    $typeScale: 1.25 !global; /* - Perfect Forth */
+	
+}
+
+/* ======== TABLET & DESKTOP ======== */
+@media screen and (min-width: $breakpoint-medium) {
+
+    /* ======== FONT SIZES  ======== */
+	//$baseSize: 	1.28rem;
+	//$baseLineHeight: 1.8rem;
+
+}
+
+

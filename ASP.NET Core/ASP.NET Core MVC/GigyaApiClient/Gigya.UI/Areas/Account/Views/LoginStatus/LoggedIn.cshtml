@@ -1,0 +1,21 @@
+﻿@model Gigya.UI.Areas.Account.ViewModels.LoginStatus
+
+@{
+    ViewData["Title"] = "LoggedIn";
+    Layout = "~/Views/Shared/_LoggedInLayout.cshtml";
+    bool status = Model.IsLoggedIn;
+    ViewData["Status"] = status;
+    ViewData["GigyaId"] = Model.GigyaId;
+}
+
+
+@if (status)
+{
+    @*<h2 style="color:#0DE486">Is Logged In: @status</h2>*@
+    <h2 class="text-info">Is Logged In: @status</h2>
+}
+else
+{
+    @*<h2 style="color:#FF0000">Is Logged In: @status</h2>*@
+    <h2 class="text-danger">Is Logged In: @status</h2>
+}

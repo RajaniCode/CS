@@ -1,0 +1,94 @@
+/* ===========================================================
+
+	$GENERICS
+
+=========================================================== */
+
+
+.clear							                    {clear:both;}
+
+/* ---- ELEMENT WIDTHS ---- */
+.width-full                                         {@include column(12);}
+.width-five-sixths                                  {@include column(10);} 
+.width-three-quarter                                {@include column(9);}
+.width-two-thirds                                   {@include column(8);}
+.width-half                                         {@include column(6);}
+.width-five-twelths                                 {@include column(5);}
+.width-three-eigths                                 {@include column(4.5);} 
+.width-one-third                                    {@include column(4);}   
+.width-quarter                                      {@include column(3);}
+.width-one-sixth                                    {@include column(2);}
+.width-zero                                         {@include column(0);}
+
+@mixin append-icon                                  {display:inline-block; width:13px; height:13px; padding:0; margin:0 0 0 5px; background-color:$orange-medium; 
+                                                     text-align:center; vertical-align:middle; font-size:24px; line-height:10px; color:$white;}
+/* ---- SINGLE CHEVRON ---- */
+.la-chevron:after  				                    {content:"\0020 \2039"; @include append-icon;}
+.lb-chevron:before  			                    {content:"\2039 \0020"; @include append-icon;}
+.ra-chevron:after   			                    {content:"\0020 \203A"; @include append-icon;}
+.rb-chevron:before  			                    {content:"\203A \0020";}
+/* ---- DOUBLE CHEVRON ---- */
+.la-chevrons:after  			                    {content:"\0020 \00AB"; @include append-icon;}
+.lb-chevrons:before 			                    {content:"\00AB \0020"; @include append-icon;}
+.ra-chevrons:after  			                    {content:"\0020 \00BB"; @include append-icon;}
+.rb-chevrons:before 			                    {content:"\00BB \0020"; @include append-icon;}
+
+
+/* ---- MESSAGE BOXES ---- */
+@import "../components/icons.scss";
+/*
+.message-box					                    {display:block; position:relative; padding:15px 15px 15px 80px; margin-bottom:$baseLineHeight; border-width:$borderWidth; border-style:solid; border-radius:$borderRadius-medium; font-weight:600;}
+.message-box I.icon				                    {display:block; position:absolute; top:15px; left:15px; z-index:200; width:32px; height:32px; opacity:0.7; filter:alpha(opacity=70);}
+
+.message-box.info				                    {border-color:$blue-light; background-color:$blue-faint; color:$blue-medium;}
+.message-box.info > .icon                           {background-image:url("../assets/icons/blue/24/sprite-24_blue-medium.png"); @include sprite-icon($xPos24,$icon24-info);} 
+
+.message-box.success			                    {border-color:$green-light; background-color:$green-faint; color:$green-medium;}
+.message-box.success > .icon			            {background-image:url("../assets/icons/green/24/sprite-24_green-medium.png"); @include sprite-icon($xPos24,$icon24-tick-alt);}
+
+.message-box.caution			                    {border-color:$yellow-light; background-color:$yellow-faint; color:$yellow-medium;}
+.message-box.caution > .icon			            {background-image:url("../assets/icons/olive/24/sprite-24_olive-light.png"); @include sprite-icon($xPos24,$icon24-warning);}
+
+.message-box.warning			                    {border-color:$orange-light; background-color:$orange-faint; color:$orange-medium;}
+.message-box.warning > .icon                        {background-image:url("../assets/icons/orange/24/sprite-24_orange-medium.png"); @include sprite-icon($xPos24,$icon24-error);}
+
+.message-box.validation,
+.field-validation-error,
+.validation-summary-errors,
+.message-box.error			                        {border-color:$red-light; background-color:$red-faint; color:$red-medium;}
+.message-box.error > .icon                          {background-image:url("../assets/icons/red/24/sprite-24_red-medium.png"); @include sprite-icon($xPos24,$icon24-error);}
+
+.message-box P					                    {margin-bottom:$baseLineHeight / 2; color:inherit;}
+*/
+
+
+.validation-summary-dialog                          {color: $red-dark;background-color: $red-faint;border: solid 1px $red-dark !important;}
+.validation-summary-dialog .ui-dialog-titlebar      {color: #fff; background-color: $red-faint; border: solid 1px $red-dark !important;}
+.validation-summary-dialog.ui-widget-content        {background-image: none;}
+.validation-summary-dialog .ui-dialog-buttonpane    {color: $red-dark; background-color: $red-faint; border-top: solid 1px $red-dark !important;}
+.validation-summary-dialog .ui-button-text          {color: $red-dark;}
+.validation-summary-dialog .ui-button               {border: solid 1px $red-dark !important;}
+.validation-summary-dialog .ui-widget-header        {border: 1px solid #aaaaaa /*{borderColorHeader}*/; background: $red-dark /*{bgColorHeader}*/ none /*{bgImgUrlHeader}*/ 50% /*{bgHeaderXPos}*/ 50% /*{bgHeaderYPos}*/ repeat-x /*{bgHeaderRepeat}*/;}
+#validation-summary-list                            {color: $red-dark;}
+span.required                                       {color: $red-dark; margin-left: 5px; /*float: left; display: block; line-height: 35px;*/}
+span.required.right                                 {float: right;}
+/**** Validation ****/
+.input-validation-error                             {color: $red-dark !important; border: solid 2px $red-dark !important; background-color: $red-faint !important; background-image: none !important;}
+.field-validation-error                             {margin-top: 5px; padding: 5px; border: solid 1px $red-dark; border-radius: 3px; color: $red-dark; background-color: $red-faint;}
+.validation-summary-errors                          {margin: 10px 0px; padding: 5px; border: solid 1px $red-dark; font-size: 0.9em; color: $red-dark ; background-color: $red-faint;}
+
+/* ============================================================== MEDIA QUERIES ============================================================== */
+
+/* ---- MOBILE ---- */
+@media screen and (max-width: $breakpoint-medium) {
+
+
+	
+}
+
+/* ---- TABLET & DESKTOP ---- */
+@media screen and (min-width: $breakpoint-medium) {
+
+
+	
+}

@@ -1,0 +1,15 @@
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/bin/Debug/net6.0/Reflection
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/bin/Debug/net6.0/Reflection.deps.json
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/bin/Debug/net6.0/Reflection.runtimeconfig.json
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/bin/Debug/net6.0/Reflection.dll
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/bin/Debug/net6.0/ref/Reflection.dll
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/bin/Debug/net6.0/Reflection.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/obj/Debug/net6.0/Reflection.csproj.AssemblyReference.cache
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/obj/Debug/net6.0/Reflection.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/obj/Debug/net6.0/Reflection.AssemblyInfoInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/obj/Debug/net6.0/Reflection.AssemblyInfo.cs
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/obj/Debug/net6.0/Reflection.csproj.CoreCompileInputs.cache
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/obj/Debug/net6.0/Reflection.dll
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/obj/Debug/net6.0/ref/Reflection.dll
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/obj/Debug/net6.0/Reflection.pdb
+/Users/rajaniapple/Desktop/Mnemonics/Reflection/obj/Debug/net6.0/Reflection.genruntimeconfig.cache

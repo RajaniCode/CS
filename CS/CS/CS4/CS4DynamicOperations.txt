@@ -1,0 +1,233 @@
+// CS 4
+/*
+Dynamic Operations
+
+*/
+
+/*
+// Dynamic Operations
+Not only method calls, but also field and property accesses, indexer and operator calls and even delegate invocations and constructor calls can be dispatched dynamically:
+dynamic d = GetDynamicObject();
+d.M(7); // calling methods
+d.f = d.P; // getting and settings fields and properties
+d[one] = d[two]; // getting and setting through indexers
+int i = d + 3; // calling operators
+string s = d(5,7); // invoking as a delegate
+var c = new C(d); // calling a constructor
+*/
+
+﻿using System;
+using System.Collections.Generic;
+using System. Linq;
+
+delegate void DelegateType(string s);
+
+interface IInterfaceType
+{
+    void IntefaceImplement(string s);
+}
+
+struct StructType 
+{
+    public string language; 
+    public string author; 
+    public float version;
+    
+    public StructType(string language, string author, float version)
+    {
+        this.language = language; 
+        this.author = author; 
+        this.version = version;
+    }
+ }
+
+class DynamicOperations : IInterfaceType
+{
+    int x;
+    int y;
+    int z;
+    public string message = string.Empty;
+    string[ ] arr = new string[100];
+    
+    public DynamicOperations()
+    {
+        Console.WriteLine("Explicit Constructor Call");
+    }
+
+    public DynamicOperations(int x, int y, int z)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    public string Property
+    {
+        get;
+        set;
+    }
+     
+    // Operator overloading with binary operator '+' to add objects
+    public static DynamicOperations operator +(DynamicOperations operator1, DynamicOperations operator2 )
+    {
+        DynamicOperations dop = new DynamicOperations();
+        dop.x = operator1.x + operator2.x;
+        dop.y = operator1.y + operator2.y;
+        dop.z = operator1.z + operator2.z;
+        return dop;
+    }
+
+    public void OperatorOverloadingValues()
+    {
+        Console.WriteLine("x = {0}, y = {1}, z = {2}", x, y, z);
+    }
+
+    public void Method(string s)
+    {
+        Console.WriteLine(s);
+    }
+
+    public bool Function(int i)
+    { 
+        if(i % 2 == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void IntefaceImplement(string s)
+    {
+        Console.WriteLine(s);
+    }
+
+    // Indexer to allow client code to use [ ] notation
+    public string this[int i]
+    {
+       get { return arr[i]; }
+       set { arr[i] = value; }
+    }
+}
+
+class DynamicLanguageRuntime
+{
+    public void Print()
+    {
+        dynamic d = new DynamicOperations();
+        Console.WriteLine("Dynamic Operations");
+        d.message = "Variable set and called by dynamic object";
+        Console.WriteLine(d.message);
+        d.Property = "Property set and called by dynamic object";
+        Console.WriteLine(d.Property);
+        d.Method("Method called by dynamic object");
+
+        dynamic dynamicIndexer = new DynamicOperations();
+        dynamicIndexer[0] = "Indexer set and called by dynamic object";
+        Console.WriteLine(dynamicIndexer[0]);
+
+        DynamicOperations dynamicOps = new DynamicOperations();
+        DelegateType delType = dynamicOps.Method;
+        delType.DynamicInvoke("Delegate called by DynamicInvoke");
+        // Also
+        Action<string> act = dynamicOps.Method;
+        act.Invoke("Delegate called by Action<string> object Invoke");
+        // Also
+        if (act != null)
+        {
+            act("Delegate called by Action<string> object");
+        }
+
+        Random random = new Random();
+        int randomNumber = random.Next(0, 100);
+
+        Func<bool> fun = () => d.Function( randomNumber);
+        Console.WriteLine("The result of random number {0} returned by Func<bool> Delegate is even: {1}", randomNumber, fun());
+
+        dynamic d1 = new DynamicOperations(1, 2, 3);
+        dynamic d2 = new DynamicOperations(10, 20, 30);
+        dynamic d3 = new DynamicOperations();
+        Console.WriteLine("Operator overloading with binary operator '+' to add objects");
+        d3 = d1 + d2;
+        d3.OperatorOverloadingValues();
+
+        IInterfaceType interfaceReference = d;
+        interfaceReference.IntefaceImplement("Interface reference variable refers to dynamic object and it is the version of the method implemented by the dynamic object");
+       
+        dynamic dynamicStruct = new StructType("C#", "Anders Hejlsberg", 4.0F);
+        Console.WriteLine("Struct called by dynamic object:\nLanguage: {0}\nAuthor: {1}\nVersion: {2:F1}", dynamicStruct.language, dynamicStruct.author, dynamicStruct.version);
+    }
+}
+
+class DynamicOverload
+{
+    void Foo(int x) { }
+    void Foo(dynamic x) { }
+    void Foo(int x, dynamic y) { }
+    void Foo(dynamic x, int y) { }
+    void Foo(int x, dynamic y, int z) { }
+    void Foo(dynamic x, int y, dynamic z) { }
+    
+    void Bar(Func<int> f) { }
+    void Bar(Func<string> f) { }
+    void Bar(Func<dynamic> f) { }
+
+    dynamic DynamicObject() {
+        return new object();
+    }
+    
+    public void Resolution()
+    {
+        Foo(10); // Works - obvious
+        // Foo(10, 10); // Ambiguous - obvious
+        // Foo(10, 10, 10); // Ambiguous - not so obvious - since it should be possible to resolve
+
+        Bar(() => 0);
+        Bar(() => "");
+        
+        // Bar(() => DynamicObject()); //Will not compile
+
+        Bar((Func<dynamic>)(() => DynamicObject()));
+        // Or
+        Func<dynamic> fun = () => DynamicObject();
+        Bar(fun);
+        // Or
+        Bar(() => (object)DynamicObject());
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        DynamicLanguageRuntime dynamicRuntime = new DynamicLanguageRuntime();
+        dynamicRuntime.Print();
+        
+        DynamicOverload overloadDynamic = new DynamicOverload();
+        overloadDynamic.Resolution();
+    }
+}
+
+/*
+// Note
+// Overload resolution with dynamic arguments
+// Even if the receiver of a method call is of a static type, overload resolution can still happen at runtime
+// This will happen if one or more of the arguments have the type dynamic:
+// Foo foo = new Foo();
+// dynamic d = new Bar();
+// var result = foo.M(d);
+// The C# runtime binder will choose between the statically known overloads of M on Foo, based on the runtime type of d, namely Bar
+// The result is again of type dynamic
+
+// Note
+// Limitations of Dynamic Language Runtime (DLR)
+// The type 'dynamic' has no constructors defined
+// dynamic d = new dynamic(); // Won't compile
+// dynamic d = new object(); // Will compile
+// Dynamic binding will not be able to find extension methods 
+// Anonymous functions (i.e. lambda expressions) cannot appear as arguments to a dynamic operation
+// Consequently, LINQ queries over dynamic objects cannot be used easily:
+// dynamic collection = ;
+// var result = collection.Select(e => e + 5);
+// If the Select method is an extension method, dynamic binding will not find it
+// Even if it is an instance method, the above does not compile, because a lambda expression cannot be passed as an argument to a dynamic operation
+*/

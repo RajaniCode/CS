@@ -1,0 +1,28 @@
+Pass by value VS Pass by reference:
+
+When you pass by value, a copy of the variable is passed and not the actual variable.
+
+However, when you pass by reference, the memory address of the variable is passed. Thus, the called method can modify the value of the underlying variable.
+
+
+
+
+Pass by reference VS Pass by out:
+
+ref cannot be passed before intializing it.
+
+out must be assigned in the called method.
+
+
+
+
+Using ref on references:
+
+Check out 1.cs, 2.cs, and 3.cs in using ref on references
+
+
+
+
+params:
+
+A params parameter must be the last parameter in a formal parameter list	
